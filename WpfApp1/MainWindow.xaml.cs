@@ -24,5 +24,20 @@ namespace WpfApp1
 		{
 			InitializeComponent();
 		}
+
+		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+		{
+
+		}
+
+		private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
+		}
+
+		private void ListViewItem_Selected(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
