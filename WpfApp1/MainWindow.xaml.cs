@@ -27,7 +27,7 @@ namespace WpfApp1
 
 		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
-
+			
 		}
 
 		private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -36,6 +36,36 @@ namespace WpfApp1
 		}
 
 		private void ListViewItem_Selected(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void DataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+		{
+
+		}
+
+		private void DataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
+		}
+
+		private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+		{
+
+		}
+
+		private void Btn_Click(object sender, RoutedEventArgs e)
+		{
+		
+		}
+
+		private void ListViewItem_Selected_1(object sender, RoutedEventArgs e)
+		{
+			
+		}
+
+		private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 
 		}
