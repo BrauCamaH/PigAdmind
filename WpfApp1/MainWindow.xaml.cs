@@ -10,64 +10,54 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace WpfApp1
 {
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
-	public partial class MainWindow : Window
-	{
-		public MainWindow()
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
+		private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
 		{
-			InitializeComponent();
+			ButtonCloseMenu.Visibility = Visibility.Visible;
+			ButtonOpenMenu.Visibility = Visibility.Collapsed;
 		}
 
-		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+		private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+		{
+			ButtonCloseMenu.Visibility = Visibility.Collapsed;
+			ButtonOpenMenu.Visibility = Visibility.Visible;
+		}
+
+		private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			UserControl usc = null;
+			GridMain.Children.Clear();
+
+			switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
+			{
+				case "Famales":
+					//usc = new UserControlHome();
+					//GridMain.Children.Add(usc);
+					break;
+				case "Groups":
+					//usc = new UserControlHome();
+					//GridMain.Children.Add(usc);
+					break;
+				default:
+					break;
+			}
+		}
+
+		private void MenuItem_Click(object sender, RoutedEventArgs e)
 		{
 			
-		}
-
-		private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-
-		}
-
-		private void ListViewItem_Selected(object sender, RoutedEventArgs e)
-		{
-
-		}
-
-		private void DataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-		{
-
-		}
-
-		private void DataGrid1_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-
-		}
-
-		private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
-		{
-
-		}
-
-		private void Btn_Click(object sender, RoutedEventArgs e)
-		{
-		
-		}
-
-		private void ListViewItem_Selected_1(object sender, RoutedEventArgs e)
-		{
-			
-		}
-
-		private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-		{
-
 		}
 	}
 }
