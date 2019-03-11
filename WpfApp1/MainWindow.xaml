@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="1080" Width="1920" 
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="Auto" Width="Auto" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" WindowState="Maximized" WindowStartupLocation="CenterScreen" d:DesignWidth="1366" d:DesignHeight="768">
     <Window.Resources>
         <Storyboard x:Key="OpenMenu">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
@@ -30,9 +30,12 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid Background="#FFDEDEDE">
-        <Menu   Background="SteelBlue" HorizontalAlignment="Left" Margin="70,-1,0,0" VerticalAlignment="Top" Width="1836" Height="50" />
-
-        <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="540" Width="1010"/>
+        
+        <materialDesign:Card Height="50" Margin="70,0,0,0" Background="SteelBlue">
+            
+        </materialDesign:Card>
+        
+        <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="688" Width="1288"/>
         <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#F5F5F5">
             <Grid.Effect>
                 <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
