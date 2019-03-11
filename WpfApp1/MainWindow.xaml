@@ -29,59 +29,60 @@
             <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
         </EventTrigger>
     </Window.Triggers>
-    <Grid Background="#FFDEDEDE">
-        
-        <materialDesign:Card Height="50" Margin="70,0,0,0" Background="SteelBlue">
-            
-        </materialDesign:Card>
-        
-        <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="688" Width="1288"/>
-        <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#F5F5F5">
-            <Grid.Effect>
-                <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
-            </Grid.Effect>
-            <StackPanel>
-                <Grid Height="150" Background="White" RenderTransformOrigin="0.5,0.5">
-                    <Grid.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Grid.RenderTransform>
-                    <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonOpenMenu_Click">
-                        <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
-                    </Button>
-                    <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonCloseMenu_Click">
-                        <materialDesign:PackIcon Kind="ArrowLeft" Width="25" Height="25"/>
-                    </Button>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+        <Grid Background="#FFDEDEDE">
+            <materialDesign:Card Height="50" Margin="70,0,0,0" Background="SteelBlue">
 
-                    <Image Height="80" VerticalAlignment="Bottom"/>
-                </Grid>
-                <ListView x:Name="ListViewMenu" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
-                    <ListViewItem x:Name="Females" Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Pig" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Hembras" VerticalAlignment="Center" Margin="20 10"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="Groups" Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Group" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Grupos" VerticalAlignment="Center" Margin="20 10"/>
-                        </StackPanel>
-                    </ListViewItem>
-                    <ListViewItem x:Name="Sales" Height="60">
-                        <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="CashUsd" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Ventas" VerticalAlignment="Center"  Margin="20 10"/>
-                        </StackPanel>
-                    </ListViewItem>
+            </materialDesign:Card>
 
-                </ListView>
-            </StackPanel>
+            <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="688" Width="1288"/>
+            <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#F5F5F5">
+                <Grid.Effect>
+                    <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
+                </Grid.Effect>
+                <StackPanel>
+                    <Grid Height="150" Background="White" RenderTransformOrigin="0.5,0.5">
+                        <Grid.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Grid.RenderTransform>
+                        <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonOpenMenu_Click">
+                            <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
+                        </Button>
+                        <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonCloseMenu_Click">
+                            <materialDesign:PackIcon Kind="ArrowLeft" Width="25" Height="25"/>
+                        </Button>
+
+                        <Image Height="80" VerticalAlignment="Bottom"/>
+                    </Grid>
+                    <ListView x:Name="ListViewMenu" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
+                        <ListViewItem x:Name="Females" Height="60">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Pig" Height="25" Width="25" Margin="10"/>
+                                <TextBlock Text="Hembras" VerticalAlignment="Center" Margin="20 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="Groups" Height="60">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Group" Height="25" Width="25" Margin="10"/>
+                                <TextBlock Text="Grupos" VerticalAlignment="Center" Margin="20 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+                        <ListViewItem x:Name="Sales" Height="60">
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="CashUsd" Height="25" Width="25" Margin="10"/>
+                                <TextBlock Text="Ventas" VerticalAlignment="Center"  Margin="20 10"/>
+                            </StackPanel>
+                        </ListViewItem>
+
+                    </ListView>
+                </StackPanel>
+            </Grid>
+
         </Grid>
-
-    </Grid>
+    </ScrollViewer>
 </Window>
