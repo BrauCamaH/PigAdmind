@@ -35,7 +35,7 @@
 
             </materialDesign:Card>
 
-            <Grid x:Name="GridMain" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="688" Width="1288"/>
+            <Grid x:Name="GridMain" Margin="72,51,0,0"/>
             <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#F5F5F5">
                 <Grid.Effect>
                     <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>

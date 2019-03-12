@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.Females;
 
 namespace WpfApp1
 {
@@ -42,9 +43,9 @@ namespace WpfApp1
 
 			switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
 			{
-				case "Famales":
-					//usc = new UserControlHome();
-					//GridMain.Children.Add(usc);
+				case "Females":
+					usc = new MainFemales ();
+					GridMain.Children.Add(usc);
 					break;
 				case "Groups":
 					//usc = new UserControlHome();

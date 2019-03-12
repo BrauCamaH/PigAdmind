@@ -24,5 +24,10 @@ namespace WpfApp1.Females
 		{
 			InitializeComponent();
 		}
+
+		private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+
+		}
 	}
 }
