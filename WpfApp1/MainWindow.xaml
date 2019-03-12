@@ -32,10 +32,21 @@
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
         <Grid Background="#FFDEDEDE">
             <materialDesign:Card Height="50" Margin="70,0,0,0" Background="SteelBlue">
-
             </materialDesign:Card>
-
-            <Grid x:Name="GridMain" Margin="72,51,0,0"/>
+            <StackPanel Background="LightBlue"    Margin="70,48,0,624" Orientation="Horizontal" VerticalAlignment="Top" Height="60" >
+                <Button Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" Visibility="Hidden">
+                    <materialDesign:PackIcon Kind="ArrowLeft"  Opacity=".56" Height="52" Width="52" />
+                </Button>
+                <Separator Background="{x:Null}"  Width="168"/>
+                <Button Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80">
+                    <materialDesign:PackIcon Kind="Edit"  Opacity=".56" Height="52" Width="52" />
+                </Button>
+                <Button Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80">
+                    <materialDesign:PackIcon Kind="Delete"  Opacity=".56" Height="52" Width="52" />
+                </Button>
+            </StackPanel>
+            
+            <Grid x:Name="GridMain" Margin="72,108,0,0"/>
             <Grid x:Name="GridMenu" Width="70" HorizontalAlignment="Left" Background="#F5F5F5">
                 <Grid.Effect>
                     <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
@@ -78,7 +89,6 @@
                                 <TextBlock Text="Ventas" VerticalAlignment="Center"  Margin="20 10"/>
                             </StackPanel>
                         </ListViewItem>
-
                     </ListView>
                 </StackPanel>
             </Grid>
