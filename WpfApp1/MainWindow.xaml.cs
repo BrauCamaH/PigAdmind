@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp1.Females;
 using WpfApp1.Groups;
+using WpfApp1.Sales;
 
 namespace WpfApp1
 {
@@ -52,7 +53,9 @@ namespace WpfApp1
 					usc = new MainGroups();
 					GridMain.Children.Add(usc);
 					break;
-				default:
+				case "Sales":
+					usc = new MainSales();
+					GridMain.Children.Add(usc);
 					break;
 			}
 		}
