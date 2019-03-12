@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="WpfApp1.Groups.MainGroups"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.Groups"
+             mc:Ignorable="d" Background="White" 
+              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             d:DesignWidth="1366" d:DesignHeight="768"  >
+    <Grid>
+        <StackPanel 
+          Orientation="Horizontal"
+          materialDesign:RippleAssist.IsCentered="True" Margin="306,118,732,551" RenderTransformOrigin="0.5,0.5">
+            <materialDesign:ColorZone
+                Mode="Standard"
+                Padding="8 4 8 4"
+                CornerRadius="2"
+                Panel.ZIndex="1"
+                Margin="16 0 0 0"
+                materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="31*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                          Width="Auto" />
+                        <ColumnDefinition
+                           Width="*" />
+                        <ColumnDefinition
+                            Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                         Style="{DynamicResource MaterialDesignToolButton}" Grid.RowSpan="2">
+                        <materialDesign:PackIcon  Kind="Magnify" Opacity=".56" />
+                    </Button>
+                    <TextBox
+                            Grid.Column="1" Margin="8,4,0,3" materialDesign:HintAssist.Hint="Ingrese Texto"
+                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                            BorderThickness="0"
+                            MinWidth="200"
+                            VerticalAlignment="Center" />
+                </Grid>
+            </materialDesign:ColorZone>
+        </StackPanel>
+
+        <ListView HorizontalAlignment="Left" Height="581" Margin="76,185,0,0" VerticalAlignment="Top" Width="844" SelectionChanged="ListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="id"/>
+                    <GridViewColumn Header="Total Puercos"/>
+                    <GridViewColumn Header="Fecha de destete"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Content="Agregar Grupo" HorizontalAlignment="Left" Margin="73,120,0,0" VerticalAlignment="Top" Width="173" Height="39"/> 
+    </Grid>
+</UserControl>

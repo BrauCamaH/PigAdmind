@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp1.Females;
+using WpfApp1.Groups;
 
 namespace WpfApp1
 {
@@ -48,8 +49,8 @@ namespace WpfApp1
 					GridMain.Children.Add(usc);
 					break;
 				case "Groups":
-					//usc = new UserControlHome();
-					//GridMain.Children.Add(usc);
+					usc = new MainGroups();
+					GridMain.Children.Add(usc);
 					break;
 				default:
 					break;
