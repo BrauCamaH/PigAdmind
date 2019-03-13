@@ -29,5 +29,10 @@ namespace WpfApp1.Females
 		{
 
 		}
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }

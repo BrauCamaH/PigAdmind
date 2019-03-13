@@ -8,9 +8,15 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              Background="White" d:DesignWidth="1366" d:DesignHeight="768"  Width="auto" Height="auto">
     <Grid >
+        <Button  HorizontalAlignment="Left" Margin="142,20,0,0" VerticalAlignment="Top" Width="183" Height="39">
+            <DockPanel Width="153">
+                <materialDesign:PackIcon Kind="Plus" Height="25" Width="28" Foreground="LightBlue"/>
+                <TextBlock FontSize="15">Agregar Hembra</TextBlock>
+            </DockPanel>
+        </Button>
         <StackPanel 
-          Orientation="Horizontal"
-          materialDesign:RippleAssist.IsCentered="True" Margin="306,118,732,551" RenderTransformOrigin="0.5,0.5">
+              Orientation="Horizontal" 
+              materialDesign:RippleAssist.IsCentered="True" Margin="396,20,706,705" RenderTransformOrigin="0.5,0.5">
             <materialDesign:ColorZone
                 Mode="Standard"
                 Padding="8 4 8 4"
@@ -45,7 +51,7 @@
             </materialDesign:ColorZone>
         </StackPanel>
 
-        <ListView HorizontalAlignment="Left" Height="581" Margin="76,185,0,0" VerticalAlignment="Top" Width="844" SelectionChanged="ListView_SelectionChanged">
+        <ListView HorizontalAlignment="Left" Height="683" Margin="145,85,0,0" VerticalAlignment="Top" Width="835" SelectionChanged="ListView_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Código"/>
@@ -55,10 +61,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button Content="Agregar Hembra" HorizontalAlignment="Left" Margin="73,120,0,0" VerticalAlignment="Top" Width="173" Height="39"/>
-
-
-
+        <TabPanel HorizontalAlignment="Left" Height="100" Margin="1047.25,259,0,0" VerticalAlignment="Top" Width="100"/>
 
     </Grid>
 </UserControl>
