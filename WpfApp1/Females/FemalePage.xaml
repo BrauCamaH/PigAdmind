@@ -8,7 +8,47 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
              Background="White" d:DesignWidth="1366" d:DesignHeight="768"  Width="auto" Height="auto">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <!-- throw in some extra colour for our floating action button -->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Green.Named.Primary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
+        <Ellipse Height="106" Width="106" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,976,0" Stroke="White">
+            <Ellipse.Fill>
+                <ImageBrush Stretch="UniformToFill"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <materialDesign:PopupBox
+                  Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
+                  PlacementMode="BottomAndAlignCentres"
+                  Margin="89,120,0,568"
+                  ToolTip="Agregar nuevo evento" Height="80" Width="80" >
+            <StackPanel>
+                <Button ToolTip="Nueva inseminación" >
+                    <materialDesign:PackIcon Kind="Injection" />
+                </Button>
+                <Button ToolTip= "Nuevo parto">
+                    <materialDesign:PackIcon Kind="Baby" />
+                </Button>
+                <Button ToolTip="Nuevo destete">
+                    <materialDesign:PackIcon Kind="WomanChild" />
+                </Button>
+                <Button ToolTip="Hembra embarazada" >
+                    <materialDesign:PackIcon Kind="HumanPregnant" />
+                </Button>
+                <Button ToolTip="Aborto" >
+                    <materialDesign:PackIcon Kind="SettingsBackupRestore" />
+                </Button>
+            </StackPanel>
+        </materialDesign:PopupBox>
+        <Label Content="Código" Background="SteelBlue" HorizontalAlignment="Left" Margin="426,26,0,0" VerticalAlignment="Top" Width="200" Height="64"   Foreground="White" FontFamily="Roboto" FontWeight="Bold" FontSize="40"/>
         <dragablz:TabablzControl  HorizontalAlignment="Left" Height="650" Margin="177,119,0,-1" VerticalAlignment="Top" Width="1009">
             <TabItem Header="Inseminaciones">
                 <Grid Background="#FFE5E5E5">
@@ -67,7 +107,7 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Partos"> 
+            <TabItem Header="Partos">
                 <Grid Background="#FFE5E5E5">
                     <StackPanel 
               Orientation="Horizontal" 
@@ -184,6 +224,7 @@
                 </Grid>
             </TabItem>
         </dragablz:TabablzControl>
+
 
     </Grid>
 </UserControl>
