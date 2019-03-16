@@ -25,7 +25,15 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+			SetInitialPage();
         }
+
+		private void SetInitialPage()
+		{
+			var usc = new MainFemales();
+			GridMain.Children.Add(usc);
+		}
+
 		private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
 		{
 			ButtonCloseMenu.Visibility = Visibility.Visible;

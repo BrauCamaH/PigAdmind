@@ -37,7 +37,7 @@
                         <MenuItem Header="_Archivo">
                             <MenuItem Header="Reportes">
                                 <MenuItem Header="Inseminaciones"></MenuItem>
-                                <MenuItem Header="Vacas preñadas"></MenuItem>
+                                <MenuItem Header="Hembras preñadas"></MenuItem>
                             </MenuItem>
                             <MenuItem Header="Salir" InputGestureText="Ctrl+E">
                                 <MenuItem.Icon>
