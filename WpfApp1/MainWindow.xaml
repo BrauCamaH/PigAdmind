@@ -60,7 +60,7 @@
                         </MenuItem>
                     </Menu>
                 </StackPanel>
-            </materialDesign:Card>
+            </materialDesign:Card> 
             <StackPanel Background="LightBlue"    Margin="70,48,0,624" Orientation="Horizontal" VerticalAlignment="Top" Height="60" >
                 <Button Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" Visibility="Hidden">
                     <materialDesign:PackIcon Kind="ArrowLeft"  Opacity=".56" Height="52" Width="52" />
@@ -79,16 +79,11 @@
                 <Grid.Effect>
                     <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#FFAEAEAE"/>
                 </Grid.Effect>
+                <materialDesign:TransitioningContent x:Name="TrainsitionigContentSlide" OpeningEffect="{materialDesign:TransitionEffect SlideInFromLeft, Duration=0:0:0.2}">
+                    <Grid x:Name="GridCursor" Margin="0 150 0 0" Background="SteelBlue" Width="10" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top"/>
+                </materialDesign:TransitioningContent> 
                 <StackPanel>
                     <Grid Height="150" Background="White" RenderTransformOrigin="0.5,0.5">
-                        <Grid.RenderTransform>
-                            <TransformGroup>
-                                <ScaleTransform/>
-                                <SkewTransform/>
-                                <RotateTransform/>
-                                <TranslateTransform/>
-                            </TransformGroup>
-                        </Grid.RenderTransform>
                         <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonOpenMenu_Click">
                             <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
                         </Button>
@@ -97,7 +92,7 @@
                         </Button>
                     </Grid>
                     <ListView x:Name="ListViewMenu" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
-                        <ListViewItem x:Name="Females" Height="60">
+                        <ListViewItem x:Name="Females" Height="60" Selected="Females_Selected">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Pig" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Hembras" VerticalAlignment="Center" Margin="20 10"/>

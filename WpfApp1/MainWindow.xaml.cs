@@ -37,12 +37,18 @@ namespace WpfApp1
 			ButtonCloseMenu.Visibility = Visibility.Collapsed;
 			ButtonOpenMenu.Visibility = Visibility.Visible;
 		}
+		private void MoveCursorMenu(int index)
+		{
+			TrainsitionigContentSlide.OnApplyTemplate();
+			GridCursor.Margin = new Thickness(0, (150 + (60 * index)), 0, 0);
+		}
 
 		private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			UserControl usc = null;
 			GridMain.Children.Clear();
-
+			int index = ListViewMenu.SelectedIndex;
+			MoveCursorMenu(index);
 			switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
 			{
 				case "Females":
@@ -60,6 +66,9 @@ namespace WpfApp1
 			}
 		}
 
+		private void Females_Selected(object sender, RoutedEventArgs e)
+		{
 
+		}
 	}
 }
