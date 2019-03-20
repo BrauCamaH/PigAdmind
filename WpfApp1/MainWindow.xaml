@@ -39,7 +39,7 @@
                                 <MenuItem Header="Inseminaciones"></MenuItem>
                                 <MenuItem Header="Hembras preñadas"></MenuItem>
                             </MenuItem>
-                            <MenuItem Header="Salir" InputGestureText="Ctrl+E">
+                            <MenuItem Header="Salir" InputGestureText="Ctrl+E" Click="Exit">
                                 <MenuItem.Icon>
                                     <materialDesign:PackIcon Kind="ExitToApp" />
                                 </MenuItem.Icon>
@@ -62,14 +62,15 @@
                 </StackPanel>
             </materialDesign:Card> 
             <StackPanel Background="LightBlue"    Margin="70,48,0,624" Orientation="Horizontal" VerticalAlignment="Top" Height="60" >
-                <Button Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" Visibility="Hidden">
-                    <materialDesign:PackIcon Kind="ArrowLeft"  Opacity=".56" Height="52" Width="52" />
+                <Separator Background="{x:Null}"  Width="132"/>
+                <Button Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled="False">
+                    <materialDesign:PackIcon Name="Back" Kind="ArrowLeft"  Opacity=".56" Height="52" Width="52" />
                 </Button>
                 <Separator Background="{x:Null}"  Width="168"/>
-                <Button Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80">
+                <Button Name="Edit" Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled ="False">
                     <materialDesign:PackIcon Kind="Edit"  Opacity=".56" Height="52" Width="52" />
                 </Button>
-                <Button Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80">
+                <Button Name="Delete" Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled ="False">
                     <materialDesign:PackIcon Kind="Delete"  Opacity=".56" Height="52" Width="52" />
                 </Button>
             </StackPanel>

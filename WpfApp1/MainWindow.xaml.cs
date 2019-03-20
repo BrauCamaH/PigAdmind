@@ -78,5 +78,10 @@ namespace WpfApp1
 		{
 
 		}
+
+		private void Exit(object sender, RoutedEventArgs e)
+		{
+			App.Current.Shutdown();
+		}
 	}
 }
