@@ -3,9 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PigAdmindApp", "WpfApp1\PigAdmindApp.csproj", "{361C80A8-5117-4699-B55A-3D80AAE14A56}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestPigAdmind.UnitTest", "PigAdmind.UnitTest\TestPigAdmind.UnitTest.csproj", "{975DD204-1D80-4A49-B708-9D07C873EA5A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{361C80A8-5117-4699-B55A-3D80AAE14A56}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{361C80A8-5117-4699-B55A-3D80AAE14A56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{361C80A8-5117-4699-B55A-3D80AAE14A56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{361C80A8-5117-4699-B55A-3D80AAE14A56}.Release|Any CPU.Build.0 = Release|Any CPU
-		{975DD204-1D80-4A49-B708-9D07C873EA5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{975DD204-1D80-4A49-B708-9D07C873EA5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{975DD204-1D80-4A49-B708-9D07C873EA5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{975DD204-1D80-4A49-B708-9D07C873EA5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
