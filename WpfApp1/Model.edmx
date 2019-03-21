@@ -1,0 +1,337 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Births">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="n_piglets" Type="int" />
+          <Property Name="date" Type="nchar" MaxLength="10" />
+          <Property Name="weaning" Type="int" />
+          <Property Name="fem_code" Type="nchar" MaxLength="20" />
+          <Property Name="parametro" Type="int" />
+        </EntityType>
+        <EntityType Name="Females">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="birthday" Type="nchar" MaxLength="10" />
+          <Property Name="status" Type="nchar" MaxLength="20" />
+          <Property Name="martenity" Type="int" />
+          <Property Name="user" Type="int" />
+          <Property Name="misbirths" Type="int" />
+        </EntityType>
+        <EntityType Name="Inseminations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="male_code" Type="nchar" MaxLength="20" />
+          <Property Name="date" Type="nchar" MaxLength="10" />
+          <Property Name="fem_code" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Parameters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="died_pigs" Type="nchar" MaxLength="20" />
+          <Property Name="lived_pigs" Type="int" />
+          <Property Name="mummy_pigs" Type="int" />
+        </EntityType>
+        <EntityType Name="PigGroups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="20" />
+          <Property Name="weaning_date" Type="nchar" MaxLength="10" />
+          <Property Name="weigth_avg" Type="float" />
+          <Property Name="second_avg" Type="float" />
+          <Property Name="pig_count" Type="int" />
+          <Property Name="died_pigs" Type="int" />
+          <Property Name="user" Type="int" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="price" Type="int" />
+          <Property Name="date" Type="nchar" MaxLength="10" />
+          <Property Name="pig_group" Type="int" />
+        </EntityType>
+        <EntityType Name="Sicks">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nchar" MaxLength="30" />
+          <Property Name="date" Type="nchar" MaxLength="10" />
+          <Property Name="fem_code" Type="nchar" MaxLength="20" />
+          <Property Name="improvement_date" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nchar" MaxLength="50" />
+          <Property Name="password" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Weaning ">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="weaned_pigs" Type="int" />
+          <Property Name="date" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Births" EntityType="Self.Births" store:Type="Tables" />
+          <EntitySet Name="Females" EntityType="Self.Females" store:Type="Tables" />
+          <EntitySet Name="Inseminations" EntityType="Self.Inseminations" store:Type="Tables" />
+          <EntitySet Name="Parameters" EntityType="Self.Parameters" store:Type="Tables" />
+          <EntitySet Name="PigGroups" EntityType="Self.PigGroups" store:Type="Tables" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" store:Type="Tables" />
+          <EntitySet Name="Sicks" EntityType="Self.Sicks" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" />
+          <EntitySet Name="Weaning " EntityType="Self.Weaning " store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Births">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="n_piglets" Type="Int32" />
+          <Property Name="date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="weaning" Type="Int32" />
+          <Property Name="fem_code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="parametro" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Females">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="birthday" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="martenity" Type="Int32" />
+          <Property Name="user" Type="Int32" />
+          <Property Name="misbirths" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Inseminations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="male_code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fem_code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Parameters">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="died_pigs" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="lived_pigs" Type="Int32" />
+          <Property Name="mummy_pigs" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PigGroups">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="weaning_date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="weigth_avg" Type="Double" />
+          <Property Name="second_avg" Type="Double" />
+          <Property Name="pig_count" Type="Int32" />
+          <Property Name="died_pigs" Type="Int32" />
+          <Property Name="user" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="price" Type="Int32" />
+          <Property Name="date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="pig_group" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Sicks">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="fem_code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="improvement_date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Weaning_">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="weaned_pigs" Type="Int32" />
+          <Property Name="date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Births" EntityType="Self.Births" />
+          <EntitySet Name="Females" EntityType="Self.Females" />
+          <EntitySet Name="Inseminations" EntityType="Self.Inseminations" />
+          <EntitySet Name="Parameters" EntityType="Self.Parameters" />
+          <EntitySet Name="PigGroups" EntityType="Self.PigGroups" />
+          <EntitySet Name="Sales" EntityType="Self.Sales" />
+          <EntitySet Name="Sicks" EntityType="Self.Sicks" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="Weaning_" EntityType="Self.Weaning_" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Births">
+            <EntityTypeMapping TypeName="Model.Births">
+              <MappingFragment StoreEntitySet="Births">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="n_piglets" ColumnName="n_piglets" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="weaning" ColumnName="weaning" />
+                <ScalarProperty Name="fem_code" ColumnName="fem_code" />
+                <ScalarProperty Name="parametro" ColumnName="parametro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Females">
+            <EntityTypeMapping TypeName="Model.Females">
+              <MappingFragment StoreEntitySet="Females">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="martenity" ColumnName="martenity" />
+                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="misbirths" ColumnName="misbirths" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inseminations">
+            <EntityTypeMapping TypeName="Model.Inseminations">
+              <MappingFragment StoreEntitySet="Inseminations">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="male_code" ColumnName="male_code" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="fem_code" ColumnName="fem_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parameters">
+            <EntityTypeMapping TypeName="Model.Parameters">
+              <MappingFragment StoreEntitySet="Parameters">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="died_pigs" ColumnName="died_pigs" />
+                <ScalarProperty Name="lived_pigs" ColumnName="lived_pigs" />
+                <ScalarProperty Name="mummy_pigs" ColumnName="mummy_pigs" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PigGroups">
+            <EntityTypeMapping TypeName="Model.PigGroups">
+              <MappingFragment StoreEntitySet="PigGroups">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="weaning_date" ColumnName="weaning_date" />
+                <ScalarProperty Name="weigth_avg" ColumnName="weigth_avg" />
+                <ScalarProperty Name="second_avg" ColumnName="second_avg" />
+                <ScalarProperty Name="pig_count" ColumnName="pig_count" />
+                <ScalarProperty Name="died_pigs" ColumnName="died_pigs" />
+                <ScalarProperty Name="user" ColumnName="user" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="Model.Sales">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="pig_group" ColumnName="pig_group" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sicks">
+            <EntityTypeMapping TypeName="Model.Sicks">
+              <MappingFragment StoreEntitySet="Sicks">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="fem_code" ColumnName="fem_code" />
+                <ScalarProperty Name="improvement_date" ColumnName="improvement_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="Model.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Weaning_">
+            <EntityTypeMapping TypeName="Model.Weaning_">
+              <MappingFragment StoreEntitySet="Weaning ">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="weaned_pigs" ColumnName="weaned_pigs" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
