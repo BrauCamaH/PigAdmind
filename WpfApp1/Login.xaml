@@ -12,7 +12,7 @@
         TextOptions.TextRenderingMode="Auto"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Title="Login" Height="668" Width="526"
-        Background="#FFFFFF"
+        Background="#FFFFFF" WindowStartupLocation="CenterScreen"
         >
     <Grid>
         <materialDesign:PackIcon Kind="CommentUserOutline" Margin="104,15,0,0" Height="305" Width="305" Foreground="LightBlue"/>
@@ -21,7 +21,7 @@
           materialDesign:HintAssist.Hint="Contraseña"
           Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="140,302,128,265" />
         <materialDesign:PackIcon Kind="Key" Margin="106,344,0,0" Height="22" Width="22" />
-        <Button Content="Ingresar" HorizontalAlignment="Left" Margin="204,444,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.027,1.375"/>
+        <Button Content="Ingresar" HorizontalAlignment="Left" Margin="204,444,0,0" VerticalAlignment="Top" Width="94" RenderTransformOrigin="0.027,1.375" Click="Button_Click"/>
         <CheckBox Content="Mantener Sesión Abierta" HorizontalAlignment="Left" Margin="81,525,0,0" VerticalAlignment="Top" FontSize="14" />
         <TextBlock HorizontalAlignment="Left" Margin="272,526,0,0" TextWrapping="Wrap" Text="¿Has olvidado la contraseña?" VerticalAlignment="Top" FontSize="14" TextDecorations="Underline" Foreground="#0078D7" />
     </Grid>
