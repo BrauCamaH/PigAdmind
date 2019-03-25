@@ -132,6 +132,9 @@
     <Compile Include="Females\FemalePage.xaml.cs">
       <DependentUpon>FemalePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InitialConfig.xaml.cs">
+      <DependentUpon>InitialConfig.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sales\MainSales.xaml.cs">
       <DependentUpon>MainSales.xaml</DependentUpon>
     </Compile>
@@ -147,13 +150,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Login.xaml">
+    <Page Include="InitialConfig.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="InitialConfig.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Login.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -167,10 +170,6 @@
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="InitialConfig.xaml.cs">
-      <DependentUpon>InitialConfig.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
