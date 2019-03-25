@@ -4,25 +4,25 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Births">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="n_piglets" Type="int" />
-          <Property Name="date" Type="nchar" MaxLength="10" />
+          <Property Name="date" Type="nvarchar" MaxLength="10" />
           <Property Name="weaning" Type="int" />
-          <Property Name="fem_code" Type="nchar" MaxLength="20" />
+          <Property Name="fem_code" Type="nvarchar" MaxLength="20" />
           <Property Name="parametro" Type="int" />
         </EntityType>
         <EntityType Name="Females">
           <Key>
             <PropertyRef Name="code" />
           </Key>
-          <Property Name="code" Type="nchar" MaxLength="20" Nullable="false" />
-          <Property Name="birthday" Type="nchar" MaxLength="10" />
-          <Property Name="status" Type="nchar" MaxLength="20" />
+          <Property Name="code" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="birthday" Type="nvarchar" MaxLength="10" />
+          <Property Name="status" Type="nvarchar" MaxLength="20" />
           <Property Name="martenity" Type="int" />
           <Property Name="user" Type="int" />
           <Property Name="misbirths" Type="int" />
@@ -32,16 +32,16 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="male_code" Type="nchar" MaxLength="20" />
-          <Property Name="date" Type="nchar" MaxLength="10" />
-          <Property Name="fem_code" Type="nchar" MaxLength="20" />
+          <Property Name="male_code" Type="nvarchar" MaxLength="20" />
+          <Property Name="date" Type="nvarchar" MaxLength="10" />
+          <Property Name="fem_code" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Parameters">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="died_pigs" Type="nchar" MaxLength="20" />
+          <Property Name="died_pigs" Type="nvarchar" MaxLength="20" />
           <Property Name="lived_pigs" Type="int" />
           <Property Name="mummy_pigs" Type="int" />
         </EntityType>
@@ -50,8 +50,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="20" />
-          <Property Name="weaning_date" Type="nchar" MaxLength="10" />
+          <Property Name="name" Type="nvarchar" MaxLength="20" />
+          <Property Name="weaning_date" Type="nvarchar" MaxLength="10" />
           <Property Name="weigth_avg" Type="float" />
           <Property Name="second_avg" Type="float" />
           <Property Name="pig_count" Type="int" />
@@ -64,7 +64,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="price" Type="int" />
-          <Property Name="date" Type="nchar" MaxLength="10" />
+          <Property Name="date" Type="nvarchar" MaxLength="10" />
           <Property Name="pig_group" Type="int" />
         </EntityType>
         <EntityType Name="Sicks">
@@ -72,18 +72,18 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="30" />
-          <Property Name="date" Type="nchar" MaxLength="10" />
-          <Property Name="fem_code" Type="nchar" MaxLength="20" />
-          <Property Name="improvement_date" Type="nchar" MaxLength="10" />
+          <Property Name="name" Type="nvarchar" MaxLength="30" />
+          <Property Name="date" Type="nvarchar" MaxLength="10" />
+          <Property Name="fem_code" Type="nvarchar" MaxLength="20" />
+          <Property Name="improvement_date" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="email" Type="nchar" MaxLength="50" />
-          <Property Name="password" Type="nchar" MaxLength="20" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Weaning ">
           <Key>
@@ -91,7 +91,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="weaned_pigs" Type="int" />
-          <Property Name="date" Type="nchar" MaxLength="10" />
+          <Property Name="date" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Births" EntityType="Self.Births" store:Type="Tables" />
@@ -104,8 +104,7 @@
           <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" />
           <EntitySet Name="Weaning " EntityType="Self.Weaning " store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -115,18 +114,18 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="n_piglets" Type="Int32" />
-          <Property Name="date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="weaning" Type="Int32" />
-          <Property Name="fem_code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="fem_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="parametro" Type="Int32" />
         </EntityType>
         <EntityType Name="Females">
           <Key>
             <PropertyRef Name="code" />
           </Key>
-          <Property Name="code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="birthday" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="status" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="birthday" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="martenity" Type="Int32" />
           <Property Name="user" Type="Int32" />
           <Property Name="misbirths" Type="Int32" />
@@ -136,16 +135,16 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="male_code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="fem_code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="male_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="fem_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Parameters">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="died_pigs" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="died_pigs" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="lived_pigs" Type="Int32" />
           <Property Name="mummy_pigs" Type="Int32" />
         </EntityType>
@@ -154,8 +153,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="weaning_date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="weaning_date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="weigth_avg" Type="Double" />
           <Property Name="second_avg" Type="Double" />
           <Property Name="pig_count" Type="Int32" />
@@ -168,7 +167,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="price" Type="Int32" />
-          <Property Name="date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="pig_group" Type="Int32" />
         </EntityType>
         <EntityType Name="Sicks">
@@ -176,18 +175,18 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="30" FixedLength="true" Unicode="true" />
-          <Property Name="date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="fem_code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="improvement_date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="fem_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="improvement_date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="email" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
-          <Property Name="password" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Weaning_">
           <Key>
@@ -195,7 +194,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="weaned_pigs" Type="Int32" />
-          <Property Name="date" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Births" EntityType="Self.Births" />
