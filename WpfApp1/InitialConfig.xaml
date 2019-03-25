@@ -22,13 +22,13 @@
         </materialDesign:Card>
         <Button Name="btn" Content="Aceptar" HorizontalAlignment="Left" Margin="507,552,0,0" VerticalAlignment="Top" Width="84" Click="Btn_Click"/>
         <PasswordBox
-            x:Name="PasswordBox"
+             Name="PasswordBox"
              materialDesign:HintAssist.Hint="Contraseña" Margin="408,363,466,237" />
         <PasswordBox
-            x:Name="PasswordBox_Copy"
+            Name="PasswordBox_Copy"
             materialDesign:HintAssist.Hint="Vuelva ha Ingresar Contraseña" Margin="409,436,465,164" />
         <materialDesign:PackIcon Kind="Key" Margin="373,405,0,0" Height="22" Width="22" />
-        <TextBox HorizontalAlignment="Left" Height="64" Margin="408,260,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="326" materialDesign:HintAssist.Hint="Correo electrónico" />
+        <TextBox Name="EmailBox" HorizontalAlignment="Left" Height="64" Margin="408,260,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="326" materialDesign:HintAssist.Hint="Correo electrónico" />
         <TextBlock HorizontalAlignment="Left" Margin="42,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Roboto" FontSize="50" Width="1116"><Run Text="Ingrese la información para configurar"/><Run Text=" "/><Run Text="PigAdmind"/></TextBlock>
         <materialDesign:PackIcon Kind="Key" Margin="376,482,0,0" Height="22" Width="22" />
         <materialDesign:PackIcon Kind="ContactMail" Margin="372,300,0,0" RenderTransformOrigin="1.625,2.688" Height="22" Width="22" />
