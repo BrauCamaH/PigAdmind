@@ -132,6 +132,9 @@
     <Compile Include="Females\FemalePage.xaml.cs">
       <DependentUpon>FemalePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Groups\GroupPage.xaml.cs">
+      <DependentUpon>GroupPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InitialConfig.xaml.cs">
       <DependentUpon>InitialConfig.xaml</DependentUpon>
     </Compile>
@@ -143,6 +146,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Females\MainFemales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Groups\GroupPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

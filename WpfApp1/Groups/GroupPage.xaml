@@ -1,0 +1,123 @@
+﻿<UserControl x:Class="WpfApp1.Groups.GroupPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.Groups"
+             mc:Ignorable="d" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             Background="White" d:DesignWidth="1366" d:DesignHeight="768"  Width="auto" Height="auto" >
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Button.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.PopupBox.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.TextBlock.xaml" />
+                <!-- throw in some extra colour for our floating action button -->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/MaterialDesignColor.Green.Named.Primary.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Ellipse Height="106" Width="106" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,8,984,0" Stroke="White">
+            <Ellipse.Fill>
+                <ImageBrush Stretch="UniformToFill"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Label  Name="Code" Content="Código" Background="SteelBlue" HorizontalAlignment="Left" Margin="426,26,0,0" VerticalAlignment="Top" Width="200" Height="64"   Foreground="White" FontFamily="Roboto" FontWeight="Bold" FontSize="40"/>
+        <Label Name="Total"  Content="nTotal" Background="SteelBlue" HorizontalAlignment="Left" Margin="670,30,0,0" VerticalAlignment="Top" Width="200" Height="64"   Foreground="White" FontFamily="Roboto" FontWeight="Bold" FontSize="40"/>
+        <materialDesign:PopupBox
+                  Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
+                  PlacementMode="BottomAndAlignCentres"
+                  Margin="943,118,0,570"
+                  ToolTip="Agregar nuevo evento" Height="80" Width="80" >
+            <StackPanel>
+                <Button ToolTip="Nueva inseminación" >
+                    <materialDesign:PackIcon Kind="Injection" />
+                </Button>
+                <Button ToolTip= "Nuevo parto">
+                    <materialDesign:PackIcon Kind="Baby" />
+                </Button>
+                <Button ToolTip="Nuevo destete">
+                    <materialDesign:PackIcon Kind="WomanChild" />
+                </Button>
+                <Button ToolTip="Hembra embarazada" >
+                    <materialDesign:PackIcon Kind="HumanPregnant" />
+                </Button>
+                <Button ToolTip="Aborto" >
+                    <materialDesign:PackIcon Kind="SettingsBackupRestore" />
+                </Button>
+            </StackPanel>
+        </materialDesign:PopupBox>
+        <FlowDocumentReader Margin="277,205,447,311">
+            <FlowDocument>
+
+                <Table CellSpacing="5">
+                    <Table.Columns>
+                        <TableColumn/>
+                        <TableColumn/>
+                    </Table.Columns>
+                    <TableRowGroup>
+                        <!-- Title row for the table. -->
+                        <TableRow Background="SteelBlue" >
+                            <TableCell ColumnSpan="2" TextAlignment="Center">
+                                <Paragraph FontSize="24pt" FontWeight="Bold">Información</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                        <!-- Header row for the table. -->
+                        <TableRow Background="LightBlue" FontSize="20">
+                            <TableCell>
+                                <Paragraph FontSize="14pt" FontWeight="Bold">Parametro</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph FontSize="14pt" FontWeight="Bold">Valor</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow Background="White">
+                            <TableCell>
+                                <Paragraph>Lechon es Vivos</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>0</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow Background="White">
+                            <TableCell>
+                                <Paragraph>Peso inicial promedio</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>0</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow Background="White">
+                            <TableCell>
+                                <Paragraph>Segundo Pesaje</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>0</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow Background="White">
+                            <TableCell>
+                                <Paragraph>Puercos Iniciales</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>0</Paragraph>
+                            </TableCell>
+
+                        </TableRow>
+                        <TableRow Background="White">
+                            <TableCell>
+                                <Paragraph>Puercos Muertos</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>0</Paragraph>
+                            </TableCell>
+
+                        </TableRow>
+                    </TableRowGroup>
+                </Table>
+            </FlowDocument>
+        </FlowDocumentReader>
+    </Grid>
+</UserControl>
