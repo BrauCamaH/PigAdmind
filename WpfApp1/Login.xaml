@@ -17,7 +17,7 @@
     <Grid>
         <materialDesign:PackIcon Kind="CommentUserOutline" Margin="104,15,0,0" Height="305" Width="305" Foreground="LightBlue"/>
         <PasswordBox
-          x:Name="FloatingPasswordBox"
+          Name="PasswordBox"
           materialDesign:HintAssist.Hint="Contraseña"
           Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Margin="140,302,128,265" />
         <materialDesign:PackIcon Kind="Key" Margin="106,344,0,0" Height="22" Width="22" />
