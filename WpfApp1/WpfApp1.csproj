@@ -138,6 +138,7 @@
     <Compile Include="InitialConfig.xaml.cs">
       <DependentUpon>InitialConfig.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Managers\MainGridManager.cs" />
     <Compile Include="Sales\MainSales.xaml.cs">
       <DependentUpon>MainSales.xaml</DependentUpon>
     </Compile>

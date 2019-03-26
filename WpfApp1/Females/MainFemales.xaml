@@ -84,7 +84,8 @@
             </materialDesign:ColorZone>
         </StackPanel>
 
-        <ListView Name="FemalesList" HorizontalAlignment="Left" Height="683" Margin="145,85,0,0" VerticalAlignment="Top" Width="835" SelectionChanged="ListView_SelectionChanged">
+        <ListView Name="FemalesList" HorizontalAlignment="Left" Height="683" Margin="145,85,0,0" VerticalAlignment="Top" Width="835" SelectionChanged="ListView_SelectionChanged" 
+                  MouseDoubleClick="OnListMouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Código" DisplayMemberBinding="{Binding code}"/>

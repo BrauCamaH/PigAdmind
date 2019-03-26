@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Females;
 using WpfApp1.Groups;
+using WpfApp1.Managers;
 using WpfApp1.Sales;
 
 namespace WpfApp1
@@ -17,6 +18,7 @@ namespace WpfApp1
 		{
 			InitializeComponent();
 			SetInitialPage();
+			MainGridManager.MainWindowGrid = GridMain;
 		}
 
 		private void SetInitialPage()
@@ -41,6 +43,7 @@ namespace WpfApp1
 			TrainsitionigContentSlide.OnApplyTemplate();
 			GridCursor.Margin = new Thickness(0, (150 + (60 * index)), 0, 0);
 		}
+
 
 		private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{

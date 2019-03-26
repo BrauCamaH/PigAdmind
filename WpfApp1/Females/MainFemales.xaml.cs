@@ -2,6 +2,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.DatabaseFirst;
+using WpfApp1.Managers;
 
 namespace WpfApp1.Females
 {
@@ -55,6 +56,10 @@ namespace WpfApp1.Females
 
 		}
 
+		private void OnListMouseDoubleClick(object sender, RoutedEventArgs e)
+		{
+			MainGridManager.SetUserControl(new FemalePage());
+		}
 		private void AddNewFemale_Click(object sender, RoutedEventArgs e)
 		{
 			string code = CodeBox.Text;
