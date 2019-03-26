@@ -13,6 +13,8 @@ namespace WpfApp1
 		public Login()
 		{
 			InitializeComponent();
+			//The checbox is checked when the user is online
+			CheckBox.IsChecked = App.User.isonline == 1;
 		}
 
 		private bool IsTheCorrectPassword(string inputPass)
@@ -36,6 +38,7 @@ namespace WpfApp1
 		{
 			if (IsTheCorrectPassword(PasswordBox.Password))
 			{
+				SetIsOnline(CheckBox);
 				var window = new MainWindow();
 				window.Show();
 				Close();
@@ -46,18 +49,20 @@ namespace WpfApp1
 			}
 
 		}
-
-		private void CheckBox_Checked(object sender, RoutedEventArgs e)
+		private void SetIsOnline(CheckBox checkBox)
 		{
 			var ctx = new Entities();
-			var user = ctx.Users.SqlQuery("Select * from Users ").FirstOrDefault();
-			user.isonline = 1;
+			var user = ctx.Users.First<Users>();
+			if (checkBox.IsChecked == true)
+			{
+				user.isonline = 1;
+			}
+			else
+			{
+				user.isonline = 0;
+			}
 			ctx.SaveChanges();
-			MessageBox.Show("");
 		}
-		private void CheckBox_UnChecked(object sender, RoutedEventArgs e)
-		{
 
-		}
 	}
 }

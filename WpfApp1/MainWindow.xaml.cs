@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.DatabaseFirst;
 using WpfApp1.Females;
 using WpfApp1.Groups;
 using WpfApp1.Sales;
@@ -71,6 +73,21 @@ namespace WpfApp1
 		private void Exit(object sender, RoutedEventArgs e)
 		{
 			App.Current.Shutdown();
+		}
+
+		private void LogOut(object sender, RoutedEventArgs e)
+		{
+			LogOut();
+			new Login().Show();
+			Close();
+		}
+
+		private void LogOut()
+		{
+			var ctx = new Entities();
+			var user = ctx.Users.First();
+			user.isonline = 0;
+			ctx.SaveChanges();
 		}
 	}
 }

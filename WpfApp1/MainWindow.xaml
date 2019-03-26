@@ -39,7 +39,12 @@
                                 <MenuItem Header="Inseminaciones"></MenuItem>
                                 <MenuItem Header="Hembras preñadas"></MenuItem>
                             </MenuItem>
-                            <MenuItem Header="Salir" InputGestureText="Ctrl+E" Click="Exit">
+                            <MenuItem Header="Cerrar Sesión"  Click="LogOut">
+                                <MenuItem.Icon>
+                                    <materialDesign:PackIcon Kind="Logout" />
+                                </MenuItem.Icon>
+                            </MenuItem>
+                                <MenuItem Header="Salir" InputGestureText="Ctrl+E" Click="Exit">
                                 <MenuItem.Icon>
                                     <materialDesign:PackIcon Kind="ExitToApp" />
                                 </MenuItem.Icon>

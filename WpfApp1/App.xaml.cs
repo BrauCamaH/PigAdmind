@@ -9,7 +9,7 @@ namespace WpfApp1
 	/// </summary>
 	public partial class App : Application
 	{
-		public Users User { get; set; }
+		public static Users User { get; set; }
 		private bool IsAUserAtDatabase()
 		{
 			var ctx = new Entities();
