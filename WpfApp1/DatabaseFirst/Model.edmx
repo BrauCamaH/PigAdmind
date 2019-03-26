@@ -84,6 +84,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="50" />
           <Property Name="password" Type="nvarchar" MaxLength="20" />
+          <Property Name="isonline" Type="int" />
         </EntityType>
         <EntityType Name="Weaning ">
           <Key>
@@ -187,6 +188,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="isonline" Type="Int32" />
         </EntityType>
         <EntityType Name="Weaning_">
           <Key>
@@ -295,6 +297,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Model.Users">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="isonline" ColumnName="isonline" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="password" ColumnName="password" />

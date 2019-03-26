@@ -20,7 +20,8 @@ namespace WpfApp1
 			var user = new Users()
 			{
 				email = email,
-				password = pass
+				password = pass,
+				isonline = 0
 			};
 			context.Users.Add(user);
 			context.SaveChanges();

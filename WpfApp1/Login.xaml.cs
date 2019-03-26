@@ -46,5 +46,18 @@ namespace WpfApp1
 			}
 
 		}
+
+		private void CheckBox_Checked(object sender, RoutedEventArgs e)
+		{
+			var ctx = new Entities();
+			var user = ctx.Users.SqlQuery("Select * from Users ").FirstOrDefault();
+			user.isonline = 1;
+			ctx.SaveChanges();
+			MessageBox.Show("");
+		}
+		private void CheckBox_UnChecked(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
