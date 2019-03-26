@@ -12,14 +12,13 @@
             <materialDesign:DialogHost.DialogContent >
                 <StackPanel Margin="16" Height="auto" Width="auto"> 
                     <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30"> Ingrese los datos </TextBlock>
-                    <TextBox  Margin="0 8 0 0"  HorizontalAlignment="Stretch"  materialDesign:HintAssist.Hint="Ingrese código" />
+                    <TextBox  Name="CodeBox" Margin="0 8 0 0"  HorizontalAlignment="Stretch"  materialDesign:HintAssist.Hint="Ingrese código" />
                     <Separator Height="20" Background="{x:Null}"></Separator>
                     <TextBlock HorizontalAlignment="Left" Foreground="SteelBlue" FontSize=" 16" >Ingrese fecha de nacimiento</TextBlock>
                     <Separator Height="10" Background="{x:Null}"></Separator>
-                    <DatePicker Name="LocaleDatePicker" Width="auto" materialDesign:HintAssist.Hint="Locale Date" />
+                    <DatePicker Name="DatePicker" Width="auto" materialDesign:HintAssist.Hint="Locale Date" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0"
-                                 Command="materialDesign:DialogHost.CloseDialogCommand">
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" Click="AddNewFemale_Click">
                             <Button.CommandParameter>
                                 <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                                     True
@@ -85,13 +84,13 @@
             </materialDesign:ColorZone>
         </StackPanel>
 
-        <ListView HorizontalAlignment="Left" Height="683" Margin="145,85,0,0" VerticalAlignment="Top" Width="835" SelectionChanged="ListView_SelectionChanged">
+        <ListView Name="FemalesList" HorizontalAlignment="Left" Height="683" Margin="145,85,0,0" VerticalAlignment="Top" Width="835" SelectionChanged="ListView_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Código"/>
-                    <GridViewColumn Header="Fecha de Nacimiento"/>
-                    <GridViewColumn Header="Estado"/>
-                    <GridViewColumn Header="Maternidad"/>
+                    <GridViewColumn Header="Código" DisplayMemberBinding="{Binding code}"/>
+                    <GridViewColumn Header="Fecha de Nacimiento" DisplayMemberBinding="{Binding birthday}"/>
+                    <GridViewColumn Header="Estado" DisplayMemberBinding="{Binding status}"/>
+                    <GridViewColumn Header="Maternidad" DisplayMemberBinding="{Binding martenity}"/>
                 </GridView>
             </ListView.View>
         </ListView>
