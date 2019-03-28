@@ -19,6 +19,9 @@ namespace WpfApp1
 			InitializeComponent();
 			SetInitialPage();
 			MainGridManager.MainWindowGrid = GridMain;
+			MenuToolbarManager.Back = BackBtn;
+			MenuToolbarManager.Edit = EditBtn;
+			MenuToolbarManager.Delete = DeleteBtn;
 		}
 
 		private void SetInitialPage()
@@ -91,6 +94,21 @@ namespace WpfApp1
 			var user = ctx.Users.First();
 			user.isonline = 0;
 			ctx.SaveChanges();
+		}
+
+		private void BackBtn_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void EditBtn_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+		{
+
 		}
 	}
 }

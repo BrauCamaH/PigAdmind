@@ -68,14 +68,14 @@
             </materialDesign:Card> 
             <StackPanel Background="LightBlue"    Margin="70,48,0,624" Orientation="Horizontal" VerticalAlignment="Top" Height="60" >
                 <Separator Background="{x:Null}"  Width="132"/>
-                <Button Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled="False">
+                <Button Name="BackBtn" Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled="False" Click="BackBtn_Click">
                     <materialDesign:PackIcon Name="Back" Kind="ArrowLeft"  Opacity=".56" Height="52" Width="52" />
                 </Button>
                 <Separator Background="{x:Null}"  Width="168"/>
-                <Button Name="Edit" Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled ="False">
+                <Button Name="EditBtn" Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled ="False" Click="EditBtn_Click">
                     <materialDesign:PackIcon Kind="Edit"  Opacity=".56" Height="52" Width="52" />
                 </Button>
-                <Button Name="Delete" Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled ="False">
+                <Button Name="DeleteBtn" Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled ="False" Click="DeleteBtn_Click">
                     <materialDesign:PackIcon Kind="Delete"  Opacity=".56" Height="52" Width="52" />
                 </Button>
             </StackPanel>

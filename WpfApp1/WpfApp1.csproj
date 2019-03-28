@@ -139,6 +139,7 @@
       <DependentUpon>InitialConfig.xaml</DependentUpon>
     </Compile>
     <Compile Include="Managers\MainGridManager.cs" />
+    <Compile Include="Managers\MenuToolbarManager.cs" />
     <Compile Include="Sales\MainSales.xaml.cs">
       <DependentUpon>MainSales.xaml</DependentUpon>
     </Compile>
