@@ -8,13 +8,45 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignWidth="1366" d:DesignHeight="768" >
     <Grid>
-        <Button  HorizontalAlignment="Left" Margin="142,20,0,0" VerticalAlignment="Top" Width="183" Height="39">
-            <DockPanel Width="153">
-                <materialDesign:PackIcon Kind="Plus" Height="25" Width="28" Foreground="LightBlue"/>
-                <TextBlock FontSize="15">Nuevo Grupo</TextBlock>
-            </DockPanel>
-        </Button>
-        
+        <materialDesign:DialogHost CloseOnClickAway="True">
+            <materialDesign:DialogHost.DialogContent >
+                <StackPanel Margin="16" Height="auto" Width="auto">
+                    <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30"> Ingrese los datos</TextBlock>
+                    <TextBox  Name="NPigsBox" Margin="0 8 0 0"  HorizontalAlignment="Stretch"  materialDesign:HintAssist.Hint="Ingrese número de lechones" />
+                    <Separator Height="20" Background="{x:Null}"></Separator>
+                    <TextBlock HorizontalAlignment="Left" Foreground="SteelBlue" FontSize=" 16" >Ingrese fecha de destete</TextBlock>
+                    <Separator Height="10" Background="{x:Null}"></Separator>
+                    <DatePicker Name="DatePicker" Width="auto" materialDesign:HintAssist.Hint="Fecha de destete" />
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" Click="AddNewGroup_OnClick">
+                            <Button.CommandParameter>
+                                <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                    True
+                                </system:Boolean>
+                            </Button.CommandParameter>
+                            Agregar
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsCancel="True" Margin="0 8 8 0"
+                            Command="materialDesign:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                    False
+                                </system:Boolean>
+                            </Button.CommandParameter>
+                            Salir
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+            <Button  HorizontalAlignment="Left" Margin="142,20,0,0" VerticalAlignment="Top" Width="183" Height="39"
+                 Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}">
+                <DockPanel Width="153">
+                    <materialDesign:PackIcon Kind="Plus" Height="25" Width="28" Foreground="LightBlue"/>
+                    <TextBlock FontSize="15">Agregar Grupo</TextBlock>
+                </DockPanel>
+            </Button>
+        </materialDesign:DialogHost>
+
         <StackPanel 
           Orientation="Horizontal"
           materialDesign:RippleAssist.IsCentered="True" Margin="396,20,706,705" RenderTransformOrigin="0.5,0.5">
@@ -52,12 +84,12 @@
             </materialDesign:ColorZone>
         </StackPanel>
 
-        <ListView HorizontalAlignment="Left" Height="581" Margin="145,85,0,0" VerticalAlignment="Top" Width="844" SelectionChanged="ListView_SelectionChanged">
+        <ListView Name="GroupList" HorizontalAlignment="Left" Height="581" Margin="145,85,0,0" VerticalAlignment="Top" Width="844" SelectionChanged="ListView_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="id"/>
-                    <GridViewColumn Header="Total Puercos"/>
-                    <GridViewColumn Header="Fecha de destete"/>
+                    <GridViewColumn Header="id"  DisplayMemberBinding="{Binding int}"/>
+                    <GridViewColumn Header="Total Puercos" DisplayMemberBinding="{Binding pig_count }"/>
+                    <GridViewColumn Header="Fecha de destete" DisplayMemberBinding="{Binding weaning_date}"/>
                 </GridView>
             </ListView.View>
         </ListView>
