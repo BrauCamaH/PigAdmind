@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.DatabaseFirst;
+using WpfApp1.Managers;
 
 namespace WpfApp1.Groups
 {
@@ -49,6 +50,10 @@ namespace WpfApp1.Groups
 		private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 
+		}
+		private void OnListMouseDoubleClick(object sender, RoutedEventArgs e)
+		{
+			MainGridManager.SetUserControl(new GroupPage());
 		}
 
 		private void AddNewGroup_OnClick(object sender, RoutedEventArgs e)
