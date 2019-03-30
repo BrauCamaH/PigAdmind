@@ -28,7 +28,7 @@
         <materialDesign:PopupBox
                   Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
                   PlacementMode="BottomAndAlignCentres"
-                  Margin="89,120,0,568"
+                  Margin="1206,26,0,662"
                   ToolTip="Agregar nuevo evento" Height="80" Width="80" >
             <StackPanel>
                 <Button ToolTip="Nueva inseminación" >
@@ -49,42 +49,39 @@
             </StackPanel>
         </materialDesign:PopupBox>
         <Label Content="Código" Background="SteelBlue" HorizontalAlignment="Left" Margin="426,26,0,0" VerticalAlignment="Top" Width="200" Height="64"   Foreground="White" FontFamily="Roboto" FontWeight="Bold" FontSize="40"/>
-        <dragablz:TabablzControl  HorizontalAlignment="Left" Height="650" Margin="177,119,0,-1" VerticalAlignment="Top" Width="1009">
+        <TabControl  HorizontalAlignment="Left" Height="650" Margin="177,119,0,-1" VerticalAlignment="Top" Width="1009">
             <TabItem Header="Inseminaciones">
                 <Grid Background="#FFE5E5E5">
                     <StackPanel 
-              Orientation="Horizontal" 
-              materialDesign:RippleAssist.IsCentered="True" Margin="17,14,716,552" RenderTransformOrigin="0.5,0.5">
+                        Orientation="Horizontal" 
+                        materialDesign:RippleAssist.IsCentered="True" Margin="17,14,716,552" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
                         <materialDesign:ColorZone
-                Mode="Standard"
-                Padding="8 4 8 4"
-                CornerRadius="2"
-                Panel.ZIndex="1"
-                Margin="16 0 0 0"
-                materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                            Mode="Standard"
+                            Padding="8 4 8 4"
+                            CornerRadius="2"
+                            Panel.ZIndex="1"
+                            Margin="16 0 0 0"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth1">
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="31*"/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition
-                          Width="Auto" />
-                                    <ColumnDefinition
-                           Width="*" />
-                                    <ColumnDefinition
-                            Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Button
-                         Style="{DynamicResource MaterialDesignToolButton}" Grid.RowSpan="2">
+                                    Style="{DynamicResource MaterialDesignToolButton}" Grid.RowSpan="2">
                                     <materialDesign:PackIcon  Kind="Magnify" Opacity=".56" />
                                 </Button>
                                 <TextBox
-                            Grid.Column="1" Margin="8,4,0,3" materialDesign:HintAssist.Hint="Ingrese Texto"
-                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                            BorderThickness="0"
-                            MinWidth="200"
-                            VerticalAlignment="Center" />
+                                    Grid.Column="1" Margin="8,4,0,3" materialDesign:HintAssist.Hint="Buscar..."
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    BorderThickness="0"
+                                    MinWidth="200"
+                                    VerticalAlignment="Center" />
                             </Grid>
                         </materialDesign:ColorZone>
                     </StackPanel>
@@ -111,7 +108,7 @@
                 <Grid Background="#FFE5E5E5">
                     <StackPanel 
               Orientation="Horizontal" 
-              materialDesign:RippleAssist.IsCentered="True" Margin="17,14,716,552" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.Column="1">
+              materialDesign:RippleAssist.IsCentered="True" Margin="17,14,716,552" RenderTransformOrigin="0.5,0.5">
                         <materialDesign:ColorZone
                 Mode="Standard"
                 Padding="8 4 8 4"
@@ -125,19 +122,16 @@
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition
-                          Width="Auto" />
-                                    <ColumnDefinition
-                           Width="*" />
-                                    <ColumnDefinition
-                            Width="Auto" />
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <Button
                          Style="{DynamicResource MaterialDesignToolButton}" Grid.RowSpan="2">
                                     <materialDesign:PackIcon  Kind="Magnify" Opacity=".56" />
                                 </Button>
                                 <TextBox
-                            Grid.Column="1" Margin="8,4,0,3" materialDesign:HintAssist.Hint="Ingrese Texto"
+                            Grid.Column="1" Margin="8,4,0,3" materialDesign:HintAssist.Hint="Buscar..."
                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
                             BorderThickness="0"
                             MinWidth="200"
@@ -223,7 +217,62 @@
                     </FlowDocumentReader>
                 </Grid>
             </TabItem>
-        </dragablz:TabablzControl>
+            <TabItem Header="Enfermedades">
+                <Grid Background="#FFE5E5E5">
+
+                    <StackPanel 
+                          Orientation="Horizontal" 
+                          materialDesign:RippleAssist.IsCentered="True" Margin="17,14,716,552" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+                        <materialDesign:ColorZone
+                            Mode="Standard"
+                            Padding="8 4 8 4"
+                            CornerRadius="2"
+                            Panel.ZIndex="1"
+                            Margin="16 0 0 0"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="31*"/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Button
+                         Style="{DynamicResource MaterialDesignToolButton}" Grid.RowSpan="2">
+                                    <materialDesign:PackIcon  Kind="Magnify" Opacity=".56" />
+                                </Button>
+                                <TextBox
+                                    Grid.Column="1" Margin="8,4,0,3" materialDesign:HintAssist.Hint="Buscar..."
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    BorderThickness="0"
+                                    MinWidth="200"
+                                    VerticalAlignment="Center" />
+                            </Grid>
+                        </materialDesign:ColorZone>
+                    </StackPanel>
+                    <ListView HorizontalAlignment="Left" Height="545" Margin="0,65,0,0" VerticalAlignment="Top" Width="782" Grid.ColumnSpan="2">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Enfermedad"/>
+                                <GridViewColumn Header="Fecha de Inicio"/>
+                                <GridViewColumn Header="Fecha de Mejora"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <StackPanel Margin="843,0,0,552" Orientation="Horizontal">
+                        <Button Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80">
+                            <materialDesign:PackIcon Kind="Edit"  Opacity=".56" Height="52" Width="52" />
+                        </Button>
+                        <Button Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80">
+                            <materialDesign:PackIcon Kind="Delete"  Opacity=".56" Height="52" Width="52" />
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
 
 
     </Grid>
