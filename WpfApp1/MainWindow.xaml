@@ -72,12 +72,20 @@
                     <materialDesign:PackIcon Name="Back" Kind="ArrowLeft"  Opacity=".56" Height="52" Width="52" />
                 </Button>
                 <Separator Background="{x:Null}"  Width="168"/>
+         
                 <Button Name="EditBtn" Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled ="False" Click="EditBtn_Click">
                     <materialDesign:PackIcon Kind="Edit"  Opacity=".56" Height="52" Width="52" />
                 </Button>
-                <Button Name="DeleteBtn" Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled ="False" Click="DeleteBtn_Click">
-                    <materialDesign:PackIcon Kind="Delete"  Opacity=".56" Height="52" Width="52" />
-                </Button>
+                <materialDesign:DialogHost HorizontalAlignment="Center" VerticalAlignment="Center" AllowDrop="True" CloseOnClickAway="True" >
+                    <materialDesign:DialogHost.DialogContent>
+                        <local:Delete></local:Delete>
+                    </materialDesign:DialogHost.DialogContent>
+                    <Button Name="DeleteBtn" Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled ="False" Click="DeleteBtn_Click"
+                            Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}">
+                        <materialDesign:PackIcon Kind="Delete"  Opacity=".56" Height="52" Width="52" />
+                    </Button>
+                </materialDesign:DialogHost>
+ 
             </StackPanel>
             
             <Grid x:Name="GridMain" Margin="72,108,0,0"/>

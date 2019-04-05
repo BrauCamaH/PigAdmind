@@ -54,6 +54,7 @@ namespace WpfApp1
 			GridMain.Children.Clear();
 			int index = ListViewMenu.SelectedIndex;
 			MoveCursorMenu(index);
+			MenuToolbarManager.SetEnableEditAndDelete(false);
 			switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
 			{
 				case "Females":

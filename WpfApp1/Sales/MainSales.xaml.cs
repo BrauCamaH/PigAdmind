@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using WpfApp1.Managers;
 
 namespace WpfApp1.Sales
 {
@@ -14,7 +15,7 @@ namespace WpfApp1.Sales
 
 		private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-
+			MenuToolbarManager.SetEnableEditAndDelete(true);
 		}
 	}
 }

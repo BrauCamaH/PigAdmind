@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Managers;
 
@@ -11,10 +13,13 @@ namespace WpfApp1.Females
 	/// </summary>
 	public partial class MainFemales : UserControl
 	{
+
 		public MainFemales()
 		{
 			InitializeComponent();
 			GetFemalesFromDataBase();
+			CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(FemalesList.ItemsSource);
+			view.Filter = CustomFilter;
 		}
 		private void AddNewFemale(string code, string birthday)
 		{
@@ -48,7 +53,7 @@ namespace WpfApp1.Females
 		}
 		private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-
+			MenuToolbarManager.SetEnableEditAndDelete(true);
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
@@ -59,6 +64,7 @@ namespace WpfApp1.Females
 		private void OnListMouseDoubleClick(object sender, RoutedEventArgs e)
 		{
 			MainGridManager.SetUserControl(new FemalePage());
+			MenuToolbarManager.SetEnableEditAndDelete(false);
 		}
 		private void AddNewFemale_Click(object sender, RoutedEventArgs e)
 		{
@@ -70,6 +76,22 @@ namespace WpfApp1.Females
 				GetFemalesFromDataBase();
 			}
 
+		}
+
+		private bool CustomFilter(object obj)
+		{
+			if (String.IsNullOrEmpty(TextBox.Text))
+				return true;
+			else
+				return (((DatabaseFirst.Females)obj).code.IndexOf(TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+					   (((DatabaseFirst.Females)obj).birthday.IndexOf(TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+					   (((DatabaseFirst.Females)obj).martenity.ToString().IndexOf(TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+					   (((DatabaseFirst.Females)obj).status.IndexOf(TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+		}
+
+		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+		{
+			CollectionViewSource.GetDefaultView(FemalesList.ItemsSource).Refresh();
 		}
 	}
 }

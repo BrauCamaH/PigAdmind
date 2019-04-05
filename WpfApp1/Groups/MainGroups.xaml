@@ -8,7 +8,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              d:DesignWidth="1366" d:DesignHeight="768" >
     <Grid>
-        <materialDesign:DialogHost CloseOnClickAway="True">
+        <materialDesign:DialogHost CloseOnClickAway="True" VerticalAlignment="Stretch" >
             <materialDesign:DialogHost.DialogContent >
                 <StackPanel Margin="16" Height="auto" Width="auto">
                     <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30"> Ingrese los datos</TextBlock>
