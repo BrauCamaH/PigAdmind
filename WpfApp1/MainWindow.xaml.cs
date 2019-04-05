@@ -109,7 +109,17 @@ namespace WpfApp1
 
 		private void DeleteBtn_Click(object sender, RoutedEventArgs e)
 		{
+			DeleteDialogHost.IsOpen = true;
+		}
 
+		private void DeleteDialogHost_DialogOpened(object sender, MaterialDesignThemes.Wpf.DialogOpenedEventArgs eventArgs)
+		{
+			Window.IsEnabled = false;
+		}
+
+		private void DeleteDialogHost_DialogClosing(object sender, MaterialDesignThemes.Wpf.DialogClosingEventArgs eventArgs)
+		{
+			Window.IsEnabled = true;
 		}
 	}
 }
