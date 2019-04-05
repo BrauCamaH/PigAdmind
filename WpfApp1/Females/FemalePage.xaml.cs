@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace WpfApp1.Females
 {
@@ -12,19 +13,19 @@ namespace WpfApp1.Females
 			InitializeComponent();
 		}
 
-		private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		private void InseminationButtonClick(object sender, System.Windows.RoutedEventArgs e)
 		{
-
+			InseminationDialog.IsOpen = true;
 		}
 
-		private void TabablzControl_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+		private void SickButton_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-
+			SickDialog.IsOpen = true;
 		}
 
-		private void TabablzControl_SelectionChanged_2(object sender, SelectionChangedEventArgs e)
+		private void WeaningButton_Click(object sender, RoutedEventArgs e)
 		{
-
+			WeaningDialog.IsOpen = true;
 		}
 	}
 }
