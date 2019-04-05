@@ -26,6 +26,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -129,8 +130,17 @@
     <Compile Include="DatabaseFirst\Weaning_.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Delete.xaml.cs">
+      <DependentUpon>Delete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Females\EditFemale.xaml.cs">
+      <DependentUpon>EditFemale.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Females\FemalePage.xaml.cs">
       <DependentUpon>FemalePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Groups\EditGroup.xaml.cs">
+      <DependentUpon>EditGroup.xaml</DependentUpon>
     </Compile>
     <Compile Include="Groups\GroupPage.xaml.cs">
       <DependentUpon>GroupPage.xaml</DependentUpon>
@@ -140,14 +150,29 @@
     </Compile>
     <Compile Include="Managers\MainGridManager.cs" />
     <Compile Include="Managers\MenuToolbarManager.cs" />
+    <Compile Include="Sales\EditSale.xaml.cs">
+      <DependentUpon>EditSale.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sales\MainSales.xaml.cs">
       <DependentUpon>MainSales.xaml</DependentUpon>
     </Compile>
+    <Page Include="Delete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Females\EditFemale.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Females\FemalePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Females\MainFemales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Groups\EditGroup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -181,6 +206,10 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\EditSale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -230,6 +259,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DatabaseFirst\Model.Context.tt">
