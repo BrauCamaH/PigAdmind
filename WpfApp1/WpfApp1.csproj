@@ -148,6 +148,7 @@
     <Compile Include="InitialConfig.xaml.cs">
       <DependentUpon>InitialConfig.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Managers\ContextManager.cs" />
     <Compile Include="Managers\MainGridManager.cs" />
     <Compile Include="Managers\MenuToolbarManager.cs" />
     <Compile Include="Sales\EditSale.xaml.cs">

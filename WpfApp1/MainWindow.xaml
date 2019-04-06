@@ -38,6 +38,12 @@
                     <local:Delete></local:Delete>
                 </materialDesign:DialogHost.DialogContent>
             </materialDesign:DialogHost>
+            <materialDesign:DialogHost x:Name="EditDialogHost" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" IsOpen="False"  CloseOnClickAway="True" 
+                                       DialogOpened="EditDialogHost_DialogOpened" DialogClosing="EditDialogHost_DialogClosing" >
+                <materialDesign:DialogHost.DialogContent>
+                    <Grid x:Name="EditGrid"></Grid>
+                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost>
             <materialDesign:Card Height="50" Margin="70,0,0,0" Background="SteelBlue">
                 <StackPanel Background="{x:Null}"   Orientation="Horizontal" VerticalAlignment="Top" Height="51" Margin="150,0,0,-1" >
                     <Menu Foreground="White" FontSize="30" Background="SteelBlue" IsMainMenu="True" Width="1118">
