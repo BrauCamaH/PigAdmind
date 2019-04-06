@@ -15,15 +15,27 @@ namespace WpfApp1
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private UserControl _editFemale;
+		private UserControl _editGroup;
+		private UserControl _editSale;
+
 		public MainWindow()
 		{
 			InitializeComponent();
 			SetInitialPage();
+			InitializeEditControls();
 			MainGridManager.MainWindowGrid = GridMain;
 			MenuToolbarManager.Back = BackBtn;
 			MenuToolbarManager.Edit = EditBtn;
 			MenuToolbarManager.Delete = DeleteBtn;
-			ContextManager.Instance().CurrentControlContext = new EditFemale();
+			ContextManager.Instance().CurrentEditControlContext = _editFemale;
+		}
+
+		private void InitializeEditControls()
+		{
+			_editFemale = new EditFemale();
+			_editGroup = new EditGroup();
+			_editSale = new EditSale();
 		}
 
 		private void SetInitialPage()
@@ -63,17 +75,17 @@ namespace WpfApp1
 				case "Females":
 					usc = new MainFemales();
 					GridMain.Children.Add(usc);
-					ContextManager.Instance().CurrentControlContext = new EditFemale();
+					ContextManager.Instance().CurrentEditControlContext = _editFemale;
 					break;
 				case "Groups":
 					usc = new MainGroups();
 					GridMain.Children.Add(usc);
-					ContextManager.Instance().CurrentControlContext = new EditGroup();
+					ContextManager.Instance().CurrentEditControlContext = _editGroup;
 					break;
 				case "Sales":
 					usc = new MainSales();
 					GridMain.Children.Add(usc);
-					ContextManager.Instance().CurrentControlContext = new EditSale();
+					ContextManager.Instance().CurrentEditControlContext = _editSale;
 					break;
 			}
 		}
@@ -130,7 +142,8 @@ namespace WpfApp1
 
 		private void EditDialogHost_DialogOpened(object sender, DialogOpenedEventArgs eventargs)
 		{
-			EditGrid.Children.Add(ContextManager.Instance().CurrentControlContext);
+			EditGrid.Children.Clear();
+			EditGrid.Children.Add(ContextManager.Instance().CurrentEditControlContext);
 			Window.IsEnabled = false;
 		}
 
