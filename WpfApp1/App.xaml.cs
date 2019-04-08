@@ -24,7 +24,7 @@ namespace WpfApp1
 
 		private bool IsUserOnline(Users user)
 		{
-			return (user.isonline == 1);
+			return (user.isOnline == 1);
 		}
 		private void Application_Startup(object sender, StartupEventArgs e)
 		{

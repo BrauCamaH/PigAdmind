@@ -21,7 +21,7 @@ namespace WpfApp1
 			{
 				email = email,
 				password = pass,
-				isonline = 0
+				isOnline = 0
 			};
 			context.Users.Add(user);
 			context.SaveChanges();

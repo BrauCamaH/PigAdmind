@@ -111,7 +111,7 @@ namespace WpfApp1
 		{
 			var ctx = new Entities();
 			var user = ctx.Users.First();
-			user.isonline = 0;
+			user.isOnline = 0;
 			ctx.SaveChanges();
 		}
 

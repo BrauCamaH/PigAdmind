@@ -14,7 +14,7 @@ namespace WpfApp1
 		{
 			InitializeComponent();
 			//The checbox is checked when the user is online
-			CheckBox.IsChecked = App.User.isonline == 1;
+			CheckBox.IsChecked = App.User.isOnline == 1;
 		}
 
 		private bool IsTheCorrectPassword(string inputPass)
@@ -55,11 +55,11 @@ namespace WpfApp1
 			var user = ctx.Users.First<Users>();
 			if (checkBox.IsChecked == true)
 			{
-				user.isonline = 1;
+				user.isOnline = 1;
 			}
 			else
 			{
-				user.isonline = 0;
+				user.isOnline = 0;
 			}
 			ctx.SaveChanges();
 		}

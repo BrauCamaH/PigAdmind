@@ -19,6 +19,6 @@ namespace WpfApp1.DatabaseFirst
         public string date { get; set; }
         public Nullable<int> weaning { get; set; }
         public string fem_code { get; set; }
-        public Nullable<int> parametro { get; set; }
+        public Nullable<int> parameter { get; set; }
     }
 }

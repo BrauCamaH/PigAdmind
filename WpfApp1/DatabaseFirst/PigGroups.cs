@@ -22,5 +22,7 @@ namespace WpfApp1.DatabaseFirst
         public Nullable<int> pig_count { get; set; }
         public Nullable<int> died_pigs { get; set; }
         public Nullable<int> user { get; set; }
+        public Nullable<double> lastWeigth_avg { get; set; }
+        public Nullable<int> sale { get; set; }
     }
 }

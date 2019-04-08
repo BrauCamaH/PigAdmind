@@ -17,6 +17,7 @@ namespace WpfApp1.DatabaseFirst
         public int id { get; set; }
         public Nullable<int> price { get; set; }
         public string date { get; set; }
-        public Nullable<int> pig_group { get; set; }
+        public Nullable<int> n_pigs { get; set; }
+        public Nullable<int> user { get; set; }
     }
 }

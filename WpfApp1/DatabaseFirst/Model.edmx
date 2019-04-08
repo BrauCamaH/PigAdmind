@@ -14,7 +14,7 @@
           <Property Name="date" Type="nvarchar" MaxLength="10" />
           <Property Name="weaning" Type="int" />
           <Property Name="fem_code" Type="nvarchar" MaxLength="20" />
-          <Property Name="parametro" Type="int" />
+          <Property Name="parameter" Type="int" />
         </EntityType>
         <EntityType Name="Females">
           <Key>
@@ -23,7 +23,7 @@
           <Property Name="code" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="birthday" Type="nvarchar" MaxLength="10" />
           <Property Name="status" Type="nvarchar" MaxLength="20" />
-          <Property Name="martenity" Type="int" />
+          <Property Name="martenity" Type="float" />
           <Property Name="user" Type="int" />
           <Property Name="misbirths" Type="int" />
         </EntityType>
@@ -54,9 +54,11 @@
           <Property Name="weaning_date" Type="nvarchar" MaxLength="10" />
           <Property Name="weigth_avg" Type="float" />
           <Property Name="second_avg" Type="float" />
+          <Property Name="lastWeigth_avg" Type="float" />
           <Property Name="pig_count" Type="int" />
           <Property Name="died_pigs" Type="int" />
           <Property Name="user" Type="int" />
+          <Property Name="sale" Type="int" />
         </EntityType>
         <EntityType Name="Sales">
           <Key>
@@ -65,7 +67,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="price" Type="int" />
           <Property Name="date" Type="nvarchar" MaxLength="10" />
-          <Property Name="pig_group" Type="int" />
+          <Property Name="n_pigs" Type="int" />
+          <Property Name="user" Type="int" />
         </EntityType>
         <EntityType Name="Sicks">
           <Key>
@@ -84,7 +87,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="email" Type="nvarchar" MaxLength="50" />
           <Property Name="password" Type="nvarchar" MaxLength="20" />
-          <Property Name="isonline" Type="int" />
+          <Property Name="isOnline" Type="int" />
         </EntityType>
         <EntityType Name="Weaning ">
           <Key>
@@ -118,7 +121,7 @@
           <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="weaning" Type="Int32" />
           <Property Name="fem_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="parametro" Type="Int32" />
+          <Property Name="parameter" Type="Int32" />
         </EntityType>
         <EntityType Name="Females">
           <Key>
@@ -161,6 +164,8 @@
           <Property Name="pig_count" Type="Int32" />
           <Property Name="died_pigs" Type="Int32" />
           <Property Name="user" Type="Int32" />
+          <Property Name="lastWeigth_avg" Type="Double" />
+          <Property Name="sale" Type="Int32" />
         </EntityType>
         <EntityType Name="Sales">
           <Key>
@@ -169,7 +174,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="price" Type="Int32" />
           <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="pig_group" Type="Int32" />
+          <Property Name="n_pigs" Type="Int32" />
+          <Property Name="user" Type="Int32" />
         </EntityType>
         <EntityType Name="Sicks">
           <Key>
@@ -188,7 +194,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="isonline" Type="Int32" />
+          <Property Name="isOnline" Type="Int32" />
         </EntityType>
         <EntityType Name="Weaning_">
           <Key>
@@ -218,12 +224,12 @@
           <EntitySetMapping Name="Births">
             <EntityTypeMapping TypeName="Model.Births">
               <MappingFragment StoreEntitySet="Births">
+                <ScalarProperty Name="parameter" ColumnName="parameter" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="n_piglets" ColumnName="n_piglets" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="weaning" ColumnName="weaning" />
                 <ScalarProperty Name="fem_code" ColumnName="fem_code" />
-                <ScalarProperty Name="parametro" ColumnName="parametro" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -262,6 +268,8 @@
           <EntitySetMapping Name="PigGroups">
             <EntityTypeMapping TypeName="Model.PigGroups">
               <MappingFragment StoreEntitySet="PigGroups">
+                <ScalarProperty Name="sale" ColumnName="sale" />
+                <ScalarProperty Name="lastWeigth_avg" ColumnName="lastWeigth_avg" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="weaning_date" ColumnName="weaning_date" />
@@ -276,10 +284,11 @@
           <EntitySetMapping Name="Sales">
             <EntityTypeMapping TypeName="Model.Sales">
               <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="n_pigs" ColumnName="n_pigs" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="pig_group" ColumnName="pig_group" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -297,7 +306,7 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="Model.Users">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="isonline" ColumnName="isonline" />
+                <ScalarProperty Name="isOnline" ColumnName="isOnline" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="password" ColumnName="password" />

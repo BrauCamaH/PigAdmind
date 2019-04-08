@@ -17,6 +17,6 @@ namespace WpfApp1.DatabaseFirst
         public int id { get; set; }
         public string email { get; set; }
         public string password { get; set; }
-        public Nullable<int> isonline { get; set; }
+        public Nullable<int> isOnline { get; set; }
     }
 }
