@@ -31,7 +31,7 @@ namespace WpfApp1.Groups
 			GroupList.ItemsSource = ctx.PigGroups.ToList();
 		}
 
-		private void AddNewGroup(int n, string date)
+		private void AddNewGroup(string id, int n, string date)
 		{
 			var ctx = new Entities();
 			var pigGroup = new DatabaseFirst.PigGroups()
@@ -41,7 +41,8 @@ namespace WpfApp1.Groups
 				second_avg = 0,
 				pig_count = n,
 				died_pigs = 0,
-				user = 1
+				user = 1,
+				name = id
 			};
 			ctx.PigGroups.Add(pigGroup);
 			ctx.SaveChanges();
@@ -61,9 +62,10 @@ namespace WpfApp1.Groups
 		{
 			int nPigs = Int32.Parse(NPigsBox.Text);
 			string weanigDate = DatePicker.Text;
+			string id = IdBox.Text;
 			if (IsDataComplete(NPigsBox.Text, weanigDate))
 			{
-				AddNewGroup(nPigs, weanigDate);
+				AddNewGroup(id, nPigs, weanigDate);
 				GetGroupsFromDataBase();
 			}
 
