@@ -22,6 +22,7 @@
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
             <DatePicker materialDesign:HintAssist.Hint="Nueva fecha" FontSize="16"
                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></DatePicker>
+            <Separator Background="{x:Null}" Height="15"></Separator>
             <CheckBox Name="Confirm_checkbox" Checked="CheckBox_checked" Unchecked="CheckBox_unchecked">
                 <TextBlock Foreground="Red">Estoy de Acuerdo con la acción</TextBlock>
             </CheckBox>
