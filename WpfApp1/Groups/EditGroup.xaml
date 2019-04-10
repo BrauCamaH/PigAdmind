@@ -6,18 +6,27 @@
              xmlns:local="clr-namespace:WpfApp1.Groups"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             Background="White" d:DesignWidth="274" d:DesignHeight="136"  Width="auto" Height="auto">
+             Background="White" d:DesignWidth="274"  Width="auto" Height="auto">
     <Grid>
         <StackPanel>
             <materialDesign:Card Height="30" Background="LightBlue">
-                <TextBlock HorizontalAlignment="Center" FontSize="18" Foreground="White">
+                <TextBlock HorizontalAlignment="Center" FontSize="20" Foreground="White" >
                     Editar Grupo
                 </TextBlock>
             </materialDesign:Card>
-            <TextBox materialDesign:HintAssist.Hint="Nuevo Código"></TextBox>
-            <DatePicker materialDesign:HintAssist.Hint="Nueva fecha"></DatePicker>
+            <TextBox materialDesign:HintAssist.Hint="Nuevo Identificador" FontSize="16"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+            <TextBox materialDesign:HintAssist.Hint="Nuevo Código" FontSize="16"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+            <DatePicker materialDesign:HintAssist.Hint="Nueva fecha" FontSize="16"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></DatePicker>
+            <CheckBox Name="Confirm_checkbox" Checked="CheckBox_checked" Unchecked="CheckBox_unchecked">
+                <TextBlock Foreground="Red">Estoy de Acuerdo con la acción</TextBlock>
+            </CheckBox>
+
+            <Separator Background="{x:Null}" Height="15"></Separator>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button  IsDefault="True" Margin="0 8 8 0" >
+                <Button  Name="Accept_btn" IsDefault="True" IsEnabled="False" Margin="0 8 8 0" >
                     <Button.CommandParameter>
                         <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                             True
@@ -26,7 +35,7 @@
                     Aceptar
                 </Button>
                 <Button IsCancel="True" Margin="0 8 8 0"
-                        Command="materialDesign:DialogHost.CloseDialogCommand">
+                        Command="materialDesign:DialogHost.CloseDialogCommand" Click="Close_Click">
                     <Button.CommandParameter>
                         <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                             False
@@ -35,6 +44,7 @@
                     Salir
                 </Button>
             </StackPanel>
+            <Separator Background="{x:Null}" Height="5"></Separator>
         </StackPanel>
 
     </Grid>
