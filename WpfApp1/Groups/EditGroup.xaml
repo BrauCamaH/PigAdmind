@@ -16,7 +16,9 @@
             </materialDesign:Card>
             <TextBox materialDesign:HintAssist.Hint="Nuevo Identificador" FontSize="16"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-            <TextBox materialDesign:HintAssist.Hint="Nuevo Código" FontSize="16"
+            <TextBox materialDesign:HintAssist.Hint="Número de Lechones" FontSize="16"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+            <TextBox materialDesign:HintAssist.Hint="Peso Promedio" FontSize="16"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
             <DatePicker materialDesign:HintAssist.Hint="Nueva fecha" FontSize="16"
                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></DatePicker>

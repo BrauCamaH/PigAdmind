@@ -31,14 +31,15 @@ namespace WpfApp1.Groups
 			GroupList.ItemsSource = ctx.PigGroups.ToList();
 		}
 
-		private void AddNewGroup(string id, int n, string date)
+		private void AddNewGroup(string id, float weigth, int n, string date)
 		{
 			var ctx = new Entities();
 			var pigGroup = new DatabaseFirst.PigGroups()
 			{
 				weaning_date = date,
-				weigth_avg = 0,
+				weigth_avg = weigth,
 				second_avg = 0,
+				lastWeigth_avg = 0,
 				pig_count = n,
 				died_pigs = 0,
 				user = 1,
@@ -58,14 +59,24 @@ namespace WpfApp1.Groups
 			MenuToolbarManager.SetEnableEditAndDelete(false);
 		}
 
+		private void ClearFields()
+		{
+			NPigsBox.Text = "";
+			WeigthAVGBox.Text = "";
+			DatePicker.Text = "";
+			IdBox.Text = "";
+		}
+
 		private void AddNewGroup_OnClick(object sender, RoutedEventArgs e)
 		{
 			int nPigs = Int32.Parse(NPigsBox.Text);
+			float weigth = float.Parse(WeigthAVGBox.Text);
 			string weanigDate = DatePicker.Text;
 			string id = IdBox.Text;
 			if (IsDataComplete(NPigsBox.Text, weanigDate))
 			{
-				AddNewGroup(id, nPigs, weanigDate);
+				AddNewGroup(id, weigth, nPigs, weanigDate);
+				ClearFields();
 				GetGroupsFromDataBase();
 			}
 

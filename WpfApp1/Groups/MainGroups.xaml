@@ -12,13 +12,17 @@
             <materialDesign:DialogHost.DialogContent >
                 <StackPanel Margin="16" Height="auto" Width="auto">
                     <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30"> Ingrese los datos</TextBlock>
-                    <TextBox  Name="NPigsBox" Margin="0 8 0 0"  HorizontalAlignment="Stretch"  
-                              materialDesign:HintAssist.Hint="Número de lechones" 
-                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <Separator Height="20" Background="{x:Null}"></Separator>
                     <TextBox Name="IdBox" materialDesign:HintAssist.Hint="Identificador" 
                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
                     <Separator Height="10" Background="{x:Null}"></Separator>
+                    <TextBox  Name="NPigsBox" Margin="0 8 0 0"  HorizontalAlignment="Stretch"  
+                              materialDesign:HintAssist.Hint="Número de lechones" 
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox  Name="WeigthAVGBox" Margin="0 8 0 0"  HorizontalAlignment="Stretch"  
+                              materialDesign:HintAssist.Hint="Peso Promedio" 
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Separator Height="20" Background="{x:Null}"></Separator>
+
                     <DatePicker Name="DatePicker" Width="auto" materialDesign:HintAssist.Hint="Fecha de destete" 
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
                    
@@ -95,6 +99,7 @@
                 <GridView>
                     <GridViewColumn Header="Identificador"  DisplayMemberBinding="{Binding name}"/>
                     <GridViewColumn Header="Total Puercos" DisplayMemberBinding="{Binding pig_count }"/>
+                    <GridViewColumn Header="Peso Promedio" DisplayMemberBinding="{Binding weigth_avg}"/>
                     <GridViewColumn Header="Fecha de destete" DisplayMemberBinding="{Binding weaning_date}"/>
                 </GridView>
             </ListView.View>
