@@ -27,5 +27,10 @@ namespace WpfApp1.Females
 		{
 			WeaningDialog.IsOpen = true;
 		}
+
+		private void BirthButtonClick(object sender, RoutedEventArgs e)
+		{
+			BirthDialog.IsOpen = true;
+		}
 	}
 }

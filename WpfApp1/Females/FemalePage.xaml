@@ -21,15 +21,17 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <materialDesign:DialogHost Name="InseminationDialog" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+        <materialDesign:DialogHost Name="InseminationDialog" Height="auto" 
+                                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                                    CloseOnClickAway="True">
             <materialDesign:DialogHost.DialogContent >
                 <StackPanel Margin="16" Height="auto" Width="auto">
-                    <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30" > Ingrese los datos</TextBlock>
+                    <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30" >Nueva Inseminación</TextBlock>
                     <DatePicker Name="DatePicker" Width="auto" materialDesign:HintAssist.Hint="Fecha de inseminación" />
                     <TextBox Width="auto" materialDesign:HintAssist.Hint="Código de macho"></TextBox>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" >
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" 
+                                Command="materialDesign:DialogHost.CloseDialogCommand">
                             <Button.CommandParameter>
                                 <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                                     True
@@ -51,15 +53,49 @@
             </materialDesign:DialogHost.DialogContent>
             
         </materialDesign:DialogHost>
+        <materialDesign:DialogHost Name="BirthDialog" Height="auto" 
+                                   HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                                   CloseOnClickAway="True">
+            <materialDesign:DialogHost.DialogContent >
+                <StackPanel Margin="16" Height="auto" Width="auto">
+                    <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30" >Nuevo Parto</TextBlock>
+                    <TextBox Width="auto" materialDesign:HintAssist.Hint="Número de lechones"></TextBox>
+                    <DatePicker  Width="auto" materialDesign:HintAssist.Hint="Fecha" />
+                  
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" 
+                                Command="materialDesign:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                    True
+                                </system:Boolean>
+                            </Button.CommandParameter>
+                            Agregar
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsCancel="True" Margin="0 8 8 0"
+                                Command="materialDesign:DialogHost.CloseDialogCommand">
+                            <Button.CommandParameter>
+                                <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                    False
+                                </system:Boolean>
+                            </Button.CommandParameter>
+                            Salir
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+
+        </materialDesign:DialogHost>
         <materialDesign:DialogHost Name="WeaningDialog" Height="auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                                    CloseOnClickAway="True">
             <materialDesign:DialogHost.DialogContent >
                 <StackPanel Margin="16" Height="auto" Width="auto">
-                    <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30" > Ingrese los datos</TextBlock>
+                    <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30" >Nuevo Destete</TextBlock>
                     <DatePicker Width="auto" materialDesign:HintAssist.Hint="Fecha de destete" />
                     <TextBox Width="auto" materialDesign:HintAssist.Hint="Número de lechones"></TextBox>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" >
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" 
+                                Command="materialDesign:DialogHost.CloseDialogCommand">
                             <Button.CommandParameter>
                                 <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                                     True
@@ -89,7 +125,8 @@
                     <TextBox Width="auto" materialDesign:HintAssist.Hint="Enfermedad"></TextBox>
                     <DatePicker Width="auto" materialDesign:HintAssist.Hint="Fecha" />
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" >
+                        <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True"
+                                Command="materialDesign:DialogHost.CloseDialogCommand">
                             <Button.CommandParameter>
                                 <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                                     True
@@ -126,8 +163,8 @@
                 <Button ToolTip="Nueva inseminación" Click="InseminationButtonClick">
                     <materialDesign:PackIcon Kind="Injection" />
                 </Button>
-                <Button ToolTip= "Nuevo parto">
-                    <materialDesign:PackIcon Kind="Baby" />
+                <Button ToolTip= "Nuevo parto"  Click="BirthButtonClick">
+                    <materialDesign:PackIcon Kind="Baby"/>
                 </Button>
                 <Button ToolTip="Nueva enfermedad" Click="SickButton_Click">
                     <materialDesign:PackIcon Kind="Radioactive" />
