@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using MaterialDesignThemes.Wpf;
+using System.Windows.Controls;
 using WpfApp1.Managers;
 
 namespace WpfApp1.Sales
@@ -16,6 +17,17 @@ namespace WpfApp1.Sales
 		private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			MenuToolbarManager.SetEnableEditAndDelete(true);
+		}
+
+		private void NewSaleButton_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+			NewSaleDialogHost.IsOpen = true;
+			NewSale.IsEnabled = false;
+		}
+
+		private void NewSaleDialogHost_OnDialogClosing(object sender, DialogClosingEventArgs eventargs)
+		{
+			NewSale.IsEnabled = true;
 		}
 	}
 }
