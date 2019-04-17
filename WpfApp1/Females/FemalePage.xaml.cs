@@ -13,24 +13,31 @@ namespace WpfApp1.Females
 			InitializeComponent();
 		}
 
+		private void AddUserControlToEventDialog(UserControl userControl)
+		{
+			FemaleEventDialog.IsOpen = true;
+			MainGridEvent.Children.Clear();
+			MainGridEvent.Children.Add(userControl);
+		}
+
 		private void InseminationButtonClick(object sender, System.Windows.RoutedEventArgs e)
 		{
-			InseminationDialog.IsOpen = true;
+			AddUserControlToEventDialog(new AddInsemination());
 		}
 
 		private void SickButton_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-			SickDialog.IsOpen = true;
+			AddUserControlToEventDialog(new AddSick());
 		}
 
 		private void WeaningButton_Click(object sender, RoutedEventArgs e)
 		{
-			WeaningDialog.IsOpen = true;
+			AddUserControlToEventDialog(new AddWeaning());
 		}
 
 		private void BirthButtonClick(object sender, RoutedEventArgs e)
 		{
-			BirthDialog.IsOpen = true;
+			AddUserControlToEventDialog(new AddBirth());
 		}
 	}
 }

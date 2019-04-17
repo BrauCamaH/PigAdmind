@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="WpfApp1.Females.AddWeaning"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.Females"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="198.954" d:DesignWidth="309.177">
+    <Grid>
+        <StackPanel Margin="16" Height="auto" Width="auto">
+            <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30" >
+                Nuevo Destete
+            </TextBlock>
+            <DatePicker Width="auto" materialDesign:HintAssist.Hint="Fecha de destete"
+                        FontSize="14" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+            <TextBox Width="auto" materialDesign:HintAssist.Hint="Número de lechones"
+                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" 
+                        Command="materialDesign:DialogHost.CloseDialogCommand">
+                    <Button.CommandParameter>
+                        <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                            True
+                        </system:Boolean>
+                    </Button.CommandParameter>
+                    Agregar
+                </Button>
+                <Button Style="{StaticResource MaterialDesignFlatButton}" IsCancel="True" Margin="0 8 8 0"
+                        Command="materialDesign:DialogHost.CloseDialogCommand">
+                    <Button.CommandParameter>
+                        <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                            False
+                        </system:Boolean>
+                    </Button.CommandParameter>
+                    Salir
+                </Button>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

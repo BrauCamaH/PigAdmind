@@ -133,6 +133,18 @@
     <Compile Include="Delete.xaml.cs">
       <DependentUpon>Delete.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Females\AddBirth.xaml.cs">
+      <DependentUpon>AddBirth.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Females\AddInsemination.xaml.cs">
+      <DependentUpon>AddInsemination.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Females\AddSick.xaml.cs">
+      <DependentUpon>AddSick.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Females\AddWeaning.xaml.cs">
+      <DependentUpon>AddWeaning.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Females\EditFemale.xaml.cs">
       <DependentUpon>EditFemale.xaml</DependentUpon>
     </Compile>
@@ -161,7 +173,26 @@
     <Compile Include="Sales\MainSales.xaml.cs">
       <DependentUpon>MainSales.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Sales\NewSale.xaml.cs">
+      <DependentUpon>NewSale.xaml</DependentUpon>
+    </Compile>
     <Page Include="Delete.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Females\AddBirth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Females\AddInsemination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Females\AddSick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Females\AddWeaning.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -219,6 +250,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Sales\MainSales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\NewSale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
