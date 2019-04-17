@@ -44,7 +44,7 @@
                     <Grid x:Name="EditGrid"></Grid>
                 </materialDesign:DialogHost.DialogContent>
             </materialDesign:DialogHost>
-            <materialDesign:Card Height="50" Margin="70,0,0,0" Background="SteelBlue">
+            <materialDesign:Card x:Name="MenuBar" Height="50" Margin="70,0,0,0" Background="SteelBlue">
                 <StackPanel Background="{x:Null}"   Orientation="Horizontal" VerticalAlignment="Top" Height="51" Margin="150,0,0,-1" >
                     <Menu Foreground="White" FontSize="30" Background="SteelBlue" IsMainMenu="True" Width="1118">
                         <MenuItem Header="_Archivo">
@@ -71,7 +71,7 @@
                                 </MenuItem.Icon>
                             </MenuItem>
                         </MenuItem >
-                        <Separator Background="{x:Null}" Width="614"></Separator>
+                        <Separator Background="{x:Null}" Width="605"></Separator>
                         <MenuItem Header="_Ayuda">
                             <MenuItem Header="Acerca de ..."></MenuItem>
                             <MenuItem Header="Manual de usuario"></MenuItem>
@@ -80,7 +80,7 @@
                 </StackPanel>
             </materialDesign:Card> 
             <StackPanel Background="LightBlue"    Margin="70,48,0,624" Orientation="Horizontal" VerticalAlignment="Top" Height="60" >
-                <Separator Background="{x:Null}"  Width="132"/>
+                <Separator x:Name="ToolSeparator" Background="{x:Null}"  Width="132"/>
                 <Button Name="BackBtn" Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled="False" Click="BackBtn_Click">
                     <materialDesign:PackIcon Name="Back" Kind="ArrowLeft"  Opacity=".56" Height="52" Width="52" />
                 </Button>

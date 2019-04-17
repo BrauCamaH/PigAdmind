@@ -19,6 +19,8 @@ namespace WpfApp1
 		private UserControl _editGroup;
 		private UserControl _editSale;
 
+		private readonly Thickness _initialMargin;
+		private readonly Thickness _initialMarginMenuBar;
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -29,6 +31,9 @@ namespace WpfApp1
 			MenuToolbarManager.Edit = EditBtn;
 			MenuToolbarManager.Delete = DeleteBtn;
 			ContextManager.Instance().CurrentEditControlContext = _editFemale;
+
+			_initialMarginMenuBar = MenuBar.Margin;
+			_initialMargin = GridMain.Margin;
 		}
 
 		private void InitializeEditControls()
@@ -48,12 +53,18 @@ namespace WpfApp1
 		{
 			ButtonCloseMenu.Visibility = Visibility.Visible;
 			ButtonOpenMenu.Visibility = Visibility.Collapsed;
+			GridMain.Margin = _initialMargin;
+			MenuBar.Margin = _initialMarginMenuBar;
+			ToolSeparator.Width = 132;
 		}
 
 		private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
 		{
 			ButtonCloseMenu.Visibility = Visibility.Collapsed;
 			ButtonOpenMenu.Visibility = Visibility.Visible;
+			GridMain.Margin = new Thickness((-_initialMargin.Left) + 10, _initialMargin.Top, _initialMargin.Right, _initialMargin.Bottom);
+			MenuBar.Margin = new Thickness((-_initialMarginMenuBar.Left) + 10, _initialMarginMenuBar.Top, _initialMargin.Right, _initialMarginMenuBar.Bottom);
+			ToolSeparator.Width = 0;
 		}
 		private void MoveCursorMenu(int index)
 		{
