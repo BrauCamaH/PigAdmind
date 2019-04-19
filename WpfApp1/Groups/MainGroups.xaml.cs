@@ -57,6 +57,7 @@ namespace WpfApp1.Groups
 		{
 			MainGridManager.SetUserControl(new GroupPage());
 			MenuToolbarManager.SetEnableEditAndDelete(false);
+			MenuToolbarManager.Back.IsEnabled = true;
 		}
 
 		private void ClearFields()

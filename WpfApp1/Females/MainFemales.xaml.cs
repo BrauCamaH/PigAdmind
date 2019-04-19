@@ -66,6 +66,7 @@ namespace WpfApp1.Females
 		{
 			MainGridManager.SetUserControl(new FemalePage());
 			MenuToolbarManager.SetEnableEditAndDelete(false);
+			MenuToolbarManager.Back.IsEnabled = true;
 		}
 		private void AddNewFemale_Click(object sender, RoutedEventArgs e)
 		{
@@ -93,6 +94,10 @@ namespace WpfApp1.Females
 		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			CollectionViewSource.GetDefaultView(FemalesList.ItemsSource).Refresh();
+			if (FemalesList.SelectedItem == null)
+			{
+				MenuToolbarManager.SetEnableEditAndDelete(false);
+			}
 		}
 	}
 }

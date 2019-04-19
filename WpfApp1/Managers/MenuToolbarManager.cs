@@ -11,7 +11,6 @@ namespace WpfApp1.Managers
 		public static void SetEnableEditAndDelete(bool isEnable)
 		{
 			Edit.IsEnabled = isEnable;
-			;
 			Delete.IsEnabled = isEnable;
 		}
 	}

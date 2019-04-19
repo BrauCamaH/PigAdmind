@@ -31,6 +31,7 @@ namespace WpfApp1
 			MenuToolbarManager.Edit = EditBtn;
 			MenuToolbarManager.Delete = DeleteBtn;
 			ContextManager.Instance().CurrentEditControlContext = _editFemale;
+			ContextManager.Instance().CurrentContext = new MainFemales();
 
 			_initialMarginMenuBar = MenuBar.Margin;
 			_initialMargin = GridMain.Margin;
@@ -81,6 +82,7 @@ namespace WpfApp1
 			int index = ListViewMenu.SelectedIndex;
 			MoveCursorMenu(index);
 			MenuToolbarManager.SetEnableEditAndDelete(false);
+			MenuToolbarManager.Back.IsEnabled = false;
 			switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
 			{
 				case "Females":
@@ -99,6 +101,7 @@ namespace WpfApp1
 					ContextManager.Instance().CurrentEditControlContext = _editSale;
 					break;
 			}
+			ContextManager.Instance().CurrentContext = usc;
 		}
 
 		private void Females_Selected(object sender, RoutedEventArgs e)
@@ -128,7 +131,9 @@ namespace WpfApp1
 
 		private void BackBtn_Click(object sender, RoutedEventArgs e)
 		{
-
+			MainGridManager.SetUserControl(ContextManager.Instance().CurrentContext);
+			MenuToolbarManager.SetEnableEditAndDelete(true);
+			BackBtn.IsEnabled = false;
 		}
 
 		private void EditBtn_Click(object sender, RoutedEventArgs e)
