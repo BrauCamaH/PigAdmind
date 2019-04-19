@@ -33,7 +33,7 @@ namespace WpfApp1.Persistance.Repositories
 
 		public TEntity SingleOrDefault(Expression<Func<TEntity, bool>> predicate)
 		{
-			throw new NotImplementedException();
+			return Context.Set<TEntity>().SingleOrDefault(predicate);
 		}
 
 		public void Add(TEntity entity)

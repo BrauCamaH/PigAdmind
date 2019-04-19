@@ -88,6 +88,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Core\Repositories\IBirthsRepository.cs" />
+    <Compile Include="Core\Repositories\IFemalesRepository.cs" />
+    <Compile Include="Core\Repositories\IInseminationsRepository.cs" />
+    <Compile Include="Core\Repositories\ISicksRepository.cs" />
     <Compile Include="DatabaseFirst\Births.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -165,7 +169,11 @@
     <Compile Include="Managers\MenuToolbarManager.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Persistance\Repositories\BirthsRepository.cs" />
+    <Compile Include="Persistance\Repositories\FemalesRepository.cs" />
+    <Compile Include="Persistance\Repositories\InseminationsRepository.cs" />
     <Compile Include="Persistance\Repositories\Repository.cs" />
+    <Compile Include="Persistance\Repositories\SicksRepository.cs" />
     <Compile Include="Persistance\UnitOfWork.cs" />
     <Compile Include="Sales\EditSale.xaml.cs">
       <DependentUpon>EditSale.xaml</DependentUpon>

@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Managers;
+using WpfApp1.Persistance;
 
 namespace WpfApp1.Females
 {
@@ -23,7 +24,7 @@ namespace WpfApp1.Females
 		}
 		private void AddNewFemale(string code, string birthday)
 		{
-			var ctx = new Entities();
+			UnitOfWork unitOfWork = new UnitOfWork(new Entities());
 			var female = new DatabaseFirst.Females()
 			{
 				code = code,
@@ -34,8 +35,8 @@ namespace WpfApp1.Females
 				misbirths = 0
 
 			};
-			ctx.Females.Add(female);
-			ctx.SaveChanges();
+			unitOfWork.Females.Add(female);
+			unitOfWork.Complete();
 		}
 		private bool IsDataComplete(string txtbox, string datePicker)
 		{
