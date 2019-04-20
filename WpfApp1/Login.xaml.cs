@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using MaterialDesignThemes.Wpf;
+using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.DatabaseFirst;
@@ -10,11 +12,18 @@ namespace WpfApp1
 	/// </summary>
 	public partial class Login : Window
 	{
+		private readonly SnackbarMessageQueue messageQueue = new SnackbarMessageQueue(TimeSpan.FromMilliseconds(1000));
 		public Login()
 		{
 			InitializeComponent();
 			//The checbox is checked when the user is online
 			CheckBox.IsChecked = App.User.isOnline == 1;
+		}
+
+		private void ShowSnackbar(string message)
+		{
+			messageQueue.Enqueue(message);
+			LoginSnackbar.MessageQueue = messageQueue;
 		}
 
 		private bool IsTheCorrectPassword(string inputPass)
@@ -45,7 +54,7 @@ namespace WpfApp1
 			}
 			else
 			{
-				MessageBox.Show("La contraseña es incorrecta");
+				ShowSnackbar("La contraseña es incorrecta");
 			}
 
 		}
