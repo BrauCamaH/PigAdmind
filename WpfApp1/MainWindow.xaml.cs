@@ -132,7 +132,6 @@ namespace WpfApp1
 		private void BackBtn_Click(object sender, RoutedEventArgs e)
 		{
 			MainGridManager.SetUserControl(ContextManager.Instance().CurrentContext);
-			MenuToolbarManager.SetEnableEditAndDelete(true);
 			BackBtn.IsEnabled = false;
 		}
 

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using WpfApp1.DatabaseFirst;
+using WpfApp1.Interfaces;
 using WpfApp1.Managers;
 using WpfApp1.Persistance;
 
@@ -12,8 +14,9 @@ namespace WpfApp1.Females
 	/// <summary>
 	/// Interaction logic for MainFemales.xaml
 	/// </summary>
-	public partial class MainFemales : UserControl
+	public partial class MainFemales : UserControl, IRemovable
 	{
+		private readonly ObservableCollection<DatabaseFirst.Females> females = new ObservableCollection<DatabaseFirst.Females>();
 
 		public MainFemales()
 		{
@@ -22,6 +25,7 @@ namespace WpfApp1.Females
 			CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(FemalesList.ItemsSource);
 			view.Filter = CustomFilter;
 		}
+
 		private void AddNewFemale(string code, string birthday)
 		{
 			UnitOfWork unitOfWork = new UnitOfWork(new Entities());
@@ -35,6 +39,7 @@ namespace WpfApp1.Females
 				misbirths = 0
 
 			};
+			females.Add(female);
 			unitOfWork.Females.Add(female);
 			unitOfWork.Complete();
 		}
@@ -49,12 +54,28 @@ namespace WpfApp1.Females
 
 		private void GetFemalesFromDataBase()
 		{
-			var ctx = new Entities();
-			FemalesList.ItemsSource = ctx.Females.ToList();
+			var unitOfWork = new UnitOfWork(new Entities());
+			foreach (var female in unitOfWork.Females.GetAll())
+			{
+				if (females.Count < unitOfWork.Females.GetAll().Count())
+				{
+					females.Add(female);
+				}
+			}
+			FemalesList.ItemsSource = females;
 		}
+
 		private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			MenuToolbarManager.SetEnableEditAndDelete(true);
+			if (FemalesList.SelectedItem != null)
+			{
+				MenuToolbarManager.SetEnableEditAndDelete(true);
+				ContextManager.Instance().CurrentElementSelected = FemalesList.SelectedIndex;
+			}
+			else
+			{
+				MenuToolbarManager.SetEnableEditAndDelete(false);
+			}
 		}
 
 		private void Button_Click(object sender, RoutedEventArgs e)
@@ -67,7 +88,9 @@ namespace WpfApp1.Females
 			MainGridManager.SetUserControl(new FemalePage());
 			MenuToolbarManager.SetEnableEditAndDelete(false);
 			MenuToolbarManager.Back.IsEnabled = true;
+			FemalesList.SelectedItem = null;
 		}
+
 		private void AddNewFemale_Click(object sender, RoutedEventArgs e)
 		{
 			string code = CodeBox.Text;
@@ -75,7 +98,8 @@ namespace WpfApp1.Females
 			if (IsDataComplete(code, birthday))
 			{
 				AddNewFemale(code, birthday);
-				GetFemalesFromDataBase();
+				CodeBox.Text = "";
+				DatePicker.Text = "";
 			}
 
 		}
@@ -94,10 +118,14 @@ namespace WpfApp1.Females
 		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			CollectionViewSource.GetDefaultView(FemalesList.ItemsSource).Refresh();
-			if (FemalesList.SelectedItem == null)
-			{
-				MenuToolbarManager.SetEnableEditAndDelete(false);
-			}
+		}
+
+		public void RemoveSelectedItem(int index)
+		{
+			UnitOfWork unitOfWork = new UnitOfWork(new Entities());
+			unitOfWork.Females.Remove(unitOfWork.Females.GetAll().ToList()[index]);
+			females.RemoveAt(index);
+			unitOfWork.Complete();
 		}
 	}
 }

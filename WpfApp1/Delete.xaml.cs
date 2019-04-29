@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.Interfaces;
+using WpfApp1.Managers;
 
 namespace WpfApp1
 {
@@ -13,14 +15,24 @@ namespace WpfApp1
 			InitializeComponent();
 		}
 
+		private void RemoveItem(IRemovable item)
+		{
+			item.RemoveSelectedItem(ContextManager.Instance().CurrentElementSelected);
+		}
 		private void CheckBox_Checked(object sender, RoutedEventArgs e)
 		{
-			Btn_Aceptar.IsEnabled = true;
+			Accept_btn.IsEnabled = true;
 		}
 
 		private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
 		{
-			Btn_Aceptar.IsEnabled = true;
+			Accept_btn.IsEnabled = false;
+		}
+
+		private void Accept_Btn_Click(object sender, RoutedEventArgs e)
+		{
+			CheckBox.IsChecked = false;
+			RemoveItem((IRemovable)ContextManager.Instance().CurrentContext);
 		}
 	}
 }

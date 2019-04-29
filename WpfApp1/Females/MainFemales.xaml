@@ -10,13 +10,17 @@
     <Grid >
         <materialDesign:DialogHost CloseOnClickAway="True" VerticalAlignment="Stretch" >
             <materialDesign:DialogHost.DialogContent >
-                <StackPanel Margin="16" Height="auto" Width="auto"> 
-                    <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30"> Ingrese los datos </TextBlock>
-                    <TextBox  Name="CodeBox" Margin="0 8 0 0"  HorizontalAlignment="Stretch"  materialDesign:HintAssist.Hint="Ingrese código" />
-                    <Separator Height="20" Background="{x:Null}"></Separator>
-                    <TextBlock HorizontalAlignment="Left" Foreground="SteelBlue" FontSize=" 16" >Ingrese fecha de nacimiento</TextBlock>
+                <StackPanel Margin="16" Height="auto" Width="auto">
+                    <TextBlock FontSize="26" Foreground="SteelBlue">
+                    Ingrese los Datos
+                    </TextBlock> 
+                    <TextBox  Name="CodeBox" Margin="0 8 0 0"  HorizontalAlignment="Stretch"  
+                              materialDesign:HintAssist.Hint="Ingrese código" FontSize="18"
+                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     <Separator Height="10" Background="{x:Null}"></Separator>
-                    <DatePicker Name="DatePicker" Width="auto" materialDesign:HintAssist.Hint="Locale Date" />
+                    <DatePicker Name="DatePicker" Width="auto" materialDesign:HintAssist.Hint="Fecha de Nacimiento" 
+                                FontSize="18"
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" Click="AddNewFemale_Click">
                             <Button.CommandParameter>

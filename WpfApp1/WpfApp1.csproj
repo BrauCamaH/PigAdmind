@@ -164,6 +164,7 @@
     <Compile Include="InitialConfig.xaml.cs">
       <DependentUpon>InitialConfig.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IRemovable.cs" />
     <Compile Include="Managers\ContextManager.cs" />
     <Compile Include="Managers\MainGridManager.cs" />
     <Compile Include="Managers\MenuToolbarManager.cs" />
@@ -307,7 +308,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets\" />
-    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="DatabaseFirst\Model.Context.tt">
