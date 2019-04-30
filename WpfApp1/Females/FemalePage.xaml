@@ -30,12 +30,6 @@
             </materialDesign:DialogHost.DialogContent>
 
         </materialDesign:DialogHost>
-        
-        <Ellipse Height="106" Width="106" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,4,976,0" Stroke="White">
-            <Ellipse.Fill>
-                <ImageBrush Stretch="UniformToFill"/>
-            </Ellipse.Fill>
-        </Ellipse>
         <materialDesign:PopupBox
                   Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
                   PlacementMode="BottomAndAlignCentres"
@@ -63,7 +57,19 @@
                 </Button>
             </StackPanel>
         </materialDesign:PopupBox>
-        <Label Content="Código" Background="SteelBlue" HorizontalAlignment="Left" Margin="426,26,0,0" VerticalAlignment="Top" Width="200" Height="64"   Foreground="White" FontFamily="Roboto" FontWeight="Bold" FontSize="40"/>
+        <Ellipse Height="106" Width="106" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,7,940,0" Stroke="White">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/Assets/cerdo.png"  Stretch="UniformToFill"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Label x:Name="CodeLabel"
+               Background="SteelBlue" 
+               HorizontalAlignment="Left" Margin="440,28,0,0"
+               VerticalAlignment="Top" Width="auto" Height="64"   
+               Foreground="White" FontFamily="Roboto" FontWeight="Bold" FontSize="40">
+            Código
+        </Label>
+          
         <dragablz:TabablzControl HorizontalAlignment="Left" Height="650" Margin="177,119,0,-1" VerticalAlignment="Top" Width="1009">
             <TabItem Header="Inseminaciones">
                 <Grid Background="#FFE5E5E5">

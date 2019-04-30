@@ -8,11 +8,24 @@ namespace WpfApp1.Females
 	/// </summary>
 	public partial class FemalePage : UserControl
 	{
+		private DatabaseFirst.Females _female;
+
 		public FemalePage()
 		{
 			InitializeComponent();
 		}
 
+		public FemalePage(DatabaseFirst.Females female)
+		{
+			_female = female;
+			InitializeComponent();
+			SetFemaleInfo(female);
+		}
+
+		private void SetFemaleInfo(DatabaseFirst.Females female)
+		{
+			CodeLabel.Content = female.code;
+		}
 		private void AddUserControlToEventDialog(UserControl userControl)
 		{
 			FemaleEventDialog.IsOpen = true;

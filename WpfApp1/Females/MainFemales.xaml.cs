@@ -85,10 +85,14 @@ namespace WpfApp1.Females
 
 		private void OnListMouseDoubleClick(object sender, RoutedEventArgs e)
 		{
-			MainGridManager.SetUserControl(new FemalePage());
-			MenuToolbarManager.SetEnableEditAndDelete(false);
-			MenuToolbarManager.Back.IsEnabled = true;
-			FemalesList.SelectedItem = null;
+			if (FemalesList.SelectedItem != null)
+			{
+				MainGridManager.SetUserControl(new FemalePage(FemalesList.SelectedItem as DatabaseFirst.Females));
+				MenuToolbarManager.SetEnableEditAndDelete(false);
+				MenuToolbarManager.Back.IsEnabled = true;
+				FemalesList.SelectedItem = null;
+			}
+
 		}
 
 		private void AddNewFemale_Click(object sender, RoutedEventArgs e)

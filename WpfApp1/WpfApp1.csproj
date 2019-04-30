@@ -307,9 +307,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Assets\" />
+    <Folder Include="Females\BirthViews\" />
+    <Folder Include="Females\InseminationViews\" />
+    <Folder Include="Females\SickViews\" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Assets\cerdo.png" />
     <Content Include="DatabaseFirst\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
