@@ -9,15 +9,21 @@
              d:DesignHeight="257.597" d:DesignWidth="330.919">
     <Grid>
         <StackPanel Margin="16" Height="auto" Width="auto">
-            <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30" >Nuevo Parto</TextBlock>
-            <TextBox Width="auto" materialDesign:HintAssist.Hint="Número de lechones"
+            <TextBlock HorizontalAlignment="Center"
+                       Foreground="SteelBlue" 
+                       FontSize="30" >Nuevo Parto</TextBlock>
+            <TextBox x:Name="N_Pigs_TextBox"  Width="auto" 
+                     materialDesign:HintAssist.Hint="Número de lechones"
                      FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-            <DatePicker  Width="auto" materialDesign:HintAssist.Hint="Fecha" 
-                         FontSize="14" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+            <DatePicker  x:Name="Date"
+                         Width="auto" 
+                         materialDesign:HintAssist.Hint="Fecha" 
+                         FontSize="14" 
+                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" 
-                        Command="materialDesign:DialogHost.CloseDialogCommand">
+                        Command="materialDesign:DialogHost.CloseDialogCommand" Click="Accept_Button_Click">
                     <Button.CommandParameter>
                         <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                             True

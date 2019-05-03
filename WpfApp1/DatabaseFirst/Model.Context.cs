@@ -9,30 +9,29 @@
 
 namespace WpfApp1.DatabaseFirst
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    
-    public partial class Entities : DbContext
-    {
-        public Entities()
-            : base("name=Entities")
-        {
-        }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-    
-        public virtual DbSet<Births> Births { get; set; }
-        public virtual DbSet<Females> Females { get; set; }
-        public virtual DbSet<Inseminations> Inseminations { get; set; }
-        public virtual DbSet<Parameters> Parameters { get; set; }
-        public virtual DbSet<PigGroups> PigGroups { get; set; }
-        public virtual DbSet<Sales> Sales { get; set; }
-        public virtual DbSet<Sicks> Sicks { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Weaning_> Weaning_ { get; set; }
-    }
+	using System.Data.Entity;
+	using System.Data.Entity.Infrastructure;
+
+	public partial class Entities : DbContext
+	{
+		public Entities()
+			: base("name=Entities")
+		{
+		}
+
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		{
+			throw new UnintentionalCodeFirstException();
+		}
+
+		public virtual DbSet<Births> Births { get; set; }
+		public virtual DbSet<Females> Females { get; set; }
+		public virtual DbSet<Inseminations> Inseminations { get; set; }
+		public virtual DbSet<Parameters> Parameters { get; set; }
+		public virtual DbSet<PigGroups> PigGroups { get; set; }
+		public virtual DbSet<Sales> Sales { get; set; }
+		public virtual DbSet<Sicks> Sicks { get; set; }
+		public virtual DbSet<Users> Users { get; set; }
+		public virtual DbSet<Weaning_> Weaning_ { get; set; }
+	}
 }

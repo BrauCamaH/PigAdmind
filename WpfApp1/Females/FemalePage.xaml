@@ -182,11 +182,13 @@
                             </Grid>
                         </materialDesign:ColorZone>
                     </StackPanel>
-                    <ListView HorizontalAlignment="Left" Height="550" Margin="0,60,0,0" VerticalAlignment="Top" Width="502">
+                    <ListView x:Name="BirthsListView" HorizontalAlignment="Left" 
+                              Height="550" Margin="0,60,0,0"
+                              VerticalAlignment="Top" Width="502">
                         <ListView.View>
-                            <GridView> 
-                                <GridViewColumn Header="Número"/>
-                                <GridViewColumn Header="Fecha"/>
+                            <GridView>
+                                <GridViewColumn Header="Número" DisplayMemberBinding="{Binding n_piglets}"/>
+                                <GridViewColumn Header="Fecha" DisplayMemberBinding="{Binding date}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>

@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.DatabaseFirst;
+using WpfApp1.Persistance;
 
 namespace WpfApp1.Females
 {
@@ -20,8 +22,14 @@ namespace WpfApp1.Females
 			_female = female;
 			InitializeComponent();
 			SetFemaleInfo(female);
+			GetBirthsFromDatabase();
 		}
 
+		private void GetBirthsFromDatabase()
+		{
+			UnitOfWork unitOfWork = new UnitOfWork(new Entities());
+			BirthsListView.ItemsSource = unitOfWork.Births.GetBirthsByFemale(_female.code);
+		}
 		private void SetFemaleInfo(DatabaseFirst.Females female)
 		{
 			CodeLabel.Content = female.code;
@@ -50,7 +58,7 @@ namespace WpfApp1.Females
 
 		private void BirthButtonClick(object sender, RoutedEventArgs e)
 		{
-			AddUserControlToEventDialog(new AddBirth());
+			AddUserControlToEventDialog(new AddBirth(_female));
 		}
 	}
 }

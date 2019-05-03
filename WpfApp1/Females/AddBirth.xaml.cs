@@ -1,28 +1,38 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WpfApp1.DatabaseFirst;
+using WpfApp1.Persistance;
 
 namespace WpfApp1.Females
 {
-    /// <summary>
-    /// Interaction logic for AddBirth.xaml
-    /// </summary>
-    public partial class AddBirth : UserControl
-    {
-        public AddBirth()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Interaction logic for AddBirth.xaml
+	/// </summary>
+	public partial class AddBirth : UserControl
+	{
+		private DatabaseFirst.Females _female;
+		public AddBirth()
+		{
+			InitializeComponent();
+		}
+
+		public AddBirth(DatabaseFirst.Females female)
+		{
+			InitializeComponent();
+			_female = female;
+		}
+		private void Accept_Button_Click(object sender, RoutedEventArgs e)
+		{
+			var unitOfWork = new UnitOfWork(new Entities());
+			var birth = new Births()
+			{
+				n_piglets = Int32.Parse(N_Pigs_TextBox.Text),
+				date = Date.Text,
+				fem_code = _female.code
+			};
+			unitOfWork.Births.Add(birth);
+			unitOfWork.Complete();
+		}
+	}
 }

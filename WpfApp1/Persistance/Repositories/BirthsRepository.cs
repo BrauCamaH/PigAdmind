@@ -13,12 +13,12 @@ namespace WpfApp1.Persistance.Repositories
 
 		public IEnumerable GetBirthsByFemale(string code)
 		{
-			return DbEntities.Births.SqlQuery("").ToList();
+			return DbEntities.Births.Where(b => b.fem_code == code).ToList();
 		}
 
 		public Entities DbEntities
 		{
-			get { return DbEntities; }
+			get { return new Entities(); }
 		}
 	}
 }
