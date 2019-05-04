@@ -2,6 +2,6 @@
 {
 	interface IRemovable
 	{
-		void RemoveSelectedItem(int index);
+		void RemoveSelectedItem();
 	}
 }

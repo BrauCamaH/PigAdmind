@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using WpfApp1.DatabaseFirst;
+using WpfApp1.Interfaces;
 using WpfApp1.Managers;
 
 namespace WpfApp1.Groups
@@ -10,13 +13,31 @@ namespace WpfApp1.Groups
 	/// <summary>
 	/// Interaction logic for MainGroups.xaml
 	/// </summary>
-	public partial class MainGroups : UserControl
+	public partial class MainGroups : UserControl, IRemovable
 	{
+		private readonly ObservableCollection<PigGroups> groups = new ObservableCollection<PigGroups>();
 		public MainGroups()
 		{
 			InitializeComponent();
 			GetGroupsFromDataBase();
+			CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(GroupList.ItemsSource);
+			view.Filter = CustomFilter;
 		}
+
+		private bool CustomFilter(object obj)
+		{
+			if (String.IsNullOrEmpty(LookTextBox.Text))
+				return true;
+			else
+			{
+				return (((DatabaseFirst.PigGroups)obj).name.IndexOf(LookTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+					   (((DatabaseFirst.PigGroups)obj).pig_count.ToString().IndexOf(LookTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+					   (((DatabaseFirst.PigGroups)obj).weigth_avg.ToString().IndexOf(LookTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+					   (((DatabaseFirst.PigGroups)obj).weaning_date.IndexOf(LookTextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+			}
+		}
+
+
 		private bool IsDataComplete(string txtbox, string datePicker)
 		{
 			if (txtbox != "" && datePicker != "")
@@ -27,8 +48,15 @@ namespace WpfApp1.Groups
 		}
 		private void GetGroupsFromDataBase()
 		{
-			var ctx = new Entities();
-			GroupList.ItemsSource = ctx.PigGroups.ToList();
+			var unitOfWork = new Entities();
+			foreach (var pigGroups in unitOfWork.PigGroups.ToList())
+			{
+				if (groups.Count < unitOfWork.PigGroups.ToList().Count)
+				{
+					groups.Add(pigGroups);
+				}
+			}
+			GroupList.ItemsSource = groups;
 		}
 
 		private void AddNewGroup(string id, float weigth, int n, string date)
@@ -78,11 +106,22 @@ namespace WpfApp1.Groups
 			{
 				AddNewGroup(id, weigth, nPigs, weanigDate);
 				ClearFields();
-				GetGroupsFromDataBase();
 			}
 
 		}
 
 
+		private void LookTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+		{
+			CollectionViewSource.GetDefaultView(GroupList.ItemsSource).Refresh();
+		}
+
+		public void RemoveSelectedItem()
+		{
+			var unitOfWork = new Entities();
+			unitOfWork.PigGroups.Remove(unitOfWork.PigGroups.ToList()[GroupList.SelectedIndex]);
+			groups.RemoveAt(GroupList.SelectedIndex);
+			unitOfWork.SaveChanges();
+		}
 	}
 }

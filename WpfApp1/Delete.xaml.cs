@@ -15,10 +15,6 @@ namespace WpfApp1
 			InitializeComponent();
 		}
 
-		private void RemoveItem(IRemovable item)
-		{
-			item.RemoveSelectedItem(ContextManager.Instance().CurrentElementSelected);
-		}
 		private void CheckBox_Checked(object sender, RoutedEventArgs e)
 		{
 			Accept_btn.IsEnabled = true;
@@ -32,7 +28,7 @@ namespace WpfApp1
 		private void Accept_Btn_Click(object sender, RoutedEventArgs e)
 		{
 			CheckBox.IsChecked = false;
-			RemoveItem((IRemovable)ContextManager.Instance().CurrentContext);
+			((IRemovable)ContextManager.Instance().CurrentContext).RemoveSelectedItem();
 		}
 	}
 }

@@ -83,12 +83,14 @@
                          Style="{DynamicResource MaterialDesignToolButton}" Grid.RowSpan="2">
                         <materialDesign:PackIcon  Kind="Magnify" Opacity=".56" />
                     </Button>
-                    <TextBox
-                            Grid.Column="1" Margin="8,4,0,3" materialDesign:HintAssist.Hint="Ingrese Texto"
-                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                            BorderThickness="0"
-                            MinWidth="200"
-                            VerticalAlignment="Center" />
+                    <TextBox x:Name="LookTextBox"
+                             Grid.Row="0" Grid.Column="1" Margin="8,4,0,3" 
+                             materialDesign:HintAssist.Hint="Buscar..."
+                             materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                             BorderThickness="0"
+                             MinWidth="200"
+                             VerticalAlignment="Center" 
+                             TextChanged="LookTextBox_OnTextChanged"/>
                 </Grid>
             </materialDesign:ColorZone>
         </StackPanel>

@@ -25,6 +25,5 @@ namespace WpfApp1.Managers
 
 		public UserControl CurrentContext { get; set; }
 		public UserControl CurrentEditControlContext { get; set; }
-		public int CurrentElementSelected { get; set; }
 	}
 }

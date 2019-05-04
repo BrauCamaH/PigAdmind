@@ -70,7 +70,6 @@ namespace WpfApp1.Females
 			if (FemalesList.SelectedItem != null)
 			{
 				MenuToolbarManager.SetEnableEditAndDelete(true);
-				ContextManager.Instance().CurrentElementSelected = FemalesList.SelectedIndex;
 			}
 			else
 			{
@@ -113,10 +112,13 @@ namespace WpfApp1.Females
 			if (String.IsNullOrEmpty(TextBox.Text))
 				return true;
 			else
+			{
 				return (((DatabaseFirst.Females)obj).code.IndexOf(TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
 					   (((DatabaseFirst.Females)obj).birthday.IndexOf(TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
 					   (((DatabaseFirst.Females)obj).martenity.ToString().IndexOf(TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
 					   (((DatabaseFirst.Females)obj).status.IndexOf(TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+			}
+
 		}
 
 		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -124,11 +126,11 @@ namespace WpfApp1.Females
 			CollectionViewSource.GetDefaultView(FemalesList.ItemsSource).Refresh();
 		}
 
-		public void RemoveSelectedItem(int index)
+		public void RemoveSelectedItem()
 		{
 			UnitOfWork unitOfWork = new UnitOfWork(new Entities());
-			unitOfWork.Females.Remove(unitOfWork.Females.GetAll().ToList()[index]);
-			females.RemoveAt(index);
+			unitOfWork.Females.Remove(unitOfWork.Females.GetAll().ToList()[FemalesList.SelectedIndex]);
+			females.RemoveAt(FemalesList.SelectedIndex);
 			unitOfWork.Complete();
 		}
 	}
