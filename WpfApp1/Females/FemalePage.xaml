@@ -90,9 +90,10 @@
         <dragablz:TabablzControl Grid.Row="1" Grid.Column="1" 
                                  HorizontalAlignment="Left" Height="650" 
                                  Margin="70,0,0,0" 
-                                 VerticalAlignment="Top" Width="1009">
+                                 VerticalAlignment="Top" 
+                                 Width="1009">
             <TabItem Header="Inseminaciones">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background=" #f2f2f2">
                     <StackPanel 
                         Orientation="Horizontal" 
                         materialDesign:RippleAssist.IsCentered="True" 
@@ -148,7 +149,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Partos">
-                <Grid Background="#FFE5E5E5">
+                <Grid Background="#f2f2f2">
                     <StackPanel 
               Orientation="Horizontal" 
               materialDesign:RippleAssist.IsCentered="True" Margin="17,14,716,552" RenderTransformOrigin="0.5,0.5">
@@ -174,11 +175,11 @@
                                     <materialDesign:PackIcon  Kind="Magnify" Opacity=".56" />
                                 </Button>
                                 <TextBox
-                            Grid.Column="1" Margin="8,4,0,3" materialDesign:HintAssist.Hint="Buscar..."
-                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                            BorderThickness="0"
-                            MinWidth="200"
-                            VerticalAlignment="Center" />
+                                    Grid.Column="1" Margin="8,4,0,3" materialDesign:HintAssist.Hint="Buscar..."
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    BorderThickness="0"
+                                    MinWidth="200"
+                                    VerticalAlignment="Center" />
                             </Grid>
                         </materialDesign:ColorZone>
                     </StackPanel>
@@ -187,13 +188,17 @@
                               VerticalAlignment="Top" Width="502">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Número" DisplayMemberBinding="{Binding n_piglets}"/>
+                                <GridViewColumn Header="Número Lechones" DisplayMemberBinding="{Binding n_piglets}"/>
                                 <GridViewColumn Header="Fecha" DisplayMemberBinding="{Binding date}"/>
                             </GridView>
                         </ListView.View>
                     </ListView>
                     <StackPanel Margin="854,0,0,552" Orientation="Horizontal">
-                        <Button Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80">
+                        <Button x:Name="EditFemaleButton"
+                                Background="{x:Null}" 
+                                Height="Auto" 
+                                Margin="0,0,0,1" Width="80"
+                                Click="EditFemaleButton_OnClick">
                             <materialDesign:PackIcon Kind="Edit"  Opacity=".56" Height="52" Width="52" />
                         </Button>
                         <Button Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80">
@@ -263,8 +268,7 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Enfermedades">
-                <Grid Background="#FFE5E5E5">
-
+                <Grid Background="#f2f2f2">
                     <StackPanel 
                           Orientation="Horizontal" 
                           materialDesign:RippleAssist.IsCentered="True" 
@@ -300,8 +304,12 @@
                             </Grid>
                         </materialDesign:ColorZone>
                     </StackPanel>
-                    <ListView HorizontalAlignment="Left" Height="545" Margin="0,65,0,0" 
-                              VerticalAlignment="Top" Width="782" Grid.ColumnSpan="2">
+                    <ListView HorizontalAlignment="Left" 
+                              Height="545" 
+                              Margin="0,65,0,0" 
+                              VerticalAlignment="Top" 
+                              Width="782" Grid.ColumnSpan="2"
+                              Background="White">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Enfermedad"/>

@@ -149,6 +149,9 @@
     <Compile Include="Females\AddWeaning.xaml.cs">
       <DependentUpon>AddWeaning.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Females\BirthViews\EditBirth.xaml.cs">
+      <DependentUpon>EditBirth.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Females\EditFemale.xaml.cs">
       <DependentUpon>EditFemale.xaml</DependentUpon>
     </Compile>
@@ -202,6 +205,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Females\AddWeaning.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Females\BirthViews\EditBirth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -307,7 +314,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Females\BirthViews\" />
     <Folder Include="Females\InseminationViews\" />
     <Folder Include="Females\SickViews\" />
   </ItemGroup>

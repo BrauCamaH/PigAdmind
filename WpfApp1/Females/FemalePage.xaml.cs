@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.DatabaseFirst;
+using WpfApp1.Females.BirthViews;
 using WpfApp1.Persistance;
 
 namespace WpfApp1.Females
@@ -59,6 +60,11 @@ namespace WpfApp1.Females
 		private void BirthButtonClick(object sender, RoutedEventArgs e)
 		{
 			AddUserControlToEventDialog(new AddBirth(_female));
+		}
+
+		private void EditFemaleButton_OnClick(object sender, RoutedEventArgs e)
+		{
+			AddUserControlToEventDialog(new EditBirth());
 		}
 	}
 }
