@@ -161,6 +161,9 @@
     <Compile Include="Females\InseminationViews\EditInsemination.xaml.cs">
       <DependentUpon>EditInsemination.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Females\SickViews\EditSick.xaml.cs">
+      <DependentUpon>EditSick.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Groups\EditGroup.xaml.cs">
       <DependentUpon>EditGroup.xaml</DependentUpon>
     </Compile>
@@ -228,6 +231,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Females\MainFemales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Females\SickViews\EditSick.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -320,9 +327,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Females\SickViews\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Assets\cerdo.png" />
     <Content Include="DatabaseFirst\Model.Context.tt">
