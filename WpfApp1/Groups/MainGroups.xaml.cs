@@ -73,6 +73,7 @@ namespace WpfApp1.Groups
 				user = 1,
 				name = id
 			};
+			groups.Add(pigGroup);
 			ctx.PigGroups.Add(pigGroup);
 			ctx.SaveChanges();
 		}

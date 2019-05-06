@@ -70,6 +70,7 @@ namespace WpfApp1.Females
 			if (FemalesList.SelectedItem != null)
 			{
 				MenuToolbarManager.SetEnableEditAndDelete(true);
+				ContextManager.Instance().CurrentSelectedItem = FemalesList.SelectedIndex;
 			}
 			else
 			{

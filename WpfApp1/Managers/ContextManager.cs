@@ -23,6 +23,7 @@ namespace WpfApp1.Managers
 		private static ContextManager _instance = null;
 		private static readonly object Padlock = new object();
 
+		public int CurrentSelectedItem { get; set; }
 		public UserControl CurrentContext { get; set; }
 		public UserControl CurrentEditControlContext { get; set; }
 	}
