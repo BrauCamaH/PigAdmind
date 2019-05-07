@@ -1,6 +1,6 @@
 ﻿namespace WpfApp1.Interfaces
 {
-	interface IRemovable
+	public interface IRemovable
 	{
 		void RemoveSelectedItem();
 	}

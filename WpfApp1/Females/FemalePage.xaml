@@ -87,7 +87,8 @@
             Código
         </Label>
           
-        <dragablz:TabablzControl Grid.Row="1" Grid.Column="1" 
+        <dragablz:TabablzControl x:Name="MainControl"
+                                 Grid.Row="1" Grid.Column="1" 
                                  HorizontalAlignment="Left" Height="650" 
                                  Margin="70,0,0,0" 
                                  VerticalAlignment="Top" 
@@ -148,7 +149,7 @@
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="Partos">
+            <TabItem  Header="Partos">
                 <Grid Background="#f2f2f2">
                     <StackPanel 
               Orientation="Horizontal" 
@@ -194,14 +195,18 @@
                         </ListView.View>
                     </ListView>
                     <StackPanel Margin="854,0,0,552" Orientation="Horizontal">
-                        <Button x:Name="EditFemaleButton"
+                        <Button x:Name="EditBirthButton"
                                 Background="{x:Null}" 
                                 Height="Auto" 
                                 Margin="0,0,0,1" Width="80"
-                                Click="EditFemaleButton_OnClick">
+                                Click="EditBirthButton_OnClick">
                             <materialDesign:PackIcon Kind="Edit"  Opacity=".56" Height="52" Width="52" />
                         </Button>
-                        <Button Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80">
+                        <Button x:Name="DeleteBirthButton"
+                                Background="{x:Null}" 
+                                Height="Auto" Margin="0,0,0,1" 
+                                Width="80"
+                                Click="DeleteBirthButton_Onclick">
                             <materialDesign:PackIcon Kind="Delete"  Opacity=".56" Height="52" Width="52" />
                         </Button>
                     </StackPanel>

@@ -2,8 +2,8 @@
 
 namespace WpfApp1.Core.Repositories
 {
-	interface IFemalesRepository : IRepository<DatabaseFirst.Females>
-	{
-		IEnumerable GetFemalesByUser(int id);
-	}
+    interface IFemalesRepository : IRepository<DatabaseFirst.Females>
+    {
+        IEnumerable GetFemalesByUser(int id);
+    }
 }

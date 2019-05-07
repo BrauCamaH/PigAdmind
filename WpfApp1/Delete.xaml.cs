@@ -10,9 +10,16 @@ namespace WpfApp1
 	/// </summary>
 	public partial class Delete : UserControl
 	{
+		private readonly IRemovable _iRemovableItem;
+
 		public Delete()
 		{
 			InitializeComponent();
+		}
+
+		public Delete(IRemovable iRemovableItem)
+		{
+			_iRemovableItem = iRemovableItem;
 		}
 
 		private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -28,7 +35,14 @@ namespace WpfApp1
 		private void Accept_Btn_Click(object sender, RoutedEventArgs e)
 		{
 			CheckBox.IsChecked = false;
-			((IRemovable)ContextManager.Instance().CurrentContext).RemoveSelectedItem();
+			if (_iRemovableItem != null)
+			{
+				_iRemovableItem.RemoveSelectedItem();
+			}
+			else
+			{
+				((IRemovable)ContextManager.Instance().CurrentContext).RemoveSelectedItem();
+			}
 		}
 	}
 }
