@@ -16,19 +16,34 @@ namespace WpfApp1.Females
     /// </summary>
     public partial class MainFemales : UserControl, IRemovable
     {
-        private readonly ObservableCollection<DatabaseFirst.Females> females = new ObservableCollection<DatabaseFirst.Females>();
+        private static DatabaseFirst.Females _selectedFemale;
+        public ObservableCollection<DatabaseFirst.Females> FemalesObservableList { get; }
+        private CollectionView _view;
 
         public MainFemales()
         {
             InitializeComponent();
+            FemalesObservableList = new ObservableCollection<DatabaseFirst.Females>();
             GetFemalesFromDataBase();
-            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(FemalesList.ItemsSource);
-            view.Filter = CustomFilter;
+            _view = (CollectionView)CollectionViewSource.GetDefaultView(FemalesObservableList);
+            _view.Filter = CustomFilter;
         }
 
+
+        private void RemoveItemFromList(ObservableCollection<DatabaseFirst.Females> collection, DatabaseFirst.Females currentFemale)
+        {
+            if (collection != null && collection.Count > 0)
+            {
+
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+            collection.Remove(collection.Single(i => i.code.Equals(currentFemale.code)));
+        }
         private void AddNewFemale(string code, string birthday)
         {
-            UnitOfWork unitOfWork = new UnitOfWork(new Entities());
             var female = new DatabaseFirst.Females()
             {
                 code = code,
@@ -39,9 +54,11 @@ namespace WpfApp1.Females
                 misbirths = 0
 
             };
-            females.Add(female);
+            FemalesObservableList.Add(female);
+            UnitOfWork unitOfWork = new UnitOfWork(new Entities());
             unitOfWork.Females.Add(female);
             unitOfWork.Complete();
+
         }
         private bool IsDataComplete(string txtbox, string datePicker)
         {
@@ -57,25 +74,21 @@ namespace WpfApp1.Females
             var unitOfWork = new UnitOfWork(new Entities());
             foreach (var female in unitOfWork.Females.GetAll())
             {
-                if (females.Count < unitOfWork.Females.GetAll().Count())
+                if (FemalesObservableList.Count < unitOfWork.Females.GetAll().Count())
                 {
-                    females.Add(female);
+                    FemalesObservableList.Add(female);
                 }
             }
-            FemalesList.ItemsSource = females;
+
+            FemalesList.ItemsSource = FemalesObservableList;
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (FemalesList.SelectedItem != null)
-            {
-                MenuToolbarManager.SetEnableEditAndDelete(true);
-                ContextManager.Instance().CurrentSelectedItem = FemalesList.SelectedIndex;
-            }
-            else
-            {
-                MenuToolbarManager.SetEnableEditAndDelete(false);
-            }
+            MenuToolbarManager.SetEnableEditAndDelete(FemalesList.SelectedItem != null);
+            DatabaseFirst.Females female = (DatabaseFirst.Females)FemalesList.SelectedItem;
+            _selectedFemale = female;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -87,7 +100,7 @@ namespace WpfApp1.Females
         {
             if (FemalesList.SelectedItem != null)
             {
-                MainGridManager.SetUserControl(new FemalePage(FemalesList.SelectedItem as DatabaseFirst.Females));
+                MainGridManager.SetUserControl(new FemalePage(_selectedFemale));
                 MenuToolbarManager.SetEnableEditAndDelete(false);
                 MenuToolbarManager.Back.IsEnabled = true;
                 FemalesList.SelectedItem = null;
@@ -130,9 +143,12 @@ namespace WpfApp1.Females
         public void RemoveSelectedItem()
         {
             UnitOfWork unitOfWork = new UnitOfWork(new Entities());
-            unitOfWork.Females.Remove(unitOfWork.Females.GetAll().ToList()[FemalesList.SelectedIndex]);
-            females.RemoveAt(FemalesList.SelectedIndex);
+            unitOfWork.Females.RemoveFemaleByCode(_selectedFemale.code);
             unitOfWork.Complete();
+
+            MainGridManager.SetUserControl(new MainFemales());
+            //RemoveItemFromList(FemalesObservableList, _selectedFemale);
+
         }
     }
 }

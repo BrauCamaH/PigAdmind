@@ -2,7 +2,6 @@
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.DatabaseFirst;
-using WpfApp1.Managers;
 using WpfApp1.Persistance;
 
 namespace WpfApp1.Females
@@ -17,27 +16,31 @@ namespace WpfApp1.Females
         public EditFemale()
         {
             InitializeComponent();
-            GetFemale();
+
+        }
+        public EditFemale(DatabaseFirst.Females female)
+        {
+            InitializeComponent();
+            _female = female;
+            GetFemale(female);
 
         }
 
         private void EditFemaleFromDatabase(string newCode, string newDate)
         {
             _unitOfWork = new UnitOfWork(new Entities());
-            _female = _unitOfWork.Females.GetAll().ToList()[ContextManager.Instance().CurrentSelectedItem];
             _female.code = newCode;
             _female.birthday = newDate;
             _unitOfWork.Complete();
         }
 
-        private void GetFemale()
+        private void GetFemale(DatabaseFirst.Females female)
         {
             _unitOfWork = new UnitOfWork(new Entities());
             if (_unitOfWork.Females.GetAll().Count() != 0)
             {
-                _female = _unitOfWork.Females.GetAll().ToList()[ContextManager.Instance().CurrentSelectedItem];
-                CodeTextBox.Text = _female.code;
-                DatePicker.Text = _female.birthday;
+                CodeTextBox.Text = female.code;
+                DatePicker.Text = female.birthday;
             }
         }
         private void CheckBox_checked(object sender, RoutedEventArgs e)
