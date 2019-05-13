@@ -6,5 +6,7 @@ namespace WpfApp1.Core.Repositories
     interface IBirthsRepository : IRepository<Births>
     {
         IEnumerable<Births> GetBirthsByFemale(string code);
+
+        void RemoveByID(int id);
     }
 }

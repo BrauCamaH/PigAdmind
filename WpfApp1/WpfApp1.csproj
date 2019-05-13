@@ -66,10 +66,12 @@
     <Reference Include="System.Data.SqlServerCe, Version=4.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Compact.4.0.8876.1\lib\net40\System.Data.SqlServerCe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -149,6 +151,9 @@
     <Compile Include="Females\AddWeaning.xaml.cs">
       <DependentUpon>AddWeaning.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Females\BirthViews\BirthsPage.xaml.cs">
+      <DependentUpon>BirthsPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Females\BirthViews\DeleteBirth.xaml.cs">
       <DependentUpon>DeleteBirth.xaml</DependentUpon>
     </Compile>
@@ -214,6 +219,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Females\AddWeaning.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Females\BirthViews\BirthsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

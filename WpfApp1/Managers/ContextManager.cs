@@ -2,29 +2,28 @@
 
 namespace WpfApp1.Managers
 {
-	class ContextManager
-	{
-		public static ContextManager Instance()
-		{
-			if (_instance == null)
-			{
-				lock (Padlock)
-				{
-					if (_instance == null)
-					{
-						_instance = new ContextManager();
-					}
-				}
-			}
-			return _instance;
-		}
+    class ContextManager
+    {
+        public static ContextManager Instance()
+        {
+            if (_instance == null)
+            {
+                lock (Padlock)
+                {
+                    if (_instance == null)
+                    {
+                        _instance = new ContextManager();
+                    }
+                }
+            }
+            return _instance;
+        }
 
 
-		private static ContextManager _instance = null;
-		private static readonly object Padlock = new object();
+        private static ContextManager _instance = null;
+        private static readonly object Padlock = new object();
 
-		public int CurrentSelectedItem { get; set; }
-		public UserControl CurrentContext { get; set; }
-		public UserControl CurrentEditControlContext { get; set; }
-	}
+        public UserControl CurrentContext { get; set; }
+        public UserControl CurrentEditControlContext { get; set; }
+    }
 }

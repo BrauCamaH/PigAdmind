@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using WpfApp1.Core.Repositories;
@@ -17,9 +18,18 @@ namespace WpfApp1.Persistance.Repositories
             return DbEntities.Births.Where(b => b.fem_code == code).ToList();
         }
 
-        public Entities DbEntities
+        public void RemoveByID(int id)
         {
-            get { return new Entities(); }
+            var query = from b in DbEntities.Births
+                        where b.id == id
+                        select b;
+            if (query.First() != null)
+            {
+                DbEntities.Births.Remove(query.FirstOrDefault() ?? throw new InvalidOperationException());
+            }
         }
+
+
+        public Entities DbEntities => Context as Entities;
     }
 }

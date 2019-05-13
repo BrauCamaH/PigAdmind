@@ -12,28 +12,29 @@ namespace WpfApp1.Females.BirthViews
     /// </summary>
     public partial class DeleteBirth : UserControl
     {
-        private int _index;
-        private string _femaleCode;
+        private Births _birth;
         private ObservableCollection<Births> _observableCollection;
         public DeleteBirth()
         {
             InitializeComponent();
         }
-        public DeleteBirth(int index, string femaleCode, ObservableCollection<Births> observableC)
+        public DeleteBirth(Births births, ObservableCollection<Births> observableC)
         {
             InitializeComponent();
-            _index = index;
             _observableCollection = observableC;
-            _femaleCode = femaleCode;
+            _birth = births;
         }
-
+        private void RemoveItemFromList(ObservableCollection<Births> collection, Births currentBirths)
+        {
+            collection.Remove(collection.Single(i => i.id == _birth.id));
+        }
         private void Delete()
         {
             if (_observableCollection != null && _observableCollection.Count > 0)
             {
                 var unitOfWork = new UnitOfWork(new Entities());
-                unitOfWork.Births.Remove(unitOfWork.Births.GetAll().ToList()[_index]);
-                _observableCollection.RemoveAt(_index);
+                unitOfWork.Births.RemoveByID(_birth.id);
+
                 unitOfWork.Complete();
             }
 

@@ -42,7 +42,6 @@ namespace WpfApp1
             MenuToolbarManager.Edit = EditBtn;
             MenuToolbarManager.Delete = DeleteBtn;
             ContextManager.Instance().CurrentEditControlContext = _editFemale;
-            ContextManager.Instance().CurrentContext = new MainFemales();
 
             CurrentRemovableUc = MainFemales;
             _initialMarginMenuBar = MenuBar.Margin;

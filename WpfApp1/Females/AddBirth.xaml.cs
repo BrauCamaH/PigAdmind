@@ -25,6 +25,7 @@ namespace WpfApp1.Females
             InitializeComponent();
             _female = female;
             _observableCollection = births;
+
         }
         private void Accept_Button_Click(object sender, RoutedEventArgs e)
         {

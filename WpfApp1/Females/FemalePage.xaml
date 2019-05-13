@@ -5,9 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.Females"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
+             xmlns:birthViews="clr-namespace:WpfApp1.Females.BirthViews"
              Background="White" d:DesignWidth="1366" d:DesignHeight="768"  Width="auto" Height="auto">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -150,127 +151,7 @@
                 </Grid>
             </TabItem>
             <TabItem  Header="Partos">
-                <Grid Background="#f2f2f2">
-                    <StackPanel 
-              Orientation="Horizontal" 
-              materialDesign:RippleAssist.IsCentered="True" Margin="17,14,716,552" RenderTransformOrigin="0.5,0.5">
-                        <materialDesign:ColorZone
-                Mode="Standard"
-                Padding="8 4 8 4"
-                CornerRadius="2"
-                Panel.ZIndex="1"
-                Margin="16 0 0 0"
-                materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="31*"/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Button
-                         Style="{DynamicResource MaterialDesignToolButton}" Grid.RowSpan="2">
-                                    <materialDesign:PackIcon  Kind="Magnify" Opacity=".56" />
-                                </Button>
-                                <TextBox
-                                    Grid.Column="1" Margin="8,4,0,3" materialDesign:HintAssist.Hint="Buscar..."
-                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                                    BorderThickness="0"
-                                    MinWidth="200"
-                                    VerticalAlignment="Center" />
-                            </Grid>
-                        </materialDesign:ColorZone>
-                    </StackPanel>
-                    <ListView x:Name="BirthsListView" HorizontalAlignment="Left" 
-                              Height="550" Margin="0,60,0,0"
-                              VerticalAlignment="Top" Width="502">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Número Lechones" DisplayMemberBinding="{Binding n_piglets}"/>
-                                <GridViewColumn Header="Fecha" DisplayMemberBinding="{Binding date}"/>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                    <StackPanel Margin="854,0,0,552" Orientation="Horizontal">
-                        <Button x:Name="EditBirthButton"
-                                Background="{x:Null}" 
-                                Height="Auto" 
-                                Margin="0,0,0,1" Width="80"
-                                Click="EditBirthButton_OnClick">
-                            <materialDesign:PackIcon Kind="Edit"  Opacity=".56" Height="52" Width="52" />
-                        </Button>
-                        <Button x:Name="DeleteBirthButton"
-                                Background="{x:Null}" 
-                                Height="Auto" Margin="0,0,0,1" 
-                                Width="80"
-                                Click="DeleteBirthButton_Onclick">
-                            <materialDesign:PackIcon Kind="Delete"  Opacity=".56" Height="52" Width="52" />
-                        </Button>
-                    </StackPanel>
-                    <FlowDocumentReader Margin="507,83,3,-81">
-                        <FlowDocument>
-
-                            <Table CellSpacing="5">
-                                <Table.Columns>
-                                    <TableColumn/>
-                                    <TableColumn/>
-                                </Table.Columns>
-                                <TableRowGroup>
-                                    <!-- Title row for the table. -->
-                                    <TableRow Background="SteelBlue" >
-                                        <TableCell ColumnSpan="2" TextAlignment="Center">
-                                            <Paragraph FontSize="24pt" FontWeight="Bold">Información</Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <!-- Header row for the table. -->
-                                    <TableRow Background="LightBlue" FontSize="20">
-                                        <TableCell>
-                                            <Paragraph FontSize="14pt" FontWeight="Bold">Parametro</Paragraph>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Paragraph FontSize="14pt" FontWeight="Bold">Valor</Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow Background="White">
-                                        <TableCell>
-                                            <Paragraph>Lechones Vivos</Paragraph>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Paragraph>0</Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow Background="White">
-                                        <TableCell>
-                                            <Paragraph>Lechones Muertos</Paragraph>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Paragraph>0</Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow Background="White">
-                                        <TableCell>
-                                            <Paragraph>Lechones Destetados</Paragraph>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Paragraph>0</Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow Background="White">
-                                        <TableCell>
-                                            <Paragraph>Momias</Paragraph>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Paragraph>0</Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                </TableRowGroup>
-                            </Table>
-                        </FlowDocument>
-                    </FlowDocumentReader>
-                </Grid>
+                <birthViews:BirthsPage x:Name="Births"> </birthViews:BirthsPage>
             </TabItem>
             <TabItem Header="Enfermedades">
                 <Grid Background="#f2f2f2">
