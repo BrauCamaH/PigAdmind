@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="WpfApp1.Females.SickViews.SicksPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.Females.SickViews"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="567.525" d:DesignWidth="1011.856">
+    <Grid Background="#f2f2f2">
+        <StackPanel 
+                          Orientation="Horizontal" 
+                          materialDesign:RippleAssist.IsCentered="True" 
+                          Margin="17,14,716,552" RenderTransformOrigin="0.5,0.5"
+                          Grid.ColumnSpan="2">
+            <materialDesign:ColorZone
+                            Mode="Standard"
+                            Padding="8 4 8 4"
+                            CornerRadius="2"
+                            Panel.ZIndex="1"
+                            Margin="16 0 0 0"
+                            materialDesign:ShadowAssist.ShadowDepth="Depth1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="31*"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                         Style="{DynamicResource MaterialDesignToolButton}" Grid.RowSpan="2">
+                        <materialDesign:PackIcon  Kind="Magnify" Opacity=".56" />
+                    </Button>
+                    <TextBox
+                                    Grid.Column="1" Margin="8,4,0,3" materialDesign:HintAssist.Hint="Buscar..."
+                                    materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
+                                    BorderThickness="0"
+                                    MinWidth="200"
+                                    VerticalAlignment="Center" />
+                </Grid>
+            </materialDesign:ColorZone>
+        </StackPanel>
+        <ListView HorizontalAlignment="Left" 
+                              Height="545" 
+                              Margin="0,65,0,0" 
+                              VerticalAlignment="Top" 
+                              Width="782" Grid.ColumnSpan="2"
+                              Background="White">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Enfermedad"/>
+                    <GridViewColumn Header="Fecha de Inicio"/>
+                    <GridViewColumn Header="Fecha de Mejora"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StackPanel Margin="843,0,0,552" Orientation="Horizontal">
+            <Button Background="{x:Null}" Height="Auto" 
+                                Margin="0,0,0,1" Width="80">
+                <materialDesign:PackIcon Kind="Edit"  Opacity=".56" 
+                                                     
+                                                     Height="52" Width="52" />
+            </Button>
+            <Button Background="{x:Null}" Height="Auto" 
+                                Margin="0,0,0,1" Width="80">
+                <materialDesign:PackIcon Kind="Delete"  Opacity=".56" 
+                                                     Height="52" Width="52" />
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

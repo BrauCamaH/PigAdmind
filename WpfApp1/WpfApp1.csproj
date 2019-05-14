@@ -175,6 +175,9 @@
     <Compile Include="Females\SickViews\EditSick.xaml.cs">
       <DependentUpon>EditSick.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Females\SickViews\SicksPage.xaml.cs">
+      <DependentUpon>SicksPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Groups\EditGroup.xaml.cs">
       <DependentUpon>EditGroup.xaml</DependentUpon>
     </Compile>
@@ -258,6 +261,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Females\SickViews\EditSick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Females\SickViews\SicksPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
