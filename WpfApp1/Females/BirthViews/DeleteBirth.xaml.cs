@@ -34,7 +34,7 @@ namespace WpfApp1.Females.BirthViews
             {
                 var unitOfWork = new UnitOfWork(new Entities());
                 unitOfWork.Births.RemoveByID(_birth.id);
-
+                RemoveItemFromList(_observableCollection, _birth);
                 unitOfWork.Complete();
             }
 

@@ -61,7 +61,7 @@ namespace WpfApp1.Females
 
         private void BirthButtonClick(object sender, RoutedEventArgs e)
         {
-            AddUserControlToEventDialog(new AddBirth(_female, Births.BirthsObservable));
+            AddUserControlToEventDialog(new AddBirth(_female, Births.BirthsObservableList));
         }
     }
 }

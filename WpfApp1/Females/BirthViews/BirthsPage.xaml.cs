@@ -12,7 +12,7 @@ namespace WpfApp1.Females.BirthViews
     /// </summary>
     public partial class BirthsPage : UserControl
     {
-        public ObservableCollection<Births> BirthsObservable { get; set; }
+        public ObservableCollection<Births> BirthsObservableList { get; set; }
         public DatabaseFirst.Females Female { get; private set; }
 
         public Births CurrentBirth { get; private set; }
@@ -20,7 +20,7 @@ namespace WpfApp1.Females.BirthViews
         public BirthsPage()
         {
             InitializeComponent();
-            BirthsObservable = new ObservableCollection<Births>();
+            BirthsObservableList = new ObservableCollection<Births>();
         }
 
         public void SetFemale(DatabaseFirst.Females female)
@@ -30,12 +30,15 @@ namespace WpfApp1.Females.BirthViews
         }
         private void EditBirthButton_OnClick(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+
+
         }
 
         private void DeleteBirthButton_Onclick(object sender, RoutedEventArgs e)
         {
-            throw new System.NotImplementedException();
+            EventDialog.IsOpen = true;
+            MainGridEvent.Children.Clear();
+            MainGridEvent.Children.Add(new DeleteBirth(CurrentBirth, BirthsObservableList));
         }
 
         public static void AddRange<T>(ObservableCollection<T> coll, IEnumerable<T> items)
@@ -49,8 +52,14 @@ namespace WpfApp1.Females.BirthViews
         private void GetBirthsFromDatabase()
         {
             UnitOfWork unitOfWork = new UnitOfWork(new Entities());
-            AddRange(BirthsObservable, unitOfWork.Births.GetBirthsByFemale(Female.code) as IEnumerable<Births>);
-            BirthsListView.ItemsSource = BirthsObservable;
+            AddRange(BirthsObservableList, unitOfWork.Births.GetBirthsByFemale(Female.code) as IEnumerable<Births>);
+            BirthsListView.ItemsSource = BirthsObservableList;
+        }
+
+        private void BirthsListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Births birth = (Births)BirthsListView.SelectedItem;
+            CurrentBirth = birth;
         }
     }
 }
