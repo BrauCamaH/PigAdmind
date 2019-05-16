@@ -32,14 +32,6 @@ namespace WpfApp1.Females
 
         private void RemoveItemFromList(ObservableCollection<DatabaseFirst.Females> collection, DatabaseFirst.Females currentFemale)
         {
-            if (collection != null && collection.Count > 0)
-            {
-
-            }
-            else
-            {
-                MessageBox.Show("Error");
-            }
             collection.Remove(collection.Single(i => i.code.Equals(currentFemale.code)));
         }
         private void AddNewFemale(string code, string birthday)

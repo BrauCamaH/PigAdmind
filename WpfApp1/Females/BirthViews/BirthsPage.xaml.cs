@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Persistance;
 
@@ -23,10 +25,24 @@ namespace WpfApp1.Females.BirthViews
             BirthsObservableList = new ObservableCollection<Births>();
         }
 
+        private bool CustomFilter(object obj)
+        {
+            if (String.IsNullOrEmpty(SearchBox.TextBox.Text))
+                return true;
+            else
+            {
+                return (((DatabaseFirst.Births)obj).n_piglets.ToString()
+                        .IndexOf(SearchBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                       (((DatabaseFirst.Births)obj).date.IndexOf(SearchBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+
+        }
+
         public void SetFemale(DatabaseFirst.Females female)
         {
             Female = female;
             GetBirthsFromDatabase();
+            SearchBox.SetView(BirthsListView, CustomFilter);
         }
         private void EditBirthButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -60,6 +76,11 @@ namespace WpfApp1.Females.BirthViews
         {
             Births birth = (Births)BirthsListView.SelectedItem;
             CurrentBirth = birth;
+        }
+
+        private void TextBox_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            CollectionViewSource.GetDefaultView(BirthsListView.ItemsSource).Refresh();
         }
     }
 }
