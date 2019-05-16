@@ -94,6 +94,9 @@
     <Compile Include="Core\Repositories\IFemalesRepository.cs" />
     <Compile Include="Core\Repositories\IInseminationsRepository.cs" />
     <Compile Include="Core\Repositories\ISicksRepository.cs" />
+    <Compile Include="CustomUserControls\LookTextBox.xaml.cs">
+      <DependentUpon>LookTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseFirst\Births.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -208,6 +211,10 @@
     <Compile Include="Sales\NewSale.xaml.cs">
       <DependentUpon>NewSale.xaml</DependentUpon>
     </Compile>
+    <Page Include="CustomUserControls\LookTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Delete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
