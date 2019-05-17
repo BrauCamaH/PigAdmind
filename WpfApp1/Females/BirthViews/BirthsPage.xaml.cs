@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Controls;
+using WpfApp1.CustomUserControls;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Persistance;
 
@@ -21,6 +22,7 @@ namespace WpfApp1.Females.BirthViews
         {
             InitializeComponent();
             BirthsObservableList = new ObservableCollection<Births>();
+
         }
 
         private bool CustomFilter(object obj)
@@ -36,11 +38,13 @@ namespace WpfApp1.Females.BirthViews
 
         }
 
+        //This method set the female to make possible all the expected behaviour
         public void SetFemale(DatabaseFirst.Females female)
         {
             Female = female;
             GetBirthsFromDatabase();
             SearchBox.SetView(BirthsListView, CustomFilter);
+            EditAndDelete.SetDialogHost(EventDialog, MainGridEvent);
         }
 
         public static void AddRange<T>(ObservableCollection<T> coll, IEnumerable<T> items)
@@ -60,8 +64,12 @@ namespace WpfApp1.Females.BirthViews
 
         private void BirthsListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            EditAndDelete.IsEnabled = BirthsListView.SelectedItem != null;
+
             Births birth = (Births)BirthsListView.SelectedItem;
             CurrentBirth = birth;
+
+            EditAndDelete.SetDeleteControl(new DeleteBirth(CurrentBirth, BirthsObservableList));
         }
     }
 }

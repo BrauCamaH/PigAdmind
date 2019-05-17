@@ -11,14 +11,16 @@
         <StackPanel Orientation="Horizontal" MaxHeight="70" MaxWidth="300">
             <Button x:Name="EditButton"
                     Background="{x:Null}" Height="Auto" 
-                    Width="auto">
+                    Width="auto"
+                    Click="EditButton_OnClick">
                 <materialDesign:PackIcon Kind="Edit"  Opacity=".56" 
                                          Foreground="Gray"          
                                          Height="52" Width="52" />
             </Button>
             <Button x:Name="DeleteButton"
                     Background="{x:Null}" Height="Auto" 
-                    Width="auto">
+                    Width="auto"
+                    Click="DeleteButton_OnClick">
                 <materialDesign:PackIcon Kind="Delete"  Opacity=".56" 
                                          Foreground="Gray"    
                                          Height="52" Width="52" />
