@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Persistance;
 
@@ -44,18 +42,6 @@ namespace WpfApp1.Females.BirthViews
             GetBirthsFromDatabase();
             SearchBox.SetView(BirthsListView, CustomFilter);
         }
-        private void EditBirthButton_OnClick(object sender, RoutedEventArgs e)
-        {
-
-
-        }
-
-        private void DeleteBirthButton_Onclick(object sender, RoutedEventArgs e)
-        {
-            EventDialog.IsOpen = true;
-            MainGridEvent.Children.Clear();
-            MainGridEvent.Children.Add(new DeleteBirth(CurrentBirth, BirthsObservableList));
-        }
 
         public static void AddRange<T>(ObservableCollection<T> coll, IEnumerable<T> items)
         {
@@ -76,11 +62,6 @@ namespace WpfApp1.Females.BirthViews
         {
             Births birth = (Births)BirthsListView.SelectedItem;
             CurrentBirth = birth;
-        }
-
-        private void TextBox_OnTextChanged(object sender, TextChangedEventArgs e)
-        {
-            CollectionViewSource.GetDefaultView(BirthsListView.ItemsSource).Refresh();
         }
     }
 }

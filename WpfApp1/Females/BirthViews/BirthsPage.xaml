@@ -21,11 +21,14 @@
         </materialDesign:DialogHost>
         
         <customUserControls:LookTextBox
-            Margin="17,14,716,552" RenderTransformOrigin="0.5,0.5" 
+            Margin="6,10,728,453" RenderTransformOrigin="0.5,0.5" 
             x:Name="SearchBox">
 
         </customUserControls:LookTextBox>
-        
+
+        <customUserControls:EditAndDelete HorizontalAlignment="Right"
+                                          VerticalAlignment="Top"/>
+
         <ListView x:Name="BirthsListView"
                   HorizontalAlignment="Left" 
                   Height="550" Margin="0,60,0,0"
@@ -38,22 +41,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <StackPanel Margin="854,0,0,552" Orientation="Horizontal">
-            <Button x:Name="EditBirthButton"
-                                Background="{x:Null}" 
-                                Height="Auto" 
-                                Margin="0,0,0,1" Width="80"
-                                Click="EditBirthButton_OnClick">
-                <materialDesign:PackIcon Kind="Edit"  Opacity=".56" Height="52" Width="52" />
-            </Button>
-            <Button x:Name="DeleteBirthButton"
-                                Background="{x:Null}" 
-                                Height="Auto" Margin="0,0,0,1" 
-                                Width="80"
-                                Click="DeleteBirthButton_Onclick">
-                <materialDesign:PackIcon Kind="Delete"  Opacity=".56" Height="52" Width="52" />
-            </Button>
-        </StackPanel>
+      
         <FlowDocumentReader Margin="507,83,3,-81">
             <FlowDocument>
 
