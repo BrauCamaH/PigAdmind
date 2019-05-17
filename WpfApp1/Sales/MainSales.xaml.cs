@@ -16,7 +16,7 @@ namespace WpfApp1.Sales
 
 		private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			MenuToolbarManager.SetEnableEditAndDelete(true);
+
 		}
 
 		private void NewSaleButton_Click(object sender, System.Windows.RoutedEventArgs e)

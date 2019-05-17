@@ -28,7 +28,7 @@ namespace WpfApp1
         private readonly Thickness _initialMargin;
         private readonly Thickness _initialMarginMenuBar;
 
-        public MainFemales MainFemales { get => new MainFemales(); set => mainFemales = value; }
+        public MainFemales MainFemales { get => new MainFemales(MainBackButton, MainEditAndDelete); set => mainFemales = value; }
         public MainGroups MainGroups { get => new MainGroups(); set => mainGroups = value; }
         public MainSales MainSales { get => new MainSales(); set => mainSales = value; }
 
@@ -38,9 +38,6 @@ namespace WpfApp1
             SetInitialPage();
             InitializeEditControls();
             MainGridManager.MainWindowGrid = GridMain;
-            MenuToolbarManager.Back = BackBtn;
-            MenuToolbarManager.Edit = EditBtn;
-            MenuToolbarManager.Delete = DeleteBtn;
             ContextManager.Instance().CurrentEditControlContext = _editFemale;
 
             CurrentRemovableUc = MainFemales;
@@ -57,7 +54,7 @@ namespace WpfApp1
 
         private void SetInitialPage()
         {
-            var usc = new MainFemales();
+            var usc = MainFemales;
             GridMain.Children.Add(usc);
         }
 
@@ -92,19 +89,16 @@ namespace WpfApp1
             GridMain.Children.Clear();
             int index = ListViewMenu.SelectedIndex;
             MoveCursorMenu(index);
-            MenuToolbarManager.SetEnableEditAndDelete(false);
-            MenuToolbarManager.Back.IsEnabled = false;
+
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "Females":
                     usc = MainFemales;
-                    CurrentRemovableUc = MainFemales;
                     GridMain.Children.Add(usc);
                     ContextManager.Instance().CurrentEditControlContext = _editFemale;
                     break;
                 case "Groups":
                     usc = MainGroups;
-                    CurrentRemovableUc = MainGroups;
                     GridMain.Children.Add(usc);
                     ContextManager.Instance().CurrentEditControlContext = _editGroup;
                     break;
@@ -115,12 +109,9 @@ namespace WpfApp1
                     GridMain.Children.Add(usc);
                     ContextManager.Instance().CurrentEditControlContext = _editSale;
                     break;
+
             }
-        }
-
-        private void Females_Selected(object sender, RoutedEventArgs e)
-        {
-
+            MainBackButton.SetActualContext(usc);
         }
 
         private void Exit(object sender, RoutedEventArgs e)
@@ -141,26 +132,6 @@ namespace WpfApp1
             var user = ctx.Users.First();
             user.isOnline = 0;
             ctx.SaveChanges();
-        }
-
-        private void BackBtn_Click(object sender, RoutedEventArgs e)
-        {
-            MainGridManager.SetUserControl(ContextManager.Instance().CurrentContext);
-            BackBtn.IsEnabled = false;
-        }
-
-        private void EditBtn_Click(object sender, RoutedEventArgs e)
-        {
-            MainDialogGrid.Children.Clear();
-            MainDialogGrid.Children.Add(new EditFemale());
-            MainDialogHost.IsOpen = true;
-        }
-
-        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
-        {
-            MainDialogGrid.Children.Clear();
-            MainDialogGrid.Children.Add(new Delete(CurrentRemovableUc));
-            MainDialogHost.IsOpen = true;
         }
 
 

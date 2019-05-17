@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="WpfApp1.CustomUserControls.BackButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1.CustomUserControls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="71.053" d:DesignWidth="99.624">
+    <Button Background="{x:Null}" 
+            Height="Auto" Margin="0,0,0,1" 
+            Width="80"  
+            Click="BackBtn_Click">
+        <materialDesign:PackIcon 
+            Name="Back" Kind="ArrowLeft"  Opacity=".56" Height="52" Width="52" />
+    </Button>
+</UserControl>

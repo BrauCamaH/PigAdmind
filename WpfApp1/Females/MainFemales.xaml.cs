@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using WpfApp1.CustomUserControls;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Interfaces;
 using WpfApp1.Managers;
@@ -20,16 +21,33 @@ namespace WpfApp1.Females
         public ObservableCollection<DatabaseFirst.Females> FemalesObservableList { get; }
         private CollectionView _view;
 
-        public MainFemales()
+        private BackButton _backButton;
+        private EditAndDelete _editAndDelete;
+
+        public MainFemales(BackButton backButton, EditAndDelete editAndDelete)
         {
+
             InitializeComponent();
             FemalesObservableList = new ObservableCollection<DatabaseFirst.Females>();
             GetFemalesFromDataBase();
             _view = (CollectionView)CollectionViewSource.GetDefaultView(FemalesObservableList);
             _view.Filter = CustomFilter;
+
+            _backButton = backButton;
+            _editAndDelete = editAndDelete;
+
         }
 
+        public MainFemales()
+        {
+            InitializeComponent();
+        }
 
+        private void SetBackButtonBehaviour(BackButton backButton)
+        {
+            backButton.SetActualContext(this);
+            backButton.IsEnabled = true;
+        }
         private void RemoveItemFromList(ObservableCollection<DatabaseFirst.Females> collection, DatabaseFirst.Females currentFemale)
         {
             collection.Remove(collection.Single(i => i.code.Equals(currentFemale.code)));
@@ -77,14 +95,9 @@ namespace WpfApp1.Females
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MenuToolbarManager.SetEnableEditAndDelete(FemalesList.SelectedItem != null);
+            _editAndDelete.IsEnabled = FemalesList.SelectedItem != null;
             DatabaseFirst.Females female = (DatabaseFirst.Females)FemalesList.SelectedItem;
             _selectedFemale = female;
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
         }
 
@@ -93,9 +106,8 @@ namespace WpfApp1.Females
             if (FemalesList.SelectedItem != null)
             {
                 MainGridManager.SetUserControl(new FemalePage(_selectedFemale));
-                MenuToolbarManager.SetEnableEditAndDelete(false);
-                MenuToolbarManager.Back.IsEnabled = true;
                 FemalesList.SelectedItem = null;
+                SetBackButtonBehaviour(_backButton);
             }
 
         }

@@ -80,13 +80,11 @@ namespace WpfApp1.Groups
 
 		private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
-			MenuToolbarManager.SetEnableEditAndDelete(true);
+
 		}
 		private void OnListMouseDoubleClick(object sender, RoutedEventArgs e)
 		{
 			MainGridManager.SetUserControl(new GroupPage());
-			MenuToolbarManager.SetEnableEditAndDelete(false);
-			MenuToolbarManager.Back.IsEnabled = true;
 		}
 
 		private void ClearFields()

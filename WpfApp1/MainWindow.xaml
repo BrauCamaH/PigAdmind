@@ -7,7 +7,9 @@
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         Title="MainWindow" Height="Auto" Width="Auto" 
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" WindowState="Maximized" WindowStartupLocation="CenterScreen" d:DesignWidth="1366" d:DesignHeight="768">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
+        WindowState="Maximized" WindowStartupLocation="CenterScreen" d:DesignWidth="1366" d:DesignHeight="768">
     <Window.Resources>
 
         <Storyboard x:Key="OpenMenu">
@@ -80,18 +82,15 @@
             </materialDesign:Card> 
             <StackPanel Background="LightBlue"    Margin="70,48,0,624" Orientation="Horizontal" VerticalAlignment="Top" Height="60" >
                 <Separator x:Name="ToolSeparator" Background="{x:Null}"  Width="132"/>
-                <Button Name="BackBtn" Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled="False" Click="BackBtn_Click">
-                    <materialDesign:PackIcon Name="Back" Kind="ArrowLeft"  Opacity=".56" Height="52" Width="52" />
-                </Button>
+                <customUserControls:BackButton x:Name="MainBackButton" 
+                                               IsEnabled="False">
+                </customUserControls:BackButton>
                 <Separator Background="{x:Null}"  Width="168"/>
-         
-                <Button Name="EditBtn" Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled ="False" Click="EditBtn_Click">
-                    <materialDesign:PackIcon Kind="Edit"  Opacity=".56" Height="52" Width="52" />
-                </Button>
 
-                <Button Name="DeleteBtn" Background="{x:Null}" Height="Auto" Margin="0,0,0,1" Width="80" IsEnabled ="False" Click="DeleteBtn_Click">
-                    <materialDesign:PackIcon Kind="Delete"  Opacity=".56" Height="52" Width="52" />
-                </Button>
+                <customUserControls:EditAndDelete x:Name="MainEditAndDelete"
+                                                   IsEnabled="False">
+                </customUserControls:EditAndDelete>
+                
             </StackPanel>
             
             <Grid x:Name="GridMain" Margin="72,108,0,0"/>
@@ -112,7 +111,7 @@
                         </Button>
                     </Grid>
                     <ListView x:Name="ListViewMenu" Foreground="Black" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
-                        <ListViewItem x:Name="Females" Height="60" Selected="Females_Selected">
+                        <ListViewItem x:Name="Females" Height="60">
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="Pig" Height="25" Width="25" Margin="10"/>
                                 <TextBlock Text="Hembras" VerticalAlignment="Center" Margin="20 10"/>
