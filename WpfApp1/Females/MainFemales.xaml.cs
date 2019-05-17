@@ -19,7 +19,7 @@ namespace WpfApp1.Females
     {
         private static DatabaseFirst.Females _selectedFemale;
         public ObservableCollection<DatabaseFirst.Females> FemalesObservableList { get; }
-        private CollectionView _view;
+
 
         private BackButton _backButton;
         private EditAndDelete _editAndDelete;
@@ -30,12 +30,11 @@ namespace WpfApp1.Females
             InitializeComponent();
             FemalesObservableList = new ObservableCollection<DatabaseFirst.Females>();
             GetFemalesFromDataBase();
-            _view = (CollectionView)CollectionViewSource.GetDefaultView(FemalesObservableList);
-            _view.Filter = CustomFilter;
 
             _backButton = backButton;
             _editAndDelete = editAndDelete;
 
+            SearchTextBox.SetView(FemalesList, CustomFilter);
         }
 
         public MainFemales()
@@ -127,14 +126,14 @@ namespace WpfApp1.Females
 
         private bool CustomFilter(object obj)
         {
-            if (String.IsNullOrEmpty(TextBox.Text))
+            if (String.IsNullOrEmpty(SearchTextBox.TextBox.Text))
                 return true;
             else
             {
-                return (((DatabaseFirst.Females)obj).code.IndexOf(TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                       (((DatabaseFirst.Females)obj).birthday.IndexOf(TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                       (((DatabaseFirst.Females)obj).martenity.ToString().IndexOf(TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                       (((DatabaseFirst.Females)obj).status.IndexOf(TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                return (((DatabaseFirst.Females)obj).code.IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                       (((DatabaseFirst.Females)obj).birthday.IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                       (((DatabaseFirst.Females)obj).martenity.ToString().IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                       (((DatabaseFirst.Females)obj).status.IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             }
 
         }

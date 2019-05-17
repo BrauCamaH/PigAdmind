@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:WpfApp1.Females"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
              Background="White" d:DesignWidth="1366" d:DesignHeight="768"  Width="auto" Height="auto">
     <Grid >
         <materialDesign:DialogHost CloseOnClickAway="True" VerticalAlignment="Stretch" >
@@ -50,45 +51,12 @@
                 </DockPanel>
             </Button>
         </materialDesign:DialogHost>
-        
-        <StackPanel 
-              Orientation="Horizontal" 
-              materialDesign:RippleAssist.IsCentered="True" Margin="396,20,706,705" RenderTransformOrigin="0.5,0.5">
-            <materialDesign:ColorZone
-                Mode="Standard"
-                Padding="8 4 8 4"
-                CornerRadius="2"
-                Panel.ZIndex="1"
-                Margin="16 0 0 0"
-                materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="31*"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                          Width="Auto" />
-                        <ColumnDefinition
-                           Width="*" />
-                        <ColumnDefinition
-                            Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <Button
-                         Style="{DynamicResource MaterialDesignToolButton}" Grid.RowSpan="2">
-                        <materialDesign:PackIcon  Kind="Magnify" Opacity=".56" />
-                    </Button>
-                    <TextBox
-                            Grid.Column="1" Margin="8,4,0,3" materialDesign:HintAssist.Hint="Buscar..."
-                            materialDesign:TextFieldAssist.DecorationVisibility="Hidden"
-                            BorderThickness="0"
-                            MinWidth="200"
-                            VerticalAlignment="Center" Name="TextBox" TextChanged="TextBox_TextChanged"  />
-                </Grid>
-            </materialDesign:ColorZone>
-        </StackPanel>
 
-        <ListView x:Name="FemalesList" HorizontalAlignment="Left" Height="683" Margin="145,85,0,0" VerticalAlignment="Top" Width="835" SelectionChanged="ListView_SelectionChanged" 
+        <customUserControls:LookTextBox x:Name="SearchTextBox"
+                                        HorizontalAlignment="Center" 
+                                        Margin="347,19,741,705"/>
+
+            <ListView x:Name="FemalesList" HorizontalAlignment="Left" Height="683" Margin="145,85,0,0" VerticalAlignment="Top" Width="835" SelectionChanged="ListView_SelectionChanged" 
                   MouseDoubleClick="OnListMouseDoubleClick" >
             <ListView.View>
                 <GridView>
