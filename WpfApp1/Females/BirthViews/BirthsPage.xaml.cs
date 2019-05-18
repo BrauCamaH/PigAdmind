@@ -44,7 +44,7 @@ namespace WpfApp1.Females.BirthViews
             Female = female;
             GetBirthsFromDatabase();
             SearchBox.SetView(BirthsListView, CustomFilter);
-            EditAndDelete.SetDialogHost(EventDialog, MainGridEvent);
+
         }
 
         public static void AddRange<T>(ObservableCollection<T> coll, IEnumerable<T> items)
@@ -69,7 +69,7 @@ namespace WpfApp1.Females.BirthViews
             Births birth = (Births)BirthsListView.SelectedItem;
             CurrentBirth = birth;
 
-            EditAndDelete.SetDeleteControl(new DeleteBirth(CurrentBirth, BirthsObservableList));
+            EditAndDelete.DeleteControl = new DeleteBirth(CurrentBirth, BirthsObservableList);
         }
     }
 }

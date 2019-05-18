@@ -2,10 +2,10 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.CustomUserControls;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Females;
 using WpfApp1.Groups;
-using WpfApp1.Interfaces;
 using WpfApp1.Managers;
 using WpfApp1.Sales;
 
@@ -19,7 +19,6 @@ namespace WpfApp1
         private MainFemales mainFemales;
         private MainGroups mainGroups;
         private MainSales mainSales;
-        public IRemovable CurrentRemovableUc { get; private set; }
 
         private UserControl _editFemale;
         private UserControl _editGroup;
@@ -40,9 +39,13 @@ namespace WpfApp1
             MainGridManager.MainWindowGrid = GridMain;
             ContextManager.Instance().CurrentEditControlContext = _editFemale;
 
-            CurrentRemovableUc = MainFemales;
             _initialMarginMenuBar = MenuBar.Margin;
             _initialMargin = GridMain.Margin;
+
+            EditAndDelete.DialogHost = MainDialogHost;
+            EditAndDelete.DialogGrid = MainDialogGrid;
+
+
         }
 
         private void InitializeEditControls()
@@ -94,24 +97,18 @@ namespace WpfApp1
             {
                 case "Females":
                     usc = MainFemales;
-                    GridMain.Children.Add(usc);
-                    ContextManager.Instance().CurrentEditControlContext = _editFemale;
+
                     break;
                 case "Groups":
                     usc = MainGroups;
-                    GridMain.Children.Add(usc);
-                    ContextManager.Instance().CurrentEditControlContext = _editGroup;
+
                     break;
                 case "Sales":
-
                     usc = MainSales;
-                    //_currentRemovableUC = MainSales;
-                    GridMain.Children.Add(usc);
-                    ContextManager.Instance().CurrentEditControlContext = _editSale;
-                    break;
 
+                    break;
             }
-            MainBackButton.SetActualContext(usc);
+            MainGridManager.SetUserControl(usc);
         }
 
         private void Exit(object sender, RoutedEventArgs e)

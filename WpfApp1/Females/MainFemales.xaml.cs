@@ -3,10 +3,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using WpfApp1.CustomUserControls;
 using WpfApp1.DatabaseFirst;
-using WpfApp1.Interfaces;
+using WpfApp1.Females.BirthViews;
 using WpfApp1.Managers;
 using WpfApp1.Persistance;
 
@@ -15,9 +14,9 @@ namespace WpfApp1.Females
     /// <summary>
     /// Interaction logic for MainFemales.xaml
     /// </summary>
-    public partial class MainFemales : UserControl, IRemovable
+    public partial class MainFemales : UserControl
     {
-        private static DatabaseFirst.Females _selectedFemale;
+        private DatabaseFirst.Females _selectedFemale;
         public ObservableCollection<DatabaseFirst.Females> FemalesObservableList { get; }
 
 
@@ -96,7 +95,10 @@ namespace WpfApp1.Females
         {
             _editAndDelete.IsEnabled = FemalesList.SelectedItem != null;
             DatabaseFirst.Females female = (DatabaseFirst.Females)FemalesList.SelectedItem;
+            _editAndDelete.EditControl = new EditBirth();
             _selectedFemale = female;
+
+
 
         }
 
@@ -135,22 +137,6 @@ namespace WpfApp1.Females
                        (((DatabaseFirst.Females)obj).martenity.ToString().IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
                        (((DatabaseFirst.Females)obj).status.IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             }
-
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            CollectionViewSource.GetDefaultView(FemalesList.ItemsSource).Refresh();
-        }
-
-        public void RemoveSelectedItem()
-        {
-            UnitOfWork unitOfWork = new UnitOfWork(new Entities());
-            unitOfWork.Females.RemoveFemaleByCode(_selectedFemale.code);
-            unitOfWork.Complete();
-
-            MainGridManager.SetUserControl(new MainFemales());
-            //RemoveItemFromList(FemalesObservableList, _selectedFemale);
 
         }
     }
