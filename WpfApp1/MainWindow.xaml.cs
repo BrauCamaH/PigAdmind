@@ -1,5 +1,4 @@
-﻿using MaterialDesignThemes.Wpf;
-using System.Linq;
+﻿using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.CustomUserControls;
@@ -37,15 +36,11 @@ namespace WpfApp1
             SetInitialPage();
             InitializeEditControls();
             MainGridManager.MainWindowGrid = GridMain;
-            ContextManager.Instance().CurrentEditControlContext = _editFemale;
 
             _initialMarginMenuBar = MenuBar.Margin;
             _initialMargin = GridMain.Margin;
 
-            EditAndDelete.DialogHost = MainDialogHost;
-            EditAndDelete.DialogGrid = MainDialogGrid;
-
-
+            var mainDialogHost = new MainDialogHost(this);
         }
 
         private void InitializeEditControls()
@@ -131,15 +126,5 @@ namespace WpfApp1
             ctx.SaveChanges();
         }
 
-
-        private void MainDialogHost_DialogOpened(object sender, DialogOpenedEventArgs eventargs)
-        {
-            Window.IsEnabled = false;
-        }
-
-        private void MainDialogHost_DialogClosing(object sender, DialogClosingEventArgs eventargs)
-        {
-            Window.IsEnabled = true;
-        }
     }
 }

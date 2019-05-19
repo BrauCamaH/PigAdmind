@@ -35,16 +35,7 @@
     </Window.Triggers>
     <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
         <Grid Background="#FFDEDEDE">
-            <materialDesign:DialogHost x:Name="MainDialogHost" 
-                                       HorizontalAlignment="Stretch"
-                                       VerticalAlignment="Stretch" IsOpen="False" 
-                                       CloseOnClickAway="True" 
-                                       DialogOpened="MainDialogHost_DialogOpened" 
-                                       DialogClosing="MainDialogHost_DialogClosing" >
-                <materialDesign:DialogHost.DialogContent>
-                    <Grid x:Name="MainDialogGrid"></Grid>
-                </materialDesign:DialogHost.DialogContent>
-            </materialDesign:DialogHost>
+            <Grid x:Name="DialogGrid" Width="auto" Height="auto"></Grid>
             <materialDesign:Card x:Name="MenuBar" Height="50" Margin="70,0,0,0" Background="SteelBlue">
                 <StackPanel Background="{x:Null}"   Orientation="Horizontal" VerticalAlignment="Top" Height="51" Margin="150,0,0,-1" >
                     <Menu Foreground="White" FontSize="30" Background="SteelBlue" IsMainMenu="True" Width="1118">
