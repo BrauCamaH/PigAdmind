@@ -8,13 +8,13 @@ using WpfApp1.Persistance.Repositories;
 
 namespace WpfApp1.Persistance
 {
-    class GroupsRepository : Repository<GroupsRepository>, IGroupsRepository
+    class GroupsRepository : Repository<PigGroups>, IGroupsRepository
     {
         public GroupsRepository(DbContext cont) : base(cont)
         {
         }
 
-        public IEnumerable GetFemalesByUser(int id)
+        public IEnumerable GetGroupsByUser(int id)
         {
             throw new NotImplementedException();
         }

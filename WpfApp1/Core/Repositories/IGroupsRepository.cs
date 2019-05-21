@@ -3,9 +3,9 @@ using WpfApp1.DatabaseFirst;
 
 namespace WpfApp1.Core.Repositories
 {
-    interface IGroupsRepository
+    interface IGroupsRepository : IRepository<PigGroups>
     {
-        IEnumerable GetFemalesByUser(int id);
+        IEnumerable GetGroupsByUser(int id);
         PigGroups GetGroupById(int id);
 
         void RemoveGroupById(int id);

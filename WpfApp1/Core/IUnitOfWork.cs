@@ -11,6 +11,9 @@ namespace WpfApp1.Core
         ISicksRepository Sicks { get; }
 
         IGroupsRepository Groups { get; }
+
+        ISalesRepository Sales { get; }
+
         int Complete();
     }
 }

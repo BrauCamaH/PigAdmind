@@ -19,6 +19,7 @@ namespace WpfApp1.Persistance
             Births = new BirthsRepository(_context);
             Sicks = new SicksRepository(_context);
             Groups = new GroupsRepository(_context);
+            Sales = new SalesRepository(_context);
         }
 
         public void Dispose()
@@ -30,8 +31,9 @@ namespace WpfApp1.Persistance
         public IInseminationsRepository Inseminations { get; private set; }
         public IBirthsRepository Births { get; private set; }
         public ISicksRepository Sicks { get; private set; }
-
         public IGroupsRepository Groups { get; private set; }
+
+        public ISalesRepository Sales { get; private set; }
 
         public int Complete()
         {
