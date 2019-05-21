@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfApp1.Groups"
              mc:Ignorable="d" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             Background="White" d:DesignWidth="1366" d:DesignHeight="768"  Width="auto" Height="auto" >
+             Background="White" d:DesignWidth="2090" d:DesignHeight="764"  Width="auto" Height="auto" >
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -19,108 +19,162 @@
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
-        <materialDesign:PopupBox
-            Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
-            VerticalAlignment="Top"
-            HorizontalAlignment="Stretch"
-            PlacementMode="BottomAndAlignCentres"
-            Margin="1050,24,236,0"
-            ToolTip="Agregar nuevo evento" Height="80" Width="80" >
-            <StackPanel>
-                <Button ToolTip="Segundo Pesaje" >
-                    <materialDesign:PackIcon Kind="ShowChart" />
-                </Button>
-                <Button ToolTip= "Último Pesaje">
-                    <materialDesign:PackIcon Kind="ChartMultiline" />
-                </Button>
-                <Button ToolTip="Lechon fallecido">
-                    <materialDesign:PackIcon Kind="SmileyDead" />
-                </Button>
-            </StackPanel>
-        </materialDesign:PopupBox>
-        <Ellipse Height="106" Width="106" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,8,984,0" Stroke="White">
-            <Ellipse.Fill>
-                <ImageBrush Stretch="UniformToFill"/>
-            </Ellipse.Fill>
-        </Ellipse>
-        <Label  Name="Code" Content="Código" Background="SteelBlue" HorizontalAlignment="Left" Margin="426,26,0,0" VerticalAlignment="Top" Width="200" Height="64"   Foreground="White" FontFamily="Roboto" FontWeight="Bold" FontSize="40"/>
-        <Label Name="Total"  Content="nTotal" Background="SteelBlue" HorizontalAlignment="Left" Margin="653,25,0,0" VerticalAlignment="Top" Width="200" Height="64"   Foreground="White" FontFamily="Roboto" FontWeight="Bold" FontSize="40"/>
-        <StackPanel Margin="954,196,318,503" Orientation="Vertical">
-            <Button Background="{x:Null}" Foreground="LightGray" Height="69" Margin="7,0,7,1" Width="80">
-                <materialDesign:PackIcon Kind="Edit"  Opacity=".56" Height="52" Width="52" />
-            </Button>
-
+       
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="Auto" MinWidth="1442"/>
+            <ColumnDefinition Width="353"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" 
+                    Grid.Column="1"
+                    Orientation="Horizontal">
+            <Ellipse 
+                Height="106" 
+                Width="106" 
+                VerticalAlignment="Top" 
+                HorizontalAlignment="Right"  
+                Stroke="White">
+                <Ellipse.Fill>
+                    <ImageBrush Stretch="UniformToFill"/>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Label  Name="Code" 
+                    Margin="100,40,0,0"
+                    Content="Código"
+                    Background="SteelBlue" 
+                    HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Width="200" Height="64"   
+                    Foreground="White" 
+                    FontFamily="Roboto" 
+                    FontWeight="Bold" 
+                    FontSize="40"/>
+            <Label Name="Total"  
+                   Margin="100,40,0,0"
+                   Content="nTotal" 
+                   Background="SteelBlue"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"
+                   Width="200" Height="64" 
+                   Foreground="White" 
+                   FontFamily="Roboto" 
+                   FontWeight="Bold" 
+                   FontSize="40" />
+            <materialDesign:PopupBox
+                Margin="150,40,0,0"
+                Style="{StaticResource MaterialDesignMultiFloatingActionPopupBox}"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Stretch"
+                PlacementMode="BottomAndAlignCentres"
+                ToolTip="Agregar nuevo evento" Height="60" Width="60" >
+                <StackPanel>
+                    <Button ToolTip="Segundo Pesaje" >
+                        <materialDesign:PackIcon Kind="ShowChart" />
+                    </Button>
+                    <Button ToolTip= "Último Pesaje">
+                        <materialDesign:PackIcon Kind="ChartMultiline" />
+                    </Button>
+                    <Button ToolTip="Lechon fallecido">
+                        <materialDesign:PackIcon Kind="SmileyDead" />
+                    </Button>
+                </StackPanel>
+            </materialDesign:PopupBox>
         </StackPanel>
-        <FlowDocumentReader Margin="318,177,412,330" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="261" AllowDrop="False"
-                            ViewingMode="Scroll" IsTwoPageViewEnabled="False" IsPageViewEnabled="False" IsFindEnabled="False" MaxZoom="120" Zoom="120">
-            <FlowDocument >
+        
+        
+       
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <FlowDocumentReader Grid.Column="1" Grid.Row="1"
+                            HorizontalAlignment="Left"
+                            Height="auto" AllowDrop="False"
+                            ViewingMode="Scroll" 
+                            IsTwoPageViewEnabled="False" 
+                            IsPageViewEnabled="False" IsFindEnabled="False" MaxZoom="120" Zoom="120">
+                <FlowDocument >
 
-                <Table CellSpacing="5">
-                    <Table.Columns>
-                        <TableColumn/>
-                        <TableColumn/>
-                    </Table.Columns>
-                    <TableRowGroup>
-                        <!-- Title row for the table. -->
-                        <TableRow Background="SteelBlue" >
-                            <TableCell ColumnSpan="2" TextAlignment="Center">
-                                <Paragraph FontSize="24pt" FontWeight="Bold">Información</Paragraph>
-                            </TableCell>
-                        </TableRow>
-                        <!-- Header row for the table. -->
-                        <TableRow Background="LightBlue" FontSize="20">
-                            <TableCell>
-                                <Paragraph FontSize="14pt" FontWeight="Bold">Parametro</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph FontSize="14pt" FontWeight="Bold">Valor</Paragraph>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow Background="White">
-                            <TableCell>
-                                <Paragraph>Lechon es Vivos</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>0</Paragraph>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow Background="White">
-                            <TableCell>
-                                <Paragraph>Peso inicial promedio</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>0</Paragraph>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow Background="White">
-                            <TableCell>
-                                <Paragraph>Segundo Pesaje</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>0</Paragraph>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow Background="White">
-                            <TableCell>
-                                <Paragraph>Puercos Iniciales</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>0</Paragraph>
-                            </TableCell>
+                    <Table CellSpacing="5">
+                        <Table.Columns>
+                            <TableColumn/>
+                            <TableColumn/>
+                        </Table.Columns>
+                        <TableRowGroup>
+                            <!-- Title row for the table. -->
+                            <TableRow Background="SteelBlue" >
+                                <TableCell ColumnSpan="2" TextAlignment="Center">
+                                    <Paragraph FontSize="24pt" FontWeight="Bold">Información</Paragraph>
+                                </TableCell>
+                            </TableRow>
+                            <!-- Header row for the table. -->
+                            <TableRow Background="LightBlue" FontSize="20">
+                                <TableCell>
+                                    <Paragraph FontSize="14pt" FontWeight="Bold">Parametro</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph FontSize="14pt" FontWeight="Bold">Valor</Paragraph>
+                                </TableCell>
+                            </TableRow>
+                            <TableRow Background="White">
+                                <TableCell>
+                                    <Paragraph>Lechon es Vivos</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>0</Paragraph>
+                                </TableCell>
+                            </TableRow>
+                            <TableRow Background="White">
+                                <TableCell>
+                                    <Paragraph>Peso inicial promedio</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>0</Paragraph>
+                                </TableCell>
+                            </TableRow>
+                            <TableRow Background="White">
+                                <TableCell>
+                                    <Paragraph>Segundo Pesaje</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>0</Paragraph>
+                                </TableCell>
+                            </TableRow>
+                            <TableRow Background="White">
+                                <TableCell>
+                                    <Paragraph>Puercos Iniciales</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>0</Paragraph>
+                                </TableCell>
 
-                        </TableRow>
-                        <TableRow Background="White">
-                            <TableCell>
-                                <Paragraph>Puercos Muertos</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>0</Paragraph>
-                            </TableCell>
+                            </TableRow>
+                            <TableRow Background="White">
+                                <TableCell>
+                                    <Paragraph>Puercos Muertos</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>0</Paragraph>
+                                </TableCell>
 
-                        </TableRow>
-                    </TableRowGroup>
-                </Table>
-            </FlowDocument>
-        </FlowDocumentReader>
+                            </TableRow>
+                        </TableRowGroup>
+                    </Table>
+                </FlowDocument>
+            </FlowDocumentReader>
+            <Button Background="{x:Null}" 
+                    Foreground="LightGray" 
+                    Height="69" 
+                    Margin="7,0,7,1" 
+                    Width="80">
+                <materialDesign:PackIcon Kind="Edit"  
+                                         Opacity=".56" 
+                                         Height="52" 
+                                         Width="52" />
+            </Button>
+        </StackPanel>
+       
+            
     </Grid>
 </UserControl>
