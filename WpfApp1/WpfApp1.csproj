@@ -92,13 +92,11 @@
     </ApplicationDefinition>
     <Compile Include="Core\Repositories\IBirthsRepository.cs" />
     <Compile Include="Core\Repositories\IFemalesRepository.cs" />
+    <Compile Include="Core\Repositories\IGroupsRepository.cs" />
     <Compile Include="Core\Repositories\IInseminationsRepository.cs" />
     <Compile Include="Core\Repositories\ISicksRepository.cs" />
     <Compile Include="CustomUserControls\BackButton.xaml.cs">
       <DependentUpon>BackButton.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomUserControls\CheckForUserApprobation.xaml.cs">
-      <DependentUpon>CheckForUserApprobation.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomUserControls\EditAndDelete.xaml.cs">
       <DependentUpon>EditAndDelete.xaml</DependentUpon>
@@ -108,6 +106,15 @@
     </Compile>
     <Compile Include="CustomUserControls\MainDialogHost.xaml.cs">
       <DependentUpon>MainDialogHost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUserControls\DatePickerWithValidations.xaml.cs">
+      <DependentUpon>DatePickerWithValidations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUserControls\NotifyUserAgree.xaml.cs">
+      <DependentUpon>NotifyUserAgree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUserControls\TextBoxWithValidations.xaml.cs">
+      <DependentUpon>TextBoxWithValidations.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatabaseFirst\Births.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -206,6 +213,8 @@
     <Compile Include="Managers\MainGridManager.cs" />
     <Compile Include="Core\Repositories\IRepository.cs" />
     <Compile Include="Core\IUnitOfWork.cs" />
+    <Compile Include="Persistance\CrudOperations.cs" />
+    <Compile Include="Persistance\Repositories\GroupsRepository.cs" />
     <Compile Include="Persistance\Repositories\BirthsRepository.cs" />
     <Compile Include="Persistance\Repositories\FemalesRepository.cs" />
     <Compile Include="Persistance\Repositories\InseminationsRepository.cs" />
@@ -225,10 +234,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomUserControls\CheckForUserApprobation.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="CustomUserControls\EditAndDelete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -238,6 +243,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomUserControls\MainDialogHost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomUserControls\DatePickerWithValidations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomUserControls\NotifyUserAgree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomUserControls\TextBoxWithValidations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -390,7 +407,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="CustomValidationRules\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\cerdo.png" />
     <Content Include="DatabaseFirst\Model.Context.tt">
