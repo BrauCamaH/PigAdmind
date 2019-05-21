@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.Females.BirthViews"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:customValidationRules="clr-namespace:WpfApp1.CustomValidationRules"
              mc:Ignorable="d" 
              d:DesignHeight="224.205" d:DesignWidth="359.54">
     <Grid>
@@ -14,10 +15,12 @@
                     Modificar Parto
                 </TextBlock>
             </materialDesign:Card>
-            <TextBox materialDesign:HintAssist.Hint="Nuevo Número Lechones" FontSize="16"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-            <DatePicker materialDesign:HintAssist.Hint="Nueva fecha" FontSize="16"
-                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></DatePicker>
+            <TextBox materialDesign:HintAssist.Hint="Nuevo Número de Lechones" 
+                     FontSize="16"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     x:Name="Box">
+            </TextBox>
+            <customValidationRules:DatePickerWithValidations></customValidationRules:DatePickerWithValidations>
             <Separator Background="{x:Null}" Height="10"></Separator>
             <CheckBox Name="Confirm_checkbox" Checked="CheckBox_checked" Unchecked="CheckBox_unchecked">
                 <TextBlock Foreground="Red">Estoy de Acuerdo con la acción</TextBlock>
