@@ -17,10 +17,12 @@ namespace WpfApp1.Females.BirthViews
         public DeleteBirth()
         {
             InitializeComponent();
+
         }
         public DeleteBirth(Births births, ObservableCollection<Births> observableC)
         {
             InitializeComponent();
+            NotifyUserAgree.AcceptButton = Accept_btn;
             _observableCollection = observableC;
             _birth = births;
         }
@@ -39,20 +41,9 @@ namespace WpfApp1.Females.BirthViews
             }
 
         }
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-            Accept_btn.IsEnabled = true;
-        }
-
-        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
-        {
-            Accept_btn.IsEnabled = false;
-        }
-
 
         private void Accept_Btn_Click(object sender, RoutedEventArgs e)
         {
-            CheckBox.IsChecked = false;
             Delete();
         }
 

@@ -47,18 +47,10 @@ namespace WpfApp1.Females.BirthViews
 
         }
 
-        public static void AddRange<T>(ObservableCollection<T> coll, IEnumerable<T> items)
-        {
-            foreach (var item in items)
-            {
-                coll.Add(item);
-            }
-        }
-
         private void GetBirthsFromDatabase()
         {
             UnitOfWork unitOfWork = new UnitOfWork(new Entities());
-            AddRange(BirthsObservableList, unitOfWork.Births.GetBirthsByFemale(Female.code) as IEnumerable<Births>);
+            CrudOperations<Births>.AddRange(BirthsObservableList, unitOfWork.Births.GetBirthsByFemale(Female.code) as IEnumerable<Births>);
             BirthsListView.ItemsSource = BirthsObservableList;
         }
 
@@ -70,6 +62,7 @@ namespace WpfApp1.Females.BirthViews
             CurrentBirth = birth;
 
             EditAndDelete.DeleteControl = new DeleteBirth(CurrentBirth, BirthsObservableList);
+            EditAndDelete.EditControl = new EditBirth();
         }
     }
 }
