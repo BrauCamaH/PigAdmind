@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 
 namespace WpfApp1.Core.Repositories
 {
     interface IFemalesRepository : IRepository<DatabaseFirst.Females>
     {
         IEnumerable GetFemalesByUser(int id);
-        DatabaseFirst.Females GetFemaleByCode(String code);
+        DatabaseFirst.Females GetFemaleByCode(string code);
 
-        void RemoveFemaleByCode(String code);
+        void RemoveFemaleByCode(string code);
     }
 }

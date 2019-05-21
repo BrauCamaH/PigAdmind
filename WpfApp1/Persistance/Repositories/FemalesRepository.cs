@@ -23,7 +23,7 @@ namespace WpfApp1.Persistance.Repositories
             return DbEntities.Females.FirstOrDefault(f => f.code == code);
         }
 
-        public void RemoveFemaleByCode(String code)
+        public void RemoveFemaleByCode(string code)
         {
             var query = from f in DbEntities.Females
                         where f.code.Equals(code)
