@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.CustomEventArgs;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Persistance;
 
@@ -15,11 +16,11 @@ namespace WpfApp1.Females.BirthViews
 
         private Births _birth;
 
-        public event EventHandler<EditBirth.BirthEventArgs> BirthDeleted;
+        public event EventHandler<BirthsEventArgs> BirthDeleted;
 
         public virtual void OnBirthDeleted(Births birth)
         {
-            BirthDeleted?.Invoke(this, new EditBirth.BirthEventArgs { Birth = birth });
+            BirthDeleted?.Invoke(this, new BirthsEventArgs { Birth = birth });
         }
 
         public DeleteBirth()

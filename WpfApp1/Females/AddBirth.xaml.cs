@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.CustomEventArgs;
 using WpfApp1.DatabaseFirst;
-using WpfApp1.Females.BirthViews;
 using WpfApp1.Persistance;
 
 namespace WpfApp1.Females
@@ -14,12 +14,12 @@ namespace WpfApp1.Females
     {
         private DatabaseFirst.Females _female;
 
-        public event EventHandler<EditBirth.BirthEventArgs> BirthAdded;
+        public event EventHandler<BirthsEventArgs> BirthAdded;
 
 
         public virtual void OnBirthDeleted(Births birth)
         {
-            BirthAdded?.Invoke(this, new EditBirth.BirthEventArgs { Birth = birth });
+            BirthAdded?.Invoke(this, new BirthsEventArgs { Birth = birth });
 
         }
         public AddBirth()

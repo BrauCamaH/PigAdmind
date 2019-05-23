@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.CustomEventArgs;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Persistance;
 
@@ -11,13 +12,10 @@ namespace WpfApp1.Females.BirthViews
     /// </summary>
     public partial class EditBirth : UserControl
     {
-        public class BirthEventArgs : EventArgs
-        {
-            public Births Birth { get; set; }
-        }
+
         private Births _birth;
 
-        public delegate void BirthEditedEventHandler(object source, BirthEventArgs args);
+        public delegate void BirthEditedEventHandler(object source, BirthsEventArgs args);
 
         public event BirthEditedEventHandler BirthEdited;
 
@@ -28,7 +26,7 @@ namespace WpfApp1.Females.BirthViews
 
         public virtual void OnBirthEdited(Births birth)
         {
-            var events = new BirthEventArgs { Birth = birth };
+            var events = new BirthsEventArgs { Birth = birth };
             BirthEdited?.Invoke(this, events);
             //Using null propagation
             //if (VideoEncoded != null)

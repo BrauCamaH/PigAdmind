@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Controls;
+using WpfApp1.CustomEventArgs;
 using WpfApp1.CustomUserControls;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Persistance;
@@ -75,11 +76,11 @@ namespace WpfApp1.Females.BirthViews
 
 
         }
-        public void OnBirthAdded(object sender, EditBirth.BirthEventArgs e)
+        public void OnBirthAdded(object sender, BirthsEventArgs e)
         {
             _birthsObservableList.Add(e.Birth);
         }
-        private void OnBirthDeleted(object sender, EditBirth.BirthEventArgs e)
+        private void OnBirthDeleted(object sender, BirthsEventArgs e)
         {
             RemoveItemFromList(_birthsObservableList, e.Birth);
         }

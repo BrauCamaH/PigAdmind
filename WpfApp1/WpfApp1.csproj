@@ -96,6 +96,7 @@
     <Compile Include="Core\Repositories\IInseminationsRepository.cs" />
     <Compile Include="Core\Repositories\ISalesRepository.cs" />
     <Compile Include="Core\Repositories\ISicksRepository.cs" />
+    <Compile Include="CustomEventArgs\BirthsEventArgs.cs" />
     <Compile Include="CustomUserControls\BackButton.xaml.cs">
       <DependentUpon>BackButton.xaml</DependentUpon>
     </Compile>
