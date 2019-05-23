@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:WpfApp1.Females" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:dragablz="clr-namespace:Dragablz;assembly=Dragablz"
-             xmlns:Sales="clr-namespace:WpfApp1.Sales" x:Class="WpfApp1.Females.EditFemale"
+             xmlns:Sales="clr-namespace:WpfApp1.Sales"
+             xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
+             x:Class="WpfApp1.Females.EditFemale"
              mc:Ignorable="d"
              Background="White" d:DesignWidth="268.667" d:DesignHeight="214"  Width="auto" Height="auto">
     <Grid>
@@ -25,9 +27,7 @@
                         FontSize="16"
                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></DatePicker>
             <Separator Background="{x:Null}" Height="10"></Separator>
-            <CheckBox Name="Confirm_checkbox" Checked="CheckBox_checked" Unchecked="CheckBox_unchecked">
-                <TextBlock Foreground="Red">Estoy de Acuerdo con la acción</TextBlock>
-            </CheckBox>
+            <customUserControls:NotifyUserAgree x:Name="NotifyUserAgree"></customUserControls:NotifyUserAgree>
             <Separator Background="{x:Null}" Height="15"></Separator>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button  Name="AcceptBtn"

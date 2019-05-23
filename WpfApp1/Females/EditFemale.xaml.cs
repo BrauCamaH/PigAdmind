@@ -23,6 +23,7 @@ namespace WpfApp1.Females
             InitializeComponent();
             _female = female;
             GetFemale(female);
+            NotifyUserAgree.AcceptButton = AcceptBtn;
 
         }
 
@@ -43,19 +44,9 @@ namespace WpfApp1.Females
                 DatePicker.Text = female.birthday;
             }
         }
-        private void CheckBox_checked(object sender, RoutedEventArgs e)
-        {
-            AcceptBtn.IsEnabled = true;
-        }
-
-        private void CheckBox_unchecked(object sender, RoutedEventArgs e)
-        {
-            AcceptBtn.IsEnabled = false;
-        }
-
         private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
-            Confirm_checkbox.IsChecked = false;
+
         }
 
         private void AcceptBtn_OnClick(object sender, RoutedEventArgs e)

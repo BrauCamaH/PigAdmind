@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace WpfApp1.Females
@@ -11,6 +9,7 @@ namespace WpfApp1.Females
     public partial class FemalePage : UserControl
     {
         private readonly DatabaseFirst.Females _female;
+
 
         public FemalePage()
         {
@@ -24,15 +23,6 @@ namespace WpfApp1.Females
             SetFemaleInfo(female);
             Births.SetFemale(_female);
         }
-
-        public static void AddRange<T>(ObservableCollection<T> coll, IEnumerable<T> items)
-        {
-            foreach (var item in items)
-            {
-                coll.Add(item);
-            }
-        }
-
         private void SetFemaleInfo(DatabaseFirst.Females female)
         {
             CodeLabel.Content = female.code;
@@ -61,7 +51,12 @@ namespace WpfApp1.Females
 
         private void BirthButtonClick(object sender, RoutedEventArgs e)
         {
-            AddUserControlToEventDialog(new AddBirth(_female, Births.BirthsObservableList));
+            var addBirth = new AddBirth(_female);
+            AddUserControlToEventDialog(addBirth);
+
+            addBirth.BirthAdded += Births.OnBirthAdded;
         }
+
+
     }
 }

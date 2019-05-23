@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:WpfApp1.Females.BirthViews"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:customValidationRules="clr-namespace:WpfApp1.CustomValidationRules"
+             xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
              mc:Ignorable="d" 
              d:DesignHeight="224.205" d:DesignWidth="359.54">
     <Grid>
@@ -15,19 +16,25 @@
                     Modificar Parto
                 </TextBlock>
             </materialDesign:Card>
-            <TextBox materialDesign:HintAssist.Hint="Nuevo Número de Lechones" 
+            <TextBox x:Name="NPigletsTextBox"
+                     materialDesign:HintAssist.Hint="Nuevo Número de Lechones" 
                      FontSize="16"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     x:Name="Box">
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}">
             </TextBox>
-            <customValidationRules:DatePickerWithValidations></customValidationRules:DatePickerWithValidations>
+            <DatePicker x:Name="DatePicker"
+                        materialDesign:HintAssist.Hint="Nueva fecha" 
+                        FontSize="16"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></DatePicker>
             <Separator Background="{x:Null}" Height="10"></Separator>
-            <CheckBox Name="Confirm_checkbox" Checked="CheckBox_checked" Unchecked="CheckBox_unchecked">
-                <TextBlock Foreground="Red">Estoy de Acuerdo con la acción</TextBlock>
-            </CheckBox>
+            <customUserControls:NotifyUserAgree x:Name="UserAgree"></customUserControls:NotifyUserAgree>
             <Separator Background="{x:Null}" Height="15"></Separator>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button  Name="Accept_btn" IsDefault="True" IsEnabled="False" Margin="0 8 8 0" >
+                <Button  Name="Accept_btn" 
+                         IsDefault="True"
+                         Margin="0 8 8 0" 
+                         IsEnabled="False"
+                         Click="Accept_btn_OnClick"
+                         Command="materialDesign:DialogHost.CloseDialogCommand">
                     <Button.CommandParameter>
                         <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                             True

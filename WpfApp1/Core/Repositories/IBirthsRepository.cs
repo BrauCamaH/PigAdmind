@@ -7,6 +7,7 @@ namespace WpfApp1.Core.Repositories
     {
         IEnumerable<Births> GetBirthsByFemale(string code);
 
+
         void RemoveByID(int id);
     }
 }

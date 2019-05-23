@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Controls;
 using WpfApp1.CustomUserControls;
 using WpfApp1.DatabaseFirst;
@@ -13,15 +14,17 @@ namespace WpfApp1.Females.BirthViews
     /// </summary>
     public partial class BirthsPage : UserControl
     {
-        public ObservableCollection<Births> BirthsObservableList { get; set; }
+        private readonly ObservableCollection<Births> _birthsObservableList;
         public DatabaseFirst.Females Female { get; private set; }
 
         public Births CurrentBirth { get; private set; }
 
+
+
         public BirthsPage()
         {
             InitializeComponent();
-            BirthsObservableList = new ObservableCollection<Births>();
+            _birthsObservableList = new ObservableCollection<Births>();
 
         }
 
@@ -50,8 +53,8 @@ namespace WpfApp1.Females.BirthViews
         private void GetBirthsFromDatabase()
         {
             UnitOfWork unitOfWork = new UnitOfWork(new Entities());
-            CrudOperations<Births>.AddRange(BirthsObservableList, unitOfWork.Births.GetBirthsByFemale(Female.code) as IEnumerable<Births>);
-            BirthsListView.ItemsSource = BirthsObservableList;
+            CrudOperations<Births>.AddRange(_birthsObservableList, unitOfWork.Births.GetBirthsByFemale(Female.code) as IEnumerable<Births>);
+            BirthsListView.ItemsSource = _birthsObservableList;
         }
 
         private void BirthsListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -61,8 +64,32 @@ namespace WpfApp1.Females.BirthViews
             Births birth = (Births)BirthsListView.SelectedItem;
             CurrentBirth = birth;
 
-            EditAndDelete.DeleteControl = new DeleteBirth(CurrentBirth, BirthsObservableList);
-            EditAndDelete.EditControl = new EditBirth();
+            var delete = new DeleteBirth(CurrentBirth, _birthsObservableList);
+
+            EditAndDelete.DeleteControl = delete;
+
+            //            EditBirth editBirth = new EditBirth(CurrentBirth);
+            //            EditAndDelete.EditControl = editBirth;
+
+            delete.BirthDeleted += OnBirthDeleted;
+
+
         }
+        public void OnBirthAdded(object sender, EditBirth.BirthEventArgs e)
+        {
+            _birthsObservableList.Add(e.Birth);
+        }
+        private void OnBirthDeleted(object sender, EditBirth.BirthEventArgs e)
+        {
+            RemoveItemFromList(_birthsObservableList, e.Birth);
+        }
+
+        private void RemoveItemFromList(ObservableCollection<Births> collection, Births birth)
+        {
+            collection.Remove(collection.Single(i => i.id == birth.id));
+        }
+
+
+
     }
 }
