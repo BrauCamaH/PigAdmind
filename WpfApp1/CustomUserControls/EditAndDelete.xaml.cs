@@ -8,10 +8,12 @@ namespace WpfApp1.CustomUserControls
     /// </summary>
     public partial class EditAndDelete : UserControl
     {
+
         public static MainDialogHost DialogHost { get; set; }
 
         public UserControl EditControl { get; set; }
         public UserControl DeleteControl { get; set; }
+
 
         public EditAndDelete()
         {

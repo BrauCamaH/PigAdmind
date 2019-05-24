@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.CustomEventArgs;
@@ -28,7 +27,7 @@ namespace WpfApp1.Females.BirthViews
             InitializeComponent();
 
         }
-        public DeleteBirth(Births births, ObservableCollection<Births> observableC)
+        public DeleteBirth(Births births)
         {
             InitializeComponent();
             NotifyUserAgree.AcceptButton = Accept_btn;

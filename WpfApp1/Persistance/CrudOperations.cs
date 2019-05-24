@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace WpfApp1.Persistance
 {
@@ -14,9 +15,14 @@ namespace WpfApp1.Persistance
 
         public static void AddRange<T>(ObservableCollection<T> coll, IEnumerable<T> items)
         {
-            foreach (var item in items)
+            var enumerable = items.ToList();
+            foreach (var item in enumerable)
             {
-                coll.Add(item);
+                if (coll.Count < enumerable.Count())
+                {
+                    coll.Add(item);
+                }
+
             }
         }
     }

@@ -12,12 +12,9 @@ namespace WpfApp1.Females.BirthViews
     /// </summary>
     public partial class EditBirth : UserControl
     {
+        public Births Birth { get; }
 
-        private Births _birth;
-
-        public delegate void BirthEditedEventHandler(object source, BirthsEventArgs args);
-
-        public event BirthEditedEventHandler BirthEdited;
+        public event EventHandler<BirthsEventArgs> BirthEdited;
 
         public EditBirth()
         {
@@ -37,27 +34,27 @@ namespace WpfApp1.Females.BirthViews
         public EditBirth(Births birth)
         {
             InitializeComponent();
-            _birth = birth;
-            UserAgree.AcceptButton = Accept_btn;
+            Birth = birth;
             GetBirth();
 
 
         }
         private void GetBirth()
         {
-            NPigletsTextBox.Text = _birth.n_piglets.ToString();
-            DatePicker.Text = _birth.date;
+            NPigletsTextBox.Text = Birth.n_piglets.ToString();
+            DatePicker.Text = Birth.date;
         }
 
         private void EditBirthFromDatabase(string newN, string newDate)
         {
             var unitOfWork = new UnitOfWork(new Entities());
-            var birth = unitOfWork.Births.Get(_birth.id);
+            var birth = unitOfWork.Births.Get(Birth.id);
             birth.n_piglets = Int32.Parse(newN);
             birth.date = newDate;
             unitOfWork.Complete();
 
             OnBirthEdited(birth);
+
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)

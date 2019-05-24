@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.CustomEventArgs;
 using WpfApp1.CustomUserControls;
@@ -15,20 +15,32 @@ namespace WpfApp1.Females.BirthViews
     /// </summary>
     public partial class BirthsPage : UserControl
     {
-        private readonly ObservableCollection<Births> _birthsObservableList;
+        private ObservableCollection<Births> _birthsObservableList;
         public DatabaseFirst.Females Female { get; private set; }
 
         public Births CurrentBirth { get; private set; }
 
+        private DeleteBirth _deleteBirth;
+        private EditBirth _editBirth;
 
 
         public BirthsPage()
         {
             InitializeComponent();
             _birthsObservableList = new ObservableCollection<Births>();
-
         }
 
+        private void InitializeCrudControls(Births birth)
+        {
+            _editBirth = new EditBirth(birth);
+            _deleteBirth = new DeleteBirth(birth);
+
+            EditAndDelete.EditControl = _editBirth;
+
+            EditAndDelete.DeleteControl = _deleteBirth;
+            _deleteBirth.BirthDeleted += OnBirthDeleted;
+            _editBirth.BirthEdited += OnBirthEdited;
+        }
         private bool CustomFilter(object obj)
         {
             if (String.IsNullOrEmpty(SearchBox.TextBox.Text))
@@ -54,7 +66,7 @@ namespace WpfApp1.Females.BirthViews
         private void GetBirthsFromDatabase()
         {
             UnitOfWork unitOfWork = new UnitOfWork(new Entities());
-            CrudOperations<Births>.AddRange(_birthsObservableList, unitOfWork.Births.GetBirthsByFemale(Female.code) as IEnumerable<Births>);
+            CrudOperations<Births>.AddRange(_birthsObservableList, unitOfWork.Births.GetBirthsByFemale(Female.code).ToList());
             BirthsListView.ItemsSource = _birthsObservableList;
         }
 
@@ -64,32 +76,48 @@ namespace WpfApp1.Females.BirthViews
 
             Births birth = (Births)BirthsListView.SelectedItem;
             CurrentBirth = birth;
-
-            var delete = new DeleteBirth(CurrentBirth, _birthsObservableList);
-
-            EditAndDelete.DeleteControl = delete;
-
-            //            EditBirth editBirth = new EditBirth(CurrentBirth);
-            //            EditAndDelete.EditControl = editBirth;
-
-            delete.BirthDeleted += OnBirthDeleted;
-
-
+            var unitOfWork = new UnitOfWork(new Entities());
+            if (birth != null) InitializeCrudControls(unitOfWork.Births.Get(birth.id));
         }
         public void OnBirthAdded(object sender, BirthsEventArgs e)
         {
             _birthsObservableList.Add(e.Birth);
         }
+
         private void OnBirthDeleted(object sender, BirthsEventArgs e)
         {
-            RemoveItemFromList(_birthsObservableList, e.Birth);
+            try
+            {
+                RemoveItemFromList(_birthsObservableList, e.Birth);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
+
+        }
+
+        private void OnBirthEdited(object sender, BirthsEventArgs e)
+        {
+            try
+            {
+                _birthsObservableList[_birthsObservableList.IndexOf(CurrentBirth)] = e.Birth;
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+                //                MessageBox.Show(exception.StackTrace);
+                //                MessageBox.Show(exception.Source);
+            }
+
         }
 
         private void RemoveItemFromList(ObservableCollection<Births> collection, Births birth)
         {
             collection.Remove(collection.Single(i => i.id == birth.id));
+            //MessageBox.Show("Item Deleted");
         }
-
 
 
     }
