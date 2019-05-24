@@ -12,6 +12,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="n_piglets" Type="int" />
           <Property Name="date" Type="nvarchar" MaxLength="10" />
+          <Property Name="status" Type="nvarchar" MaxLength="20" />
           <Property Name="weaning" Type="int" />
           <Property Name="fem_code" Type="nvarchar" MaxLength="20" />
           <Property Name="parameter" Type="int" />
@@ -35,6 +36,7 @@
           <Property Name="male_code" Type="nvarchar" MaxLength="20" />
           <Property Name="date" Type="nvarchar" MaxLength="10" />
           <Property Name="fem_code" Type="nvarchar" MaxLength="20" />
+          <Property Name="status" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <EntityType Name="Parameters">
           <Key>
@@ -122,6 +124,7 @@
           <Property Name="weaning" Type="Int32" />
           <Property Name="fem_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="parameter" Type="Int32" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Females">
           <Key>
@@ -142,6 +145,7 @@
           <Property Name="male_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="fem_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Parameters">
           <Key>
@@ -224,6 +228,7 @@
           <EntitySetMapping Name="Births">
             <EntityTypeMapping TypeName="Model.Births">
               <MappingFragment StoreEntitySet="Births">
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="parameter" ColumnName="parameter" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="n_piglets" ColumnName="n_piglets" />
@@ -248,6 +253,7 @@
           <EntitySetMapping Name="Inseminations">
             <EntityTypeMapping TypeName="Model.Inseminations">
               <MappingFragment StoreEntitySet="Inseminations">
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="male_code" ColumnName="male_code" />
                 <ScalarProperty Name="date" ColumnName="date" />

@@ -18,5 +18,6 @@ namespace WpfApp1.DatabaseFirst
         public string male_code { get; set; }
         public string date { get; set; }
         public string fem_code { get; set; }
+        public string status { get; set; }
     }
 }

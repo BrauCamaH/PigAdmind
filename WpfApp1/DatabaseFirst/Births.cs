@@ -20,5 +20,6 @@ namespace WpfApp1.DatabaseFirst
         public Nullable<int> weaning { get; set; }
         public string fem_code { get; set; }
         public Nullable<int> parameter { get; set; }
+        public string status { get; set; }
     }
 }
