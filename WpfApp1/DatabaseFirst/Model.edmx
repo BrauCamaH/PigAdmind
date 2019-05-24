@@ -11,11 +11,12 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="n_piglets" Type="int" />
+          <Property Name="died_piglets" Type="int" />
+          <Property Name="weaned_piglets" Type="int" />
           <Property Name="date" Type="nvarchar" MaxLength="10" />
           <Property Name="status" Type="nvarchar" MaxLength="20" />
           <Property Name="weaning" Type="int" />
           <Property Name="fem_code" Type="nvarchar" MaxLength="20" />
-          <Property Name="parameter" Type="int" />
         </EntityType>
         <EntityType Name="Females">
           <Key>
@@ -37,15 +38,6 @@
           <Property Name="date" Type="nvarchar" MaxLength="10" />
           <Property Name="fem_code" Type="nvarchar" MaxLength="20" />
           <Property Name="status" Type="nvarchar" MaxLength="20" />
-        </EntityType>
-        <EntityType Name="Parameters">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="died_pigs" Type="nvarchar" MaxLength="20" />
-          <Property Name="lived_pigs" Type="int" />
-          <Property Name="mummy_pigs" Type="int" />
         </EntityType>
         <EntityType Name="PigGroups">
           <Key>
@@ -103,7 +95,6 @@
           <EntitySet Name="Births" EntityType="Self.Births" store:Type="Tables" />
           <EntitySet Name="Females" EntityType="Self.Females" store:Type="Tables" />
           <EntitySet Name="Inseminations" EntityType="Self.Inseminations" store:Type="Tables" />
-          <EntitySet Name="Parameters" EntityType="Self.Parameters" store:Type="Tables" />
           <EntitySet Name="PigGroups" EntityType="Self.PigGroups" store:Type="Tables" />
           <EntitySet Name="Sales" EntityType="Self.Sales" store:Type="Tables" />
           <EntitySet Name="Sicks" EntityType="Self.Sicks" store:Type="Tables" />
@@ -123,8 +114,9 @@
           <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="weaning" Type="Int32" />
           <Property Name="fem_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="parameter" Type="Int32" />
           <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="died_piglets" Type="Int32" />
+          <Property Name="weaned_piglets" Type="Int32" />
         </EntityType>
         <EntityType Name="Females">
           <Key>
@@ -146,15 +138,6 @@
           <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="fem_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Parameters">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="died_pigs" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="lived_pigs" Type="Int32" />
-          <Property Name="mummy_pigs" Type="Int32" />
         </EntityType>
         <EntityType Name="PigGroups">
           <Key>
@@ -212,7 +195,6 @@
           <EntitySet Name="Births" EntityType="Self.Births" />
           <EntitySet Name="Females" EntityType="Self.Females" />
           <EntitySet Name="Inseminations" EntityType="Self.Inseminations" />
-          <EntitySet Name="Parameters" EntityType="Self.Parameters" />
           <EntitySet Name="PigGroups" EntityType="Self.PigGroups" />
           <EntitySet Name="Sales" EntityType="Self.Sales" />
           <EntitySet Name="Sicks" EntityType="Self.Sicks" />
@@ -228,8 +210,9 @@
           <EntitySetMapping Name="Births">
             <EntityTypeMapping TypeName="Model.Births">
               <MappingFragment StoreEntitySet="Births">
+                <ScalarProperty Name="weaned_piglets" ColumnName="weaned_piglets" />
+                <ScalarProperty Name="died_piglets" ColumnName="died_piglets" />
                 <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="parameter" ColumnName="parameter" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="n_piglets" ColumnName="n_piglets" />
                 <ScalarProperty Name="date" ColumnName="date" />
@@ -258,16 +241,6 @@
                 <ScalarProperty Name="male_code" ColumnName="male_code" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="fem_code" ColumnName="fem_code" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Parameters">
-            <EntityTypeMapping TypeName="Model.Parameters">
-              <MappingFragment StoreEntitySet="Parameters">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="died_pigs" ColumnName="died_pigs" />
-                <ScalarProperty Name="lived_pigs" ColumnName="lived_pigs" />
-                <ScalarProperty Name="mummy_pigs" ColumnName="mummy_pigs" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

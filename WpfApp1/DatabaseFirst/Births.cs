@@ -19,7 +19,8 @@ namespace WpfApp1.DatabaseFirst
         public string date { get; set; }
         public Nullable<int> weaning { get; set; }
         public string fem_code { get; set; }
-        public Nullable<int> parameter { get; set; }
         public string status { get; set; }
+        public Nullable<int> died_piglets { get; set; }
+        public Nullable<int> weaned_piglets { get; set; }
     }
 }

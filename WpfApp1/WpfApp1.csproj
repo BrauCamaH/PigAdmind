@@ -147,9 +147,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseFirst\Parameters.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="DatabaseFirst\PigGroups.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
