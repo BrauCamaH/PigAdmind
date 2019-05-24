@@ -36,7 +36,7 @@ namespace WpfApp1.Females.BirthViews
             InitializeComponent();
             Birth = birth;
             GetBirth();
-
+            UserAgree.AcceptButton = Accept_btn;
 
         }
         private void GetBirth()

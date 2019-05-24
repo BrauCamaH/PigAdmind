@@ -6,11 +6,9 @@ namespace WpfApp1.Persistance
 {
     class CrudOperations<TEntity> where TEntity : class
     {
-        private ObservableCollection<TEntity> _observableCollection;
-
-        public CrudOperations(ObservableCollection<TEntity> observableCollection)
+        public CrudOperations()
         {
-            _observableCollection = observableCollection;
+
         }
 
         public static void AddRange<T>(ObservableCollection<T> coll, IEnumerable<T> items)
