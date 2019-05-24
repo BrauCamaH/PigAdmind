@@ -38,13 +38,16 @@
                   SelectionChanged="BirthsListView_OnSelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Número Lechones" DisplayMemberBinding="{Binding n_piglets}"/>
+                    <GridViewColumn Header="Total Lechones" DisplayMemberBinding="{Binding n_piglets}"/>
+                    <GridViewColumn Header="Muertos" DisplayMemberBinding="{Binding died_piglets}"/>
+                    <GridViewColumn Header="Momias" DisplayMemberBinding="{Binding weaned_piglets}"/>
                     <GridViewColumn Header="Fecha" DisplayMemberBinding="{Binding date}"/>
+                    <GridViewColumn Header="Estado" DisplayMemberBinding="{Binding status}"/>
                 </GridView>
             </ListView.View>
         </ListView>
       
-        <FlowDocumentReader Margin="507,83,3,-81">
+        <FlowDocumentReader Margin="507,83,3,241" MaxZoom="100" IsFindEnabled="False">
             <FlowDocument>
 
                 <Table CellSpacing="5">
@@ -56,32 +59,20 @@
                         <!-- Title row for the table. -->
                         <TableRow Background="SteelBlue" >
                             <TableCell ColumnSpan="2" TextAlignment="Center">
-                                <Paragraph FontSize="24pt" FontWeight="Bold">Información</Paragraph>
+                                <Paragraph FontSize="24pt" FontWeight="Bold">Destete</Paragraph>
                             </TableCell>
                         </TableRow>
                         <!-- Header row for the table. -->
                         <TableRow Background="LightBlue" FontSize="20">
                             <TableCell>
-                                <Paragraph FontSize="14pt" FontWeight="Bold">Parametro</Paragraph>
+                                <Paragraph FontSize="14pt" 
+                                           FontWeight="Bold">
+                                    Parametro
+                                </Paragraph>
                             </TableCell>
                             <TableCell>
-                                <Paragraph FontSize="14pt" FontWeight="Bold">Valor</Paragraph>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow Background="White">
-                            <TableCell>
-                                <Paragraph>Lechones Vivos</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>0</Paragraph>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow Background="White">
-                            <TableCell>
-                                <Paragraph>Lechones Muertos</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>0</Paragraph>
+                                <Paragraph FontSize="14pt" 
+                                           FontWeight="Bold">Valor</Paragraph>
                             </TableCell>
                         </TableRow>
                         <TableRow Background="White">
@@ -94,12 +85,13 @@
                         </TableRow>
                         <TableRow Background="White">
                             <TableCell>
-                                <Paragraph>Momias</Paragraph>
+                                <Paragraph>Lechones Fallecidos</Paragraph>
                             </TableCell>
                             <TableCell>
                                 <Paragraph>0</Paragraph>
                             </TableCell>
                         </TableRow>
+                   
                     </TableRowGroup>
                 </Table>
             </FlowDocument>
