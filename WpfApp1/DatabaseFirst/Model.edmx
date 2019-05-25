@@ -83,14 +83,6 @@
           <Property Name="password" Type="nvarchar" MaxLength="20" />
           <Property Name="isOnline" Type="int" />
         </EntityType>
-        <EntityType Name="Weaning ">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="weaned_pigs" Type="int" />
-          <Property Name="date" Type="nvarchar" MaxLength="10" />
-        </EntityType>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Births" EntityType="Self.Births" store:Type="Tables" />
           <EntitySet Name="Females" EntityType="Self.Females" store:Type="Tables" />
@@ -99,7 +91,6 @@
           <EntitySet Name="Sales" EntityType="Self.Sales" store:Type="Tables" />
           <EntitySet Name="Sicks" EntityType="Self.Sicks" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" />
-          <EntitySet Name="Weaning " EntityType="Self.Weaning " store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -190,6 +181,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="weaned_pigs" Type="Int32" />
           <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="dead_pigs" Type="Int32" />
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Births" EntityType="Self.Births" />
@@ -289,15 +281,6 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="password" ColumnName="password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Weaning_">
-            <EntityTypeMapping TypeName="Model.Weaning_">
-              <MappingFragment StoreEntitySet="Weaning ">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="weaned_pigs" ColumnName="weaned_pigs" />
-                <ScalarProperty Name="date" ColumnName="date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
