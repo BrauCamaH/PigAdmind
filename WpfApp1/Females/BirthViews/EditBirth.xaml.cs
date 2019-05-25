@@ -42,15 +42,19 @@ namespace WpfApp1.Females.BirthViews
         private void GetBirth()
         {
             NPigletsTextBox.Text = Birth.n_piglets.ToString();
+            DeadPigsTextBox.Text = Birth.died_piglets.ToString();
+            MummysTextBox.Text = Birth.mummys.ToString();
             DatePicker.Text = Birth.date;
         }
 
-        private void EditBirthFromDatabase(string newN, string newDate)
+        private void EditBirthFromDatabase(string newN, string newDate, string newDead, string newMummys)
         {
             var unitOfWork = new UnitOfWork(new Entities());
             var birth = unitOfWork.Births.Get(Birth.id);
             birth.n_piglets = Int32.Parse(newN);
             birth.date = newDate;
+            birth.died_piglets = Int32.Parse(newDead);
+            birth.mummys = Int32.Parse(newMummys);
             unitOfWork.Complete();
 
             OnBirthEdited(birth);
@@ -65,7 +69,7 @@ namespace WpfApp1.Females.BirthViews
 
         private void Accept_btn_OnClick(object sender, RoutedEventArgs e)
         {
-            EditBirthFromDatabase(NPigletsTextBox.Text, DatePicker.Text);
+            EditBirthFromDatabase(NPigletsTextBox.Text, DatePicker.Text, DeadPigsTextBox.Text, MummysTextBox.Text);
         }
     }
 }

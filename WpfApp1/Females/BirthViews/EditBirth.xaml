@@ -7,7 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="224.205" d:DesignWidth="359.54">
+             d:DesignHeight="322.431" d:DesignWidth="369.123">
     <Grid>
         <StackPanel>
             <materialDesign:Card Height="30" Background="LightBlue">
@@ -15,11 +15,16 @@
                     Modificar Parto
                 </TextBlock>
             </materialDesign:Card>
-            <TextBox x:Name="NPigletsTextBox"
-                     materialDesign:HintAssist.Hint="Nuevo Número de Lechones" 
-                     FontSize="16"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}">
-            </TextBox>
+            
+            <TextBox x:Name="NPigletsTextBox"  Width="auto" 
+                     materialDesign:HintAssist.Hint="Nuevo número de lechones"
+                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</TextBox>
+            <TextBox x:Name="DeadPigsTextBox"  Width="auto" 
+                     materialDesign:HintAssist.Hint="Nuevo número de lechone fallecidos"
+                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</TextBox>
+            <TextBox x:Name="MummysTextBox"  Width="auto" 
+                     materialDesign:HintAssist.Hint="Nuevo número de momias"
+                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</TextBox>
             <DatePicker x:Name="DatePicker"
                         materialDesign:HintAssist.Hint="Nueva fecha" 
                         FontSize="16"
