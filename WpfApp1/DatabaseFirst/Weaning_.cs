@@ -17,6 +17,5 @@ namespace WpfApp1.DatabaseFirst
         public int id { get; set; }
         public Nullable<int> weaned_pigs { get; set; }
         public string date { get; set; }
-        public Nullable<int> dead_pigs { get; set; }
     }
 }

@@ -75,22 +75,6 @@
                                            FontWeight="Bold">Valor</Paragraph>
                             </TableCell>
                         </TableRow>
-                        <TableRow>
-                            <TableCell>
-                                <Paragraph>Fecha</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>No se ha destetado</Paragraph>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow Background="White">
-                            <TableCell>
-                                <Paragraph>Lechones Destetados</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>0</Paragraph>
-                            </TableCell>
-                        </TableRow>
                         <TableRow Background="White">
                             <TableCell>
                                 <Paragraph>Lechones Destetados</Paragraph>

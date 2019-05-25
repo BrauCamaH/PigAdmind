@@ -10,8 +10,7 @@
 namespace WpfApp1.DatabaseFirst
 {
     using System;
-    using System.Collections.Generic;
-    
+
     public partial class Births
     {
         public int id { get; set; }
