@@ -114,14 +114,8 @@
     <Compile Include="CustomUserControls\MainDialogHost.xaml.cs">
       <DependentUpon>MainDialogHost.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CustomUserControls\DatePickerWithValidations.xaml.cs">
-      <DependentUpon>DatePickerWithValidations.xaml</DependentUpon>
-    </Compile>
     <Compile Include="CustomUserControls\NotifyUserAgree.xaml.cs">
       <DependentUpon>NotifyUserAgree.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="CustomUserControls\TextBoxWithValidations.xaml.cs">
-      <DependentUpon>TextBoxWithValidations.xaml</DependentUpon>
     </Compile>
     <Compile Include="DatabaseFirst\Births.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -251,15 +245,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CustomUserControls\DatePickerWithValidations.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="CustomUserControls\NotifyUserAgree.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="CustomUserControls\TextBoxWithValidations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
