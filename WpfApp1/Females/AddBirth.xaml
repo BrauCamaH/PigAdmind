@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:WpfApp1.Females"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="257.597" d:DesignWidth="330.919">
+             d:DesignHeight="274.007" d:DesignWidth="340.036">
     <Grid>
         <StackPanel Margin="16" Height="auto" Width="auto">
             <TextBlock HorizontalAlignment="Center"
@@ -14,7 +14,14 @@
                        FontSize="30" >Nuevo Parto</TextBlock>
             <TextBox x:Name="N_Pigs_TextBox"  Width="auto" 
                      materialDesign:HintAssist.Hint="Número de lechones"
-                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</TextBox>
+            <TextBox x:Name="DeadPigsTextBox"  Width="auto" 
+                     materialDesign:HintAssist.Hint="Número de lechone fallecidos"
+                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</TextBox>
+            <TextBox x:Name="MummysTextBox"  Width="auto" 
+                     materialDesign:HintAssist.Hint="Número de momias"
+                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</TextBox>
+
             <DatePicker  x:Name="Date"
                          Width="auto" 
                          materialDesign:HintAssist.Hint="Fecha" 

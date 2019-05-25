@@ -40,7 +40,10 @@ namespace WpfApp1.Females
             {
                 n_piglets = Int32.Parse(N_Pigs_TextBox.Text),
                 date = Date.Text,
-                fem_code = _female.code
+                fem_code = _female.code,
+                died_piglets = Int32.Parse(DeadPigsTextBox.Text),
+                mummys = Int32.Parse(MummysTextBox.Text),
+                status = "Actual"
             };
             unitOfWork.Births.Add(birth);
             unitOfWork.Complete();

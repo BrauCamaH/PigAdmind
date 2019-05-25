@@ -40,7 +40,7 @@
                 <GridView>
                     <GridViewColumn Header="Total Lechones" DisplayMemberBinding="{Binding n_piglets}"/>
                     <GridViewColumn Header="Muertos" DisplayMemberBinding="{Binding died_piglets}"/>
-                    <GridViewColumn Header="Momias" DisplayMemberBinding="{Binding weaned_piglets}"/>
+                    <GridViewColumn Header="Momias" DisplayMemberBinding="{Binding mummys}"/>
                     <GridViewColumn Header="Fecha" DisplayMemberBinding="{Binding date}"/>
                     <GridViewColumn Header="Estado" DisplayMemberBinding="{Binding status}"/>
                 </GridView>
@@ -73,6 +73,14 @@
                             <TableCell>
                                 <Paragraph FontSize="14pt" 
                                            FontWeight="Bold">Valor</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow Background="White">
+                            <TableCell>
+                                <Paragraph>Fecha</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>No se ha destetado</Paragraph>
                             </TableCell>
                         </TableRow>
                         <TableRow Background="White">
