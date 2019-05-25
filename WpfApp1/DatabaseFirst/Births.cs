@@ -10,7 +10,8 @@
 namespace WpfApp1.DatabaseFirst
 {
     using System;
-
+    using System.Collections.Generic;
+    
     public partial class Births
     {
         public int id { get; set; }
@@ -20,6 +21,6 @@ namespace WpfApp1.DatabaseFirst
         public string fem_code { get; set; }
         public string status { get; set; }
         public Nullable<int> died_piglets { get; set; }
-        public Nullable<int> weaned_piglets { get; set; }
+        public Nullable<int> mummys { get; set; }
     }
 }

@@ -12,10 +12,11 @@ namespace WpfApp1.DatabaseFirst
     using System;
     using System.Collections.Generic;
     
-    public partial class Weaning_
+    public partial class Weaning
     {
         public int id { get; set; }
         public Nullable<int> weaned_pigs { get; set; }
+        public Nullable<int> dead_pigs { get; set; }
         public string date { get; set; }
     }
 }

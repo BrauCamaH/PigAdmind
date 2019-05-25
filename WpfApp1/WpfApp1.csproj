@@ -153,7 +153,7 @@
     <Compile Include="DatabaseFirst\Users.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseFirst\Weaning_.cs">
+    <Compile Include="DatabaseFirst\Weaning.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Delete.xaml.cs">

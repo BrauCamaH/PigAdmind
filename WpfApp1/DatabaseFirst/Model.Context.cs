@@ -32,6 +32,6 @@ namespace WpfApp1.DatabaseFirst
         public virtual DbSet<Sales> Sales { get; set; }
         public virtual DbSet<Sicks> Sicks { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Weaning_> Weaning_ { get; set; }
+        public virtual DbSet<Weaning> Weaning { get; set; }
     }
 }
