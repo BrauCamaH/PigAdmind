@@ -186,6 +186,9 @@
     <Compile Include="Females\FemalePage.xaml.cs">
       <DependentUpon>FemalePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Females\InseminationViews\DeleteInsemination.xaml.cs">
+      <DependentUpon>DeleteInsemination.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Females\InseminationViews\EditInsemination.xaml.cs">
       <DependentUpon>EditInsemination.xaml</DependentUpon>
     </Compile>
@@ -286,6 +289,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Females\FemalePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Females\InseminationViews\DeleteInsemination.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

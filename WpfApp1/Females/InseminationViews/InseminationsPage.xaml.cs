@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.CustomEventArgs;
@@ -20,6 +21,7 @@ namespace WpfApp1.Females.InseminationViews
         public Inseminations CurrentInsemination { get; private set; }
 
         private EditInsemination _editInsemination;
+        private DeleteInsemination _deleteInsemination;
 
         public InseminationsPage()
         {
@@ -70,10 +72,18 @@ namespace WpfApp1.Females.InseminationViews
         private void InitializeCrudControls(Inseminations insemination)
         {
             _editInsemination = new EditInsemination(insemination);
+            _deleteInsemination = new DeleteInsemination(insemination);
 
             EditAndDelete.EditControl = _editInsemination;
+            EditAndDelete.DeleteControl = _deleteInsemination;
 
+            _deleteInsemination.InseminationDeleted += OnInseminationDeleted;
             _editInsemination.InseminationEdited += OnInseminationEdited;
+        }
+
+        private void OnInseminationDeleted(object sender, InseminationsEventArgs e)
+        {
+            RemoveItemFromList(_inseminationsObservableList, e.Insemination);
         }
 
         public void OnInseminationAdded(object sender, InseminationsEventArgs e)
@@ -94,6 +104,11 @@ namespace WpfApp1.Females.InseminationViews
                 //                MessageBox.Show(exception.Source);
             }
 
+        }
+        private void RemoveItemFromList(ObservableCollection<Inseminations> collection, Inseminations insemination)
+        {
+            collection.Remove(collection.Single(i => i.id == insemination.id));
+            //MessageBox.Show("Item Deleted");
         }
     }
 }
