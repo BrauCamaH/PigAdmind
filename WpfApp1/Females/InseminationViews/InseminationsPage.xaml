@@ -10,16 +10,23 @@
              d:DesignHeight="800.56" d:DesignWidth="1141.034">
     <Grid Background=" #f2f2f2">
         <customUserControls:LookTextBox x:Name="SearchBox"  
-                                        Margin="6,10,728,453">
+                                        Margin="6,10,560,276">
         </customUserControls:LookTextBox>
-        <customUserControls:EditAndDelete HorizontalAlignment="Right"
+        <customUserControls:EditAndDelete x:Name="EditAndDelete"
+                                          HorizontalAlignment="Right"
                                           VerticalAlignment="Top"/>
-        <ListView HorizontalAlignment="Left" Height="545" Margin="0,65,0,0" VerticalAlignment="Top" Width="782">
+        <ListView HorizontalAlignment="Left" 
+                  Height="545" 
+                  Margin="0,65,0,0"
+                  VerticalAlignment="Top"
+                  Width="782"
+                  x:Name="InseminationsListView"
+                  SelectionChanged="InsminationsListView_OnSelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Número"/>
-                    <GridViewColumn Header="Fecha"/>
-                    <GridViewColumn Header="Macho"/>
+                    <GridViewColumn Header="Fecha" DisplayMemberBinding="{Binding date}"/>
+                    <GridViewColumn Header="Macho" DisplayMemberBinding="{Binding male_code}"/>
+                    <GridViewColumn Header="Estado" DisplayMemberBinding="{Binding status}"/>
                 </GridView>
             </ListView.View>
         </ListView>

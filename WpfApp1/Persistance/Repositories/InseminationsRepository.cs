@@ -1,24 +1,34 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using WpfApp1.Core.Repositories;
 using WpfApp1.DatabaseFirst;
 
 namespace WpfApp1.Persistance.Repositories
 {
-	class InseminationsRepository : Repository<Inseminations>, IInseminationsRepository
-	{
-		public InseminationsRepository(DbContext cont) : base(cont)
-		{
-		}
+    class InseminationsRepository : Repository<Inseminations>, IInseminationsRepository
+    {
+        public InseminationsRepository(DbContext cont) : base(cont)
+        {
+        }
 
-		public IEnumerable GetInseminationsByFemale(string code)
-		{
-			throw new System.NotImplementedException();
-		}
+        IEnumerable<Inseminations> IInseminationsRepository.GetInseminationsByFemale(string code)
+        {
+            return DbEntities.Inseminations.Where(b => b.fem_code == code).ToList();
+        }
 
-		public Entities DbEntities
-		{
-			get { return DbEntities; }
-		}
-	}
+        public void RemoveById(int id)
+        {
+            var query = from i in DbEntities.Inseminations
+                        where i.id == id
+                        select i;
+            if (query.First() != null)
+            {
+                DbEntities.Inseminations.Remove(query.FirstOrDefault() ?? throw new InvalidOperationException());
+            }
+        }
+
+        public Entities DbEntities => Context as Entities;
+    }
 }

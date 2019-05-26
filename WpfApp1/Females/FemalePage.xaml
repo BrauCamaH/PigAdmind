@@ -97,7 +97,7 @@
                                  VerticalAlignment="Top" 
                                  Width="1009">
             <TabItem Header="Inseminaciones">
-                <inseminationViews:InseminationsPage></inseminationViews:InseminationsPage>
+                <inseminationViews:InseminationsPage x:Name="InseminationsPage"></inseminationViews:InseminationsPage>
             </TabItem>
             <TabItem  Header="Partos">
                 <birthViews:BirthsPage x:Name="Births"> </birthViews:BirthsPage>

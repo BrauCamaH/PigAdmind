@@ -22,6 +22,7 @@ namespace WpfApp1.Females
             InitializeComponent();
             SetFemaleInfo(female);
             Births.SetFemale(_female);
+            InseminationsPage.SetFemale(_female);
         }
         private void SetFemaleInfo(DatabaseFirst.Females female)
         {
@@ -36,7 +37,10 @@ namespace WpfApp1.Females
 
         private void InseminationButtonClick(object sender, System.Windows.RoutedEventArgs e)
         {
-            AddUserControlToEventDialog(new AddInsemination());
+            var addInsemination = new AddInsemination(_female);
+            AddUserControlToEventDialog(addInsemination);
+
+            addInsemination.InseminationAdded += InseminationsPage.OnInseminationAdded;
         }
 
         private void SickButton_Click(object sender, System.Windows.RoutedEventArgs e)

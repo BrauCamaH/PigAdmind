@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.Females.InseminationViews"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
              mc:Ignorable="d" 
              d:DesignHeight="215.795" d:DesignWidth="285.756">
     <Grid>
@@ -17,20 +18,20 @@
             <DatePicker Name="DatePicker" Width="auto" 
                         materialDesign:HintAssist.Hint="Fecha de inseminación" 
                         FontSize="14" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
-            <TextBox Width="auto" 
+            <TextBox x:Name="MaleCodeTextBox"
+                     Width="auto" 
                      materialDesign:HintAssist.Hint="Código de macho"
                      FontSize="14"  
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
             <Separator Background="{x:Null}" Height="10"></Separator>
-            <CheckBox Name="ConfirmCheckbox" Checked="CheckBox_checked" Unchecked="CheckBox_unchecked">
-                <TextBlock Foreground="Red">Estoy de Acuerdo con la acción</TextBlock>
-            </CheckBox>
+            <customUserControls:NotifyUserAgree x:Name="UserAgree"></customUserControls:NotifyUserAgree>
             <Separator Background="{x:Null}" Height="15"></Separator>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button  Name="AcceptBtn" IsDefault="True"
                          IsEnabled="False" 
                          Margin="0 8 8 0" 
-                         Command="materialDesign:DialogHost.CloseDialogCommand">
+                         Command="materialDesign:DialogHost.CloseDialogCommand"
+                         Click="AcceptBtn_OnClick">
                     <Button.CommandParameter>
                         <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                             True
