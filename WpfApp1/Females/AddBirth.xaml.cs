@@ -17,7 +17,7 @@ namespace WpfApp1.Females
         public event EventHandler<BirthsEventArgs> BirthAdded;
 
 
-        public virtual void OnBirthDeleted(Births birth)
+        public virtual void OnBirthAdded(Births birth)
         {
             BirthAdded?.Invoke(this, new BirthsEventArgs { Birth = birth });
 
@@ -47,7 +47,7 @@ namespace WpfApp1.Females
             };
             unitOfWork.Births.Add(birth);
             unitOfWork.Complete();
-            OnBirthDeleted(birth);
+            OnBirthAdded(birth);
         }
     }
 }
