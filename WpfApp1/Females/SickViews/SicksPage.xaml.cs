@@ -48,9 +48,8 @@ namespace WpfApp1.Females.SickViews
                 return true;
             else
             {
-                return (((DatabaseFirst.Births)obj).n_piglets.ToString()
-                        .IndexOf(SearchBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                       (((DatabaseFirst.Births)obj).date.IndexOf(SearchBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+                return (((DatabaseFirst.Sicks)obj).name.IndexOf(SearchBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                       (((DatabaseFirst.Sicks)obj).date.IndexOf(SearchBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             }
         }
 
@@ -58,6 +57,7 @@ namespace WpfApp1.Females.SickViews
         {
             Female = female;
             GetItemsFromDatabase();
+            SearchBox.SetView(SicksListView, CustomFilter);
         }
 
         public void GetItemsFromDatabase()
