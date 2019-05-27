@@ -32,10 +32,12 @@ namespace WpfApp1.Females.SickViews
         public void InitializeCrudControls(Sicks entity)
         {
             _deleteSick = new DeleteSick(entity);
-            //_editSick = new EditSick();
+            _editSick = new EditSick(entity);
 
             EditAndDelete.DeleteControl = _deleteSick;
+            EditAndDelete.EditControl = _editSick;
 
+            _editSick.SickEdited += OnItemEdited;
             _deleteSick.SickDeleted += OnItemDeleted;
 
         }
@@ -85,7 +87,7 @@ namespace WpfApp1.Females.SickViews
 
         public void OnItemEdited(object sender, SicksEventArgs e)
         {
-
+            _sicksObservableCollection[_sicksObservableCollection.IndexOf(CurrenSick)] = e.Sick;
         }
 
 
