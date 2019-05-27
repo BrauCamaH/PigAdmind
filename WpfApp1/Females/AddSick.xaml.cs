@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using WpfApp1.CustomEventArgs;
+using WpfApp1.DatabaseFirst;
+using WpfApp1.Persistance;
 
 namespace WpfApp1.Females
 {
@@ -20,9 +12,42 @@ namespace WpfApp1.Females
     /// </summary>
     public partial class AddSick : UserControl
     {
+        private DatabaseFirst.Females _female;
+
+        public event EventHandler<SicksEventArgs> SickAdded;
+
         public AddSick()
         {
             InitializeComponent();
+        }
+
+        public AddSick(DatabaseFirst.Females female)
+        {
+            InitializeComponent();
+            _female = female;
+        }
+
+        public virtual void OnSickAdded(Sicks sick)
+        {
+            SickAdded?.Invoke(this, new SicksEventArgs { Sick = sick });
+        }
+
+        private void AcceptButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var unitOfWork = new UnitOfWork(new Entities());
+            var sick = new Sicks
+            {
+                date = DatePicker.Text,
+                name = SickNameTextBox.Text,
+                improvement_date = "Ninguna"
+            };
+
+            unitOfWork.Sicks.Add(sick);
+
+            unitOfWork.Complete();
+
+            OnSickAdded(sick);
+
         }
     }
 }

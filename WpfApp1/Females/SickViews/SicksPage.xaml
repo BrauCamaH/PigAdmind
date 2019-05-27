@@ -12,9 +12,11 @@
         <customUserControls:LookTextBox x:Name="SearchBox"  
                                         Margin="6,10,728,453">
         </customUserControls:LookTextBox>
-        <customUserControls:EditAndDelete HorizontalAlignment="Right"
+        <customUserControls:EditAndDelete x:Name="EditAndDelete"
+                                          HorizontalAlignment="Right"
                                           VerticalAlignment="Top"/>
-        <ListView HorizontalAlignment="Left" 
+        <ListView x:Name="SicksListView"
+            HorizontalAlignment="Left" 
                               Height="545" 
                               Margin="0,65,0,0" 
                               VerticalAlignment="Top" 
@@ -22,9 +24,9 @@
                               Background="White">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Enfermedad"/>
-                    <GridViewColumn Header="Fecha de Inicio"/>
-                    <GridViewColumn Header="Fecha de Mejora"/>
+                    <GridViewColumn Header="Enfermedad" DisplayMemberBinding="{Binding name}"/>
+                    <GridViewColumn Header="Fecha de Inicio" DisplayMemberBinding="{Binding date}"/>
+                    <GridViewColumn Header="Fecha de Mejora" DisplayMemberBinding="{Binding improvement_date}"/>
                 </GridView>
             </ListView.View>
         </ListView>

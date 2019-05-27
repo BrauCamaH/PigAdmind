@@ -33,7 +33,7 @@ namespace WpfApp1.Females.InseminationViews
         public void SetFemale(DatabaseFirst.Females female)
         {
             Female = female;
-            GetBirthsFromDatabase();
+            GetInseminationsFromDatabase();
             SearchBox.SetView(InseminationsListView, CustomFilter);
 
         }
@@ -51,7 +51,7 @@ namespace WpfApp1.Females.InseminationViews
             }
 
         }
-        private void GetBirthsFromDatabase()
+        private void GetInseminationsFromDatabase()
         {
             UnitOfWork unitOfWork = new UnitOfWork(new Entities());
             CrudOperations<Inseminations>.AddRange(_inseminationsObservableList, unitOfWork.Inseminations.GetInseminationsByFemale(Female.code));

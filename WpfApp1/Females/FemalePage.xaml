@@ -103,7 +103,7 @@
                 <birthViews:BirthsPage x:Name="Births"> </birthViews:BirthsPage>
             </TabItem>
             <TabItem Header="Enfermedades">
-                <sickViews:SicksPage></sickViews:SicksPage>
+                <sickViews:SicksPage x:Name="SicksPage"></sickViews:SicksPage>
             </TabItem>
         </dragablz:TabablzControl>
     </Grid>
