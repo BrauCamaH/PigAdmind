@@ -18,11 +18,11 @@
                     Modificar Hembra
                 </TextBlock>
             </materialDesign:Card>
-            <TextBox x:Name="CodeTextBox"
+            <!--<TextBox x:Name="CodeTextBox"
                      materialDesign:HintAssist.Hint="Nuevo Código" 
                      FontSize="16"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-            <DatePicker x:Name="DatePicker"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>-->
+            <DatePicker x:Name="NewDateDatePicker"
                         materialDesign:HintAssist.Hint="Nueva fecha" 
                         FontSize="16"
                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></DatePicker>
@@ -30,6 +30,7 @@
             <customUserControls:NotifyUserAgree x:Name="NotifyUserAgree"></customUserControls:NotifyUserAgree>
             <Separator Background="{x:Null}" Height="15"></Separator>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Separator Width="20" Background="{x:Null}"></Separator>
                 <Button  Name="AcceptBtn"
                          IsDefault="True" 
                          IsEnabled="False" 
