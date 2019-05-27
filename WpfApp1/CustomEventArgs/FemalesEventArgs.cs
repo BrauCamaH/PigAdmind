@@ -2,6 +2,6 @@
 {
     public class FemalesEventArgs
     {
-        private DatabaseFirst.Females Female { get; set; }
+        public DatabaseFirst.Females Female { get; set; }
     }
 }

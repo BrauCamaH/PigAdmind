@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.CustomEventArgs;
 using WpfApp1.CustomUserControls;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Females.BirthViews;
@@ -14,7 +15,7 @@ namespace WpfApp1.Females
     /// <summary>
     /// Interaction logic for MainFemales.xaml
     /// </summary>
-    public partial class MainFemales : UserControl
+    public partial class MainFemales : UserControl, IPigAdmindPage<DatabaseFirst.Females, FemalesEventArgs>
     {
         private DatabaseFirst.Females _selectedFemale;
         public ObservableCollection<DatabaseFirst.Females> FemalesObservableList { get; }
@@ -23,12 +24,15 @@ namespace WpfApp1.Females
         private BackButton _backButton;
         private EditAndDelete _editAndDelete;
 
+        private EditFemale _editFemale;
+        private DeleteFemale _deleteFemale;
+
         public MainFemales(BackButton backButton, EditAndDelete editAndDelete)
         {
 
             InitializeComponent();
             FemalesObservableList = new ObservableCollection<DatabaseFirst.Females>();
-            GetFemalesFromDataBase();
+            GetItemsFromDatabase();
 
             _backButton = backButton;
             _editAndDelete = editAndDelete;
@@ -39,6 +43,60 @@ namespace WpfApp1.Females
         public MainFemales()
         {
             InitializeComponent();
+        }
+
+
+
+        public void InitializeCrudControls(DatabaseFirst.Females entity)
+        {
+            _deleteFemale = new DeleteFemale(entity);
+
+            _editAndDelete.DeleteControl = _deleteFemale;
+
+            _deleteFemale.FemaleDeleted += OnItemDeleted;
+        }
+
+        public void GetItemsFromDatabase()
+        {
+            var unitOfWork = new UnitOfWork(new Entities());
+            foreach (var female in unitOfWork.Females.GetAll())
+            {
+                if (FemalesObservableList.Count < unitOfWork.Females.GetAll().Count())
+                {
+                    FemalesObservableList.Add(female);
+                }
+            }
+
+            FemalesList.ItemsSource = FemalesObservableList;
+        }
+
+        public void OnItemAdded(object sender, FemalesEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnItemDeleted(object sender, FemalesEventArgs e)
+        {
+            RemoveItemFromList(FemalesObservableList, e.Female);
+        }
+
+        public void OnItemEdited(object sender, FemalesEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CustomFilter(object obj)
+        {
+            if (String.IsNullOrEmpty(SearchTextBox.TextBox.Text))
+                return true;
+            else
+            {
+                return (((DatabaseFirst.Females)obj).code.IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                       (((DatabaseFirst.Females)obj).birthday.IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                       (((DatabaseFirst.Females)obj).martenity.ToString().IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                       (((DatabaseFirst.Females)obj).status.IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+
         }
 
         private void SetBackButtonBehaviour(BackButton backButton)
@@ -77,19 +135,6 @@ namespace WpfApp1.Females
             return false;
         }
 
-        private void GetFemalesFromDataBase()
-        {
-            var unitOfWork = new UnitOfWork(new Entities());
-            foreach (var female in unitOfWork.Females.GetAll())
-            {
-                if (FemalesObservableList.Count < unitOfWork.Females.GetAll().Count())
-                {
-                    FemalesObservableList.Add(female);
-                }
-            }
-
-            FemalesList.ItemsSource = FemalesObservableList;
-        }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -98,8 +143,8 @@ namespace WpfApp1.Females
             _editAndDelete.EditControl = new EditBirth();
             _selectedFemale = female;
 
-
-
+            var unitOfWork = new UnitOfWork(new Entities());
+            if (female != null) InitializeCrudControls(unitOfWork.Females.GetFemaleByCode(female.code));
         }
 
         private void OnListMouseDoubleClick(object sender, RoutedEventArgs e)
@@ -122,20 +167,6 @@ namespace WpfApp1.Females
                 AddNewFemale(code, birthday);
                 CodeBox.Text = "";
                 DatePicker.Text = "";
-            }
-
-        }
-
-        private bool CustomFilter(object obj)
-        {
-            if (String.IsNullOrEmpty(SearchTextBox.TextBox.Text))
-                return true;
-            else
-            {
-                return (((DatabaseFirst.Females)obj).code.IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                       (((DatabaseFirst.Females)obj).birthday.IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                       (((DatabaseFirst.Females)obj).martenity.ToString().IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                       (((DatabaseFirst.Females)obj).status.IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             }
 
         }
