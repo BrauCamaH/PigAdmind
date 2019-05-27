@@ -9,8 +9,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="800.56" d:DesignWidth="1141.034">
     <Grid Background=" #f2f2f2">
-        <customUserControls:LookTextBox x:Name="SearchBox"  
-                                        Margin="6,10,560,276">
+        <customUserControls:LookTextBox
+            Margin="6,10,728,453" RenderTransformOrigin="0.5,0.5" 
+            x:Name="SearchBox">
         </customUserControls:LookTextBox>
         <customUserControls:EditAndDelete x:Name="EditAndDelete"
                                           HorizontalAlignment="Right"
