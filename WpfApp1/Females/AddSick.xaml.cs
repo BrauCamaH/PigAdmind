@@ -39,7 +39,8 @@ namespace WpfApp1.Females
             {
                 date = DatePicker.Text,
                 name = SickNameTextBox.Text,
-                improvement_date = "Ninguna"
+                improvement_date = "Ninguna",
+                fem_code = _female.code
             };
 
             unitOfWork.Sicks.Add(sick);

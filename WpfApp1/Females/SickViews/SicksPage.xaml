@@ -14,14 +14,16 @@
         </customUserControls:LookTextBox>
         <customUserControls:EditAndDelete x:Name="EditAndDelete"
                                           HorizontalAlignment="Right"
-                                          VerticalAlignment="Top"/>
+                                          VerticalAlignment="Top"
+                                          IsEnabled="False"/>
         <ListView x:Name="SicksListView"
-            HorizontalAlignment="Left" 
-                              Height="545" 
-                              Margin="0,65,0,0" 
-                              VerticalAlignment="Top" 
-                              Width="782" Grid.ColumnSpan="2"
-                              Background="White">
+                  HorizontalAlignment="Left" 
+                  Height="545" 
+                  Margin="0,65,0,0" 
+                  VerticalAlignment="Top" 
+                  Width="782" Grid.ColumnSpan="2"
+                  Background="White"
+                  SelectionChanged="SicksListView_OnSelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Enfermedad" DisplayMemberBinding="{Binding name}"/>

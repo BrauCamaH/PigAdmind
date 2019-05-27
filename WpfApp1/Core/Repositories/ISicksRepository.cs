@@ -7,6 +7,6 @@ namespace WpfApp1.Core.Repositories
     {
         IEnumerable<Sicks> GetSicksByFemale(string code);
 
-        void RemoveById();
+        void RemoveById(int id);
     }
 }

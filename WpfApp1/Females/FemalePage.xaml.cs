@@ -48,7 +48,6 @@ namespace WpfApp1.Females
         {
             var addSick = new AddSick(_female);
             AddUserControlToEventDialog(addSick);
-
             addSick.SickAdded += SicksPage.OnItemAdded;
         }
 

@@ -20,9 +20,16 @@ namespace WpfApp1.Persistance.Repositories
             return DbEntities.Sicks.Where(s => s.fem_code == code).ToList();
         }
 
-        public void RemoveById()
+        public void RemoveById(int id)
         {
-            throw new NotImplementedException();
+            var query = from s in DbEntities.Sicks
+                        where s.id == id
+                        select s;
+
+            if (query.First() != null)
+            {
+                DbEntities.Sicks.Remove(query.FirstOrDefault() ?? throw new InvalidOperationException());
+            }
         }
 
         public Entities DbEntities => Context as Entities;

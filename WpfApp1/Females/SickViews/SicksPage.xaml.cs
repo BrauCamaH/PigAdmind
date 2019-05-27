@@ -1,4 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.CustomEventArgs;
 using WpfApp1.DatabaseFirst;
@@ -15,6 +18,8 @@ namespace WpfApp1.Females.SickViews
 
         public DatabaseFirst.Females Female { get; set; }
 
+        private DeleteSick _deleteSick;
+        private EditSick _editSick;
         public Sicks CurrenSick { get; set; }
 
         public SicksPage()
@@ -26,12 +31,25 @@ namespace WpfApp1.Females.SickViews
 
         public void InitializeCrudControls(Sicks entity)
         {
-            throw new System.NotImplementedException();
+            _deleteSick = new DeleteSick(entity);
+            //_editSick = new EditSick();
+
+            EditAndDelete.DeleteControl = _deleteSick;
+
+            _deleteSick.SickDeleted += OnItemDeleted;
+
         }
 
         public bool CustomFilter(object obj)
         {
-            throw new System.NotImplementedException();
+            if (String.IsNullOrEmpty(SearchBox.TextBox.Text))
+                return true;
+            else
+            {
+                return (((DatabaseFirst.Births)obj).n_piglets.ToString()
+                        .IndexOf(SearchBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
+                       (((DatabaseFirst.Births)obj).date.IndexOf(SearchBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
         }
 
         public void SetFemale(DatabaseFirst.Females female)
@@ -49,19 +67,37 @@ namespace WpfApp1.Females.SickViews
 
         public void OnItemAdded(object sender, SicksEventArgs e)
         {
+
             _sicksObservableCollection.Add(e.Sick);
         }
 
         public void OnItemDeleted(object sender, SicksEventArgs e)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                _sicksObservableCollection.Remove(_sicksObservableCollection.Single(s => s.id == e.Sick.id));
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         public void OnItemEdited(object sender, SicksEventArgs e)
         {
-            throw new System.NotImplementedException();
+
         }
 
 
+        private void SicksListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            EditAndDelete.IsEnabled = SicksListView.SelectedItem != null;
+
+            Sicks sick = (Sicks)SicksListView.SelectedItem;
+            CurrenSick = sick;
+
+            var unitOfWork = new UnitOfWork(new Entities());
+            if (sick != null) InitializeCrudControls(unitOfWork.Sicks.Get(sick.id));
+        }
     }
 }
