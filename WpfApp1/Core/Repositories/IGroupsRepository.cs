@@ -1,11 +1,11 @@
-﻿using System.Collections;
+﻿using System.Collections.Generic;
 using WpfApp1.DatabaseFirst;
 
 namespace WpfApp1.Core.Repositories
 {
     interface IGroupsRepository : IRepository<PigGroups>
     {
-        IEnumerable GetGroupsByUser(int id);
+        IEnumerable<PigGroups> GetGroupsByUser(int id);
         PigGroups GetGroupById(int id);
 
         void RemoveGroupById(int id);

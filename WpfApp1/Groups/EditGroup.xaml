@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.Groups"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
              mc:Ignorable="d" 
              Background="White" d:DesignWidth="274"  Width="auto" Height="auto">
     <Grid>
@@ -14,22 +15,33 @@
                     Editar Grupo
                 </TextBlock>
             </materialDesign:Card>
-            <TextBox materialDesign:HintAssist.Hint="Nuevo Identificador" FontSize="16"
+            <TextBox  x:Name="NameTextBox"
+                      materialDesign:HintAssist.Hint="Nuevo Identificador" 
+                      FontSize="16"
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+            <TextBox x:Name="NumberTexBox"
+                     materialDesign:HintAssist.Hint="Número de Lechones" 
+                     FontSize="16"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-            <TextBox materialDesign:HintAssist.Hint="Número de Lechones" FontSize="16"
+            <TextBox x:Name="WeigthTexBox"
+                     materialDesign:HintAssist.Hint="Peso Promedio" 
+                     FontSize="16"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-            <TextBox materialDesign:HintAssist.Hint="Peso Promedio" FontSize="16"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-            <DatePicker materialDesign:HintAssist.Hint="Nueva fecha" FontSize="16"
+            <DatePicker x:Name="DatePicker"
+                        materialDesign:HintAssist.Hint="Nueva fecha" FontSize="16"
                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></DatePicker>
             <Separator Background="{x:Null}" Height="15"></Separator>
-            <CheckBox Name="Confirm_checkbox" Checked="CheckBox_checked" Unchecked="CheckBox_unchecked">
-                <TextBlock Foreground="Red">Estoy de Acuerdo con la acción</TextBlock>
-            </CheckBox>
+            <customUserControls:NotifyUserAgree x:Name="UserAgree"></customUserControls:NotifyUserAgree>
 
             <Separator Background="{x:Null}" Height="15"></Separator>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button  Name="Accept_btn" IsDefault="True" IsEnabled="False" Margin="0 8 8 0" >
+                <Separator Width="40" Background="{x:Null}"></Separator>
+                <Button  Name="Accept_btn" 
+                         IsDefault="True"
+                         IsEnabled="False"
+                         Margin="0 8 8 0" 
+                         Click="Accept_btn_OnClick"
+                         Command="materialDesign:DialogHost.CloseDialogCommand">
                     <Button.CommandParameter>
                         <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                             True

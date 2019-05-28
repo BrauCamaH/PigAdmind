@@ -3,28 +3,59 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
+using WpfApp1.CustomEventArgs;
+using WpfApp1.CustomUserControls;
 using WpfApp1.DatabaseFirst;
-using WpfApp1.Interfaces;
 using WpfApp1.Managers;
+using WpfApp1.Persistance;
 
 namespace WpfApp1.Groups
 {
     /// <summary>
     /// Interaction logic for MainGroups.xaml
     /// </summary>
-    public partial class MainGroups : UserControl, IRemovable
+    public partial class MainGroups : UserControl, IPigAdmindPage<PigGroups, GroupsEventArgs>
     {
-        private readonly ObservableCollection<PigGroups> GroupsObservableList = new ObservableCollection<PigGroups>();
+        private PigGroups CurrenGroup { get; set; }
+        private ObservableCollection<PigGroups> _groupsObservableList;
+
+        private BackButton _backButton;
+        private EditAndDelete _editAndDelete;
+
+        private DeleteGroup _deleteGroup;
+        private EditGroup _editGroup;
+
         public MainGroups()
         {
             InitializeComponent();
+        }
+        public MainGroups(BackButton backButton, EditAndDelete editAndDelete)
+        {
+            InitializeComponent();
+            _groupsObservableList = new ObservableCollection<PigGroups>();
             GetGroupsFromDataBase();
+
+            _backButton = backButton;
+            _editAndDelete = editAndDelete;
 
             SearchTextBox.SetView(GroupList, CustomFilter);
         }
 
-        private bool CustomFilter(object obj)
+        public void InitializeCrudControls(PigGroups entity)
+        {
+            _deleteGroup = new DeleteGroup(entity);
+            _editGroup = new EditGroup(entity);
+
+            _editAndDelete.DeleteControl = _deleteGroup;
+            _editAndDelete.EditControl = _editGroup;
+
+            _deleteGroup.GroupDeleted += OnItemDeleted;
+            _editGroup.GroupEdited += OnItemEdited;
+
+        }
+
+
+        public bool CustomFilter(object obj)
         {
             if (String.IsNullOrEmpty(SearchTextBox.TextBox.Text))
                 return true;
@@ -35,6 +66,27 @@ namespace WpfApp1.Groups
                        (((DatabaseFirst.PigGroups)obj).weigth_avg.ToString().IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0) ||
                        (((DatabaseFirst.PigGroups)obj).weaning_date.IndexOf(SearchTextBox.TextBox.Text, StringComparison.OrdinalIgnoreCase) >= 0);
             }
+        }
+
+        public void GetItemsFromDatabase()
+        {
+
+        }
+
+        public void OnItemAdded(object sender, GroupsEventArgs e)
+        {
+
+        }
+
+        public void OnItemDeleted(object sender, GroupsEventArgs e)
+        {
+            _groupsObservableList.Remove(_groupsObservableList.Single(i => i.id == CurrenGroup.id));
+            // MessageBox.Show("Group Deleted");
+        }
+
+        public void OnItemEdited(object sender, GroupsEventArgs e)
+        {
+            _groupsObservableList[_groupsObservableList.IndexOf(CurrenGroup)] = e.Group;
         }
 
 
@@ -51,12 +103,12 @@ namespace WpfApp1.Groups
             var unitOfWork = new Entities();
             foreach (var pigGroups in unitOfWork.PigGroups.ToList())
             {
-                if (GroupsObservableList.Count < unitOfWork.PigGroups.ToList().Count)
+                if (_groupsObservableList.Count < unitOfWork.PigGroups.ToList().Count)
                 {
-                    GroupsObservableList.Add(pigGroups);
+                    _groupsObservableList.Add(pigGroups);
                 }
             }
-            GroupList.ItemsSource = GroupsObservableList;
+            GroupList.ItemsSource = _groupsObservableList;
         }
 
         private void AddNewGroup(string id, float weigth, int n, string date)
@@ -73,14 +125,19 @@ namespace WpfApp1.Groups
                 user = 1,
                 name = id
             };
-            GroupsObservableList.Add(pigGroup);
+            _groupsObservableList.Add(pigGroup);
             ctx.PigGroups.Add(pigGroup);
             ctx.SaveChanges();
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            _editAndDelete.IsEnabled = GroupList.SelectedItem != null;
+            PigGroups group = (PigGroups)GroupList.SelectedItem;
+            CurrenGroup = group;
 
+            var unitOfWork = new UnitOfWork(new Entities());
+            if (group != null) InitializeCrudControls(unitOfWork.Groups.Get(group.id));
         }
         private void OnListMouseDoubleClick(object sender, RoutedEventArgs e)
         {
@@ -109,18 +166,5 @@ namespace WpfApp1.Groups
 
         }
 
-
-        private void LookTextBox_OnTextChanged(object sender, TextChangedEventArgs e)
-        {
-            CollectionViewSource.GetDefaultView(GroupList.ItemsSource).Refresh();
-        }
-
-        public void RemoveSelectedItem()
-        {
-            var unitOfWork = new Entities();
-            unitOfWork.PigGroups.Remove(unitOfWork.PigGroups.ToList()[GroupList.SelectedIndex]);
-            GroupsObservableList.RemoveAt(GroupList.SelectedIndex);
-            unitOfWork.SaveChanges();
-        }
     }
 }

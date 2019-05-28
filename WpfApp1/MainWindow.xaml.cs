@@ -27,7 +27,7 @@ namespace WpfApp1
         private readonly Thickness _initialMarginMenuBar;
 
         public MainFemales MainFemales { get => new MainFemales(MainBackButton, MainEditAndDelete); set => mainFemales = value; }
-        public MainGroups MainGroups { get => new MainGroups(); set => mainGroups = value; }
+        public MainGroups MainGroups { get => new MainGroups(MainBackButton, MainEditAndDelete); set => mainGroups = value; }
         public MainSales MainSales { get => new MainSales(); set => mainSales = value; }
 
         public MainWindow()
@@ -92,11 +92,11 @@ namespace WpfApp1
             {
                 case "Females":
                     usc = MainFemales;
-
+                    MainFemales.FemalesList.SelectedItem = null;
                     break;
                 case "Groups":
                     usc = MainGroups;
-
+                    MainGroups.GroupList.SelectedItem = null;
                     break;
                 case "Sales":
                     usc = MainSales;
@@ -104,6 +104,7 @@ namespace WpfApp1
                     break;
             }
             MainGridManager.SetUserControl(usc);
+            MainEditAndDelete.IsEnabled = false;
         }
 
         private void Exit(object sender, RoutedEventArgs e)

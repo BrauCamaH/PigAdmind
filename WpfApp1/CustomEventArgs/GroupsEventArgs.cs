@@ -4,6 +4,6 @@ namespace WpfApp1.CustomEventArgs
 {
     public class GroupsEventArgs
     {
-        private PigGroups Group { get; set; }
+        public PigGroups Group { get; set; }
     }
 }

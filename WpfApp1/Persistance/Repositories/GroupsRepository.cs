@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using WpfApp1.Core.Repositories;
@@ -14,7 +14,7 @@ namespace WpfApp1.Persistance
         {
         }
 
-        public IEnumerable GetGroupsByUser(int id)
+        public IEnumerable<PigGroups> GetGroupsByUser(int id)
         {
             throw new NotImplementedException();
         }

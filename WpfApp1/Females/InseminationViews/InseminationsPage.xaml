@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="WpfApp1.Females.InseminationViews.InseminationsPage"
+﻿ <UserControl x:Class="WpfApp1.Females.InseminationViews.InseminationsPage"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -15,7 +15,8 @@
         </customUserControls:LookTextBox>
         <customUserControls:EditAndDelete x:Name="EditAndDelete"
                                           HorizontalAlignment="Right"
-                                          VerticalAlignment="Top"/>
+                                          VerticalAlignment="Top"
+                                          IsEnabled="False"/>
         <ListView HorizontalAlignment="Left" 
                   Height="545" 
                   Margin="0,65,0,0"
