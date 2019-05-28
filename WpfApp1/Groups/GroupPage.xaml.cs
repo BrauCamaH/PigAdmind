@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using WpfApp1.DatabaseFirst;
 
 namespace WpfApp1.Groups
@@ -30,6 +31,27 @@ namespace WpfApp1.Groups
             SecondTextBlock.Text = group.second_avg.ToString();
             LastTextBlock.Text = group.lastWeigth_avg.ToString();
             DiedTextBlock.Text = group.died_pigs.ToString();
+        }
+        private void AddUserControlToEventDialog(UserControl userControl)
+        {
+            FemaleEventDialog.IsOpen = true;
+            MainGridEvent.Children.Clear();
+            MainGridEvent.Children.Add(userControl);
+        }
+
+        private void SecondAvg_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LastAvg_OnClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DiedPig_OnClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

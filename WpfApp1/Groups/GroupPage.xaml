@@ -29,6 +29,17 @@
             <RowDefinition Height="120"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
+        <materialDesign:DialogHost Grid.Column="1" Grid.Row="1"
+                                   Name="FemaleEventDialog" Height="auto" 
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch"
+                                   CloseOnClickAway="True">
+            <materialDesign:DialogHost.DialogContent >
+                <Grid Name="MainGridEvent"> 
+                </Grid>
+            </materialDesign:DialogHost.DialogContent>
+
+        </materialDesign:DialogHost>
         <StackPanel Grid.Row="0" 
                     Grid.Column="1"
                     Orientation="Horizontal">
@@ -39,7 +50,7 @@
                 HorizontalAlignment="Right"  
                 Stroke="White">
                 <Ellipse.Fill>
-                    <ImageBrush Stretch="UniformToFill"/>
+                    <ImageBrush ImageSource="../Assets/group.png " Stretch="UniformToFill"/>
                 </Ellipse.Fill>
             </Ellipse>
             <Label  Name="CodeLabel" 
@@ -73,20 +84,23 @@
                 PlacementMode="BottomAndAlignCentres"
                 ToolTip="Agregar nuevo evento" Height="60" Width="60" >
                 <StackPanel>
-                    <Button ToolTip="Segundo Pesaje" >
+                    <Button ToolTip="Segundo Pesaje" 
+                            Click="SecondAvg_OnClick">
                         <materialDesign:PackIcon Kind="ShowChart" />
                     </Button>
-                    <Button ToolTip= "Último Pesaje">
+                    <Button ToolTip= "Último Pesaje"
+                            Click="LastAvg_OnClick">
                         <materialDesign:PackIcon Kind="ChartMultiline" />
                     </Button>
-                    <Button ToolTip="Lechon fallecido">
+                    <Button ToolTip="Lechon fallecido"
+                            Click="DiedPig_OnClick">
                         <materialDesign:PackIcon Kind="SmileyDead" />
                     </Button>
                 </StackPanel>
             </materialDesign:PopupBox>
         </StackPanel>
         
-        
+    
        
         <StackPanel Grid.Row="1" Grid.Column="1">
             <FlowDocumentReader Grid.Column="1" Grid.Row="1"
