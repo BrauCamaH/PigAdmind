@@ -430,6 +430,7 @@
   <ItemGroup />
   <ItemGroup>
     <Resource Include="Assets\cerdo.png" />
+    <Resource Include="Assets\group.png" />
     <Content Include="DatabaseFirst\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
