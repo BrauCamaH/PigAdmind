@@ -141,7 +141,9 @@ namespace WpfApp1.Groups
         }
         private void OnListMouseDoubleClick(object sender, RoutedEventArgs e)
         {
-            MainGridManager.SetUserControl(new GroupPage());
+            MainGridManager.SetUserControl(new GroupPage(CurrenGroup));
+            _backButton.SetActualContext(this);
+            GroupList.SelectedItem = null;
         }
 
         private void ClearFields()
