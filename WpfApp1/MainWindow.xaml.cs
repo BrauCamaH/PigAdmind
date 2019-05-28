@@ -105,6 +105,7 @@ namespace WpfApp1
             }
             MainGridManager.SetUserControl(usc);
             MainEditAndDelete.IsEnabled = false;
+            MainBackButton.IsEnabled = false;
         }
 
         private void Exit(object sender, RoutedEventArgs e)

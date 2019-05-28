@@ -18,6 +18,7 @@ namespace WpfApp1.CustomUserControls
         public void SetActualContext(UserControl userControl)
         {
             _userControl = userControl;
+            IsEnabled = true;
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
