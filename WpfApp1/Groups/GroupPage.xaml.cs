@@ -46,12 +46,18 @@ namespace WpfApp1.Groups
 
         private void SecondAvg_OnClick(object sender, RoutedEventArgs e)
         {
+            var us = new AddSecondWeigth(_group);
+            us.SecondWeigthAdded += EditOnGroupEdited;
 
+            AddUserControlToEventDialog(us);
         }
 
         private void LastAvg_OnClick(object sender, RoutedEventArgs e)
         {
+            var us = new AddLastWeigth(_group);
+            us.LastWeigthAdded += EditOnGroupEdited;
 
+            AddUserControlToEventDialog(us);
         }
 
         private void DiedPig_OnClick(object sender, RoutedEventArgs e)

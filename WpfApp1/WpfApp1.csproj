@@ -207,6 +207,12 @@
     <Compile Include="Females\SickViews\SicksPage.xaml.cs">
       <DependentUpon>SicksPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Groups\AddLastWeigth.xaml.cs">
+      <DependentUpon>AddLastWeigth.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Groups\AddSecondWeigth.xaml.cs">
+      <DependentUpon>AddSecondWeigth.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Groups\DeleteGroup.xaml.cs">
       <DependentUpon>DeleteGroup.xaml</DependentUpon>
     </Compile>
@@ -334,6 +340,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Females\SickViews\SicksPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Groups\AddLastWeigth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Groups\AddSecondWeigth.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
