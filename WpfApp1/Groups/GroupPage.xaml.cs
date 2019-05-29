@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.CustomEventArgs;
 using WpfApp1.DatabaseFirst;
 
 namespace WpfApp1.Groups
@@ -31,7 +32,11 @@ namespace WpfApp1.Groups
             SecondTextBlock.Text = group.second_avg.ToString();
             LastTextBlock.Text = group.lastWeigth_avg.ToString();
             DiedTextBlock.Text = group.died_pigs.ToString();
+
         }
+
+
+
         private void AddUserControlToEventDialog(UserControl userControl)
         {
             FemaleEventDialog.IsOpen = true;
@@ -52,6 +57,19 @@ namespace WpfApp1.Groups
         private void DiedPig_OnClick(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void EditButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var edit = new EditGroupPage(_group);
+            edit.GroupEdited += EditOnGroupEdited;
+
+            AddUserControlToEventDialog(edit);
+        }
+
+        private void EditOnGroupEdited(object sender, GroupsEventArgs e)
+        {
+            SetGroup(e.Group);
         }
     }
 }

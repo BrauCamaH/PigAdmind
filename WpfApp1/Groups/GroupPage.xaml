@@ -99,7 +99,7 @@
                 </StackPanel>
             </materialDesign:PopupBox>
         </StackPanel>
-        
+         
     
        
         <StackPanel Grid.Row="1" Grid.Column="1">
@@ -185,11 +185,13 @@
                     </Table>
                 </FlowDocument>
             </FlowDocumentReader>
-            <Button Background="{x:Null}" 
+            <Button x:Name="EditButton"
+                    Background="{x:Null}" 
                     Foreground="LightGray" 
                     Height="69" 
                     Margin="7,0,7,1" 
-                    Width="80">
+                    Width="80"
+                    Click="EditButton_OnClick">
                 <materialDesign:PackIcon Kind="Edit"  
                                          Opacity=".56" 
                                          Height="52" 
