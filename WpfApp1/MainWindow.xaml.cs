@@ -28,7 +28,7 @@ namespace WpfApp1
 
         public MainFemales MainFemales { get => new MainFemales(MainBackButton, MainEditAndDelete); set => mainFemales = value; }
         public MainGroups MainGroups { get => new MainGroups(MainBackButton, MainEditAndDelete); set => mainGroups = value; }
-        public MainSales MainSales { get => new MainSales(); set => mainSales = value; }
+        public MainSales MainSales { get => new MainSales(MainEditAndDelete); set => mainSales = value; }
 
         public MainWindow()
         {

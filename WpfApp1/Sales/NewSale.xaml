@@ -7,105 +7,120 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="516" d:DesignWidth="623" Background="White">
-    <Grid>
-        <StackPanel>
+    <ScrollViewer>
+        <Grid VerticalAlignment="Top">
             <StackPanel>
                 <materialDesign:Card Background="LightBlue">
                     <TextBlock Foreground="White" FontSize="30"
-                             HorizontalAlignment="Center">
-                        Agregar nueva Venta
+                           HorizontalAlignment="Center">
+                    Agregar nueva Venta
                     </TextBlock>
                 </materialDesign:Card>
-                <Separator Height="15" Background="{x:Null}"></Separator>
-                <Button  HorizontalAlignment="Left" VerticalAlignment="Top" 
-                         Width="183">
-                    <DockPanel>
-                        <materialDesign:PackIcon Kind="Plus" Height="25" Width="28" Foreground="LightBlue"/>
-                        <TextBlock FontSize="15">Agregar Grupo</TextBlock>
-                    </DockPanel>
-                </Button>
-            </StackPanel>
-            <Separator Height="15" Background="DarkGray"></Separator>
-            <StackPanel  Orientation="Horizontal" >
-                <ListView x:Name="GroupList" 
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+
+                        <TextBox x:Name="GroupTextBox"
+                             Width="auto" 
+                             materialDesign:HintAssist.Hint="Grupo a vender"
+                             FontSize="24"  
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             Margin="10,0,0,0"
+                             TextChanged="GroupTextBox_OnTextChanged"></TextBox>
+                        <Button  x:Name="AddButton"
+                             HorizontalAlignment="Stretch" 
+                             VerticalAlignment="Stretch"
+                             Width="auto"
+                             Margin="20,30,0,0"
+                             Click="AddButton_OnClick"
+                             IsEnabled="False">
+                            <DockPanel>
+                                <materialDesign:PackIcon Kind="Plus" Height="25" Width="28" Foreground="LightBlue"/>
+                                <TextBlock FontSize="15">Agregar Grupo</TextBlock>
+                            </DockPanel>
+                        </Button>
+                        <Button x:Name="DeleteButton"
+                                Margin="20,30,0,0" 
+                                IsEnabled="False"
+                                Click="DeleteButton_OnClick">
+                            <materialDesign:PackIcon Kind="Trash"  Height="25" Width="28" Foreground="LightBlue"/>
+                        </Button>
+                    </StackPanel>
+
+                </StackPanel>
+                <Separator Height="15" Background="DarkGray"></Separator>
+                <StackPanel  Orientation="Horizontal" >
+                    <ListView x:Name="GroupList" 
                           HorizontalAlignment="Left" 
-                      Height="150"
-                      VerticalAlignment="Top" >
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn Header="Identificador"  DisplayMemberBinding="{Binding name}"/>
-                            <GridViewColumn Header="Total Lechones" DisplayMemberBinding="{Binding pig_count}"/>
-                        </GridView>
-                    </ListView.View>
-                </ListView>
-                <DataGrid
-                Background="White"
-                ItemsSource="{Binding Items3}"
-                CanUserSortColumns="True"
-                CanUserAddRows="False" >
-                    <materialDesign:MaterialDataGridTextColumn
-                    Binding="{Binding Description}"
-                    Header="Description"
-                    MaxLength="5"
-                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}" />
-                    <materialDesign:MaterialDataGridTextColumn
-                    Binding="{Binding Numeric}"
-                    Header="Lechones a vender"
-                    Width="120"
-                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
-                        <DataGridTextColumn.HeaderStyle>
-                            <Style
-                            TargetType="{x:Type DataGridColumnHeader}"
-                            BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
-                                <Setter
-                                Property="HorizontalAlignment"
-                                Value="Right" />
-                                <Setter
-                                Property="ContentTemplate">
-                                    <Setter.Value>
-                                        <DataTemplate>
-                                            <TextBlock
-                                            TextWrapping="Wrap"
-                                            Text="{Binding}"
-                                            TextAlignment="Right" />
-                                        </DataTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </DataGridTextColumn.HeaderStyle>
-                        <DataGridTextColumn.ElementStyle>
-                            <Style
-                            TargetType="{x:Type TextBlock}">
-                                <Setter
-                                Property="HorizontalAlignment"
-                                Value="Right" />
-                            </Style>
-                        </DataGridTextColumn.ElementStyle>
-                    </materialDesign:MaterialDataGridTextColumn>
-                </DataGrid>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" 
+                          Height="auto"
+                          MinHeight="200"
+                          VerticalAlignment="Top" 
+                          Margin="20,0,0,0"
+                          SelectionChanged="GroupList_OnSelectionChanged"
+                          SelectionMode="Single">
+                        <ListView.View >
+                            <GridView >
+                                <GridViewColumn Header="Identificador"  DisplayMemberBinding="{Binding name}" />
+                                <GridViewColumn Header="Total Lechones" DisplayMemberBinding="{Binding pig_count}"/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <DataGrid x:Name="DataGridNumber" 
+                              CanUserAddRows="False" 
+                              CanUserSortColumns="False"
+                              SelectionMode="Single"
+                              AutoGenerateColumns="False"
+                              Background="{x:Null}" Height="auto"
+                              Margin="40,1.3,0,0"
+                              FontSize="11.3">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Número a Vender" 
+                                                Binding="{Binding N}">
+
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+                </StackPanel>
+                <TextBox x:Name="PriceTextBox"
+                         Width="auto" 
+                         materialDesign:HintAssist.Hint="Precio"
+                         FontSize="18"  
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         Margin="10,0,0,0"
+                         TextChanged="GroupTextBox_OnTextChanged"></TextBox>
+                <DatePicker  x:Name="Date"
+                             Width="auto" 
+                             materialDesign:HintAssist.Hint="Fecha" 
+                             FontSize="18" 
+                             Margin="10,0,0,0"
+                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button 
+                            Style="{StaticResource MaterialDesignFlatButton}" 
+                            IsDefault="True" Margin="0 8 8 0" 
+                             Command="materialDesign:DialogHost.CloseDialogCommand"
+                            Click="AddSaleButton_OnClick">
+                        <Button.CommandParameter>
+                            <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                True
+                            </system:Boolean>
+                        </Button.CommandParameter>
+                        Agregar Venta
+                    </Button>
+                    <Button Style="{StaticResource MaterialDesignFlatButton}" IsCancel="True" Margin="0 8 8 0"
                     Command="materialDesign:DialogHost.CloseDialogCommand">
-                    <Button.CommandParameter>
-                        <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
-                            True
-                        </system:Boolean>
-                    </Button.CommandParameter>
-                    Agregar Venta
-                </Button>
-                <Button Style="{StaticResource MaterialDesignFlatButton}" IsCancel="True" Margin="0 8 8 0"
-                    Command="materialDesign:DialogHost.CloseDialogCommand">
-                    <Button.CommandParameter>
-                        <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
-                            False
-                        </system:Boolean>
-                    </Button.CommandParameter>
-                    Salir
-                </Button>
-                
+                        <Button.CommandParameter>
+                            <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
+                                False
+                            </system:Boolean>
+                        </Button.CommandParameter>
+                        Salir
+                    </Button>
+
+                </StackPanel>
+                <Separator Background="{x:Null}" Height="15"></Separator>
             </StackPanel>
-            <Separator Background="{x:Null}" Height="15"></Separator>
-        </StackPanel>
-    </Grid>
+        </Grid>
+    </ScrollViewer>
+    
 </UserControl>

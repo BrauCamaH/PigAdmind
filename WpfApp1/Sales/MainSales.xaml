@@ -11,10 +11,10 @@
             d:DesignWidth="1366" d:DesignHeight="768" >
     <Grid>
         <materialDesign:DialogHost Name="NewSaleDialogHost"
-            VerticalAlignment="Center" HorizontalAlignment="Center" 
+            VerticalAlignment="Top" HorizontalAlignment="Center"
             IsOpen="False" DialogClosing="NewSaleDialogHost_OnDialogClosing">
             <materialDesign:DialogHost.DialogContent>
-                <local:NewSale />
+               <Grid x:Name="DialogGrid"></Grid>
             </materialDesign:DialogHost.DialogContent>
         </materialDesign:DialogHost>
         <Button  HorizontalAlignment="Left" Margin="142,20,0,0" VerticalAlignment="Top" Width="183" Height="39" Click="NewSaleButton_Click">
@@ -60,11 +60,18 @@
             </materialDesign:ColorZone>
         </StackPanel>
 
-        <ListView HorizontalAlignment="Left" Height="581" Margin="145,85,0,0" VerticalAlignment="Top" Width="844" SelectionChanged="ListView_SelectionChanged">
+        <ListView x:Name="SalesListView"
+                  HorizontalAlignment="Left" 
+                  Height="581" 
+                  Margin="145,85,0,0"
+                  VerticalAlignment="Top" 
+                  Width="844" 
+                  SelectionChanged="ListView_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Fecha"/>
-                    <GridViewColumn Header="Precio"/>
+                    <GridViewColumn Header="Fecha" DisplayMemberBinding="{Binding date}"/>
+                    <GridViewColumn Header="Precio" DisplayMemberBinding="{Binding price}"/>
+                    <GridViewColumn Header="Total Lechones" DisplayMemberBinding="{Binding n_pigs}"/>
                 </GridView>
             </ListView.View>
         </ListView>
