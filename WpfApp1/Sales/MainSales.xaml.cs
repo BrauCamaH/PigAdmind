@@ -32,10 +32,9 @@ namespace WpfApp1.Sales
             _editAndDelete = editAndDelete;
             _salesObservableCollection = new ObservableCollection<DatabaseFirst.Sales>();
             InitializeComponent();
-
             GetItemsFromDatabase();
 
-
+            SearchTextBox.SetView(SalesListView, CustomFilter);
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -85,7 +84,17 @@ namespace WpfApp1.Sales
 
         public bool CustomFilter(object obj)
         {
-            throw new System.NotImplementedException();
+            if (String.IsNullOrEmpty(SearchTextBox.TextBox.Text))
+                return true;
+            else
+            {
+                return (((DatabaseFirst.Sales)obj).date.IndexOf(SearchTextBox.TextBox.Text,
+                            StringComparison.OrdinalIgnoreCase) >= 0) ||
+                       (((DatabaseFirst.Sales)obj).price.ToString().IndexOf(SearchTextBox.TextBox.Text,
+                            StringComparison.OrdinalIgnoreCase) >= 0) ||
+                       (((DatabaseFirst.Sales)obj).n_pigs.ToString().IndexOf(SearchTextBox.TextBox.Text,
+                            StringComparison.OrdinalIgnoreCase) >= 0);
+            }
         }
 
         public void GetItemsFromDatabase()
