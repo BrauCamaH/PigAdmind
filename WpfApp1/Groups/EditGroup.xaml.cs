@@ -31,7 +31,7 @@ namespace WpfApp1.Groups
 
             GetGroup();
         }
-        private void EditFemaleFromDatabase(string newId, string newNumber, string newWeigth, string newDate)
+        private void EditGroupFromDatabase(string newId, string newNumber, string newWeigth, string newDate)
         {
             var unitOfWork = new UnitOfWork(new Entities());
             var group = unitOfWork.Groups.Get(_pigGroup.id);
@@ -59,7 +59,7 @@ namespace WpfApp1.Groups
 
         private void Accept_btn_OnClick(object sender, RoutedEventArgs e)
         {
-            EditFemaleFromDatabase(NameTextBox.Text, NumberTexBox.Text, WeigthTexBox.Text, DatePicker.Text);
+            EditGroupFromDatabase(NameTextBox.Text, NumberTexBox.Text, WeigthTexBox.Text, DatePicker.Text);
         }
     }
 }

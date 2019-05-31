@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.Sales"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
              mc:Ignorable="d" 
              Background="White" d:DesignWidth="258.333" d:DesignHeight="210.666"  Width="auto" Height="auto">
     <Grid>
@@ -14,17 +15,22 @@
                     Modificar Venta
                 </TextBlock>
             </materialDesign:Card>
-            <TextBox materialDesign:HintAssist.Hint="Nuevo Precio" FontSize="16"
+            <TextBox x:Name="PriceTextBox"
+                     materialDesign:HintAssist.Hint="Nuevo Precio" FontSize="16"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-            <DatePicker materialDesign:HintAssist.Hint="Nueva fecha" FontSize="16"
+            <DatePicker x:Name="DatePicker"
+                        materialDesign:HintAssist.Hint="Nueva fecha" FontSize="16"
                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></DatePicker>
             <Separator Background="{x:Null}" Height="10"></Separator>
-            <CheckBox Name="Confirm_checkbox" Checked="CheckBox_checked" Unchecked="CheckBox_unchecked">
-                <TextBlock Foreground="Red">Estoy de Acuerdo con la acción</TextBlock>
-            </CheckBox>
+            <customUserControls:NotifyUserAgree x:Name="UserAgree"></customUserControls:NotifyUserAgree>
             <Separator Background="{x:Null}" Height="15"></Separator>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Name="Accept_btn"  IsDefault="True" IsEnabled="False" Margin="0 8 8 0" >
+                <Button Name="Accept_btn"  
+                        IsDefault="True"
+                        IsEnabled="False"
+                        Margin="50 8 8 0" 
+                        Click="Accept_btn_OnClick"
+                        Command="materialDesign:DialogHost.CloseDialogCommand">
                     <Button.CommandParameter>
                         <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                             True
@@ -33,7 +39,8 @@
                     Aceptar
                 </Button>
                 <Button IsCancel="True" Margin="0 8 8 0"
-                        Command="materialDesign:DialogHost.CloseDialogCommand" Click="CloseButton_Click">
+                        Command="materialDesign:DialogHost.CloseDialogCommand" 
+                        Click="CloseButton_Click">
                     <Button.CommandParameter>
                         <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                             False

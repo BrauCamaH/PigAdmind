@@ -17,11 +17,14 @@ namespace WpfApp1.Sales
     public partial class MainSales : UserControl, IPigAdmindPage<DatabaseFirst.Sales, SalesEventArgs>
     {
 
-        public DatabaseFirst.Sales Sale { get; set; }
+        public DatabaseFirst.Sales CurrentSale { get; set; }
 
         private ObservableCollection<DatabaseFirst.Sales> _salesObservableCollection;
 
         private EditAndDelete _editAndDelete;
+
+        private EditSale _editSale;
+
 
         public MainSales(EditAndDelete editAndDelete)
         {
@@ -36,7 +39,11 @@ namespace WpfApp1.Sales
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            _editAndDelete.IsEnabled = SalesListView.SelectedItem != null;
+            DatabaseFirst.Sales sale = (DatabaseFirst.Sales)SalesListView.SelectedItem;
+            CurrentSale = sale;
+            var unitOfWork = new UnitOfWork(new Entities());
+            if (sale != null) InitializeCrudControls(unitOfWork.Sales.Get(sale.id));
         }
 
         private void NewSaleButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -64,7 +71,11 @@ namespace WpfApp1.Sales
 
         public void InitializeCrudControls(DatabaseFirst.Sales entity)
         {
+            _editSale = new EditSale(entity);
 
+            _editAndDelete.EditControl = _editSale;
+
+            _editSale.SaleEdited += OnItemEdited;
         }
 
         public bool CustomFilter(object obj)
@@ -91,7 +102,7 @@ namespace WpfApp1.Sales
 
         public void OnItemEdited(object sender, SalesEventArgs e)
         {
-            throw new System.NotImplementedException();
+            _salesObservableCollection[_salesObservableCollection.IndexOf(CurrentSale)] = e.Sales;
         }
     }
 }
