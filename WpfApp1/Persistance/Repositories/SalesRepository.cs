@@ -25,12 +25,12 @@ namespace WpfApp1.Persistance.Repositories
 
         public void RemoveSaleById(int id)
         {
-            var query = from s in DbEntities.PigGroups
+            var query = from s in DbEntities.Sales
                         where s.id == id
                         select s;
             if (query.First() != null)
             {
-                DbEntities.PigGroups.Remove(query.FirstOrDefault() ?? throw new InvalidOperationException());
+                DbEntities.Sales.Remove(query.FirstOrDefault() ?? throw new InvalidOperationException());
             }
         }
 

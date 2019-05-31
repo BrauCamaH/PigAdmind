@@ -1,6 +1,7 @@
 ﻿using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using WpfApp1.CustomEventArgs;
@@ -24,7 +25,7 @@ namespace WpfApp1.Sales
         private EditAndDelete _editAndDelete;
 
         private EditSale _editSale;
-
+        private DeleteSale _deleteSale;
 
         public MainSales(EditAndDelete editAndDelete)
         {
@@ -71,10 +72,14 @@ namespace WpfApp1.Sales
 
         public void InitializeCrudControls(DatabaseFirst.Sales entity)
         {
+            _deleteSale = new DeleteSale(entity);
             _editSale = new EditSale(entity);
 
+            _editAndDelete.DeleteControl = _deleteSale;
             _editAndDelete.EditControl = _editSale;
 
+
+            _deleteSale.SaleDeleted += OnItemDeleted;
             _editSale.SaleEdited += OnItemEdited;
         }
 
@@ -97,7 +102,7 @@ namespace WpfApp1.Sales
 
         public void OnItemDeleted(object sender, SalesEventArgs e)
         {
-            throw new System.NotImplementedException();
+            _salesObservableCollection.Remove(_salesObservableCollection.Single(i => i.id == CurrentSale.id));
         }
 
         public void OnItemEdited(object sender, SalesEventArgs e)

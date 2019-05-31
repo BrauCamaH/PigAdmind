@@ -242,6 +242,9 @@
     <Compile Include="Persistance\Repositories\SalesRepository.cs" />
     <Compile Include="Persistance\Repositories\SicksRepository.cs" />
     <Compile Include="Persistance\UnitOfWork.cs" />
+    <Compile Include="Sales\DeleteSale.xaml.cs">
+      <DependentUpon>DeleteSale.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Sales\EditSale.xaml.cs">
       <DependentUpon>EditSale.xaml</DependentUpon>
     </Compile>
@@ -393,6 +396,10 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Sales\DeleteSale.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
