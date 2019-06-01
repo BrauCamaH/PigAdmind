@@ -128,5 +128,11 @@ namespace WpfApp1
             ctx.SaveChanges();
         }
 
+        private void UserConfig(object sender, RoutedEventArgs e)
+        {
+            var configuration = new User();
+            configuration.Show();
+            Close();
+        }
     }
 }

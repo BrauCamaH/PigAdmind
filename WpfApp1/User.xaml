@@ -1,0 +1,102 @@
+﻿<Window x:Class="WpfApp1.User"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="Configuración de Usuario" Height="auto" Width="auto" 
+        d:DesignWidth="928" d:DesignHeight="623"
+        WindowState="Maximized" WindowStartupLocation="CenterScreen">
+    <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <materialDesign:Card Height="auto" 
+                                 Margin="0,6,0,0" 
+                                 Background="SteelBlue">
+                    <TextBlock HorizontalAlignment="Center" 
+                           Height="auto"
+                           TextWrapping="Wrap" 
+                           Text="Configurar Cuenta" 
+                           VerticalAlignment="Top" Width="auto"  
+                           FontFamily="Roboto" FontSize="70" 
+                           Foreground="White"/>
+
+                </materialDesign:Card>
+                <TextBlock HorizontalAlignment="Center" 
+                       Margin="0,20,0,0" 
+                       TextWrapping="Wrap" 
+                       VerticalAlignment="Top" 
+                       FontFamily="Roboto" 
+                       FontSize="50" Width="auto">
+               Modificar Valores en Cuenta
+                </TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBox
+                    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                    Margin="0,60,0,0"
+                    TextWrapping="Wrap"
+                    MinWidth="400"
+                    Width="auto"
+                    Height="auto"
+                    FontSize="18"
+                    materialDesign:HintAssist.FloatingScale="1"
+                    materialDesign:HintAssist.Hint="Correo Electronico"
+                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" TextChanged="TextBox_TextChanged" />
+                    <CheckBox
+                    x:Name="MaterialDesignFilledTextFieldTextBoxEnabledComboBox"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Margin="40,0,0,8">
+                        Editar
+                    </CheckBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" 
+                        HorizontalAlignment="Center">
+
+                    <PasswordBox
+                    Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}"
+                    HorizontalAlignment="Center"
+                    FontFamily="Roboto"
+                    Margin="0,60,0,0"
+                    FontSize="18"
+                    MinWidth="300"
+                    materialDesign:HintAssist.HintOpacity="100"
+                    materialDesign:HintAssist.FloatingScale="1"
+                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
+                    materialDesign:HintAssist.Hint="Contraseña" />
+                    <PasswordBox
+                    Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}"
+                    HorizontalAlignment="Center"
+                    FontFamily="Roboto"
+                    Margin="20,60,0,0"
+                    FontSize="18"
+                    MinWidth="300"
+                    materialDesign:HintAssist.HintOpacity="100"
+                    materialDesign:HintAssist.FloatingScale="1"
+                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
+                    materialDesign:HintAssist.Hint="Volver a Escribir" />
+                    <CheckBox
+                    x:Name="MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox"
+                    Margin="40, 70,0,8">
+                        Crear Nueva Contraseña
+                    </CheckBox>
+                </StackPanel>
+                <Button Width="auto"
+                   MaxWidth="270"
+                   Margin="0,60,0,0"
+                   FontSize="18" Click="Button_Click">
+                    Regresar y Guadar Cambios
+                </Button>
+            </StackPanel>
+
+
+        </Grid>
+    </ScrollViewer>
+</Window>

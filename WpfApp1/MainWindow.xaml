@@ -57,7 +57,7 @@
                         </MenuItem>
       
                         <MenuItem Header="_Configuración">
-                            <MenuItem Header="Usuario">
+                            <MenuItem Header="Usuario" Click="UserConfig">
                                 <MenuItem.Icon>
                                     <materialDesign:PackIcon Kind="User" />
                                 </MenuItem.Icon>
