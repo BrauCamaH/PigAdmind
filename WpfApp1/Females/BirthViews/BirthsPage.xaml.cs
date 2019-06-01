@@ -70,9 +70,14 @@ namespace WpfApp1.Females.BirthViews
             BirthsListView.ItemsSource = _birthsObservableList;
         }
 
+        private void SetInfoTableVisible(bool isVisible)
+        {
+            WeaningInfoTable.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
+        }
         private void BirthsListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             EditAndDelete.IsEnabled = BirthsListView.SelectedItem != null;
+            SetInfoTableVisible(BirthsListView != null);
 
             Births birth = (Births)BirthsListView.SelectedItem;
             CurrentBirth = birth;

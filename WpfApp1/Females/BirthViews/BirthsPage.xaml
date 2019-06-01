@@ -47,10 +47,13 @@
             </ListView.View>
         </ListView>
       
-        <FlowDocumentReader Margin="507,83,3,241" MaxZoom="100" IsFindEnabled="False">
-            <FlowDocument>
+        <FlowDocumentReader x:Name="WeaningInfoTable"
+                            Margin="507,83,3,241"
+                            MaxZoom="100" IsFindEnabled="False"
+                            Visibility="Hidden">
+            <FlowDocument >
 
-                <Table CellSpacing="5">
+                <Table CellSpacing="5" >
                     <Table.Columns>
                         <TableColumn/>
                         <TableColumn/>
