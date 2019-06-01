@@ -70,5 +70,12 @@ namespace WpfApp1.Females
             var us = new PregnatFemale(_female);
             AddUserControlToEventDialog(us);
         }
+
+        private void Misbirth_OnClick(object sender, RoutedEventArgs e)
+        {
+            var us = new MisbirthEvent(_female);
+
+            AddUserControlToEventDialog(us);
+        }
     }
 }

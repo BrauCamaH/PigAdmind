@@ -67,7 +67,7 @@
                 <Button ToolTip="Hembra embarazada" Click="PregnatFemale_OnClick">
                     <materialDesign:PackIcon Kind="HumanPregnant"/>
                 </Button>
-                <Button ToolTip="Aborto" >
+                <Button ToolTip="Aborto" Click="Misbirth_OnClick">
                     <materialDesign:PackIcon Kind="SettingsBackupRestore" />
                 </Button>
             </StackPanel>
