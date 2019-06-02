@@ -222,6 +222,9 @@
     <Compile Include="Groups\DeleteGroup.xaml.cs">
       <DependentUpon>DeleteGroup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Groups\DiedPigEvent.xaml.cs">
+      <DependentUpon>DiedPigEvent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Groups\EditGroup.xaml.cs">
       <DependentUpon>EditGroup.xaml</DependentUpon>
     </Compile>
@@ -375,6 +378,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Groups\DeleteGroup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Groups\DiedPigEvent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

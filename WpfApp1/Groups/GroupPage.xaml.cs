@@ -62,7 +62,9 @@ namespace WpfApp1.Groups
 
         private void DiedPig_OnClick(object sender, RoutedEventArgs e)
         {
+            var us = new DiedPigEvent();
 
+            AddUserControlToEventDialog(us);
         }
 
         private void EditButton_OnClick(object sender, RoutedEventArgs e)
