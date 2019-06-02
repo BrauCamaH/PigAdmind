@@ -134,5 +134,13 @@ namespace WpfApp1
             configuration.Show();
             Close();
         }
+
+        private void Info_OnClick(object sender, RoutedEventArgs e)
+        {
+            Info info = new Info();
+            info.Owner = this;
+
+            info.ShowDialog();
+        }
     }
 }
