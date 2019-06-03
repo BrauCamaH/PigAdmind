@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.CustomEventArgs;
+using WpfApp1.DatabaseFirst;
+using WpfApp1.Persistance;
 
 namespace WpfApp1.Groups
 {
@@ -9,14 +12,20 @@ namespace WpfApp1.Groups
     /// </summary>
     public partial class DiedPigEvent : UserControl
     {
-        public DiedPigEvent()
+
+        private PigGroups _pigGroup;
+
+        public event EventHandler<GroupsEventArgs> PigDied;
+
+        public DiedPigEvent(PigGroups pigGroup)
         {
+            _pigGroup = pigGroup;
             InitializeComponent();
         }
 
-        private void Accept_Button_Click(object sender, RoutedEventArgs e)
+        public virtual void OnPiegDied(PigGroups group)
         {
-            throw new NotImplementedException();
+            PigDied?.Invoke(this, new GroupsEventArgs { Group = group });
         }
 
         void AddNumber(TextBox textBox)
@@ -44,6 +53,20 @@ namespace WpfApp1.Groups
         private void Add_OnClick(object sender, RoutedEventArgs e)
         {
             AddNumber(NPigsTextBox);
+        }
+
+        private void Accept_Button_Click(object sender, RoutedEventArgs e)
+        {
+            UnitOfWork unitOfWork = new UnitOfWork(new Entities());
+            var group = unitOfWork.Groups.Get(_pigGroup.id);
+
+            int diedPigs = int.Parse(NPigsTextBox.Text);
+            group.died_pigs += diedPigs;
+            group.pig_count -= diedPigs;
+
+            unitOfWork.Complete();
+
+            OnPiegDied(group);
         }
     }
 }

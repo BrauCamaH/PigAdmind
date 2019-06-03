@@ -62,10 +62,13 @@ namespace WpfApp1.Groups
 
         private void DiedPig_OnClick(object sender, RoutedEventArgs e)
         {
-            var us = new DiedPigEvent();
+            var us = new DiedPigEvent(_group);
 
+            us.PigDied += OnPigDied;
             AddUserControlToEventDialog(us);
         }
+
+
 
         private void EditButton_OnClick(object sender, RoutedEventArgs e)
         {
@@ -75,6 +78,11 @@ namespace WpfApp1.Groups
             AddUserControlToEventDialog(edit);
         }
 
+        private void OnPigDied(object sender, GroupsEventArgs e)
+        {
+            NTotalLabel.Content = e.Group.pig_count.ToString();
+            SetGroup(e.Group);
+        }
         private void EditOnGroupEdited(object sender, GroupsEventArgs e)
         {
             SetGroup(e.Group);

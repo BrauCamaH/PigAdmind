@@ -64,7 +64,7 @@
                     FontFamily="Roboto" 
                     FontWeight="Bold" 
                     FontSize="40"/>
-            <Label Name="NTotalLabel"  
+            <Label x:Name="NTotalLabel"  
                    Margin="100,40,0,0"
                    Content="nTotal" 
                    Background="SteelBlue"
