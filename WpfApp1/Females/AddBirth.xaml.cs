@@ -33,9 +33,13 @@ namespace WpfApp1.Females
             _female = female;
 
         }
+
+
         private void Accept_Button_Click(object sender, RoutedEventArgs e)
         {
             var unitOfWork = new UnitOfWork(new Entities());
+            var female = unitOfWork.Females.GetFemaleByCode(_female.code);
+
             var birth = new Births()
             {
                 n_piglets = Int32.Parse(N_Pigs_TextBox.Text),
@@ -45,6 +49,9 @@ namespace WpfApp1.Females
                 mummys = Int32.Parse(MummysTextBox.Text),
                 status = "Actual"
             };
+
+            female.status = "Madre";
+
             unitOfWork.Births.Add(birth);
             unitOfWork.Complete();
             OnBirthAdded(birth);

@@ -17,8 +17,11 @@
             <TextBox Width="auto" materialDesign:HintAssist.Hint="Número de lechones"
                      FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" 
-                        Command="materialDesign:DialogHost.CloseDialogCommand">
+                <Button x:Name="AddButton"
+                        Style="{StaticResource MaterialDesignFlatButton}" 
+                        IsDefault="True" Margin="0 8 8 0" 
+                        Command="materialDesign:DialogHost.CloseDialogCommand"
+                        Click="AddButton_OnClick">
                     <Button.CommandParameter>
                         <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                             True

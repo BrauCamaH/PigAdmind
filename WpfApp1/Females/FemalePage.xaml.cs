@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using WpfApp1.CustomEventArgs;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Persistance;
 
@@ -40,9 +39,19 @@ namespace WpfApp1.Females
         {
             UnitOfWork unitOfWork = new UnitOfWork(new Entities());
 
-            PregnatButton.IsEnabled =
-                unitOfWork.Inseminations.GetCurrentInsemination(_female) != null;
+            DatabaseFirst.Females female = unitOfWork.Females.GetFemaleByCode(_female.code);
 
+            InseminationButton.IsEnabled = female.status == "Abortada" ||
+                                            female.status == "Destetada";
+
+            PregnatButton.IsEnabled = female.status == "Inseminada";
+
+            BirthButton.IsEnabled = female.status == "Preñada";
+
+            MisbirthButton.IsEnabled = female.status == "Inseminada" ||
+                                       female.status == "Preñada";
+
+            WeaningButton.IsEnabled = female.status == "Madre";
         }
 
         private void AddUserControlToEventDialog(UserControl userControl)
@@ -58,12 +67,6 @@ namespace WpfApp1.Females
             AddUserControlToEventDialog(addInsemination);
 
             addInsemination.InseminationAdded += InseminationsPage.OnInseminationAdded;
-            addInsemination.InseminationAdded += OnInseminationAdded;
-        }
-
-        private void OnInseminationAdded(object sender, InseminationsEventArgs e)
-        {
-            PregnatButton.IsEnabled = true;
         }
 
         private void SickButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -75,7 +78,7 @@ namespace WpfApp1.Females
 
         private void WeaningButton_Click(object sender, RoutedEventArgs e)
         {
-            AddUserControlToEventDialog(new AddWeaning());
+            AddUserControlToEventDialog(new AddWeaning(_female));
         }
 
         private void BirthButtonClick(object sender, RoutedEventArgs e)

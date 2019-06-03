@@ -57,24 +57,8 @@
                         Click="InseminationButtonClick">
                     <materialDesign:PackIcon Kind="Injection" />
                 </Button>
-                <Button x:Name="BirthButton"
-                        ToolTip= "Nuevo parto"  
-                        Click="BirthButtonClick">
-                    <materialDesign:PackIcon Kind="Baby"/>
-                </Button>
-                <Button x:Name="SickButton"
-                        ToolTip="Nueva enfermedad" 
-                        Click="SickButton_Click">
-                    <materialDesign:PackIcon Kind="Radioactive" />
-                </Button>
-                <Button x:Name="WeaningButton"
-                        ToolTip="Nuevo destete"
-                        Click="WeaningButton_Click">
-                    <materialDesign:PackIcon 
-                        Kind="WomanChild" />
-                </Button>
                 <Button x:Name="PregnatButton"
-                        ToolTip="Hembra embarazada" 
+                        ToolTip="Hembra preñada" 
                         Click="PregnatFemale_OnClick">
                     <materialDesign:PackIcon 
                         Kind="HumanPregnant"/>
@@ -84,6 +68,22 @@
                         Click="Misbirth_OnClick">
                     <materialDesign:PackIcon 
                         Kind="SettingsBackupRestore" />
+                </Button>
+                <Button x:Name="BirthButton"
+                        ToolTip= "Nuevo parto"  
+                        Click="BirthButtonClick">
+                    <materialDesign:PackIcon Kind="Baby"/>
+                </Button>
+                <Button x:Name="WeaningButton"
+                        ToolTip="Nuevo destete"
+                        Click="WeaningButton_Click">
+                    <materialDesign:PackIcon 
+                        Kind="WomanChild" />
+                </Button>
+                <Button x:Name="SickButton"
+                        ToolTip="Nueva enfermedad" 
+                        Click="SickButton_Click">
+                    <materialDesign:PackIcon Kind="Radioactive" />
                 </Button>
             </StackPanel>
         </materialDesign:PopupBox>

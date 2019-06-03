@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.DatabaseFirst;
+using WpfApp1.Persistance;
 
 namespace WpfApp1.Females
 {
@@ -17,7 +19,12 @@ namespace WpfApp1.Females
 
         private void Accept_Button_Click(object sender, RoutedEventArgs e)
         {
+            UnitOfWork unitOfWork = new UnitOfWork(new Entities());
+            var female = unitOfWork.Females.GetFemaleByCode(_female.code);
 
+            unitOfWork.Inseminations.GetCurrentInsemination(_female).status = "Fallida";
+            female.status = "Abortada";
+            unitOfWork.Complete();
         }
     }
 }

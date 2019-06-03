@@ -47,7 +47,8 @@ namespace WpfApp1.Females
             UnitOfWork unitOfWork = new UnitOfWork(new Entities());
             var female = unitOfWork.Females.GetFemaleByCode(_female.code);
 
-            female.status = "Embarazada";
+            unitOfWork.Inseminations.GetCurrentInsemination(_female).status = "Exitosa";
+            female.status = "Preñada";
             unitOfWork.Complete();
         }
     }

@@ -33,6 +33,7 @@ namespace WpfApp1.Females
         private void Accept_Button_Click(object sender, RoutedEventArgs e)
         {
             var unitOfWork = new UnitOfWork(new Entities());
+            var female = unitOfWork.Females.GetFemaleByCode(_female.code);
             var insemination = new Inseminations()
             {
                 fem_code = _female.code,
@@ -47,8 +48,9 @@ namespace WpfApp1.Females
                 unitOfWork.Inseminations.GetCurrentInsemination(_female).status = "Fallido";
             }
 
-
             unitOfWork.Inseminations.Add(insemination);
+
+            female.status = "Inseminada";
 
             OnInseminationAdded(insemination, unitOfWork.Inseminations.GetCurrentInsemination(_female));
 
