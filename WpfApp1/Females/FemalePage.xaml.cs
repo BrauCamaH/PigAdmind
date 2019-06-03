@@ -1,5 +1,8 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.CustomEventArgs;
+using WpfApp1.DatabaseFirst;
+using WpfApp1.Persistance;
 
 namespace WpfApp1.Females
 {
@@ -24,11 +27,24 @@ namespace WpfApp1.Females
             Births.SetFemale(_female);
             InseminationsPage.SetFemale(_female);
             SicksPage.SetFemale(_female);
+
+            ValidateEventButtons();
         }
         private void SetFemaleInfo(DatabaseFirst.Females female)
         {
             CodeLabel.Content = female.code;
         }
+
+
+        private void ValidateEventButtons()
+        {
+            UnitOfWork unitOfWork = new UnitOfWork(new Entities());
+
+            PregnatButton.IsEnabled =
+                unitOfWork.Inseminations.GetCurrentInsemination(_female) != null;
+
+        }
+
         private void AddUserControlToEventDialog(UserControl userControl)
         {
             FemaleEventDialog.IsOpen = true;
@@ -42,6 +58,12 @@ namespace WpfApp1.Females
             AddUserControlToEventDialog(addInsemination);
 
             addInsemination.InseminationAdded += InseminationsPage.OnInseminationAdded;
+            addInsemination.InseminationAdded += OnInseminationAdded;
+        }
+
+        private void OnInseminationAdded(object sender, InseminationsEventArgs e)
+        {
+            PregnatButton.IsEnabled = true;
         }
 
         private void SickButton_Click(object sender, System.Windows.RoutedEventArgs e)

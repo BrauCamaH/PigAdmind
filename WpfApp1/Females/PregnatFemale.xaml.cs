@@ -21,7 +21,7 @@ namespace WpfApp1.Females
         {
             _female = female;
             InitializeComponent();
-            
+
             _observableCollection = new ObservableCollection<Inseminations>();
             GetActualInsemination();
         }
@@ -44,7 +44,11 @@ namespace WpfApp1.Females
         }
         private void Accept_Button_Click(object sender, RoutedEventArgs e)
         {
+            UnitOfWork unitOfWork = new UnitOfWork(new Entities());
+            var female = unitOfWork.Females.GetFemaleByCode(_female.code);
 
+            female.status = "Embarazada";
+            unitOfWork.Complete();
         }
     }
 }

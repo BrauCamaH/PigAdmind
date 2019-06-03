@@ -88,6 +88,13 @@ namespace WpfApp1.Females.InseminationViews
 
         public void OnInseminationAdded(object sender, InseminationsEventArgs e)
         {
+            if (e.LastInsemination != null)
+            {
+                Inseminations inseminationInList = _inseminationsObservableList.FirstOrDefault(i => i.id == e.LastInsemination.id);
+                _inseminationsObservableList[_inseminationsObservableList.IndexOf(inseminationInList)] = e.LastInsemination;
+            }
+
+
             _inseminationsObservableList.Add(e.Insemination);
         }
 

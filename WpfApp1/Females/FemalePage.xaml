@@ -52,23 +52,38 @@
                   ToolTip="Agregar nuevo evento" Height="80" Width="80" 
                   IsManipulationEnabled="False">
             <StackPanel Grid.Column="1">
-                <Button ToolTip="Nueva inseminación" Click="InseminationButtonClick">
+                <Button x:Name="InseminationButton"
+                        ToolTip="Nueva inseminación" 
+                        Click="InseminationButtonClick">
                     <materialDesign:PackIcon Kind="Injection" />
                 </Button>
-                <Button ToolTip= "Nuevo parto"  Click="BirthButtonClick">
+                <Button x:Name="BirthButton"
+                        ToolTip= "Nuevo parto"  
+                        Click="BirthButtonClick">
                     <materialDesign:PackIcon Kind="Baby"/>
                 </Button>
-                <Button ToolTip="Nueva enfermedad" Click="SickButton_Click">
+                <Button x:Name="SickButton"
+                        ToolTip="Nueva enfermedad" 
+                        Click="SickButton_Click">
                     <materialDesign:PackIcon Kind="Radioactive" />
                 </Button>
-                <Button ToolTip="Nuevo destete" Click="WeaningButton_Click">
-                    <materialDesign:PackIcon Kind="WomanChild" />
+                <Button x:Name="WeaningButton"
+                        ToolTip="Nuevo destete"
+                        Click="WeaningButton_Click">
+                    <materialDesign:PackIcon 
+                        Kind="WomanChild" />
                 </Button>
-                <Button ToolTip="Hembra embarazada" Click="PregnatFemale_OnClick">
-                    <materialDesign:PackIcon Kind="HumanPregnant"/>
+                <Button x:Name="PregnatButton"
+                        ToolTip="Hembra embarazada" 
+                        Click="PregnatFemale_OnClick">
+                    <materialDesign:PackIcon 
+                        Kind="HumanPregnant"/>
                 </Button>
-                <Button ToolTip="Aborto" Click="Misbirth_OnClick">
-                    <materialDesign:PackIcon Kind="SettingsBackupRestore" />
+                <Button x:Name="MisbirthButton"
+                        ToolTip="Aborto" 
+                        Click="Misbirth_OnClick">
+                    <materialDesign:PackIcon 
+                        Kind="SettingsBackupRestore" />
                 </Button>
             </StackPanel>
         </materialDesign:PopupBox>

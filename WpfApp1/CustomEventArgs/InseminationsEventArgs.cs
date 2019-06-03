@@ -5,5 +5,6 @@ namespace WpfApp1.CustomEventArgs
     public class InseminationsEventArgs
     {
         public Inseminations Insemination { get; set; }
+        public Inseminations LastInsemination { get; set; }
     }
 }

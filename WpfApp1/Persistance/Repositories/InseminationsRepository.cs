@@ -29,6 +29,12 @@ namespace WpfApp1.Persistance.Repositories
             }
         }
 
+
+        public Inseminations GetCurrentInsemination(DatabaseFirst.Females female)
+        {
+            return DbEntities.Inseminations.FirstOrDefault(i => i.fem_code == female.code && i.status == "actual");
+        }
+
         public Entities DbEntities => Context as Entities;
     }
 }

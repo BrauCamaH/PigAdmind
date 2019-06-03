@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.CustomEventArgs;
 using WpfApp1.DatabaseFirst;
+using WpfApp1.Persistance;
 
 namespace WpfApp1.Females
 {
@@ -18,9 +19,9 @@ namespace WpfApp1.Females
         {
             InitializeComponent();
         }
-        public virtual void OnBirthAdded(Inseminations insemination)
+        public virtual void OnInseminationAdded(Inseminations insemination, Inseminations last)
         {
-            InseminationAdded?.Invoke(this, new InseminationsEventArgs { Insemination = insemination });
+            InseminationAdded?.Invoke(this, new InseminationsEventArgs { Insemination = insemination, LastInsemination = last });
 
         }
         public AddInsemination(DatabaseFirst.Females female)
@@ -31,7 +32,7 @@ namespace WpfApp1.Females
         }
         private void Accept_Button_Click(object sender, RoutedEventArgs e)
         {
-            var unitOfWork = new Entities();
+            var unitOfWork = new UnitOfWork(new Entities());
             var insemination = new Inseminations()
             {
                 fem_code = _female.code,
@@ -39,10 +40,19 @@ namespace WpfApp1.Females
                 date = DatePicker.Text,
                 status = "Actual"
             };
-            unitOfWork.Inseminations.Add(insemination);
-            unitOfWork.SaveChanges();
 
-            OnBirthAdded(insemination);
+
+            if (unitOfWork.Inseminations.GetCurrentInsemination(_female) != null)
+            {
+                unitOfWork.Inseminations.GetCurrentInsemination(_female).status = "Fallido";
+            }
+
+
+            unitOfWork.Inseminations.Add(insemination);
+
+            OnInseminationAdded(insemination, unitOfWork.Inseminations.GetCurrentInsemination(_female));
+
+            unitOfWork.Complete();
         }
     }
 }

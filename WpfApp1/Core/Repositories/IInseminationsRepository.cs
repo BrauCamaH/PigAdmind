@@ -8,5 +8,7 @@ namespace WpfApp1.Core.Repositories
         IEnumerable<Inseminations> GetInseminationsByFemale(string code);
 
         void RemoveById(int id);
+
+        Inseminations GetCurrentInsemination(DatabaseFirst.Females female);
     }
 }
