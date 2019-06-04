@@ -14,14 +14,21 @@ namespace WpfApp1.Females
     {
         private DatabaseFirst.Females _female;
 
+        public event EventHandler<FemalesEventArgs> StatusModified;
+
         public event EventHandler<BirthsEventArgs> BirthAdded;
 
-
+        public virtual void OnStatusModified(DatabaseFirst.Females female)
+        {
+            StatusModified?.Invoke(this, new FemalesEventArgs { Female = female });
+        }
         public virtual void OnBirthAdded(Births birth)
         {
             BirthAdded?.Invoke(this, new BirthsEventArgs { Birth = birth });
 
         }
+
+
         public AddBirth()
         {
             InitializeComponent();
@@ -55,6 +62,7 @@ namespace WpfApp1.Females
             unitOfWork.Births.Add(birth);
             unitOfWork.Complete();
             OnBirthAdded(birth);
+            OnStatusModified(female);
         }
     }
 }

@@ -98,11 +98,12 @@ namespace WpfApp1.Females.InseminationViews
             _inseminationsObservableList.Add(e.Insemination);
         }
 
-        private void OnInseminationEdited(object sender, InseminationsEventArgs e)
+        public void OnInseminationEdited(object sender, InseminationsEventArgs e)
         {
             try
             {
-                _inseminationsObservableList[_inseminationsObservableList.IndexOf(CurrentInsemination)] = e.Insemination;
+                var inseminationIndex = _inseminationsObservableList.IndexOf(_inseminationsObservableList.FirstOrDefault(i => i.id == e.Insemination.id));
+                _inseminationsObservableList[inseminationIndex] = e.Insemination;
             }
             catch (Exception exception)
             {

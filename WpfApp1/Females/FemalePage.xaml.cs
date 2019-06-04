@@ -1,7 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
-using WpfApp1.DatabaseFirst;
-using WpfApp1.Persistance;
+using WpfApp1.CustomEventArgs;
 
 namespace WpfApp1.Females
 {
@@ -27,7 +27,7 @@ namespace WpfApp1.Females
             InseminationsPage.SetFemale(_female);
             SicksPage.SetFemale(_female);
 
-            ValidateEventButtons();
+            ValidateEventButtons(female);
         }
         private void SetFemaleInfo(DatabaseFirst.Females female)
         {
@@ -35,23 +35,27 @@ namespace WpfApp1.Females
         }
 
 
-        private void ValidateEventButtons()
+        private void ValidateEventButtons(DatabaseFirst.Females female)
         {
-            UnitOfWork unitOfWork = new UnitOfWork(new Entities());
+            try
+            {
+                InseminationButton.IsEnabled = female.status == "Abortada" ||
+                                               female.status == "Destetada" ||
+                                               female.status == "Normal";
 
-            DatabaseFirst.Females female = unitOfWork.Females.GetFemaleByCode(_female.code);
+                PregnatButton.IsEnabled = female.status == "Inseminada";
 
-            InseminationButton.IsEnabled = female.status == "Abortada" ||
-                                            female.status == "Destetada";
+                BirthButton.IsEnabled = female.status == "Preñada";
 
-            PregnatButton.IsEnabled = female.status == "Inseminada";
+                MisbirthButton.IsEnabled = female.status == "Inseminada" ||
+                                           female.status == "Preñada";
 
-            BirthButton.IsEnabled = female.status == "Preñada";
-
-            MisbirthButton.IsEnabled = female.status == "Inseminada" ||
-                                       female.status == "Preñada";
-
-            WeaningButton.IsEnabled = female.status == "Madre";
+                WeaningButton.IsEnabled = female.status == "Madre";
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
         }
 
         private void AddUserControlToEventDialog(UserControl userControl)
@@ -67,6 +71,8 @@ namespace WpfApp1.Females
             AddUserControlToEventDialog(addInsemination);
 
             addInsemination.InseminationAdded += InseminationsPage.OnInseminationAdded;
+
+            addInsemination.StatusModified += OnFemaleStatusChanged;
         }
 
         private void SickButton_Click(object sender, System.Windows.RoutedEventArgs e)
@@ -74,33 +80,52 @@ namespace WpfApp1.Females
             var addSick = new AddSick(_female);
             AddUserControlToEventDialog(addSick);
             addSick.SickAdded += SicksPage.OnItemAdded;
+
         }
 
         private void WeaningButton_Click(object sender, RoutedEventArgs e)
         {
-            AddUserControlToEventDialog(new AddWeaning(_female));
+            var usc = new AddWeaning(_female);
+            AddUserControlToEventDialog(usc);
+
+            usc.StatusModified += OnFemaleStatusChanged;
         }
 
         private void BirthButtonClick(object sender, RoutedEventArgs e)
         {
-            var addBirth = new AddBirth(_female);
-            AddUserControlToEventDialog(addBirth);
+            var usc = new AddBirth(_female);
+            AddUserControlToEventDialog(usc);
 
-            addBirth.BirthAdded += Births.OnBirthAdded;
+            usc.BirthAdded += Births.OnBirthAdded;
+
+            usc.StatusModified += OnFemaleStatusChanged;
         }
 
 
         private void PregnatFemale_OnClick(object sender, RoutedEventArgs e)
         {
-            var us = new PregnatFemale(_female);
-            AddUserControlToEventDialog(us);
+            var usc = new PregnatFemale(_female);
+            AddUserControlToEventDialog(usc);
+
+            usc.StatusModified += OnFemaleStatusChanged;
+
+            usc.InseminationModified += InseminationsPage.OnInseminationEdited;
         }
 
         private void Misbirth_OnClick(object sender, RoutedEventArgs e)
         {
-            var us = new MisbirthEvent(_female);
+            var usc = new MisbirthEvent(_female);
 
-            AddUserControlToEventDialog(us);
+            AddUserControlToEventDialog(usc);
+
+            usc.StatusModified += OnFemaleStatusChanged;
+
+            usc.InseminationModified += InseminationsPage.OnInseminationEdited;
+        }
+
+        private void OnFemaleStatusChanged(object obj, FemalesEventArgs e)
+        {
+            ValidateEventButtons(e.Female);
         }
     }
 }

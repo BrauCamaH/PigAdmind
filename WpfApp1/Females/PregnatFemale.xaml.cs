@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.CustomEventArgs;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Persistance;
 
@@ -15,6 +16,9 @@ namespace WpfApp1.Females
 
         private ObservableCollection<Inseminations> _observableCollection;
 
+        public event EventHandler<FemalesEventArgs> StatusModified;
+
+        public event EventHandler<InseminationsEventArgs> InseminationModified;
 
         private DatabaseFirst.Females _female;
         public PregnatFemale(DatabaseFirst.Females female)
@@ -24,6 +28,16 @@ namespace WpfApp1.Females
 
             _observableCollection = new ObservableCollection<Inseminations>();
             GetActualInsemination();
+        }
+
+        public virtual void OnStatusModified(DatabaseFirst.Females female)
+        {
+            StatusModified?.Invoke(this, new FemalesEventArgs { Female = female });
+        }
+
+        public virtual void OnInseminationModified(Inseminations insemination)
+        {
+            InseminationModified?.Invoke(this, new InseminationsEventArgs { Insemination = insemination });
         }
 
         private void GetActualInsemination()
@@ -47,9 +61,15 @@ namespace WpfApp1.Females
             UnitOfWork unitOfWork = new UnitOfWork(new Entities());
             var female = unitOfWork.Females.GetFemaleByCode(_female.code);
 
-            unitOfWork.Inseminations.GetCurrentInsemination(_female).status = "Exitosa";
+            var insemination = unitOfWork.Inseminations.GetCurrentInsemination(_female);
+
+            insemination.status = "Exitosa";
+
             female.status = "Preñada";
             unitOfWork.Complete();
+
+            OnStatusModified(female);
+            OnInseminationModified(insemination);
         }
     }
 }

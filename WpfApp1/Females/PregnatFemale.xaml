@@ -20,8 +20,8 @@
             </materialDesign:Card>
             <TextBlock FontSize="20"
                        Margin="0,16,0,0">
-                La siguiente inseminación fue éxistosa?
-            </TextBlock>
+                ¿Fué la siguiente inseminación éxitosa?
+           </TextBlock>
             <ListView HorizontalAlignment="Left" 
                       x:Name="InseminationsListView"
                       IsEnabled="false">

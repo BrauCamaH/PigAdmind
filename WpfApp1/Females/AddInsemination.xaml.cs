@@ -15,6 +15,8 @@ namespace WpfApp1.Females
         private DatabaseFirst.Females _female;
 
         public event EventHandler<InseminationsEventArgs> InseminationAdded;
+
+        public event EventHandler<FemalesEventArgs> StatusModified;
         public AddInsemination()
         {
             InitializeComponent();
@@ -23,6 +25,11 @@ namespace WpfApp1.Females
         {
             InseminationAdded?.Invoke(this, new InseminationsEventArgs { Insemination = insemination, LastInsemination = last });
 
+        }
+
+        public virtual void OnStatusModified(DatabaseFirst.Females female)
+        {
+            StatusModified?.Invoke(this, new FemalesEventArgs { Female = female });
         }
         public AddInsemination(DatabaseFirst.Females female)
         {
@@ -55,6 +62,7 @@ namespace WpfApp1.Females
             OnInseminationAdded(insemination, unitOfWork.Inseminations.GetCurrentInsemination(_female));
 
             unitOfWork.Complete();
+            OnStatusModified(female);
         }
     }
 }

@@ -32,7 +32,12 @@ namespace WpfApp1.Persistance.Repositories
 
         public Inseminations GetCurrentInsemination(DatabaseFirst.Females female)
         {
-            return DbEntities.Inseminations.FirstOrDefault(i => i.fem_code == female.code && i.status == "actual");
+            return DbEntities.Inseminations.FirstOrDefault(i => i.fem_code == female.code && i.status == "Actual");
+        }
+
+        public Inseminations GetLastSuccessInsemination(DatabaseFirst.Females female)
+        {
+            return DbEntities.Inseminations.ToList().FindLast(i => i.fem_code == female.code && i.status == "Exitosa");
         }
 
         public Entities DbEntities => Context as Entities;

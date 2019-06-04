@@ -10,5 +10,7 @@ namespace WpfApp1.Core.Repositories
         void RemoveById(int id);
 
         Inseminations GetCurrentInsemination(DatabaseFirst.Females female);
+
+        Inseminations GetLastSuccessInsemination(DatabaseFirst.Females female);
     }
 }

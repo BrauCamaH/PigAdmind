@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using WpfApp1.CustomEventArgs;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Persistance;
 
@@ -11,19 +13,29 @@ namespace WpfApp1.Females
     public partial class AddWeaning : UserControl
     {
         private DatabaseFirst.Females _female;
+
+        public event EventHandler<FemalesEventArgs> StatusModified;
         public AddWeaning(DatabaseFirst.Females female)
         {
             _female = female;
             InitializeComponent();
         }
 
+        public virtual void OnStatusModified(DatabaseFirst.Females female)
+        {
+            StatusModified?.Invoke(this, new FemalesEventArgs { Female = female });
+        }
         private void AddButton_OnClick(object sender, RoutedEventArgs e)
         {
             var unitOfWork = new UnitOfWork(new Entities());
             var female = unitOfWork.Females.GetFemaleByCode(_female.code);
 
             female.status = "Destetada";
+
+            OnStatusModified(female);
             unitOfWork.Complete();
+
+
         }
     }
 }
