@@ -12,11 +12,15 @@
     <ScrollViewer HorizontalScrollBarVisibility="Auto"
                   VerticalScrollBarVisibility="Auto">
         <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="404*"/>
+                <RowDefinition Height="189*"/>
+            </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel>
+            <StackPanel Grid.RowSpan="2">
                 <materialDesign:Card Height="auto" 
                                  Margin="0,6,0,0" 
                                  Background="SteelBlue">
@@ -38,17 +42,18 @@
                Modificar Valores en Cuenta
                 </TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <TextBox
-                    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
-                    Margin="0,60,0,0"
-                    TextWrapping="Wrap"
-                    MinWidth="400"
-                    Width="auto"
-                    Height="auto"
-                    FontSize="18"
-                    materialDesign:HintAssist.FloatingScale="1"
-                    materialDesign:HintAssist.Hint="Correo Electronico"
-                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" TextChanged="TextBox_TextChanged" />
+                    <TextBox    x:Name="EmailTextBox"
+                                Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                                Margin="0,60,0,0"
+                                TextWrapping="Wrap"
+                                MinWidth="400"
+                                Width="auto"
+                                Height="auto"
+                                FontSize="18"
+                                materialDesign:HintAssist.FloatingScale="1"
+                                materialDesign:HintAssist.Hint="Correo Electronico"
+                                IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignFilledTextFieldTextBoxEnabledComboBox}" 
+                                TextChanged="TextBox_TextChanged" />
                     <CheckBox
                     x:Name="MaterialDesignFilledTextFieldTextBoxEnabledComboBox"
                     HorizontalAlignment="Center"
@@ -61,6 +66,7 @@
                         HorizontalAlignment="Center">
 
                     <PasswordBox
+                    x:Name="PasswordBox"
                     Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}"
                     HorizontalAlignment="Center"
                     FontFamily="Roboto"
@@ -72,6 +78,7 @@
                     IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox}"
                     materialDesign:HintAssist.Hint="Contraseña" />
                     <PasswordBox
+                    x:Name="AgainPasswordBox"
                     Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}"
                     HorizontalAlignment="Center"
                     FontFamily="Roboto"
@@ -84,7 +91,8 @@
                     materialDesign:HintAssist.Hint="Volver a Escribir" />
                     <CheckBox
                     x:Name="MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox"
-                    Margin="40, 70,0,8">
+                    Margin="40, 70,0,8"
+                    Unchecked="MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox_OnUnchecked">
                         Crear Nueva Contraseña
                     </CheckBox>
                 </StackPanel>
@@ -96,7 +104,12 @@
                 </Button>
             </StackPanel>
 
-
+            <materialDesign:Snackbar x:Name="UserConfigSnackBar"
+                                     FontWeight="Bold"
+                                     FontFamily="Roboto"
+                                     Foreground="White"
+                                     MessageQueue="{materialDesign:MessageQueue}" Margin="316,0" Grid.Row="1">
+            </materialDesign:Snackbar>
         </Grid>
     </ScrollViewer>
 </Window>
