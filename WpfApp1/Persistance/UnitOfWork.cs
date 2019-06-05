@@ -20,6 +20,7 @@ namespace WpfApp1.Persistance
             Sicks = new SicksRepository(_context);
             Groups = new GroupsRepository(_context);
             Sales = new SalesRepository(_context);
+            Weaning = new WeaningRepository(_context);
         }
 
         public void Dispose()
@@ -34,6 +35,7 @@ namespace WpfApp1.Persistance
         public IGroupsRepository Groups { get; private set; }
 
         public ISalesRepository Sales { get; private set; }
+        public IWeaningRepository Weaning { get; private set; }
 
         public int Complete()
         {

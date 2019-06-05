@@ -29,6 +29,15 @@ namespace WpfApp1.Persistance.Repositories
             }
         }
 
+        public Births GetCurrentBirth(DatabaseFirst.Females female)
+        {
+            return DbEntities.Births.FirstOrDefault(i => i.fem_code == female.code && i.status == "Actual");
+        }
+
+        public Weaning GetWeaning(Births birth)
+        {
+            return DbEntities.Weaning.First(i => i.id == birth.weaning);
+        }
 
         public Entities DbEntities => Context as Entities;
     }

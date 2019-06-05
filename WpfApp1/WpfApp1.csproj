@@ -96,6 +96,7 @@
     <Compile Include="Core\Repositories\IInseminationsRepository.cs" />
     <Compile Include="Core\Repositories\ISalesRepository.cs" />
     <Compile Include="Core\Repositories\ISicksRepository.cs" />
+    <Compile Include="Core\Repositories\IWeaningRepository.cs" />
     <Compile Include="CustomEventArgs\BirthsEventArgs.cs" />
     <Compile Include="CustomEventArgs\FemalesEventArgs.cs" />
     <Compile Include="CustomEventArgs\GroupsEventArgs.cs" />
@@ -253,6 +254,7 @@
     <Compile Include="Persistance\Repositories\Repository.cs" />
     <Compile Include="Persistance\Repositories\SalesRepository.cs" />
     <Compile Include="Persistance\Repositories\SicksRepository.cs" />
+    <Compile Include="Persistance\Repositories\WeaningRepository.cs" />
     <Compile Include="Persistance\UnitOfWork.cs" />
     <Compile Include="Sales\DeleteSale.xaml.cs">
       <DependentUpon>DeleteSale.xaml</DependentUpon>

@@ -14,6 +14,8 @@ namespace WpfApp1.Core
 
         ISalesRepository Sales { get; }
 
+        IWeaningRepository Weaning { get; }
+
         int Complete();
     }
 }
