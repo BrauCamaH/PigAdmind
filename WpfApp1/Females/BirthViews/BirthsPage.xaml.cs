@@ -150,7 +150,15 @@ namespace WpfApp1.Females.BirthViews
 
         private void EditWeaning_OnClick(object sender, RoutedEventArgs e)
         {
-            MainDialogHost.Instance.SetNewUserControl(new EditWeaning());
+            var usc = new EditWeaning(CurrentBirth);
+            MainDialogHost.Instance.SetNewUserControl(usc);
+
+            usc.BirthEdited += OnWeaningEdited;
+        }
+
+        private void OnWeaningEdited(object sender, BirthsEventArgs e)
+        {
+            UpdateWeaning(e.Birth);
         }
     }
 }
