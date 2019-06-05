@@ -10,6 +10,30 @@
         ResizeMode="NoResize"
         >
     <Grid>
-
+        <StackPanel  Margin="15" >
+            <TextBlock HorizontalAlignment="Center"
+                       TextWrapping="WrapWithOverflow"
+                       FontFamily="Roboto"
+                       FontWeight="Bold"
+                       FontSize="18">
+                PigAdmind versión 1.0
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Center"
+                       TextWrapping="WrapWithOverflow"
+                       FontFamily="Roboto"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Margin="20">
+               Programa Para Gestión De Ganado Porcino
+            </TextBlock>
+            <TextBlock HorizontalAlignment="Center"
+                       TextWrapping="WrapWithOverflow"
+                       FontFamily="Roboto"
+                       FontWeight="Bold"
+                       FontSize="18"
+                       Margin="20">
+                Email: hola@pigadmind.com
+            </TextBlock>
+        </StackPanel>
     </Grid>
 </Window>
