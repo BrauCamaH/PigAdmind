@@ -70,25 +70,46 @@ namespace WpfApp1.Females.BirthViews
             BirthsListView.ItemsSource = _birthsObservableList;
         }
 
-        private void SetInfoTableVisible(bool isVisible)
-        {
-            WeaningInfoTable.Visibility = isVisible ? Visibility.Visible : Visibility.Hidden;
-        }
         private void BirthsListView_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             EditAndDelete.IsEnabled = BirthsListView.SelectedItem != null;
-            SetInfoTableVisible(BirthsListView != null);
 
             Births birth = (Births)BirthsListView.SelectedItem;
             CurrentBirth = birth;
+            UpdateWeaning(birth);
+
             var unitOfWork = new UnitOfWork(new Entities());
             if (birth != null) InitializeCrudControls(unitOfWork.Births.Get(birth.id));
+
         }
         public void OnBirthAdded(object sender, BirthsEventArgs e)
         {
             _birthsObservableList.Add(e.Birth);
         }
 
+        private void UpdateWeaning(Births birth)
+        {
+            try
+            {
+                if (birth != null)
+                {
+                    var unitOfWork = new UnitOfWork(new Entities());
+                    var weaning = unitOfWork.Births.GetWeaning(birth);
+                    DateTextBlock.Text = weaning.date;
+                    NPigsTextBlock.Text = weaning.weaned_pigs.ToString();
+                }
+                else
+                {
+                    DateTextBlock.Text = "No se ha destetado";
+                    NPigsTextBlock.Text = "0";
+                }
+            }
+            catch (Exception e)
+            {
+                DateTextBlock.Text = "No se ha destetado";
+                NPigsTextBlock.Text = "0";
+            }
+        }
         private void OnBirthDeleted(object sender, BirthsEventArgs e)
         {
             try
@@ -123,7 +144,5 @@ namespace WpfApp1.Females.BirthViews
             collection.Remove(collection.Single(i => i.id == birth.id));
             //MessageBox.Show("Item Deleted");
         }
-
-
     }
 }

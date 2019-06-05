@@ -12,9 +12,13 @@
             <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30" >
                 Nuevo Destete
             </TextBlock>
-            <DatePicker Width="auto" materialDesign:HintAssist.Hint="Fecha de destete"
+            <DatePicker x:Name="DatePicker"
+                        Width="auto"
+                        materialDesign:HintAssist.Hint="Fecha de destete"
                         FontSize="14" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
-            <TextBox Width="auto" materialDesign:HintAssist.Hint="Número de lechones"
+            <TextBox x:Name="NPigsTextBox"
+                     Width="auto" 
+                     materialDesign:HintAssist.Hint="Número de lechones"
                      FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="AddButton"

@@ -14,11 +14,32 @@ namespace WpfApp1.Females
     {
         private DatabaseFirst.Females _female;
 
+        public event EventHandler<Weaning> WeaningAdded;
+
         public event EventHandler<FemalesEventArgs> StatusModified;
         public AddWeaning(DatabaseFirst.Females female)
         {
             _female = female;
             InitializeComponent();
+        }
+
+        public virtual void OnWeaningAdded(Weaning weaning)
+        {
+            try
+            {
+                var unitOfWork = new UnitOfWork(new Entities());
+                var birth = unitOfWork.Births.GetCurrentBirth(_female);
+                birth.weaning = weaning.id;
+
+                birth.status = "Destetado";
+                unitOfWork.Complete();
+                WeaningAdded?.Invoke(this, weaning);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+
         }
 
         public virtual void OnStatusModified(DatabaseFirst.Females female)
@@ -27,14 +48,30 @@ namespace WpfApp1.Females
         }
         private void AddButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var unitOfWork = new UnitOfWork(new Entities());
-            var female = unitOfWork.Females.GetFemaleByCode(_female.code);
+            try
+            {
+                var unitOfWork = new UnitOfWork(new Entities());
+                var female = unitOfWork.Females.GetFemaleByCode(_female.code);
 
-            female.status = "Destetada";
+                var weaning = new Weaning
+                {
+                    weaned_pigs = int.Parse(NPigsTextBox.Text),
+                    date = DatePicker.Text
+                };
 
-            OnStatusModified(female);
-            unitOfWork.Complete();
+                female.status = "Destetada";
 
+                OnStatusModified(female);
+
+                unitOfWork.Weaning.Add(weaning);
+                unitOfWork.Complete();
+
+                OnWeaningAdded(weaning);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
 
         }
     }

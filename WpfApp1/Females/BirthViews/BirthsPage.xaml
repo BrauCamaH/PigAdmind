@@ -49,8 +49,7 @@
       
         <FlowDocumentReader x:Name="WeaningInfoTable"
                             Margin="507,83,3,241"
-                            MaxZoom="100" IsFindEnabled="False"
-                            Visibility="Hidden">
+                            MaxZoom="100" IsFindEnabled="False">
             <FlowDocument >
 
                 <Table CellSpacing="5" >
@@ -62,7 +61,9 @@
                         <!-- Title row for the table. -->
                         <TableRow Background="SteelBlue" >
                             <TableCell ColumnSpan="2" TextAlignment="Center">
-                                <Paragraph FontSize="24pt" FontWeight="Bold">Destete</Paragraph>
+                                <Paragraph FontSize="24pt" FontWeight="Bold" >
+                                    Destete
+                                </Paragraph>
                             </TableCell>
                         </TableRow>
                         <!-- Header row for the table. -->
@@ -83,7 +84,11 @@
                                 <Paragraph>Fecha</Paragraph>
                             </TableCell>
                             <TableCell>
-                                <Paragraph>No se ha destetado</Paragraph>
+                                <Paragraph>
+                                    <TextBlock x:Name="DateTextBlock">
+                                        No se ha destetado
+                                    </TextBlock>
+                                </Paragraph>
                             </TableCell>
                         </TableRow>
                         <TableRow Background="White">
@@ -91,18 +96,12 @@
                                 <Paragraph>Lechones Destetados</Paragraph>
                             </TableCell>
                             <TableCell>
-                                <Paragraph>0</Paragraph>
+                                <Paragraph>
+                                    <TextBlock x:Name="NPigsTextBlock">0</TextBlock>
+                                </Paragraph>
                             </TableCell>
                         </TableRow>
-                        <TableRow Background="White">
-                            <TableCell>
-                                <Paragraph>Lechones Fallecidos</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>0</Paragraph>
-                            </TableCell>
-                        </TableRow>
-                   
+
                     </TableRowGroup>
                 </Table>
             </FlowDocument>
