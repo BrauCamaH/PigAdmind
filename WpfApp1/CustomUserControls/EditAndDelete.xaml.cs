@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace WpfApp1.CustomUserControls
@@ -9,7 +10,7 @@ namespace WpfApp1.CustomUserControls
     public partial class EditAndDelete : UserControl
     {
 
-        public static MainDialogHost DialogHost { get; set; }
+        // public static MainDialogHost DialogHost { get; set; }
 
         public UserControl EditControl { get; set; }
         public UserControl DeleteControl { get; set; }
@@ -23,12 +24,20 @@ namespace WpfApp1.CustomUserControls
 
         private void EditButton_OnClick(object sender, RoutedEventArgs e)
         {
-            DialogHost.SetNewUserControl(EditControl);
+            try
+            {
+                MainDialogHost.Instance.SetNewUserControl(EditControl);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+
         }
 
         private void DeleteButton_OnClick(object sender, RoutedEventArgs e)
         {
-            DialogHost.SetNewUserControl(DeleteControl);
+            MainDialogHost.Instance.SetNewUserControl(DeleteControl);
         }
     }
 }

@@ -37,14 +37,14 @@ namespace WpfApp1.CustomUserControls
         public MainDialogHost()
         {
             InitializeComponent();
-            EditAndDelete.DialogHost = this;
+            // EditAndDelete.DialogHost = this;
         }
         public MainDialogHost(MainWindow window)
         {
             InitializeComponent();
             _mainWindow = window;
-            EditAndDelete.DialogHost = this;
-
+            //EditAndDelete.DialogHost = this;
+            _instance = this;
 
             window.DialogGrid.Children.Add(this);
 

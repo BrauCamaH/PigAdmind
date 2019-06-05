@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              Background="White" d:DesignWidth="258.333" d:DesignHeight="210.666"  Width="auto" Height="auto">
     <Grid>
-        <StackPanel>
+        <StackPanel Margin="16">
             <materialDesign:Card Height="30" Background="LightBlue">
                 <TextBlock HorizontalAlignment="Center" FontSize="18" Foreground="White">
                     Modificar Venta

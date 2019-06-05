@@ -51,9 +51,9 @@ namespace WpfApp1.Sales
             try
             {
                 var addUC = new NewSale();
-                NewSaleDialogHost.IsOpen = true;
-                DialogGrid.Children.Clear();
-                DialogGrid.Children.Add(addUC);
+
+                MainDialogHost.Instance.SetNewUserControl(addUC);
+
                 addUC.SaleAdded += OnItemAdded;
             }
             catch (Exception exception)

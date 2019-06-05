@@ -30,7 +30,7 @@
                                           HorizontalAlignment="Right"
                                           VerticalAlignment="Top"
                                           IsEnabled="False"/>
-
+        
         <ListView x:Name="BirthsListView"
                   HorizontalAlignment="Left" 
                   Height="550" Margin="0,60,0,0"
@@ -46,65 +46,77 @@
                 </GridView>
             </ListView.View>
         </ListView>
-      
-        <FlowDocumentReader x:Name="WeaningInfoTable"
+      <StackPanel>
+            <FlowDocumentReader x:Name="WeaningInfoTable"
                             Margin="507,83,3,241"
-                            MaxZoom="100" IsFindEnabled="False">
-            <FlowDocument >
+                            MaxZoom="100" IsFindEnabled="False" Height="181"
+                            IsEnabled="False">
+                <FlowDocument >
 
-                <Table CellSpacing="5" >
-                    <Table.Columns>
-                        <TableColumn/>
-                        <TableColumn/>
-                    </Table.Columns>
-                    <TableRowGroup>
-                        <!-- Title row for the table. -->
-                        <TableRow Background="SteelBlue" >
-                            <TableCell ColumnSpan="2" TextAlignment="Center">
-                                <Paragraph FontSize="24pt" FontWeight="Bold" >
-                                    Destete
-                                </Paragraph>
-                            </TableCell>
-                        </TableRow>
-                        <!-- Header row for the table. -->
-                        <TableRow Background="LightBlue" FontSize="20">
-                            <TableCell>
-                                <Paragraph FontSize="14pt" 
+                    <Table CellSpacing="5" >
+                        <Table.Columns>
+                            <TableColumn/>
+                            <TableColumn/>
+                        </Table.Columns>
+                        <TableRowGroup>
+                            <!-- Title row for the table. -->
+                            <TableRow Background="SteelBlue" >
+                                <TableCell ColumnSpan="2" TextAlignment="Center">
+                                    <Paragraph FontSize="24pt" FontWeight="Bold" >
+                                        Destete
+                                    </Paragraph>
+                                </TableCell>
+                            </TableRow>
+                            <!-- Header row for the table. -->
+                            <TableRow Background="LightBlue" FontSize="20">
+                                <TableCell>
+                                    <Paragraph FontSize="14pt" 
                                            FontWeight="Bold">
-                                    Parametro
-                                </Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph FontSize="14pt" 
+                                        Parametro
+                                    </Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph FontSize="14pt" 
                                            FontWeight="Bold">Valor</Paragraph>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow Background="White">
-                            <TableCell>
-                                <Paragraph>Fecha</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>
-                                    <TextBlock x:Name="DateTextBlock">
+                                </TableCell>
+                            </TableRow>
+                            <TableRow Background="White">
+                                <TableCell>
+                                    <Paragraph>Fecha</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>
+                                        <TextBlock x:Name="DateTextBlock">
                                         No se ha destetado
-                                    </TextBlock>
-                                </Paragraph>
-                            </TableCell>
-                        </TableRow>
-                        <TableRow Background="White">
-                            <TableCell>
-                                <Paragraph>Lechones Destetados</Paragraph>
-                            </TableCell>
-                            <TableCell>
-                                <Paragraph>
-                                    <TextBlock x:Name="NPigsTextBlock">0</TextBlock>
-                                </Paragraph>
-                            </TableCell>
-                        </TableRow>
+                                        </TextBlock>
+                                    </Paragraph>
+                                </TableCell>
+                            </TableRow>
+                            <TableRow Background="White">
+                                <TableCell>
+                                    <Paragraph>Lechones Destetados</Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>
+                                        <TextBlock x:Name="NPigsTextBlock">0</TextBlock>
+                                    </Paragraph>
+                                </TableCell>
+                            </TableRow>
 
-                    </TableRowGroup>
-                </Table>
-            </FlowDocument>
-        </FlowDocumentReader>
+                        </TableRowGroup>
+                    </Table>
+                </FlowDocument>
+            </FlowDocumentReader>
+        </StackPanel>
+
+
+        <Button Margin="525,0,20,0"
+                FontSize="20"
+                FontWeight="Bold"
+                VerticalAlignment="Center"
+                IsEnabled="{Binding Path=IsEnabled, ElementName= NPigsTextBlock}"
+                Click="EditWeaning_OnClick">
+            Editar
+        </Button>
     </Grid>
 </UserControl>

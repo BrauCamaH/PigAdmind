@@ -97,17 +97,20 @@ namespace WpfApp1.Females.BirthViews
                     var weaning = unitOfWork.Births.GetWeaning(birth);
                     DateTextBlock.Text = weaning.date;
                     NPigsTextBlock.Text = weaning.weaned_pigs.ToString();
+                    WeaningInfoTable.IsEnabled = true;
                 }
                 else
                 {
                     DateTextBlock.Text = "No se ha destetado";
                     NPigsTextBlock.Text = "0";
+                    WeaningInfoTable.IsEnabled = false;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DateTextBlock.Text = "No se ha destetado";
                 NPigsTextBlock.Text = "0";
+                WeaningInfoTable.IsEnabled = false;
             }
         }
         private void OnBirthDeleted(object sender, BirthsEventArgs e)
@@ -143,6 +146,11 @@ namespace WpfApp1.Females.BirthViews
         {
             collection.Remove(collection.Single(i => i.id == birth.id));
             //MessageBox.Show("Item Deleted");
+        }
+
+        private void EditWeaning_OnClick(object sender, RoutedEventArgs e)
+        {
+            MainDialogHost.Instance.SetNewUserControl(new EditWeaning());
         }
     }
 }

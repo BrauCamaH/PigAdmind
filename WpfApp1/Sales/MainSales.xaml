@@ -11,13 +11,6 @@
              xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
              d:DesignWidth="1366" d:DesignHeight="768" >
     <Grid>
-        <materialDesign:DialogHost Name="NewSaleDialogHost"
-            VerticalAlignment="Top" HorizontalAlignment="Center"
-            IsOpen="False" DialogClosing="NewSaleDialogHost_OnDialogClosing">
-            <materialDesign:DialogHost.DialogContent>
-               <Grid x:Name="DialogGrid"></Grid>
-            </materialDesign:DialogHost.DialogContent>
-        </materialDesign:DialogHost>
         <Button  HorizontalAlignment="Left" Margin="142,20,0,0" VerticalAlignment="Top" Width="183" Height="39" Click="NewSaleButton_Click">
             <DockPanel Width="153">
                 <materialDesign:PackIcon Kind="Plus" Height="25" Width="28" Foreground="LightBlue"/>
