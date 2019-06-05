@@ -58,7 +58,8 @@
                     x:Name="MaterialDesignFilledTextFieldTextBoxEnabledComboBox"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
-                    Margin="40,0,0,8">
+                    Margin="40,0,0,8"
+                    Unchecked="MaterialDesignFilledTextFieldTextBoxEnabledComboBox_OnUnchecked">
                         Editar
                     </CheckBox>
                 </StackPanel>

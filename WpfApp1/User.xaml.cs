@@ -100,5 +100,10 @@ namespace WpfApp1
             PasswordBox.Clear();
             AgainPasswordBox.Clear();
         }
+
+        private void MaterialDesignFilledTextFieldTextBoxEnabledComboBox_OnUnchecked(object sender, RoutedEventArgs e)
+        {
+            EmailTextBox.Text = _user.email;
+        }
     }
 }
