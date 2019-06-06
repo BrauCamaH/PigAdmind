@@ -41,6 +41,9 @@
     <StartupObject>WpfApp1.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Dragablz, Version=0.0.3.203, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Dragablz.0.0.3.203\lib\net45\Dragablz.dll</HintPath>
     </Reference>
@@ -163,6 +166,9 @@
     <Compile Include="Females\AddBirth.xaml.cs">
       <DependentUpon>AddBirth.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Females\AddImprovementDay.xaml.cs">
+      <DependentUpon>AddImprovementDay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Females\AddInsemination.xaml.cs">
       <DependentUpon>AddInsemination.xaml</DependentUpon>
     </Compile>
@@ -259,6 +265,12 @@
     <Compile Include="Persistance\Repositories\SicksRepository.cs" />
     <Compile Include="Persistance\Repositories\WeaningRepository.cs" />
     <Compile Include="Persistance\UnitOfWork.cs" />
+    <Compile Include="Reports\FemalesReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FemalesReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Sales\DeleteSale.xaml.cs">
       <DependentUpon>DeleteSale.xaml</DependentUpon>
     </Compile>
@@ -299,6 +311,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Females\AddBirth.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Females\AddImprovementDay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -481,6 +497,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\FemalesReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FemalesReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EntityDeploy Include="DatabaseFirst\Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
@@ -516,6 +536,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
