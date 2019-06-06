@@ -12,6 +12,7 @@
         <customUserControls:LookTextBox x:Name="SearchBox"  
                                         Margin="6,10,728,453">
         </customUserControls:LookTextBox>
+    
         <customUserControls:EditAndDelete x:Name="EditAndDelete"
                                           HorizontalAlignment="Right"
                                           VerticalAlignment="Top"
@@ -23,7 +24,8 @@
                   VerticalAlignment="Top" 
                   Width="782" Grid.ColumnSpan="2"
                   Background="White"
-                  SelectionChanged="SicksListView_OnSelectionChanged">
+                  SelectionChanged="SicksListView_OnSelectionChanged"
+                  MouseDoubleClick="SicksListView_OnMouseDoubleClick">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Enfermedad" DisplayMemberBinding="{Binding name}"/>
@@ -32,5 +34,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <materialDesign:Snackbar IsActive="true"  
+                                 Message="Doble Click para fecha de mejora"
+                                 VerticalAlignment="Top"></materialDesign:Snackbar>
     </Grid>
 </UserControl>

@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="252" d:DesignWidth="338">
     <Grid>
-        <StackPanel>
+        <StackPanel Margin="16">
             <materialDesign:Card Height="30" Background="LightBlue">
                 <TextBlock HorizontalAlignment="Center" FontSize="18" Foreground="White">
                     Modificar Enfermedad
@@ -23,6 +23,12 @@
                         materialDesign:HintAssist.Hint="Nueva fecha"
                         FontSize="14" 
                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+            <DatePicker x:Name="ImprovementDatePicker" 
+                        materialDesign:HintAssist.Hint="Nueva fecha de mejora"
+                        FontSize="14" 
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                        Visibility="Collapsed"/>
+
             <Separator Background="{x:Null}" Height="10"></Separator>
             <customUserControls:NotifyUserAgree x:Name="UserAgree"></customUserControls:NotifyUserAgree>
             <Separator Background="{x:Null}" Height="15"></Separator>

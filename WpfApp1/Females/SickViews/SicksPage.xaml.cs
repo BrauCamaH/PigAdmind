@@ -3,7 +3,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using WpfApp1.CustomEventArgs;
+using WpfApp1.CustomUserControls;
 using WpfApp1.DatabaseFirst;
 using WpfApp1.Persistance;
 
@@ -100,6 +102,16 @@ namespace WpfApp1.Females.SickViews
 
             var unitOfWork = new UnitOfWork(new Entities());
             if (sick != null) InitializeCrudControls(unitOfWork.Sicks.Get(sick.id));
+        }
+
+        private void SicksListView_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (CurrenSick?.improvement_date != "Ninguna") return;
+
+            var usc = new AddImprovementDay(CurrenSick);
+            MainDialogHost.Instance.SetNewUserControl(usc);
+
+            usc.SickEdited += OnItemEdited;
         }
     }
 }

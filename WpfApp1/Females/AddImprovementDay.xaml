@@ -1,52 +1,35 @@
-﻿<UserControl x:Class="WpfApp1.Females.PregnatFemale"
+﻿<UserControl x:Class="WpfApp1.Females.AddImprovementDay"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.Females"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="244.629" d:DesignWidth="446.364">
+             d:DesignHeight="189.818" d:DesignWidth="348.364">
     <Grid>
-        <StackPanel  Margin="16">
-            <materialDesign:Card Height="30" 
-                                 Background="LightBlue">
-                <TextBlock HorizontalAlignment="Center" 
-                           VerticalAlignment="Center"
-                           FontSize="26" Foreground="White">
-                    Hembra embarazada
-                </TextBlock>
-            </materialDesign:Card>
-            <TextBlock FontSize="20"
-                       Margin="0,16,0,0">
-                ¿Fué la siguiente inseminación éxitosa?
-           </TextBlock>
-            <ListView HorizontalAlignment="Left" 
-                      x:Name="InseminationsListView"
-                      IsEnabled="false">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Fecha" DisplayMemberBinding="{Binding date}"/>
-                        <GridViewColumn Header="Macho" DisplayMemberBinding="{Binding male_code}"/>
-                        <GridViewColumn Header="Estado" DisplayMemberBinding="{Binding status}"/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+        <StackPanel Margin="16" Height="auto" Width="auto">
+            <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30" >
+                Agregar Fecha
+            </TextBlock>
+            <DatePicker x:Name="DatePicker"
+                        Width="auto"
+                        materialDesign:HintAssist.Hint="Fecha de Mejora"
+                        FontSize="14" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
             <CheckBox
-                    x:Name="UserAgree"
-                    Margin="0, 0,0,8"
-                    Foreground="DarkRed">
-                Estoy de Acuerdo 
+                x:Name="UserAgree"
+                Margin="0,10,0,0"
+                Foreground="DarkRed">
+                Estoy de Acuerdo
             </CheckBox>
             <Separator Background="{x:Null}" Height="15"></Separator>
             <StackPanel  Orientation="Horizontal" 
                          HorizontalAlignment="Right"
-                         >
+            >
                 <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" 
                         Command="materialDesign:DialogHost.CloseDialogCommand"
                         Click="Accept_Button_Click"
-                         IsEnabled="{Binding Path=IsChecked , ElementName= UserAgree}">
+                        IsEnabled="{Binding Path=IsChecked , ElementName= UserAgree}">
                     <Button.CommandParameter>
                         <system:Boolean xmlns:system="clr-namespace:System;assembly=mscorlib">
                             True
@@ -65,7 +48,5 @@
                 </Button>
             </StackPanel>
         </StackPanel>
-
-
     </Grid>
 </UserControl>

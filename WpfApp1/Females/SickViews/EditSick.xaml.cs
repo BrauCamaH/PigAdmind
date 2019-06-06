@@ -25,6 +25,7 @@ namespace WpfApp1.Females.SickViews
             _sick = sick;
 
             GetSick();
+            IfHaveImprovementDay(sick);
             UserAgree.AcceptButton = AcceptBtn;
         }
 
@@ -37,6 +38,10 @@ namespace WpfApp1.Females.SickViews
         {
             SickNameTextBox.Text = _sick.name;
             SickDatePicker.Text = _sick.date;
+            if (IfHaveImprovementDay(_sick))
+            {
+                ImprovementDatePicker.Text = _sick.improvement_date;
+            }
         }
 
         private void EditSickFromdatabase(string newName, string newDate)
@@ -46,8 +51,26 @@ namespace WpfApp1.Females.SickViews
             sick.name = newName;
             sick.date = newDate;
 
+            if (IfHaveImprovementDay(sick))
+            {
+                sick.improvement_date = ImprovementDatePicker.Text;
+            }
+
             OnSickEdited(sick);
 
+        }
+
+        private bool IfHaveImprovementDay(Sicks sick)
+        {
+            if (sick.improvement_date == "Ninguna")
+            {
+                ImprovementDatePicker.Visibility = Visibility.Collapsed;
+                return false;
+            }
+
+            ImprovementDatePicker.Visibility = Visibility.Visible;
+
+            return true;
         }
 
         private void CloseButton_Click(object sender, RoutedEventArgs e)
