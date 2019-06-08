@@ -54,7 +54,7 @@ namespace WpfApp1
 
         private bool CanChangePassword(string pass, string again)
         {
-            if (pass.Equals(again))
+            if (pass.Equals(again) && pass != "")
             {
                 var unitOfWork = new Entities();
                 var user = unitOfWork.Users.FirstOrDefault();
@@ -88,11 +88,6 @@ namespace WpfApp1
                 Close();
             }
 
-        }
-
-        private void BackBtn_Click(object sender, RoutedEventArgs e)
-        {
-            throw new System.NotImplementedException();
         }
 
         private void MaterialDesignOutlinedPasswordFieldPasswordBoxEnabledComboBox_OnUnchecked(object sender, RoutedEventArgs e)
