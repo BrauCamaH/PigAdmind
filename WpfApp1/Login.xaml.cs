@@ -84,32 +84,38 @@ namespace WpfApp1
         {
             try
             {
+                var unitOfWork = new Entities();
+                var user = unitOfWork.Users.FirstOrDefault();
                 // Credentials
                 var credentials = new NetworkCredential("sistemaporcinopadm@gmail.com", "#pig87654321");
 
                 // Mail message
-                var mail = new MailMessage()
+                if (user != null)
                 {
-                    From = new MailAddress("sistemaporcinopadm@gmail.com"),
-                    Subject = "Test email.",
-                    Body = "Test email body"
-                };
+                    var mail = new MailMessage()
+                    {
+                        From = new MailAddress("sistemaporcinopadm@gmail.com"),
+                        Subject = "Contraseña inicio de sesión pigadmind",
+                        Body = "Estimado usuario esta es su contraseña de inicio de sesión :" + "- " + user.password + " -"
+                    };
 
-                mail.To.Add(new MailAddress("braulio.camarenah@gmail.com"));
+                    mail.To.Add(new MailAddress("braulio.camarenah@gmail.com"));
 
-                // Smtp client
-                var client = new SmtpClient()
-                {
-                    Port = 587,
-                    DeliveryMethod = SmtpDeliveryMethod.Network,
-                    UseDefaultCredentials = false,
-                    Host = "smtp.gmail.com",
-                    EnableSsl = true,
-                    Credentials = credentials
-                };
+                    // Smtp client
+                    var client = new SmtpClient()
+                    {
+                        Port = 587,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Host = "smtp.gmail.com",
+                        EnableSsl = true,
+                        Credentials = credentials
+                    };
 
-                // Send it...         
-                client.Send(mail);
+                    // Send it...         
+                    client.Send(mail);
+                }
+
                 var notificationManager = new NotificationManager();
 
                 notificationManager.Show(new NotificationContent
