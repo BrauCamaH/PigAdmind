@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="EntitiesDataSet" targetNamespace="http://tempuri.org/EntitiesDataSet.xsd" xmlns:mstns="http://tempuri.org/EntitiesDataSet.xsd" xmlns="http://tempuri.org/EntitiesDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="EntitiesDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="EntitiesDataSet" msprop:Generator_UserDSName="EntitiesDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Inseminations" msprop:Generator_TableClassName="InseminationsDataTable" msprop:Generator_TableVarName="tableInseminations" msprop:Generator_RowChangedName="InseminationsRowChanged" msprop:Generator_TablePropName="Inseminations" msprop:Generator_RowDeletingName="InseminationsRowDeleting" msprop:Generator_RowChangingName="InseminationsRowChanging" msprop:Generator_RowEvHandlerName="InseminationsRowChangeEventHandler" msprop:Generator_RowDeletedName="InseminationsRowDeleted" msprop:Generator_RowClassName="InseminationsRow" msprop:Generator_UserTableName="Inseminations" msprop:Generator_RowEvArgName="InseminationsRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="male_code" msprop:Generator_ColumnVarNameInTable="columnmale_code" msprop:Generator_ColumnPropNameInRow="male_code" msprop:Generator_ColumnPropNameInTable="male_codeColumn" msprop:Generator_UserColumnName="male_code" type="xs:string" minOccurs="0" />
+              <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:string" minOccurs="0" />
+              <xs:element name="fem_code" msprop:Generator_ColumnVarNameInTable="columnfem_code" msprop:Generator_ColumnPropNameInRow="fem_code" msprop:Generator_ColumnPropNameInTable="fem_codeColumn" msprop:Generator_UserColumnName="fem_code" type="xs:string" minOccurs="0" />
+              <xs:element name="status" msprop:Generator_ColumnVarNameInTable="columnstatus" msprop:Generator_ColumnPropNameInRow="status" msprop:Generator_ColumnPropNameInTable="statusColumn" msprop:Generator_UserColumnName="status" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Females" msprop:Generator_TableClassName="FemalesDataTable" msprop:Generator_TableVarName="tableFemales" msprop:Generator_TablePropName="Females" msprop:Generator_RowDeletingName="FemalesRowDeleting" msprop:Generator_RowChangingName="FemalesRowChanging" msprop:Generator_RowEvHandlerName="FemalesRowChangeEventHandler" msprop:Generator_RowDeletedName="FemalesRowDeleted" msprop:Generator_UserTableName="Females" msprop:Generator_RowChangedName="FemalesRowChanged" msprop:Generator_RowEvArgName="FemalesRowChangeEvent" msprop:Generator_RowClassName="FemalesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="code" msprop:Generator_ColumnVarNameInTable="columncode" msprop:Generator_ColumnPropNameInRow="code" msprop:Generator_ColumnPropNameInTable="codeColumn" msprop:Generator_UserColumnName="code" type="xs:string" minOccurs="0" />
+              <xs:element name="birthday" msprop:Generator_ColumnVarNameInTable="columnbirthday" msprop:Generator_ColumnPropNameInRow="birthday" msprop:Generator_ColumnPropNameInTable="birthdayColumn" msprop:Generator_UserColumnName="birthday" type="xs:string" minOccurs="0" />
+              <xs:element name="status" msprop:Generator_ColumnVarNameInTable="columnstatus" msprop:Generator_ColumnPropNameInRow="status" msprop:Generator_ColumnPropNameInTable="statusColumn" msprop:Generator_UserColumnName="status" type="xs:string" minOccurs="0" />
+              <xs:element name="maternity" msprop:Generator_ColumnVarNameInTable="columnmaternity" msprop:Generator_ColumnPropNameInRow="maternity" msprop:Generator_ColumnPropNameInTable="maternityColumn" msprop:Generator_UserColumnName="maternity" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfApp1.Reports.InseminationsReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.Reports"
+        mc:Ignorable="d"
+        Title="InseminationsReportWindow" Height="450" Width="800"
+        Loaded="InseminationsReportWindow_OnLoaded"
+        xmlns:my="clr-namespace:SAPBusinessObjects.WPF.Viewer;assembly=SAPBusinessObjects.WPF.Viewer">
+    <Grid>
+        <my:CrystalReportsViewer x:Name="CrystalReportsViewer"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 />
+        
+    </Grid>
+</Window>

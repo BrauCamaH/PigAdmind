@@ -41,8 +41,10 @@
                     <Menu Foreground="White" FontSize="30" Background="SteelBlue" IsMainMenu="True" Width="1118">
                         <MenuItem Header="_Archivo">
                             <MenuItem Header="Reportes">
-                                <MenuItem Header="Inseminaciones"></MenuItem>
-                                <MenuItem Header="Hembras preñadas"></MenuItem>
+                                <MenuItem Header="Inseminaciones" Click="InseminationsReport_OnClick"></MenuItem>
+                                <MenuItem Header="Hembras preñadas"
+                                          Click="PretnagFemalesReport_OnClick"
+                                          Visibility="Collapsed"></MenuItem>
                             </MenuItem>
                             <MenuItem Header="Cerrar Sesión"  Click="LogOut">
                                 <MenuItem.Icon>

@@ -16,14 +16,14 @@ namespace WpfApp1.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class FemalesReport : ReportClass {
+    public class InseminationsReport : ReportClass {
         
-        public FemalesReport() {
+        public InseminationsReport() {
         }
         
         public override string ResourceName {
             get {
-                return "FemalesReport.rpt";
+                return "InseminationsReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace WpfApp1.Reports {
         
         public override string FullResourceName {
             get {
-                return "WpfApp1.Reports.FemalesReport.rpt";
+                return "WpfApp1.Reports.InseminationsReport.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace WpfApp1.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedFemalesReport : Component, ICachedReport {
+    public class CachedInseminationsReport : Component, ICachedReport {
         
-        public CachedFemalesReport() {
+        public CachedInseminationsReport() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace WpfApp1.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            FemalesReport rpt = new FemalesReport();
+            InseminationsReport rpt = new InseminationsReport();
             rpt.Site = this.Site;
             return rpt;
         }

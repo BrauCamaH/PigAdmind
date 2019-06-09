@@ -6,6 +6,7 @@ using WpfApp1.DatabaseFirst;
 using WpfApp1.Females;
 using WpfApp1.Groups;
 using WpfApp1.Managers;
+using WpfApp1.Reports;
 using WpfApp1.Sales;
 
 namespace WpfApp1
@@ -137,10 +138,19 @@ namespace WpfApp1
 
         private void Info_OnClick(object sender, RoutedEventArgs e)
         {
-            Info info = new Info();
-            info.Owner = this;
+            Info info = new Info { Owner = this };
 
             info.ShowDialog();
+        }
+
+        private void InseminationsReport_OnClick(object sender, RoutedEventArgs e)
+        {
+            new InseminationsReportWindow().Show();
+        }
+
+        private void PretnagFemalesReport_OnClick(object sender, RoutedEventArgs e)
+        {
+            new PregnatFemalesWindow().Show();
         }
     }
 }
