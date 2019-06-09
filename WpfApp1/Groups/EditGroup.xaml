@@ -9,27 +9,27 @@
              mc:Ignorable="d" 
              Background="White" d:DesignWidth="274"  Width="auto" Height="auto">
     <Grid>
-        <StackPanel>
+        <StackPanel Margin="16">
             <materialDesign:Card Height="30" Background="LightBlue">
                 <TextBlock HorizontalAlignment="Center" FontSize="20" Foreground="White" >
                     Editar Grupo
                 </TextBlock>
             </materialDesign:Card>
-            <TextBox  x:Name="NameTextBox"
+            <customUserControls:NotEmptyTextBox  x:Name="NameTextBox"
                       materialDesign:HintAssist.Hint="Nuevo Identificador" 
                       FontSize="16"
-                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-            <TextBox x:Name="NumberTexBox"
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"></customUserControls:NotEmptyTextBox>
+            <customUserControls:JustNumbersTextBox x:Name="NumberTexBox"
                      materialDesign:HintAssist.Hint="Número de Lechones" 
                      FontSize="16"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-            <TextBox x:Name="WeigthTexBox"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></customUserControls:JustNumbersTextBox>
+            <customUserControls:JustNumbersTextBox x:Name="WeigthTexBox"
                      materialDesign:HintAssist.Hint="Peso Promedio" 
                      FontSize="16"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-            <DatePicker x:Name="DatePicker"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></customUserControls:JustNumbersTextBox>
+            <customUserControls:CustomDatePicker x:Name="DatePicker"
                         materialDesign:HintAssist.Hint="Nueva fecha" FontSize="16"
-                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></DatePicker>
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></customUserControls:CustomDatePicker>
             <Separator Background="{x:Null}" Height="15"></Separator>
             <customUserControls:NotifyUserAgree x:Name="UserAgree"></customUserControls:NotifyUserAgree>
 

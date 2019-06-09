@@ -5,23 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.Females"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
              mc:Ignorable="d" 
              d:DesignHeight="216.254" d:DesignWidth="327.739">
     <Grid>
         <StackPanel Margin="16" Height="auto" Width="auto">
             <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30" >Nueva Enfermedad</TextBlock>
-            <TextBox x:Name ="SickNameTextBox"
+            <customUserControls:NotEmptyTextBox x:Name ="SickNameTextBox"
                      Width="auto" 
                      materialDesign:HintAssist.Hint="Enfermedad"
                      FontSize="14" 
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-            <DatePicker x:Name="DatePicker"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></customUserControls:NotEmptyTextBox>
+            <customUserControls:CustomDatePicker x:Name="DatePicker"
                         Width="auto"
                         materialDesign:HintAssist.Hint="Fecha"
                         FontSize="14" 
                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="AcceptButton"
+                        Margin="0 8 8 0"
                         Style="{StaticResource MaterialDesignFlatButton}" 
                         IsDefault="True"
                         Command="materialDesign:DialogHost.CloseDialogCommand"

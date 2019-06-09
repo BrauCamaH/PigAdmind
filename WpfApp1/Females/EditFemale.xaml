@@ -12,7 +12,7 @@
              mc:Ignorable="d"
              Background="White" d:DesignWidth="268.667" d:DesignHeight="214"  Width="auto" Height="auto">
     <Grid>
-        <StackPanel>
+        <StackPanel Margin="16">
             <materialDesign:Card Height="30" Background="LightBlue">
                 <TextBlock HorizontalAlignment="Center" FontSize="18" Foreground="White">
                     Modificar Hembra
@@ -22,10 +22,10 @@
                      materialDesign:HintAssist.Hint="Nuevo Código" 
                      FontSize="16"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>-->
-            <DatePicker x:Name="NewDateDatePicker"
+            <customUserControls:CustomDatePicker x:Name="NewDateDatePicker"
                         materialDesign:HintAssist.Hint="Nueva fecha" 
                         FontSize="16"
-                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></DatePicker>
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></customUserControls:CustomDatePicker>
             <Separator Background="{x:Null}" Height="10"></Separator>
             <customUserControls:NotifyUserAgree x:Name="NotifyUserAgree"></customUserControls:NotifyUserAgree>
             <Separator Background="{x:Null}" Height="15"></Separator>
@@ -55,7 +55,6 @@
                     Salir
                 </Button>
             </StackPanel>
-            <Separator Background="{x:Null}" Height="15"></Separator>
         </StackPanel>
 
     </Grid>

@@ -15,11 +15,11 @@
                     Modificar Enfermedad
                 </TextBlock>
             </materialDesign:Card>
-            <TextBox x:Name="SickNameTextBox" 
+            <customUserControls:NotEmptyTextBox x:Name="SickNameTextBox" 
                      materialDesign:HintAssist.Hint="Nueva enfermedad"
                      FontSize="14" 
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
-            <DatePicker x:Name="SickDatePicker" 
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></customUserControls:NotEmptyTextBox>
+            <customUserControls:CustomDatePicker x:Name="SickDatePicker" 
                         materialDesign:HintAssist.Hint="Nueva fecha"
                         FontSize="14" 
                         Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>

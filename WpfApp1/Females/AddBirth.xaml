@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.Females"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
              mc:Ignorable="d" 
              d:DesignHeight="274.007" d:DesignWidth="340.036">
     <Grid>
@@ -12,17 +13,17 @@
             <TextBlock HorizontalAlignment="Center"
                        Foreground="SteelBlue" 
                        FontSize="30" >Nuevo Parto</TextBlock>
-            <TextBox x:Name="N_Pigs_TextBox"  Width="auto" 
+            <customUserControls:JustNumbersTextBox x:Name="N_Pigs_TextBox"  Width="auto" 
                      materialDesign:HintAssist.Hint="Número de lechones"
-                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</TextBox>
-            <TextBox x:Name="DeadPigsTextBox"  Width="auto" 
+                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</customUserControls:JustNumbersTextBox>
+            <customUserControls:JustNumbersTextBox x:Name="DeadPigsTextBox"  Width="auto" 
                      materialDesign:HintAssist.Hint="Número de lechone fallecidos"
-                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</TextBox>
-            <TextBox x:Name="MummysTextBox"  Width="auto" 
+                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</customUserControls:JustNumbersTextBox>
+            <customUserControls:JustNumbersTextBox x:Name="MummysTextBox"  Width="auto" 
                      materialDesign:HintAssist.Hint="Número de momias"
-                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</TextBox>
+                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</customUserControls:JustNumbersTextBox>
 
-            <DatePicker  x:Name="Date"
+            <customUserControls:CustomDatePicker  x:Name="Date"
                          Width="auto" 
                          materialDesign:HintAssist.Hint="Fecha" 
                          FontSize="14" 

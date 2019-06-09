@@ -6,7 +6,7 @@ namespace WpfApp1.CustomUserControls
     /// <summary>
     /// Lógica de interacción para NotifyUserAgree.xaml
     /// </summary>
-    public partial class NotifyUserAgree : UserControl
+    public partial class NotifyUserAgree : CheckBox
     {
         public Button AcceptButton { get; set; }
         public NotifyUserAgree()

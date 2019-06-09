@@ -8,14 +8,14 @@
              xmlns:domain="clr-namespace:WpfApp1.Domain"
              mc:Ignorable="d" 
              d:DesignHeight="39.705" d:DesignWidth="251.908"
-             FontSize="14" 
              Height="auto"
              Width="auto"
              Text="0"
              materialDesign:HintAssist.Hint="Floating Hint"
              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
              PreviewTextInput="NumberValidationTextBox"
-             >
+             materialDesign:HintAssist.FloatingScale="0.8"
+             FontSize="16">
     <!--<TextBox.Text >
         <Binding
             RelativeSource="{RelativeSource Self}" Path=".Text" 

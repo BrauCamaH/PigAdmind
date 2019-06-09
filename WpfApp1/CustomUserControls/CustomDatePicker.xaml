@@ -8,8 +8,9 @@
              xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
              materialDesign:HintAssist.Hint="Fecha"
-             FontSize="14" 
+             FontSize="16" 
+             materialDesign:HintAssist.FloatingScale="0.8"
              Height="auto"
              Width="auto"
              Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-             SelectedDate="{x:Static sys:DateTime.Now}" d:DesignWidth="230.667" d:DesignHeight="82" />
+             SelectedDate="{x:Static sys:DateTime.Now}" d:DesignWidth="230.667" d:DesignHeight="49.333" />

@@ -7,22 +7,22 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="215.795" d:DesignWidth="285.756">
+             d:DesignHeight="240.494" d:DesignWidth="279.17">
     <Grid>
-        <StackPanel>
+        <StackPanel Margin="16">
             <materialDesign:Card Height="30" Background="LightBlue">
                 <TextBlock HorizontalAlignment="Center" FontSize="18" Foreground="White">
                     Modificar Inseminación
                 </TextBlock>
             </materialDesign:Card>
-            <DatePicker Name="DatePicker" Width="auto" 
+            <customUserControls:CustomDatePicker x:Name="DatePicker" Width="auto" 
                         materialDesign:HintAssist.Hint="Fecha de inseminación" 
                         FontSize="14" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
-            <TextBox x:Name="MaleCodeTextBox"
+            <customUserControls:NotEmptyTextBox x:Name="MaleCodeTextBox"
                      Width="auto" 
                      materialDesign:HintAssist.Hint="Código de macho"
                      FontSize="14"  
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"></customUserControls:NotEmptyTextBox>
             <Separator Background="{x:Null}" Height="10"></Separator>
             <customUserControls:NotifyUserAgree x:Name="UserAgree"></customUserControls:NotifyUserAgree>
             <Separator Background="{x:Null}" Height="15"></Separator>

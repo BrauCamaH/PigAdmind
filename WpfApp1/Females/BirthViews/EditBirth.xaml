@@ -9,26 +9,26 @@
              mc:Ignorable="d" 
              d:DesignHeight="322.431" d:DesignWidth="369.123">
     <Grid>
-        <StackPanel>
+        <StackPanel Margin="16">
             <materialDesign:Card Height="30" Background="LightBlue">
                 <TextBlock HorizontalAlignment="Center" FontSize="18" Foreground="White">
                     Modificar Parto
                 </TextBlock>
             </materialDesign:Card>
             
-            <TextBox x:Name="NPigletsTextBox"  Width="auto" 
+            <customUserControls:JustNumbersTextBox x:Name="NPigletsTextBox"  Width="auto" 
                      materialDesign:HintAssist.Hint="Nuevo número de lechones"
-                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</TextBox>
-            <TextBox x:Name="DeadPigsTextBox"  Width="auto" 
+                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</customUserControls:JustNumbersTextBox>
+            <customUserControls:JustNumbersTextBox x:Name="DeadPigsTextBox"  Width="auto" 
                      materialDesign:HintAssist.Hint="Nuevo número de lechone fallecidos"
-                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</TextBox>
-            <TextBox x:Name="MummysTextBox"  Width="auto" 
+                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</customUserControls:JustNumbersTextBox>
+            <customUserControls:JustNumbersTextBox x:Name="MummysTextBox"  Width="auto" 
                      materialDesign:HintAssist.Hint="Nuevo número de momias"
-                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</TextBox>
-            <DatePicker x:Name="DatePicker"
+                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}">0</customUserControls:JustNumbersTextBox>
+            <customUserControls:CustomDatePicker x:Name="DatePicker"
                         materialDesign:HintAssist.Hint="Nueva fecha" 
                         FontSize="16"
-                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></DatePicker>
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}"></customUserControls:CustomDatePicker>
             <Separator Background="{x:Null}" Height="10"></Separator>
             <customUserControls:NotifyUserAgree x:Name="UserAgree"></customUserControls:NotifyUserAgree>
             <Separator Background="{x:Null}" Height="15"></Separator>

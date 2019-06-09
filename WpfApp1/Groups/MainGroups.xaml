@@ -13,19 +13,20 @@
             <materialDesign:DialogHost.DialogContent >
                 <StackPanel Margin="16" Height="auto" Width="auto">
                     <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30"> Ingrese los datos</TextBlock>
-                    <TextBox Name="IdBox" materialDesign:HintAssist.Hint="Identificador" 
-                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+                    <customUserControls:NotEmptyTextBox x:Name="IdBox" 
+                                                        materialDesign:HintAssist.Hint="Identificador"/>
                     <Separator Height="10" Background="{x:Null}"></Separator>
-                    <TextBox  Name="NPigsBox" Margin="0 8 0 0"  HorizontalAlignment="Stretch"  
-                              materialDesign:HintAssist.Hint="Número de lechones" 
+                    <customUserControls:JustNumbersTextBox  x:Name="NPigsBox"
+                                                            materialDesign:HintAssist.Hint="Número de lechones" 
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox  Name="WeigthAVGBox" Margin="0 8 0 0"  HorizontalAlignment="Stretch"  
+                    <customUserControls:JustNumbersTextBox  
+                              x:Name="WeigthAVGBox" Margin="0 8 0 0"  HorizontalAlignment="Stretch"  
                               materialDesign:HintAssist.Hint="Peso Promedio" 
                               Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                     <Separator Height="20" Background="{x:Null}"></Separator>
 
-                    <DatePicker Name="DatePicker" Width="auto" materialDesign:HintAssist.Hint="Fecha de destete" 
-                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+                    <customUserControls:CustomDatePicker x:Name="DatePicker" 
+                                                         materialDesign:HintAssist.Hint="Fecha de destete"/>
                    
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                         <Button Style="{StaticResource MaterialDesignFlatButton}" IsDefault="True" Margin="0 8 8 0" Click="AddNewGroup_OnClick">

@@ -10,19 +10,18 @@
              xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
              materialDesign:HintAssist.Hint="Floating Hint"
-             FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}" d:DesignWidth="118.5" d:DesignHeight="45">
-    <TextBox.Text>
+             materialDesign:HintAssist.FloatingScale="0.8"
+             FontSize="16" Style="{StaticResource MaterialDesignFloatingHintTextBox}" d:DesignWidth="118.5" d:DesignHeight="45">
+    
+    <!--<TextBox.Text>
             <Binding
-                Path="."
+                Path="x:{Text}"
                 UpdateSourceTrigger="PropertyChanged">
-                <Binding.Source>
-                <system:String>0</system:String>
-                </Binding.Source>
-            <Binding.ValidationRules>
+                <Binding.ValidationRules>
                     <domain:NotEmptyValidationRule
                         ValidatesOnTargetUpdated="True" 
                         />
                 </Binding.ValidationRules>
             </Binding>
-        </TextBox.Text>
+        </TextBox.Text>-->
 </TextBox>
