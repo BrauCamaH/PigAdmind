@@ -203,11 +203,17 @@
     <Compile Include="CustomUserControls\EditAndDelete.xaml.cs">
       <DependentUpon>EditAndDelete.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomUserControls\JustNumbersTextBox.xaml.cs">
+      <DependentUpon>JustNumbersTextBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomUserControls\LookTextBox.xaml.cs">
       <DependentUpon>LookTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomUserControls\MainDialogHost.xaml.cs">
       <DependentUpon>MainDialogHost.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CustomUserControls\NotEmptyTextBox.xaml.cs">
+      <DependentUpon>NotEmptyTextBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomUserControls\NotifyUserAgree.xaml.cs">
       <DependentUpon>NotifyUserAgree.xaml</DependentUpon>
@@ -254,6 +260,7 @@
     <Compile Include="Delete.xaml.cs">
       <DependentUpon>Delete.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Domain\NotEmptyValidationRule.cs" />
     <Compile Include="Females\AddBirth.xaml.cs">
       <DependentUpon>AddBirth.xaml</DependentUpon>
     </Compile>
@@ -405,11 +412,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="CustomUserControls\JustNumbersTextBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CustomUserControls\LookTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CustomUserControls\MainDialogHost.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomUserControls\NotEmptyTextBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

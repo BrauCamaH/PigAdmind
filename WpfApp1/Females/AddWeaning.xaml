@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WpfApp1.Females"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
              mc:Ignorable="d" 
              d:DesignHeight="198.954" d:DesignWidth="309.177">
     <Grid>
@@ -16,10 +17,10 @@
                         Width="auto"
                         materialDesign:HintAssist.Hint="Fecha de destete"
                         FontSize="14" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
-            <TextBox x:Name="NPigsTextBox"
+            <customUserControls:JustNumbersTextBox x:Name="NPigsTextBox"
                      Width="auto" 
                      materialDesign:HintAssist.Hint="Número de lechones"
-                     FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}"></TextBox>
+                     FontSize="14" ></customUserControls:JustNumbersTextBox>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                 <Button x:Name="AddButton"
                         Style="{StaticResource MaterialDesignFlatButton}" 
