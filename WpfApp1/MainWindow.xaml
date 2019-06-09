@@ -68,7 +68,7 @@
                         <Separator Background="{x:Null}" Width="605"></Separator>
                         <MenuItem Header="_Ayuda">
                             <MenuItem Header="Acerca de ..." Click ="Info_OnClick"></MenuItem>
-                            <MenuItem Header="Manual de usuario"></MenuItem>
+                            <MenuItem Header="Manual de usuario" Click="UserManual_OnClick"></MenuItem>
                         </MenuItem>
                     </Menu>
                 </StackPanel>

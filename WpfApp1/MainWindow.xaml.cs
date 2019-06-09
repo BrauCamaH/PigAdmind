@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using WpfApp1.CustomUserControls;
@@ -151,6 +152,24 @@ namespace WpfApp1
         private void PretnagFemalesReport_OnClick(object sender, RoutedEventArgs e)
         {
             new PregnatFemalesWindow().Show();
+        }
+
+        private void UserManual_OnClick(object sender, RoutedEventArgs e)
+        {
+
+            try
+            {
+                System.Diagnostics.Process process = new System.Diagnostics.Process();
+                string path = AppDomain.CurrentDomain.BaseDirectory + @"/Manual de usuario.pdf";
+                Uri pdf = new Uri(path, UriKind.RelativeOrAbsolute);
+                process.StartInfo.FileName = pdf.LocalPath;
+                process.Start();
+                process.WaitForExit();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Could not open the file.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
     }
 }

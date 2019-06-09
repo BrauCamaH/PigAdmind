@@ -628,6 +628,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Assets\Manual de Usuario.pdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="DatabaseFirst\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </None>
