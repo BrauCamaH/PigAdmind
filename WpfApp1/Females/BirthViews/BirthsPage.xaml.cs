@@ -127,11 +127,12 @@ namespace WpfApp1.Females.BirthViews
 
         }
 
-        private void OnBirthEdited(object sender, BirthsEventArgs e)
+        public void OnBirthEdited(object sender, BirthsEventArgs e)
         {
             try
             {
-                _birthsObservableList[_birthsObservableList.IndexOf(CurrentBirth)] = e.Birth;
+                var birthIndex = _birthsObservableList.IndexOf(_birthsObservableList.FirstOrDefault(i => i.id == e.Birth.id));
+                _birthsObservableList[birthIndex] = e.Birth;
             }
             catch (Exception exception)
             {

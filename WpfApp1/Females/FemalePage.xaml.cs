@@ -89,6 +89,7 @@ namespace WpfApp1.Females
             AddUserControlToEventDialog(usc);
 
             usc.StatusModified += OnFemaleStatusChanged;
+            usc.BirthModified += Births.OnBirthEdited;
         }
 
         private void BirthButtonClick(object sender, RoutedEventArgs e)

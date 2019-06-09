@@ -17,12 +17,18 @@ namespace WpfApp1.Females
         public event EventHandler<Weaning> WeaningAdded;
 
         public event EventHandler<FemalesEventArgs> StatusModified;
+
+        public event EventHandler<BirthsEventArgs> BirthModified;
         public AddWeaning(DatabaseFirst.Females female)
         {
             _female = female;
             InitializeComponent();
         }
 
+        public virtual void OnBirthModified(Births e)
+        {
+            BirthModified?.Invoke(this, new BirthsEventArgs { Birth = e });
+        }
         public virtual void OnWeaningAdded(Weaning weaning)
         {
             try
@@ -33,6 +39,8 @@ namespace WpfApp1.Females
 
                 birth.status = "Destetado";
                 unitOfWork.Complete();
+
+                OnBirthModified(birth);
                 WeaningAdded?.Invoke(this, weaning);
             }
             catch (Exception e)
@@ -74,5 +82,7 @@ namespace WpfApp1.Females
             }
 
         }
+
+
     }
 }
