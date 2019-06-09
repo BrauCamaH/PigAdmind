@@ -7,8 +7,22 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:wpfApp1="clr-namespace:WpfApp1"
              xmlns:domain="clr-namespace:WpfApp1.Domain"
+             xmlns:system="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d"
              materialDesign:HintAssist.Hint="Floating Hint"
-             FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Height="42.835" Width="466.199">
-
+             FontSize="14" Style="{StaticResource MaterialDesignFloatingHintTextBox}" d:DesignWidth="118.5" d:DesignHeight="45">
+    <TextBox.Text>
+            <Binding
+                Path="."
+                UpdateSourceTrigger="PropertyChanged">
+                <Binding.Source>
+                <system:String>0</system:String>
+                </Binding.Source>
+            <Binding.ValidationRules>
+                    <domain:NotEmptyValidationRule
+                        ValidatesOnTargetUpdated="True" 
+                        />
+                </Binding.ValidationRules>
+            </Binding>
+        </TextBox.Text>
 </TextBox>

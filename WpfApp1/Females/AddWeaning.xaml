@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:WpfApp1.Females"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              d:DesignHeight="198.954" d:DesignWidth="309.177">
     <Grid>
@@ -13,10 +14,9 @@
             <TextBlock HorizontalAlignment="Center" Foreground="SteelBlue" FontSize="30" >
                 Nuevo Destete
             </TextBlock>
-            <DatePicker x:Name="DatePicker"
+            <customUserControls:CustomDatePicker x:Name="DatePicker"
                         Width="auto"
-                        materialDesign:HintAssist.Hint="Fecha de destete"
-                        FontSize="14" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+                        materialDesign:HintAssist.Hint="Fecha de destete"/>
             <customUserControls:JustNumbersTextBox x:Name="NPigsTextBox"
                      Width="auto" 
                      materialDesign:HintAssist.Hint="Número de lechones"

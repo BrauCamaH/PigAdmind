@@ -200,6 +200,9 @@
     <Compile Include="CustomUserControls\BackButton.xaml.cs">
       <DependentUpon>BackButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomUserControls\CustomDatePicker.xaml.cs">
+      <DependentUpon>CustomDatePicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomUserControls\EditAndDelete.xaml.cs">
       <DependentUpon>EditAndDelete.xaml</DependentUpon>
     </Compile>
@@ -405,6 +408,10 @@
       <DependentUpon>User.xaml</DependentUpon>
     </Compile>
     <Page Include="CustomUserControls\BackButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomUserControls\CustomDatePicker.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
