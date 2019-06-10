@@ -26,12 +26,12 @@ namespace WpfApp1.DatabaseFirst
         }
     
         public virtual DbSet<Births> Births { get; set; }
-        public virtual DbSet<Females> Females { get; set; }
         public virtual DbSet<Inseminations> Inseminations { get; set; }
         public virtual DbSet<PigGroups> PigGroups { get; set; }
         public virtual DbSet<Sales> Sales { get; set; }
         public virtual DbSet<Sicks> Sicks { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Weaning> Weaning { get; set; }
+        public virtual DbSet<Females> Females { get; set; }
     }
 }

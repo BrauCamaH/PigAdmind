@@ -25,9 +25,10 @@
           <Property Name="code" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="birthday" Type="nvarchar" MaxLength="10" />
           <Property Name="status" Type="nvarchar" MaxLength="20" />
-          <Property Name="martenity" Type="float" />
           <Property Name="user" Type="int" />
           <Property Name="misbirths" Type="int" />
+          <Property Name="successbirths" Type="int" />
+          <Property Name="martenity" Type="float" />
         </EntityType>
         <EntityType Name="Inseminations">
           <Key>
@@ -119,17 +120,6 @@
           <Property Name="died_piglets" Type="Int32" />
           <Property Name="mummys" Type="Int32" />
         </EntityType>
-        <EntityType Name="Females">
-          <Key>
-            <PropertyRef Name="code" />
-          </Key>
-          <Property Name="code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="birthday" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="martenity" Type="Int32" />
-          <Property Name="user" Type="Int32" />
-          <Property Name="misbirths" Type="Int32" />
-        </EntityType>
         <EntityType Name="Inseminations">
           <Key>
             <PropertyRef Name="id" />
@@ -186,13 +176,13 @@
         </EntityType>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Births" EntityType="Self.Births" />
-          <EntitySet Name="Females" EntityType="Self.Females" />
           <EntitySet Name="Inseminations" EntityType="Self.Inseminations" />
           <EntitySet Name="PigGroups" EntityType="Self.PigGroups" />
           <EntitySet Name="Sales" EntityType="Self.Sales" />
           <EntitySet Name="Sicks" EntityType="Self.Sicks" />
           <EntitySet Name="Users" EntityType="Self.Users" />
           <EntitySet Name="Weaning" EntityType="Model.Weaning" />
+          <EntitySet Name="Females" EntityType="Model.Females" />
         </EntityContainer>
         <EntityType Name="Weaning">
           <Key>
@@ -202,6 +192,18 @@
           <Property Name="weaned_pigs" Type="Int32" />
           <Property Name="dead_pigs" Type="Int32" />
           <Property Name="date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Females">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="birthday" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="user" Type="Int32" />
+          <Property Name="misbirths" Type="Int32" />
+          <Property Name="successbirths" Type="Int32" />
+          <Property Name="martenity" Type="Double" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -220,18 +222,6 @@
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="weaning" ColumnName="weaning" />
                 <ScalarProperty Name="fem_code" ColumnName="fem_code" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Females">
-            <EntityTypeMapping TypeName="Model.Females">
-              <MappingFragment StoreEntitySet="Females">
-                <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="birthday" ColumnName="birthday" />
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="martenity" ColumnName="martenity" />
-                <ScalarProperty Name="user" ColumnName="user" />
-                <ScalarProperty Name="misbirths" ColumnName="misbirths" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -301,6 +291,19 @@
                 <ScalarProperty Name="dead_pigs" ColumnName="dead_pigs" />
                 <ScalarProperty Name="weaned_pigs" ColumnName="weaned_pigs" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Females">
+            <EntityTypeMapping TypeName="Model.Females">
+              <MappingFragment StoreEntitySet="Females">
+                <ScalarProperty Name="martenity" ColumnName="martenity" />
+                <ScalarProperty Name="successbirths" ColumnName="successbirths" />
+                <ScalarProperty Name="misbirths" ColumnName="misbirths" />
+                <ScalarProperty Name="user" ColumnName="user" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="code" ColumnName="code" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

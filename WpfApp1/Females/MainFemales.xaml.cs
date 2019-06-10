@@ -74,6 +74,7 @@ namespace WpfApp1.Females
             FemalesList.ItemsSource = _FemaleObservableCollection;
         }
 
+
         public void OnItemAdded(object sender, FemalesEventArgs e)
         {
             throw new NotImplementedException();
@@ -120,10 +121,10 @@ namespace WpfApp1.Females
                 code = code,
                 birthday = birthday,
                 status = "Normal",
-                martenity = 0,
+                martenity = 100,
                 user = 1,
-                misbirths = 0
-
+                misbirths = 0,
+                successbirths = 0
             };
             _FemaleObservableCollection.Add(female);
             UnitOfWork unitOfWork = new UnitOfWork(new Entities());

@@ -8,5 +8,7 @@ namespace WpfApp1.Core.Repositories
         DatabaseFirst.Females GetFemaleByCode(string code);
 
         void RemoveFemaleByCode(string code);
+
+        void SetMaternity(DatabaseFirst.Females female);
     }
 }

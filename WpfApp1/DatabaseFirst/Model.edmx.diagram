@@ -6,13 +6,13 @@
     <edmx:Diagrams>
       <Diagram DiagramId="59a7ddf20c9e40a6a7080223f66118e5" Name="Diagram1">
         <EntityTypeShape EntityType="Model.Births" Width="1.5" PointX="0.75" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Females" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Inseminations" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.PigGroups" Width="1.5" PointX="4.75" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Sales" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Sicks" Width="1.5" PointX="6.75" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Users" Width="1.5" PointX="8.5" PointY="0.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Weaning" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Model.Females" Width="1.5" PointX="2.75" PointY="0.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

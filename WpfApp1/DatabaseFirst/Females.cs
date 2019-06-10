@@ -17,8 +17,9 @@ namespace WpfApp1.DatabaseFirst
         public string code { get; set; }
         public string birthday { get; set; }
         public string status { get; set; }
-        public Nullable<int> martenity { get; set; }
         public Nullable<int> user { get; set; }
         public Nullable<int> misbirths { get; set; }
+        public Nullable<int> successbirths { get; set; }
+        public Nullable<double> martenity { get; set; }
     }
 }

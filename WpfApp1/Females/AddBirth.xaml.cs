@@ -58,6 +58,8 @@ namespace WpfApp1.Females
             };
 
             female.status = "Madre";
+            female.successbirths += 1;
+            unitOfWork.Females.SetMaternity(female);
 
             unitOfWork.Births.Add(birth);
             unitOfWork.Complete();

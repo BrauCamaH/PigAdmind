@@ -48,6 +48,9 @@ namespace WpfApp1.Females
 
                 insemination.status = "Fallida";
                 female.status = "Abortada";
+                female.misbirths += 1;
+
+                unitOfWork.Females.SetMaternity(female);
                 unitOfWork.Complete();
 
                 OnStatusModified(female);

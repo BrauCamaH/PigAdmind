@@ -66,6 +66,7 @@ namespace WpfApp1.Females
             insemination.status = "Exitosa";
 
             female.status = "Preñada";
+
             unitOfWork.Complete();
 
             OnStatusModified(female);

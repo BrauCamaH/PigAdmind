@@ -63,7 +63,7 @@
                     <GridViewColumn Header="Código" DisplayMemberBinding="{Binding code}"/>
                     <GridViewColumn Header="Fecha de Nacimiento" DisplayMemberBinding="{Binding birthday}"/>
                     <GridViewColumn Header="Estado" DisplayMemberBinding="{Binding status}"/>
-                    <GridViewColumn Header="Maternidad" DisplayMemberBinding="{Binding martenity}"/>
+                    <GridViewColumn Header="Maternidad %" DisplayMemberBinding="{Binding martenity}"/>
                 </GridView>
             </ListView.View>
         </ListView>

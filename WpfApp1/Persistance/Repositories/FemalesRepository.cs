@@ -36,6 +36,17 @@ namespace WpfApp1.Persistance.Repositories
 
         }
 
+        public void SetMaternity(DatabaseFirst.Females female)
+        {
+            if (female.successbirths != null && female.misbirths != null)
+            {
+                double maternity = (double)(female.successbirths * 100 / (female.successbirths + female.misbirths));
+                female.martenity = maternity;
+            }
+
+            //MessageBox.Show(female.martenity + "   " + female.successbirths + "   " + female.misbirths);
+        }
+
         public Entities DbEntities => Context as Entities;
     }
 }
