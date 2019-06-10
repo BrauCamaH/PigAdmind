@@ -682,6 +682,9 @@
   <ItemGroup>
     <Resource Include="Assets\cerdo.png" />
     <Resource Include="Assets\group.png" />
+    <Resource Include="Assets\Pigadmind.ico" />
+    <Resource Include="Assets\PigAdmindLogo.png" />
+    <Resource Include="Assets\Pigadmind.png" />
     <Content Include="DatabaseFirst\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

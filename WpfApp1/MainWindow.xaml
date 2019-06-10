@@ -9,7 +9,10 @@
         Title="MainWindow" Height="Auto" Width="Auto" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:customUserControls="clr-namespace:WpfApp1.CustomUserControls"
-        WindowState="Maximized" WindowStartupLocation="CenterScreen" d:DesignWidth="1366" d:DesignHeight="768">
+        WindowState="Maximized" 
+        WindowStartupLocation="CenterScreen" 
+        d:DesignWidth="1366" d:DesignHeight="768"
+        Icon="Assets/../Assets/Pigadmind.ico">
     <Window.Resources>
 
         <Storyboard x:Key="OpenMenu">
