@@ -32,6 +32,7 @@ namespace WpfApp1.Sales
         {
             var unitOfWork = new UnitOfWork(new Entities());
             unitOfWork.Sales.RemoveSaleById(_sale.id);
+            unitOfWork.Complete();
         }
         private void Accept_Btn_Click(object sender, RoutedEventArgs e)
         {
