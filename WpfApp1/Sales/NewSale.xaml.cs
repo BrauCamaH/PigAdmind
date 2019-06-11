@@ -110,8 +110,6 @@ namespace WpfApp1.Sales
         private void GroupList_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DeleteButton.IsEnabled = GroupList.SelectedItem != null;
-
-
         }
     }
 }
